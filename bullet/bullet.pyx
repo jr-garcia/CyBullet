@@ -8,6 +8,8 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btBoxShape(btCollisionShape):
         btBoxShape(btVector3 boxHalfExtents)
 
+    cdef cppclass btEmptyShape(btCollisionShape):
+        btEmptyShape()
 
 
 cdef extern from "btBulletDynamicsCommon.h":
@@ -79,28 +81,31 @@ cdef extern from "btBulletCollisionCommon.h":
 
 # Forward declare some things because of circularity in the API.
 cdef class CollisionObject
-cdef class RigidBody(CollisionObject)
 
 
 
 cdef class CollisionShape:
     cdef btCollisionShape *thisptr
 
-    def __cinit__(self, CollisionObject collisionObject):
-        shape = collisionObject.thisptr.getCollisionShape()
-        if shape == NULL:
-            raise ValueError(
-                "Cannot construct CollisionShape from CollisionObject with no "
-                "shape.")
-        self.thisptr = shape
+
+
+cdef class EmptyShape(CollisionShape):
+    def __cinit__(self):
+        self.thisptr = new btEmptyShape()
 
 
 
 cdef class CollisionObject:
     cdef btCollisionObject *thisptr
 
+    def __cinit__(self):
+        self.thisptr = new btCollisionObject()
+
+
     def getCollisionShape(self):
-        return CollisionShape(self)
+        shape = CollisionShape()
+        shape.thisptr = self.thisptr.getCollisionShape()
+        return shape
 
 
     def setCollisionShape(self, CollisionShape collisionShape):
