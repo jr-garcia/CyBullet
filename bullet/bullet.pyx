@@ -76,12 +76,23 @@ cdef extern from "btBulletCollisionCommon.h":
         int getNumCollisionObjects()
 
         void addCollisionObject(btCollisionObject*, short int, short int)
+        void removeCollisionObject(btCollisionObject*)
 
 
 
 # Forward declare some things because of circularity in the API.
 cdef class CollisionObject
 
+
+cdef class Vector3:
+    cdef btScalar x
+    cdef btScalar y
+    cdef btScalar z
+
+    def __cinit__(self, btScalar x, btScalar y, btScalar z):
+        self.x = x
+        self.y = y
+        self.z = z
 
 
 cdef class CollisionShape:
@@ -92,6 +103,13 @@ cdef class CollisionShape:
 cdef class EmptyShape(CollisionShape):
     def __cinit__(self):
         self.thisptr = new btEmptyShape()
+
+
+
+cdef class BoxShape(CollisionShape):
+    def __cinit__(self, Vector3 boxHalfExtents):
+        self.thisptr = new btBoxShape(
+            btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
 
 
 
@@ -150,3 +168,7 @@ cdef class CollisionWorld:
             raise ValueError(
                 "Cannot add CollisionObject without a CollisionShape")
         self.thisptr.addCollisionObject(collisionObject.thisptr, 0, 0)
+
+
+    def removeCollisionObject(self, CollisionObject collisionObject):
+        self.thisptr.removeCollisionObject(collisionObject.thisptr)

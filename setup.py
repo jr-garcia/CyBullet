@@ -5,7 +5,7 @@ from Cython.Distutils import build_ext
 setup(
     name="bullet",
     ext_modules=[Extension(
-        "bullet",
+        "bullet.bullet",
         ["bullet/bullet.pyx"],
         libraries=["LinearMath",
                    "BulletCollision",
