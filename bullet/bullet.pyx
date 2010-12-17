@@ -5,11 +5,17 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btVector3
     cdef cppclass btCollisionShape:
         pass
+
     cdef cppclass btBoxShape(btCollisionShape):
         btBoxShape(btVector3 boxHalfExtents)
 
     cdef cppclass btEmptyShape(btCollisionShape):
         btEmptyShape()
+
+
+cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
+    cdef cppclass btBox2dShape(btCollisionShape):
+        btBox2dShape(btVector3 boxHalfExtents)
 
 
 cdef extern from "btBulletDynamicsCommon.h":
@@ -88,6 +94,9 @@ cdef extern from "btBulletCollisionCommon.h":
         btCollisionWorld(
             btDispatcher*, btBroadphaseInterface*, btCollisionConfiguration*)
 
+        btDispatcher *getDispatcher()
+        btBroadphaseInterface *getBroadphase()
+
         int getNumCollisionObjects()
 
         void addCollisionObject(btCollisionObject*, short int, short int)
@@ -113,13 +122,15 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         void addRigidBody(btRigidBody*)
 
-        void stepSimulation(btScalar, int, btScalar)
+        int stepSimulation(btScalar, int, btScalar)
 
 
     cdef cppclass btDiscreteDynamicsWorld: # (byDynamicsWorld)
         btDiscreteDynamicsWorld(
             btDispatcher*, btBroadphaseInterface*,
             btConstraintSolver*, btCollisionConfiguration*)
+
+        btConstraintSolver *getConstraintSolver()
 
 
 
@@ -143,10 +154,21 @@ cdef class CollisionShape:
     cdef btCollisionShape *thisptr
 
 
+    def __dealloc__(self):
+        del self.thisptr
+
+
 
 cdef class EmptyShape(CollisionShape):
     def __cinit__(self):
         self.thisptr = new btEmptyShape()
+
+
+
+cdef class Box2dShape(CollisionShape):
+    def __cinit__(self, Vector3 boxHalfExtents):
+        self.thisptr = new btBox2dShape(
+            btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
 
 
 
@@ -160,7 +182,7 @@ cdef class BoxShape(CollisionShape):
 cdef class CollisionObject:
     cdef btCollisionObject *thisptr
 
-    def __cinit__(self):
+    def __init__(self):
         self.thisptr = new btCollisionObject()
 
 
@@ -178,6 +200,14 @@ cdef class CollisionObject:
 cdef class Transform:
     cdef btTransform *thisptr
 
+    def __cinit__(self):
+        self.thisptr = new btTransform()
+
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
     def getOrigin(self):
         cdef btVector3 origin = self.thisptr.getOrigin()
         return Vector3(origin.getX(), origin.getY(), origin.getZ())
@@ -186,43 +216,116 @@ cdef class Transform:
 
 cdef class MotionState:
     cdef btMotionState *thisptr
+    cdef Transform transform
+
+    def __dealloc__(self):
+        del self.thisptr
+
 
     def getWorldTransform(self):
         transform = Transform()
-        transform.thisptr = new btTransform()
         self.thisptr.getWorldTransform(transform.thisptr[0])
         return transform
 
 
-cdef class RigidBody(CollisionObject):
+
+cdef class DefaultMotionState(MotionState):
     def __cinit__(self):
-        motionState = new btDefaultMotionState()
-        collisionShape = new btBoxShape(btVector3(1, 1, 1))
+        self.thisptr = new btDefaultMotionState()
+
+
+
+cdef class RigidBody(CollisionObject):
+    cdef MotionState motion
+    cdef CollisionShape shape
+
+    def __init__(self):
+        self.motion = DefaultMotionState()
+        self.shape = BoxShape(Vector3(1, 1, 1))
         cdef btVector3 inertia
-        inertia = btVector3(0, 3, 0)
+        inertia = btVector3(0, 0, 0)
         cdef btRigidBodyConstructionInfo* info
         info = new btRigidBodyConstructionInfo(
-            3, motionState, collisionShape, inertia)
+            3, self.motion.thisptr, self.shape.thisptr, inertia)
         self.thisptr = new btRigidBody(info[0])
+        del info
+
+
+    def __dealloc__(self):
+        del self.thisptr
 
 
     def getMotionState(self):
-        cdef btRigidBody *body = <btRigidBody*>self.thisptr
-        motion = MotionState()
-        motion.thisptr = body.getMotionState()
-        return motion
+        return self.motion
+
+
+
+cdef class CollisionDispatcher:
+    cdef btCollisionConfiguration *config
+    cdef btDispatcher *thisptr
+
+    def __cinit__(self):
+        # XXX btDefaultCollisionConfiguration leaks I suppose.
+        self.config = new btDefaultCollisionConfiguration()
+        self.thisptr = new btCollisionDispatcher(self.config)
+
+    def __dealloc__(self):
+        del self.thisptr
+        del self.config
+
+
+
+cdef class BroadphaseInterface:
+    cdef btBroadphaseInterface *thisptr
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+
+cdef class AxisSweep3(BroadphaseInterface):
+    def __cinit__(self, Vector3 lower, Vector3 upper):
+        self.thisptr = new btAxisSweep3(
+            btVector3(lower.x, lower.y, lower.z),
+            btVector3(upper.x, upper.y, upper.z))
+
+
+
+cdef class ConstraintSolver:
+    cdef btConstraintSolver *thisptr
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+
+
+cdef class SequentialImpulseConstraintSolver(ConstraintSolver):
+    def __cinit__(self):
+        self.thisptr = new btSequentialImpulseConstraintSolver()
 
 
 
 cdef class CollisionWorld:
     cdef btCollisionWorld *thisptr
+    cdef CollisionDispatcher dispatcher
+    cdef BroadphaseInterface broadphase
 
-    def __init__(self):
-        config = new btDefaultCollisionConfiguration()
-        self.thisptr = new btCollisionWorld(
-            new btCollisionDispatcher(config),
-            new btAxisSweep3(btVector3(0, 0, 0), btVector3(10, 10, 10)),
-            config)
+    def __init__(self,
+                 CollisionDispatcher dispatcher = None,
+                 BroadphaseInterface broadphase = None):
+        if dispatcher is None:
+            dispatcher = CollisionDispatcher()
+        if broadphase is None:
+            broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))
+
+        self.dispatcher = dispatcher
+        self.broadphase = broadphase
+
+        # Allow subclasses to initialize this differently.
+        if self.thisptr == NULL:
+            self.thisptr = new btCollisionWorld(
+                dispatcher.thisptr, broadphase.thisptr, dispatcher.config)
 
 
     def __dealloc__(self):
@@ -246,19 +349,43 @@ cdef class CollisionWorld:
 
 
 cdef class DynamicsWorld(CollisionWorld):
+    cdef list _rigidBodies
+
+    def __init__(self,
+                 CollisionDispatcher dispatcher = None,
+                 BroadphaseInterface broadphase = None):
+        CollisionWorld.__init__(self, dispatcher, broadphase)
+        self._rigidBodies = []
+
+
     def addRigidBody(self, RigidBody body):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addRigidBody(<btRigidBody*>body.thisptr)
+        self._rigidBodies.append(body)
+
 
 
 cdef class DiscreteDynamicsWorld(DynamicsWorld):
-    def __init__(self):
-        config = new btDefaultCollisionConfiguration()
+    cdef ConstraintSolver solver
+
+    def __init__(self,
+                 CollisionDispatcher dispatcher = None,
+                 BroadphaseInterface broadphase = None,
+                 ConstraintSolver solver = None):
+
+        if dispatcher is None:
+            dispatcher = CollisionDispatcher()
+        if solver is None:
+            solver = SequentialImpulseConstraintSolver()
+        if broadphase is None:
+            broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))
+
+        self.solver = solver
         self.thisptr = <btCollisionWorld*>new btDiscreteDynamicsWorld(
-            new btCollisionDispatcher(config),
-            new btAxisSweep3(btVector3(0, 0, 0), btVector3(10, 10, 10)),
-            new btSequentialImpulseConstraintSolver(),
-            config)
+            dispatcher.thisptr, broadphase.thisptr,
+            solver.thisptr, dispatcher.config)
+
+        DynamicsWorld.__init__(self, dispatcher, broadphase)
 
 
     def setGravity(self, Vector3 gravity):
@@ -277,4 +404,4 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
                        int maxSubSteps = 1,
                        btScalar fixedTimeStep = 1. / 60.):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        world.stepSimulation(timeStep, maxSubSteps, fixedTimeStep)
+        return world.stepSimulation(timeStep, maxSubSteps, fixedTimeStep)

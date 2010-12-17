@@ -2,7 +2,10 @@
 from unittest import TestCase
 
 from bullet import (
-    Vector3, EmptyShape, BoxShape, CollisionObject, RigidBody,
+    Vector3,
+    CollisionShape, EmptyShape, BoxShape, Box2dShape,
+    DefaultMotionState,
+    CollisionObject, RigidBody,
     CollisionWorld, DiscreteDynamicsWorld)
 
 
@@ -12,6 +15,18 @@ class VectorTests(TestCase):
         self.assertEqual(v.x, 1)
         self.assertEqual(v.y, 2)
         self.assertEqual(v.z, 3)
+
+
+class DefaultMotionStateTests(TestCase):
+    def test_getWorldTransform(self):
+        state = DefaultMotionState()
+        del state
+
+
+class Box2dShapeTests(TestCase):
+    def test_instantiate(self):
+        shape = Box2dShape(Vector3(3, 5, 7))
+        self.assertTrue(isinstance(shape, CollisionShape))
 
 
 
@@ -64,11 +79,24 @@ class DiscreteDynamicsWorldTests(TestCase):
         self.assertEqual(gravity.z, 1)
 
 
+    def test_addRigidBody(self):
+        world = DiscreteDynamicsWorld()
+        body = RigidBody()
+        world.addRigidBody(body)
+
+
     def test_stepSimulation(self):
         world = DiscreteDynamicsWorld()
-        world.setGravity(Vector3(0, 9.8, 0))
+        world.setGravity(Vector3(1, 2, 3))
         obj = RigidBody()
         world.addRigidBody(obj)
-        world.stepSimulation(1)
-        origin = obj.getMotionState().getWorldTransform().getOrigin()
-        print origin.x, origin.y, origin.z
+        expectedSteps = 64
+        numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
+        self.assertEqual(numSteps, expectedSteps)
+        position = obj.getMotionState().getWorldTransform().getOrigin()
+
+        # Unfortunately, there is some error (as compared to physical reality)
+        # in Bullet's results.  My fault?  Bullet's fault?  I'm not sure.
+        self.assertEqual(position.x, 0.5 + 0.5 / expectedSteps)
+        self.assertEqual(position.y, 1.0 + 1.0 / expectedSteps)
+        self.assertEqual(position.z, 1.5 + 1.5 / expectedSteps)
