@@ -1,9 +1,11 @@
 
 from unittest import TestCase
 
+import numpy
+
 from bullet import (
     Vector3,
-    CollisionShape, EmptyShape, BoxShape, Box2dShape,
+    CollisionShape, EmptyShape, BoxShape, Box2dShape, BvhTriangleMeshShape,
     DefaultMotionState,
     CollisionObject, RigidBody,
     CollisionWorld, DiscreteDynamicsWorld)
@@ -27,6 +29,49 @@ class Box2dShapeTests(TestCase):
     def test_instantiate(self):
         shape = Box2dShape(Vector3(3, 5, 7))
         self.assertTrue(isinstance(shape, CollisionShape))
+
+
+
+class BvhTriangleMeshShapeTests(TestCase):
+    def test_incorrectInitializer(self):
+        goodTriangleType = 'int32'
+        goodTriangleData = [1]
+        badTriangleType = 'int8'
+        badTriangleData = [[1, 2], [3, 4]]
+
+        goodVertexType = 'float32'
+        goodVertexData = [1]
+        badVertexType = 'float64'
+        badVertexData = [[1, 2], [3, 4]]
+
+        goodTriangles = numpy.array(goodTriangleData, goodTriangleType)
+        goodVertices = numpy.array(goodVertexData, goodVertexType)
+
+        badArgs = [
+            (goodTriangles, None),
+            (None, goodVertices),
+            (goodTriangles, numpy.array(badVertexData, goodVertexType)),
+            (goodTriangles, numpy.array(goodVertexData, badVertexType)),
+            (numpy.array(badTriangleData, goodTriangleType), goodVertices),
+            (numpy.array(goodTriangleData, badTriangleType), goodVertices),
+            ]
+
+        for (triangles, vertices) in badArgs:
+            try:
+                BvhTriangleMeshShape(triangles, vertices)
+            except (TypeError, ValueError):
+                pass
+            else:
+                self.fail(
+                    "BvhTriangleMeshShape accepted (%r, %r)" % (
+                        triangles, vertices))
+
+
+    def test_initialized(self):
+        BvhTriangleMeshShape(
+            numpy.array([0, 1, 2], 'int32'),
+            numpy.array([1, 2, 3], 'float32'))
+
 
 
 

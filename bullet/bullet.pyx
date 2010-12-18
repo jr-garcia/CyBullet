@@ -1,7 +1,7 @@
 
 from libcpp cimport bool
 
-from libc.stdlib cimport malloc, free
+cimport numpy
 
 
 cdef extern from "btBulletCollisionCommon.h":
@@ -203,29 +203,26 @@ cdef class BoxShape(CollisionShape):
             btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
 
 
-
 cdef class BvhTriangleMeshShape(CollisionShape):
     cdef btStridingMeshInterface *stride
-    cdef int *triangles
-    cdef btScalar *vertices
+    cdef numpy.ndarray triangles
+    cdef numpy.ndarray vertices
 
-    def __init__(self):
-        self.triangles = <int*>malloc(sizeof(int) * 3)
-        self.vertices = <btScalar*>malloc(sizeof(btScalar) * 3)
+    def __init__(self,
+                 numpy.ndarray[numpy.int32_t] triangles not None,
+                 numpy.ndarray[numpy.float32_t] vertices not None):
 
-        for i in range(3):
-            self.triangles[i] = self.vertices[i] = 0
+        self.triangles = triangles
+        self.vertices = vertices
 
         self.stride = new btTriangleIndexVertexArray(
-            1, self.triangles, 3,
-            1, self.vertices, 3)
+            len(triangles) / 3, <int*>triangles.data, 3,
+            len(triangles) / 3, <btScalar*>vertices.data, 3)
         self.thisptr = new btBvhTriangleMeshShape(self.stride, True, True)
 
 
     def __dealloc__(self):
         del self.stride
-        free(self.triangles)
-        free(self.vertices)
 
 
 
@@ -318,6 +315,7 @@ cdef class CollisionDispatcher:
         # XXX btDefaultCollisionConfiguration leaks I suppose.
         self.config = new btDefaultCollisionConfiguration()
         self.thisptr = new btCollisionDispatcher(self.config)
+
 
     def __dealloc__(self):
         del self.thisptr
