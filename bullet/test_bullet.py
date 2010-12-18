@@ -6,6 +6,7 @@ import numpy
 from bullet import (
     Vector3,
     CollisionShape, EmptyShape, BoxShape, Box2dShape, BvhTriangleMeshShape,
+    ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
     CollisionWorld, DiscreteDynamicsWorld)
@@ -25,9 +26,17 @@ class DefaultMotionStateTests(TestCase):
         del state
 
 
+
 class Box2dShapeTests(TestCase):
     def test_instantiate(self):
         shape = Box2dShape(Vector3(3, 5, 7))
+        self.assertTrue(isinstance(shape, CollisionShape))
+
+
+
+class BoxShapeTests(TestCase):
+    def test_instantiate(self):
+        shape = BoxShape(Vector3(2, 4, 6))
         self.assertTrue(isinstance(shape, CollisionShape))
 
 
@@ -72,6 +81,25 @@ class BvhTriangleMeshShapeTests(TestCase):
             numpy.array([0, 1, 2], 'int32'),
             numpy.array([1, 2, 3], 'float32'))
 
+
+
+class KinematicCharacterControllerTests(TestCase):
+    def test_instantiate(self):
+        shape = BoxShape(Vector3(1, 2, 3))
+        controller = KinematicCharacterController(shape, 2.5, 1)
+        self.assertTrue(isinstance(controller, ActionInterface))
+
+
+    def test_setWalkDirection(self):
+        shape = BoxShape(Vector3(1, 2, 3))
+        controller = KinematicCharacterController(shape, 2.5, 1)
+        controller.setWalkDirection(Vector3(1, 0, 0))
+
+
+    def test_setVelocityForTimeInterval(self):
+        shape = BoxShape(Vector3(1, 2, 3))
+        controller = KinematicCharacterController(shape, 2.5, 1)
+        controller.setVelocityForTimeInterval(Vector3(12.0, 0, 0), 6.0)
 
 
 

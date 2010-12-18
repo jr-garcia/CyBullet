@@ -25,13 +25,16 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btCollisionShape:
         pass
 
-    cdef cppclass btBoxShape(btCollisionShape):
-        btBoxShape(btVector3 boxHalfExtents)
-
     cdef cppclass btEmptyShape(btCollisionShape):
         btEmptyShape()
 
-    cdef cppclass btBvhTriangleMeshShape(btCollisionShape):
+    cdef cppclass btConvexShape(btCollisionShape):
+        pass
+
+    cdef cppclass btBoxShape(btConvexShape):
+        btBoxShape(btVector3 boxHalfExtents)
+
+    cdef cppclass btBvhTriangleMeshShape(btConvexShape):
         btBvhTriangleMeshShape(
             btStridingMeshInterface* meshInterface,
             bool useQuantizedAabbCompression,
@@ -39,7 +42,7 @@ cdef extern from "btBulletCollisionCommon.h":
 
 
 cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
-    cdef cppclass btBox2dShape(btCollisionShape):
+    cdef cppclass btBox2dShape(btConvexShape):
         btBox2dShape(btVector3 boxHalfExtents)
 
 
@@ -63,6 +66,31 @@ cdef extern from "btBulletDynamicsCommon.h":
         void setCollisionShape(btCollisionShape*)
 
     cdef cppclass btRigidBody(btCollisionObject)
+
+
+    cdef cppclass btActionInterface:
+        pass
+
+    cdef cppclass btCharacterControllerInterface(btActionInterface):
+        void setWalkDirection(btVector3 walkDirection)
+
+        void setVelocityForTimeInterval(
+            btVector3 velocity, btScalar timeInterval)
+
+
+
+cdef extern from "BulletCollision/CollisionDispatch/btGhostObject.h":
+    cdef cppclass btPairCachingGhostObject(btCollisionObject):
+        pass
+
+
+cdef extern from "BulletDynamics/Character/btKinematicCharacterController.h":
+    cdef cppclass btKinematicCharacterController(btCharacterControllerInterface):
+        btKinematicCharacterController(
+            btPairCachingGhostObject *ghostObject,
+            btConvexShape *convexShape,
+            btScalar stepHeight, int upAxis)
+
 
 
 
@@ -163,6 +191,7 @@ cdef extern from "btBulletDynamicsCommon.h":
 cdef class CollisionObject
 
 
+
 cdef class Vector3:
     cdef readonly btScalar x
     cdef readonly btScalar y
@@ -190,20 +219,25 @@ cdef class EmptyShape(CollisionShape):
 
 
 
-cdef class Box2dShape(CollisionShape):
+cdef class ConvexShape(CollisionShape):
+    pass
+
+
+
+cdef class Box2dShape(ConvexShape):
     def __cinit__(self, Vector3 boxHalfExtents):
         self.thisptr = new btBox2dShape(
             btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
 
 
 
-cdef class BoxShape(CollisionShape):
+cdef class BoxShape(ConvexShape):
     def __cinit__(self, Vector3 boxHalfExtents):
         self.thisptr = new btBoxShape(
             btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
 
 
-cdef class BvhTriangleMeshShape(CollisionShape):
+cdef class BvhTriangleMeshShape(ConvexShape):
     cdef btStridingMeshInterface *stride
     cdef numpy.ndarray triangles
     cdef numpy.ndarray vertices
@@ -231,6 +265,10 @@ cdef class CollisionObject:
 
     def __init__(self):
         self.thisptr = new btCollisionObject()
+
+
+    def __dealloc__(self):
+        del self.thisptr
 
 
     def getCollisionShape(self):
@@ -298,12 +336,51 @@ cdef class RigidBody(CollisionObject):
         del info
 
 
+    def getMotionState(self):
+        return self.motion
+
+
+
+cdef class ActionInterface:
+    cdef btActionInterface *thisptr
+
     def __dealloc__(self):
         del self.thisptr
 
 
-    def getMotionState(self):
-        return self.motion
+
+cdef class CharacterControllerInterface(ActionInterface):
+    def setWalkDirection(self, Vector3 walkDirection):
+        cdef btCharacterControllerInterface *controller
+        controller = <btCharacterControllerInterface*>self.thisptr
+        controller.setWalkDirection(
+            btVector3(walkDirection.x, walkDirection.y, walkDirection.z))
+
+
+    def setVelocityForTimeInterval(self,
+                                   Vector3 velocity not None,
+                                   btScalar timeInterval):
+        cdef btCharacterControllerInterface *controller
+        controller = <btCharacterControllerInterface*>self.thisptr
+        controller.setVelocityForTimeInterval(
+            btVector3(velocity.x, velocity.y, velocity.z), timeInterval)
+
+
+
+
+cdef class KinematicCharacterController(CharacterControllerInterface):
+    cdef btPairCachingGhostObject *ghost
+    cdef ConvexShape shape
+
+    def __init__(self, ConvexShape shape not None, float stepHeight, int upAxis):
+        self.shape = shape
+        self.ghost = new btPairCachingGhostObject()
+        self.thisptr = new btKinematicCharacterController(
+            self.ghost, <btConvexShape*>self.shape.thisptr, stepHeight, upAxis)
+
+
+    def __dealloc__(self):
+        del self.ghost
 
 
 
