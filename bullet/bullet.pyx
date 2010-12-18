@@ -1,8 +1,27 @@
 
+from libcpp cimport bool
+
+from libc.stdlib cimport malloc, free
+
+
 cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
+    ctypedef int bool
 
     cdef cppclass btVector3
+
+    cdef cppclass btStridingMeshInterface:
+        pass
+
+    cdef cppclass btTriangleIndexVertexArray(btStridingMeshInterface):
+        btTriangleIndexVertexArray(
+            int numTriangles,
+            int *triangleIndexBase,
+            int triangleIndexStride,
+            int numVertices,
+            btScalar *vertexBase,
+            int vertexStride)
+
     cdef cppclass btCollisionShape:
         pass
 
@@ -11,6 +30,12 @@ cdef extern from "btBulletCollisionCommon.h":
 
     cdef cppclass btEmptyShape(btCollisionShape):
         btEmptyShape()
+
+    cdef cppclass btBvhTriangleMeshShape(btCollisionShape):
+        btBvhTriangleMeshShape(
+            btStridingMeshInterface* meshInterface,
+            bool useQuantizedAabbCompression,
+            bool buildBvh)
 
 
 cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
@@ -176,6 +201,31 @@ cdef class BoxShape(CollisionShape):
     def __cinit__(self, Vector3 boxHalfExtents):
         self.thisptr = new btBoxShape(
             btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
+
+
+
+cdef class BvhTriangleMeshShape(CollisionShape):
+    cdef btStridingMeshInterface *stride
+    cdef int *triangles
+    cdef btScalar *vertices
+
+    def __init__(self):
+        self.triangles = <int*>malloc(sizeof(int) * 3)
+        self.vertices = <btScalar*>malloc(sizeof(btScalar) * 3)
+
+        for i in range(3):
+            self.triangles[i] = self.vertices[i] = 0
+
+        self.stride = new btTriangleIndexVertexArray(
+            1, self.triangles, 3,
+            1, self.vertices, 3)
+        self.thisptr = new btBvhTriangleMeshShape(self.stride, True, True)
+
+
+    def __dealloc__(self):
+        del self.stride
+        free(self.triangles)
+        free(self.vertices)
 
 
 

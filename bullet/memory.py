@@ -26,6 +26,7 @@ def main():
     for type in [
         (bullet.DefaultMotionState,),
         (bullet.BoxShape, bullet.Vector3(1, 2, 3)),
+        (bullet.BvhTriangleMeshShape,),
         (bullet.RigidBody,),
         (bullet.CollisionDispatcher,),
         (bullet.AxisSweep3, bullet.Vector3(0, 0, 0), bullet.Vector3(2, 2, 2)),
