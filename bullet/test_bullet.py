@@ -4,12 +4,13 @@ from unittest import TestCase
 import numpy
 
 from bullet import (
-    Vector3,
+    Vector3, Transform,
     CollisionShape, EmptyShape, BoxShape, Box2dShape, BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
     CollisionWorld, DiscreteDynamicsWorld)
+
 
 
 class VectorTests(TestCase):
@@ -20,10 +21,43 @@ class VectorTests(TestCase):
         self.assertEqual(v.z, 3)
 
 
+    def test_repr(self):
+        v = Vector3(3, 5, 7)
+        self.assertEqual(repr(v), '<Vector x=3.0 y=5.0 z=7.0>')
+
+
+
+class TransformTests(TestCase):
+    def test_origin(self):
+        transform = Transform()
+        transform.setOrigin(Vector3(1, 2, 3))
+        origin = transform.getOrigin()
+        self.assertEqual(origin.x, 1)
+        self.assertEqual(origin.y, 2)
+        self.assertEqual(origin.z, 3)
+
+
+    def test_setIdentity(self):
+        transform = Transform()
+        transform.setOrigin(Vector3(2, 3, 4))
+        transform.setIdentity()
+        origin = transform.getOrigin()
+        self.assertEqual(origin.x, 0)
+        self.assertEqual(origin.y, 0)
+        self.assertEqual(origin.z, 0)
+
+
 class DefaultMotionStateTests(TestCase):
-    def test_getWorldTransform(self):
+    def test_worldTransform(self):
+        xform = Transform()
+        xform.setOrigin(Vector3(3, 5, 7))
         state = DefaultMotionState()
-        del state
+        state.setWorldTransform(xform)
+        xform = state.getWorldTransform()
+        origin = xform.getOrigin()
+        self.assertEqual(origin.x, 3)
+        self.assertEqual(origin.y, 5)
+        self.assertEqual(origin.z, 7)
 
 
 
@@ -161,7 +195,7 @@ class DiscreteDynamicsWorldTests(TestCase):
     def test_stepSimulation(self):
         world = DiscreteDynamicsWorld()
         world.setGravity(Vector3(1, 2, 3))
-        obj = RigidBody()
+        obj = RigidBody(None, None, 1)
         world.addRigidBody(obj)
         expectedSteps = 64
         numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)

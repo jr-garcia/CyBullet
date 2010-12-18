@@ -23,7 +23,8 @@ cdef extern from "btBulletCollisionCommon.h":
             int vertexStride)
 
     cdef cppclass btCollisionShape:
-        pass
+        void calculateLocalInertia(btScalar mass, btVector3 &inertia)
+
 
     cdef cppclass btEmptyShape(btCollisionShape):
         btEmptyShape()
@@ -49,14 +50,18 @@ cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
 cdef extern from "btBulletDynamicsCommon.h":
     cdef cppclass btTransform:
         btVector3 getOrigin()
+        void setOrigin(btVector3)
+        void setIdentity()
 
 
     cdef cppclass btMotionState:
-        void getWorldTransform(btTransform transform)
+        void getWorldTransform(btTransform &transform)
+        void setWorldTransform(btTransform &transform)
 
 
     cdef cppclass btDefaultMotionState(btMotionState):
         btDefaultMotionState()
+
 
     cdef cppclass btCollisionObject:
         btCollisionObject()
@@ -65,11 +70,13 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         void setCollisionShape(btCollisionShape*)
 
+
     cdef cppclass btRigidBody(btCollisionObject)
 
 
     cdef cppclass btActionInterface:
         pass
+
 
     cdef cppclass btCharacterControllerInterface(btActionInterface):
         void setWalkDirection(btVector3 walkDirection)
@@ -132,8 +139,10 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btAxisSweep3(btBroadphaseInterface):
         btAxisSweep3(btVector3, btVector3)
 
-    cdef cppclass btCollisionShape:
-        btCollisionShape()
+
+    cdef cppclass btDbvtBroadphase(btBroadphaseInterface):
+        pass
+
 
     cdef cppclass btRigidBody(btCollisionObject):
         btRigidBody(btRigidBodyConstructionInfo)
@@ -201,6 +210,10 @@ cdef class Vector3:
         self.x = x
         self.y = y
         self.z = z
+
+
+    def __repr__(self):
+        return '<Vector x=%s y=%s z=%s>' % (self.x, self.y, self.z)
 
 
 
@@ -298,6 +311,13 @@ cdef class Transform:
         return Vector3(origin.getX(), origin.getY(), origin.getZ())
 
 
+    def setOrigin(self, Vector3 origin not None):
+        self.thisptr.setOrigin(btVector3(origin.x, origin.y, origin.z))
+
+
+    def setIdentity(self):
+        self.thisptr.setIdentity()
+
 
 cdef class MotionState:
     cdef btMotionState *thisptr
@@ -313,6 +333,10 @@ cdef class MotionState:
         return transform
 
 
+    def setWorldTransform(self, Transform centerOfMassWorldTrans not None):
+        self.thisptr.setWorldTransform(centerOfMassWorldTrans.thisptr[0])
+
+
 
 cdef class DefaultMotionState(MotionState):
     def __cinit__(self):
@@ -324,14 +348,23 @@ cdef class RigidBody(CollisionObject):
     cdef MotionState motion
     cdef CollisionShape shape
 
-    def __init__(self):
-        self.motion = DefaultMotionState()
-        self.shape = BoxShape(Vector3(1, 1, 1))
+    def __init__(self,
+                 MotionState motion = None,
+                 CollisionShape shape = None,
+                 btScalar mass = 0.0):
+        if motion is None:
+            motion = DefaultMotionState()
+        if shape is None:
+            shape = EmptyShape()
+
+        self.motion = motion
+        self.shape = shape
+
         cdef btVector3 inertia
-        inertia = btVector3(0, 0, 0)
+        shape.thisptr.calculateLocalInertia(mass, inertia)
         cdef btRigidBodyConstructionInfo* info
         info = new btRigidBodyConstructionInfo(
-            3, self.motion.thisptr, self.shape.thisptr, inertia)
+            mass, self.motion.thisptr, self.shape.thisptr, inertia)
         self.thisptr = new btRigidBody(info[0])
         del info
 
