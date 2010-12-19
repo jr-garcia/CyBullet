@@ -37,6 +37,11 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btBoxShape(btConvexShape):
         btBoxShape(btVector3 boxHalfExtents)
 
+
+    cdef cppclass btSphereShape(btConvexShape):
+        btSphereShape(btScalar radius)
+
+
     cdef cppclass btBvhTriangleMeshShape(btConvexShape):
         btBvhTriangleMeshShape(
             btStridingMeshInterface* meshInterface,
@@ -69,8 +74,10 @@ cdef extern from "btBulletDynamicsCommon.h":
         btCollisionObject()
 
         btCollisionShape* getCollisionShape()
-
         void setCollisionShape(btCollisionShape*)
+
+        void setRestitution(btScalar)
+        btScalar getRestitution()
 
 
     cdef cppclass btRigidBody(btCollisionObject)
@@ -252,6 +259,13 @@ cdef class BoxShape(ConvexShape):
             btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
 
 
+
+cdef class SphereShape(ConvexShape):
+    def __cinit__(self, btScalar radius):
+        self.thisptr = new btSphereShape(radius)
+
+
+
 cdef class BvhTriangleMeshShape(ConvexShape):
     cdef btStridingMeshInterface *stride
     cdef numpy.ndarray triangles
@@ -284,6 +298,14 @@ cdef class CollisionObject:
 
     def __dealloc__(self):
         del self.thisptr
+
+
+    def setRestitution(self, btScalar restitution):
+        self.thisptr.setRestitution(restitution)
+
+
+    def getRestitution(self):
+        return self.thisptr.getRestitution()
 
 
     def getCollisionShape(self):

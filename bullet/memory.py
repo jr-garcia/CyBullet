@@ -35,6 +35,7 @@ def main():
         (bullet.EmptyShape,),
         (bullet.Box2dShape, bullet.Vector3(1, 2, 3)),
         (bullet.BoxShape, bullet.Vector3(1, 2, 3)),
+        (bullet.SphereShape, 3.0,),
         (bullet.BvhTriangleMeshShape,
          numpy.array([1, 2, 3], 'int32'), numpy.array([4, 5, 6], 'float32')),
         (bullet.CollisionObject,),

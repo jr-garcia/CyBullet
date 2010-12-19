@@ -7,7 +7,8 @@ import numpy
 
 from bullet import (
     Vector3, Transform,
-    CollisionShape, EmptyShape, BoxShape, Box2dShape, BvhTriangleMeshShape,
+    CollisionShape, EmptyShape, BoxShape, Box2dShape, SphereShape,
+    BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
@@ -77,6 +78,12 @@ class BoxShapeTests(TestCase):
 
 
 
+class SphereShapeTests(TestCase):
+    def test_instantiate(self):
+        shape = SphereShape(3.0)
+        self.assertTrue(isinstance(shape, CollisionShape))
+
+
 class BvhTriangleMeshShapeTests(TestCase):
     def test_incorrectInitializer(self):
         goodTriangleType = 'int32'
@@ -136,6 +143,13 @@ class KinematicCharacterControllerTests(TestCase):
         shape = BoxShape(Vector3(1, 2, 3))
         controller = KinematicCharacterController(shape, 2.5, 1)
         controller.setVelocityForTimeInterval(Vector3(12.0, 0, 0), 6.0)
+
+
+class CollisionObjectTests(TestCase):
+    def test_restitution(self):
+        obj = CollisionObject()
+        obj.setRestitution(1.0)
+        self.assertEqual(obj.getRestitution(), 1.0)
 
 
 
