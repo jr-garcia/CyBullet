@@ -1,3 +1,6 @@
+# Copyright (c) 2010 Jean-Paul Calderone
+# See LICENSE for details.
+
 import sys
 
 import numpy
