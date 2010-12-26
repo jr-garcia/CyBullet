@@ -152,6 +152,14 @@ class CollisionObjectTests(TestCase):
         self.assertEqual(obj.getRestitution(), 1.0)
 
 
+    def test_setCollisionShape(self):
+        obj = CollisionObject()
+        # Let go of the shape reference, it shouldn't matter.
+        obj.setCollisionShape(SphereShape(3))
+        shape = obj.getCollisionShape()
+        self.assertTrue(isinstance(shape, SphereShape))
+
+
 
 class CollisionWorldTests(TestCase):
     def test_empty(self):

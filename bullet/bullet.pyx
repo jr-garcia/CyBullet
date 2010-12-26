@@ -282,6 +282,7 @@ cdef class BvhTriangleMeshShape(ConvexShape):
 
 cdef class CollisionObject:
     cdef btCollisionObject *thisptr
+    cdef CollisionShape _shape
 
     def __init__(self):
         self.thisptr = new btCollisionObject()
@@ -300,13 +301,12 @@ cdef class CollisionObject:
 
 
     def getCollisionShape(self):
-        shape = CollisionShape()
-        shape.thisptr = self.thisptr.getCollisionShape()
-        return shape
+        return self._shape
 
 
     def setCollisionShape(self, CollisionShape collisionShape):
         self.thisptr.setCollisionShape(collisionShape.thisptr)
+        self._shape = collisionShape
 
 
 
