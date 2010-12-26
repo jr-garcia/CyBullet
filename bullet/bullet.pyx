@@ -28,9 +28,6 @@ cdef extern from "btBulletCollisionCommon.h":
         void calculateLocalInertia(btScalar mass, btVector3 &inertia)
 
 
-    cdef cppclass btEmptyShape(btCollisionShape):
-        btEmptyShape()
-
     cdef cppclass btConvexShape(btCollisionShape):
         pass
 
@@ -235,12 +232,6 @@ cdef class CollisionShape:
 
 
 
-cdef class EmptyShape(CollisionShape):
-    def __cinit__(self):
-        self.thisptr = new btEmptyShape()
-
-
-
 cdef class ConvexShape(CollisionShape):
     pass
 
@@ -379,7 +370,7 @@ cdef class RigidBody(CollisionObject):
         if motion is None:
             motion = DefaultMotionState()
         if shape is None:
-            shape = EmptyShape()
+            shape = BoxShape(Vector3(0.5, 0.5, 0.5))
 
         self.motion = motion
         self.shape = shape

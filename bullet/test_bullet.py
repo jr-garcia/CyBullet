@@ -7,7 +7,7 @@ import numpy
 
 from bullet import (
     Vector3, Transform,
-    CollisionShape, EmptyShape, BoxShape, Box2dShape, SphereShape,
+    CollisionShape, BoxShape, Box2dShape, SphereShape,
     BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
@@ -162,7 +162,7 @@ class CollisionWorldTests(TestCase):
     def test_addCollisionObject(self):
         world = CollisionWorld()
         obj = CollisionObject()
-        shape = EmptyShape()
+        shape = SphereShape(3)
         obj.setCollisionShape(shape)
         world.addCollisionObject(obj)
         self.assertEqual(world.getNumCollisionObjects(), 1)
@@ -171,7 +171,7 @@ class CollisionWorldTests(TestCase):
     def test_removeCollisionObject(self):
         world = CollisionWorld()
         obj = CollisionObject()
-        shape = EmptyShape()
+        shape = SphereShape(3)
         obj.setCollisionShape(shape)
         world.addCollisionObject(obj)
         world.removeCollisionObject(obj)
@@ -216,6 +216,7 @@ class DiscreteDynamicsWorldTests(TestCase):
         expectedSteps = 64
         numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
         self.assertEqual(numSteps, expectedSteps)
+
         position = obj.getMotionState().getWorldTransform().getOrigin()
 
         # Unfortunately, there is some error (as compared to physical reality)
