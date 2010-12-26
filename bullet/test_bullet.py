@@ -158,6 +158,7 @@ class CollisionObjectTests(TestCase):
         obj.setCollisionShape(SphereShape(3))
         shape = obj.getCollisionShape()
         self.assertTrue(isinstance(shape, SphereShape))
+        self.assertEquals(shape.getRadius(), 3)
 
 
 

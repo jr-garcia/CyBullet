@@ -38,6 +38,8 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btSphereShape(btConvexShape):
         btSphereShape(btScalar radius)
 
+        btScalar getRadius()
+
 
     cdef cppclass btBvhTriangleMeshShape(btConvexShape):
         btBvhTriangleMeshShape(
@@ -254,6 +256,10 @@ cdef class BoxShape(ConvexShape):
 cdef class SphereShape(ConvexShape):
     def __cinit__(self, btScalar radius):
         self.thisptr = new btSphereShape(radius)
+
+
+    def getRadius(self):
+        return (<btSphereShape*>self.thisptr).getRadius()
 
 
 
