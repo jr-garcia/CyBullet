@@ -127,22 +127,35 @@ class BvhTriangleMeshShapeTests(TestCase):
 
 
 class KinematicCharacterControllerTests(TestCase):
+    def setUp(self):
+        self.shape = BoxShape(Vector3(1, 2, 3))
+        self.controller = KinematicCharacterController(self.shape, 2.5, 1)
+
+
     def test_instantiate(self):
-        shape = BoxShape(Vector3(1, 2, 3))
-        controller = KinematicCharacterController(shape, 2.5, 1)
-        self.assertTrue(isinstance(controller, ActionInterface))
+        self.assertTrue(isinstance(self.controller, ActionInterface))
 
 
     def test_setWalkDirection(self):
-        shape = BoxShape(Vector3(1, 2, 3))
-        controller = KinematicCharacterController(shape, 2.5, 1)
-        controller.setWalkDirection(Vector3(1, 0, 0))
+        self.controller.setWalkDirection(Vector3(1, 0, 0))
 
 
     def test_setVelocityForTimeInterval(self):
-        shape = BoxShape(Vector3(1, 2, 3))
-        controller = KinematicCharacterController(shape, 2.5, 1)
-        controller.setVelocityForTimeInterval(Vector3(12.0, 0, 0), 6.0)
+        self.controller.setVelocityForTimeInterval(Vector3(12.0, 0, 0), 6.0)
+
+
+    def test_ghost(self):
+        self.assertTrue(isinstance(self.controller.ghost, CollisionObject))
+
+
+    def test_warp(self):
+        self.controller.warp(Vector3(5, 7, 9))
+        transform = self.controller.ghost.getWorldTransform()
+        origin = transform.getOrigin()
+        self.assertEquals(origin.x, 5)
+        self.assertEquals(origin.y, 7)
+        self.assertEquals(origin.z, 9)
+
 
 
 class CollisionObjectTests(TestCase):

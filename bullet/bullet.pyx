@@ -86,6 +86,7 @@ cdef extern from "btBulletDynamicsCommon.h":
         void setRestitution(btScalar)
         btScalar getRestitution()
 
+        btTransform& getWorldTransform()
 
     cdef cppclass btRigidBody(btCollisionObject)
 
@@ -114,6 +115,7 @@ cdef extern from "BulletDynamics/Character/btKinematicCharacterController.h":
             btConvexShape *convexShape,
             btScalar stepHeight, int upAxis)
 
+        void warp(btVector3 origin)
 
 
 
@@ -323,6 +325,11 @@ cdef class CollisionObject:
         self._shape = collisionShape
 
 
+    def getWorldTransform(self):
+        cdef Transform transform = Transform()
+        transform.thisptr[0] = self.thisptr.getWorldTransform()
+        return transform
+
 
 cdef class Transform:
     cdef btTransform *thisptr
@@ -429,20 +436,28 @@ cdef class CharacterControllerInterface(ActionInterface):
 
 
 
+cdef class PairCachingGhostObject(CollisionObject):
+     def __init__(self):
+         self.thisptr = new btPairCachingGhostObject()
+
+
 
 cdef class KinematicCharacterController(CharacterControllerInterface):
-    cdef btPairCachingGhostObject *ghost
+    cdef readonly PairCachingGhostObject ghost
     cdef ConvexShape shape
 
     def __init__(self, ConvexShape shape not None, float stepHeight, int upAxis):
         self.shape = shape
-        self.ghost = new btPairCachingGhostObject()
+        self.ghost = PairCachingGhostObject()
         self.thisptr = new btKinematicCharacterController(
-            self.ghost, <btConvexShape*>self.shape.thisptr, stepHeight, upAxis)
+            <btPairCachingGhostObject*>self.ghost.thisptr,
+            <btConvexShape*>self.shape.thisptr, stepHeight, upAxis)
 
 
-    def __dealloc__(self):
-        del self.ghost
+    def warp(self, Vector3 origin not None):
+        cdef btKinematicCharacterController *controller
+        controller = <btKinematicCharacterController*>self.thisptr
+        controller.warp(btVector3(origin.x, origin.y, origin.z))
 
 
 
