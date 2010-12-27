@@ -217,6 +217,18 @@ class DiscreteDynamicsWorldTests(TestCase):
         world.addRigidBody(body)
 
 
+    def test_cycle(self):
+        world = DiscreteDynamicsWorld()
+        class Cheat(RigidBody):
+            pass
+        body = Cheat(None, BoxShape(Vector3(3, 4, 5)))
+        body.cycle = world
+        world.addRigidBody(body)
+        del body, world
+        import gc
+        gc.collect()
+
+
     def test_stepSimulation(self):
         world = DiscreteDynamicsWorld()
         world.setGravity(Vector3(1, 2, 3))

@@ -6,6 +6,14 @@ from libcpp cimport bool
 cimport numpy
 
 
+cdef extern from "Python.h":
+    cdef void Py_INCREF( object )
+    cdef void Py_DECREF( object )
+
+    cdef struct _object:
+        pass
+
+
 cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
     ctypedef int bool
@@ -487,8 +495,9 @@ cdef class SequentialImpulseConstraintSolver(ConstraintSolver):
 
 cdef class CollisionWorld:
     cdef btCollisionWorld *thisptr
-    cdef CollisionDispatcher dispatcher
-    cdef BroadphaseInterface broadphase
+
+    cdef _object *dispatcher
+    cdef _object *broadphase
 
     def __init__(self,
                  CollisionDispatcher dispatcher = None,
@@ -498,8 +507,11 @@ cdef class CollisionWorld:
         if broadphase is None:
             broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))
 
-        self.dispatcher = dispatcher
-        self.broadphase = broadphase
+        Py_INCREF(dispatcher)
+        self.dispatcher = <_object*>dispatcher
+
+        Py_INCREF(broadphase)
+        self.broadphase = <_object*>broadphase
 
         # Allow subclasses to initialize this differently.
         if self.thisptr == NULL:
@@ -509,6 +521,8 @@ cdef class CollisionWorld:
 
     def __dealloc__(self):
         del self.thisptr
+        Py_DECREF(<object>self.dispatcher)
+        Py_DECREF(<object>self.broadphase)
 
 
     def getNumCollisionObjects(self):
