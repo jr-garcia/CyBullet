@@ -201,6 +201,7 @@ cdef extern from "btBulletDynamicsCommon.h":
         btVector3 getGravity()
 
         void addRigidBody(btRigidBody*)
+        void addAction(btActionInterface*)
 
         int stepSimulation(btScalar, int, btScalar)
 
@@ -570,6 +571,12 @@ cdef class DynamicsWorld(CollisionWorld):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addRigidBody(<btRigidBody*>body.thisptr)
         self._rigidBodies.append(body)
+
+
+    def addAction(self, ActionInterface action not None):
+        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
+        world.addAction(<btActionInterface*>action.thisptr)
+        self._rigidBodies.append(action)
 
 
 

@@ -230,6 +230,12 @@ class DiscreteDynamicsWorldTests(TestCase):
         world.addRigidBody(body)
 
 
+    def test_addAction(self):
+        world = DiscreteDynamicsWorld()
+        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+        world.addAction(action)
+
+
     def test_cycle(self):
         world = DiscreteDynamicsWorld()
         class Cheat(RigidBody):
