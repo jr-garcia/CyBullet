@@ -7,7 +7,7 @@ import numpy
 
 from bullet import (
     Vector3, Transform,
-    CollisionShape, EmptyShape, BoxShape, Box2dShape, SphereShape,
+    CollisionShape, BoxShape, Box2dShape, SphereShape,
     BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
@@ -127,22 +127,35 @@ class BvhTriangleMeshShapeTests(TestCase):
 
 
 class KinematicCharacterControllerTests(TestCase):
+    def setUp(self):
+        self.shape = BoxShape(Vector3(1, 2, 3))
+        self.controller = KinematicCharacterController(self.shape, 2.5, 1)
+
+
     def test_instantiate(self):
-        shape = BoxShape(Vector3(1, 2, 3))
-        controller = KinematicCharacterController(shape, 2.5, 1)
-        self.assertTrue(isinstance(controller, ActionInterface))
+        self.assertTrue(isinstance(self.controller, ActionInterface))
 
 
     def test_setWalkDirection(self):
-        shape = BoxShape(Vector3(1, 2, 3))
-        controller = KinematicCharacterController(shape, 2.5, 1)
-        controller.setWalkDirection(Vector3(1, 0, 0))
+        self.controller.setWalkDirection(Vector3(1, 0, 0))
 
 
     def test_setVelocityForTimeInterval(self):
-        shape = BoxShape(Vector3(1, 2, 3))
-        controller = KinematicCharacterController(shape, 2.5, 1)
-        controller.setVelocityForTimeInterval(Vector3(12.0, 0, 0), 6.0)
+        self.controller.setVelocityForTimeInterval(Vector3(12.0, 0, 0), 6.0)
+
+
+    def test_ghost(self):
+        self.assertTrue(isinstance(self.controller.ghost, CollisionObject))
+
+
+    def test_warp(self):
+        self.controller.warp(Vector3(5, 7, 9))
+        transform = self.controller.ghost.getWorldTransform()
+        origin = transform.getOrigin()
+        self.assertEquals(origin.x, 5)
+        self.assertEquals(origin.y, 7)
+        self.assertEquals(origin.z, 9)
+
 
 
 class CollisionObjectTests(TestCase):
@@ -150,6 +163,15 @@ class CollisionObjectTests(TestCase):
         obj = CollisionObject()
         obj.setRestitution(1.0)
         self.assertEqual(obj.getRestitution(), 1.0)
+
+
+    def test_setCollisionShape(self):
+        obj = CollisionObject()
+        # Let go of the shape reference, it shouldn't matter.
+        obj.setCollisionShape(SphereShape(3))
+        shape = obj.getCollisionShape()
+        self.assertTrue(isinstance(shape, SphereShape))
+        self.assertEquals(shape.getRadius(), 3)
 
 
 
@@ -162,7 +184,7 @@ class CollisionWorldTests(TestCase):
     def test_addCollisionObject(self):
         world = CollisionWorld()
         obj = CollisionObject()
-        shape = EmptyShape()
+        shape = SphereShape(3)
         obj.setCollisionShape(shape)
         world.addCollisionObject(obj)
         self.assertEqual(world.getNumCollisionObjects(), 1)
@@ -171,7 +193,7 @@ class CollisionWorldTests(TestCase):
     def test_removeCollisionObject(self):
         world = CollisionWorld()
         obj = CollisionObject()
-        shape = EmptyShape()
+        shape = SphereShape(3)
         obj.setCollisionShape(shape)
         world.addCollisionObject(obj)
         world.removeCollisionObject(obj)
@@ -208,6 +230,24 @@ class DiscreteDynamicsWorldTests(TestCase):
         world.addRigidBody(body)
 
 
+    def test_addAction(self):
+        world = DiscreteDynamicsWorld()
+        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+        world.addAction(action)
+
+
+    def test_cycle(self):
+        world = DiscreteDynamicsWorld()
+        class Cheat(RigidBody):
+            pass
+        body = Cheat(None, BoxShape(Vector3(3, 4, 5)))
+        body.cycle = world
+        world.addRigidBody(body)
+        del body, world
+        import gc
+        gc.collect()
+
+
     def test_stepSimulation(self):
         world = DiscreteDynamicsWorld()
         world.setGravity(Vector3(1, 2, 3))
@@ -216,6 +256,7 @@ class DiscreteDynamicsWorldTests(TestCase):
         expectedSteps = 64
         numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
         self.assertEqual(numSteps, expectedSteps)
+
         position = obj.getMotionState().getWorldTransform().getOrigin()
 
         # Unfortunately, there is some error (as compared to physical reality)

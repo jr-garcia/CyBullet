@@ -32,7 +32,6 @@ def main():
     n = xrange(2 * 10 ** 3)
     for type in [
         (bullet.Vector3, 1, 2, 3),
-        (bullet.EmptyShape,),
         (bullet.Box2dShape, bullet.Vector3(1, 2, 3)),
         (bullet.BoxShape, bullet.Vector3(1, 2, 3)),
         (bullet.SphereShape, 3.0,),

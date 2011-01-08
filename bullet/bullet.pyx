@@ -6,6 +6,14 @@ from libcpp cimport bool
 cimport numpy
 
 
+cdef extern from "Python.h":
+    cdef void Py_INCREF( object )
+    cdef void Py_DECREF( object )
+
+    cdef struct _object:
+        pass
+
+
 cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
     ctypedef int bool
@@ -28,9 +36,6 @@ cdef extern from "btBulletCollisionCommon.h":
         void calculateLocalInertia(btScalar mass, btVector3 &inertia)
 
 
-    cdef cppclass btEmptyShape(btCollisionShape):
-        btEmptyShape()
-
     cdef cppclass btConvexShape(btCollisionShape):
         pass
 
@@ -40,6 +45,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
     cdef cppclass btSphereShape(btConvexShape):
         btSphereShape(btScalar radius)
+
+        btScalar getRadius()
 
 
     cdef cppclass btBvhTriangleMeshShape(btConvexShape):
@@ -79,6 +86,7 @@ cdef extern from "btBulletDynamicsCommon.h":
         void setRestitution(btScalar)
         btScalar getRestitution()
 
+        btTransform& getWorldTransform()
 
     cdef cppclass btRigidBody(btCollisionObject)
 
@@ -107,6 +115,7 @@ cdef extern from "BulletDynamics/Character/btKinematicCharacterController.h":
             btConvexShape *convexShape,
             btScalar stepHeight, int upAxis)
 
+        void warp(btVector3 origin)
 
 
 
@@ -192,6 +201,7 @@ cdef extern from "btBulletDynamicsCommon.h":
         btVector3 getGravity()
 
         void addRigidBody(btRigidBody*)
+        void addAction(btActionInterface*)
 
         int stepSimulation(btScalar, int, btScalar)
 
@@ -235,12 +245,6 @@ cdef class CollisionShape:
 
 
 
-cdef class EmptyShape(CollisionShape):
-    def __cinit__(self):
-        self.thisptr = new btEmptyShape()
-
-
-
 cdef class ConvexShape(CollisionShape):
     pass
 
@@ -263,6 +267,10 @@ cdef class BoxShape(ConvexShape):
 cdef class SphereShape(ConvexShape):
     def __cinit__(self, btScalar radius):
         self.thisptr = new btSphereShape(radius)
+
+
+    def getRadius(self):
+        return (<btSphereShape*>self.thisptr).getRadius()
 
 
 
@@ -291,6 +299,7 @@ cdef class BvhTriangleMeshShape(ConvexShape):
 
 cdef class CollisionObject:
     cdef btCollisionObject *thisptr
+    cdef CollisionShape _shape
 
     def __init__(self):
         self.thisptr = new btCollisionObject()
@@ -309,14 +318,18 @@ cdef class CollisionObject:
 
 
     def getCollisionShape(self):
-        shape = CollisionShape()
-        shape.thisptr = self.thisptr.getCollisionShape()
-        return shape
+        return self._shape
 
 
     def setCollisionShape(self, CollisionShape collisionShape):
         self.thisptr.setCollisionShape(collisionShape.thisptr)
+        self._shape = collisionShape
 
+
+    def getWorldTransform(self):
+        cdef Transform transform = Transform()
+        transform.thisptr[0] = self.thisptr.getWorldTransform()
+        return transform
 
 
 cdef class Transform:
@@ -379,7 +392,7 @@ cdef class RigidBody(CollisionObject):
         if motion is None:
             motion = DefaultMotionState()
         if shape is None:
-            shape = EmptyShape()
+            shape = BoxShape(Vector3(0.5, 0.5, 0.5))
 
         self.motion = motion
         self.shape = shape
@@ -424,20 +437,28 @@ cdef class CharacterControllerInterface(ActionInterface):
 
 
 
+cdef class PairCachingGhostObject(CollisionObject):
+     def __init__(self):
+         self.thisptr = new btPairCachingGhostObject()
+
+
 
 cdef class KinematicCharacterController(CharacterControllerInterface):
-    cdef btPairCachingGhostObject *ghost
+    cdef readonly PairCachingGhostObject ghost
     cdef ConvexShape shape
 
     def __init__(self, ConvexShape shape not None, float stepHeight, int upAxis):
         self.shape = shape
-        self.ghost = new btPairCachingGhostObject()
+        self.ghost = PairCachingGhostObject()
         self.thisptr = new btKinematicCharacterController(
-            self.ghost, <btConvexShape*>self.shape.thisptr, stepHeight, upAxis)
+            <btPairCachingGhostObject*>self.ghost.thisptr,
+            <btConvexShape*>self.shape.thisptr, stepHeight, upAxis)
 
 
-    def __dealloc__(self):
-        del self.ghost
+    def warp(self, Vector3 origin not None):
+        cdef btKinematicCharacterController *controller
+        controller = <btKinematicCharacterController*>self.thisptr
+        controller.warp(btVector3(origin.x, origin.y, origin.z))
 
 
 
@@ -490,8 +511,9 @@ cdef class SequentialImpulseConstraintSolver(ConstraintSolver):
 
 cdef class CollisionWorld:
     cdef btCollisionWorld *thisptr
-    cdef CollisionDispatcher dispatcher
-    cdef BroadphaseInterface broadphase
+
+    cdef _object *dispatcher
+    cdef _object *broadphase
 
     def __init__(self,
                  CollisionDispatcher dispatcher = None,
@@ -501,8 +523,11 @@ cdef class CollisionWorld:
         if broadphase is None:
             broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))
 
-        self.dispatcher = dispatcher
-        self.broadphase = broadphase
+        Py_INCREF(dispatcher)
+        self.dispatcher = <_object*>dispatcher
+
+        Py_INCREF(broadphase)
+        self.broadphase = <_object*>broadphase
 
         # Allow subclasses to initialize this differently.
         if self.thisptr == NULL:
@@ -512,6 +537,8 @@ cdef class CollisionWorld:
 
     def __dealloc__(self):
         del self.thisptr
+        Py_DECREF(<object>self.dispatcher)
+        Py_DECREF(<object>self.broadphase)
 
 
     def getNumCollisionObjects(self):
@@ -544,6 +571,12 @@ cdef class DynamicsWorld(CollisionWorld):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addRigidBody(<btRigidBody*>body.thisptr)
         self._rigidBodies.append(body)
+
+
+    def addAction(self, ActionInterface action not None):
+        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
+        world.addAction(<btActionInterface*>action.thisptr)
+        self._rigidBodies.append(action)
 
 
 
