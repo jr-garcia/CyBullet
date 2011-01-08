@@ -183,6 +183,13 @@ class CollisionObjectTests(TestCase):
 
 
 
+class RigidBodyTests(TestCase):
+    def test_setAngularFactor(self):
+        body = RigidBody()
+        body.setAngularFactor(1.0)
+
+
+
 class CollisionWorldTests(TestCase):
     def test_empty(self):
         world = CollisionWorld()

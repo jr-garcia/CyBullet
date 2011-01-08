@@ -173,6 +173,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
         void setLinearVelocity(btVector3 velocity)
 
+        void setAngularFactor(btScalar angFac)
+
 
     cdef cppclass btCollisionWorld:
         btCollisionWorld(
@@ -418,6 +420,11 @@ cdef class RigidBody(CollisionObject):
 
     def getMotionState(self):
         return self.motion
+
+
+    def setAngularFactor(self, btScalar angularFactor):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        body.setAngularFactor(angularFactor)
 
 
 
