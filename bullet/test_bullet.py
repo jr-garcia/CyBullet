@@ -7,7 +7,7 @@ import numpy
 
 from bullet import (
     Vector3, Transform,
-    CollisionShape, BoxShape, Box2dShape, SphereShape,
+    CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
     BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
@@ -82,6 +82,14 @@ class SphereShapeTests(TestCase):
     def test_instantiate(self):
         shape = SphereShape(3.0)
         self.assertTrue(isinstance(shape, CollisionShape))
+
+
+
+class CapsuleShapeTests(TestCase):
+    def test_instantiate(self):
+        shape = CapsuleShape(1.0, 2.0)
+        self.assertTrue(isinstance(shape, CollisionShape))
+
 
 
 class BvhTriangleMeshShapeTests(TestCase):
