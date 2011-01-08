@@ -325,6 +325,7 @@ cdef class Transform:
 
     def __cinit__(self):
         self.thisptr = new btTransform()
+        self.thisptr.setIdentity()
 
 
     def __dealloc__(self):
@@ -387,7 +388,6 @@ cdef class CollisionObject:
 
 cdef class MotionState:
     cdef btMotionState *thisptr
-    cdef Transform transform
 
     def __dealloc__(self):
         del self.thisptr
