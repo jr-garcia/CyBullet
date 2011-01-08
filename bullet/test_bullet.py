@@ -296,3 +296,19 @@ class DiscreteDynamicsWorldTests(TestCase):
         self.assertEqual(position.x, 0.5 + 0.5 / expectedSteps)
         self.assertEqual(position.y, 1.0 + 1.0 / expectedSteps)
         self.assertEqual(position.z, 1.5 + 1.5 / expectedSteps)
+
+
+    def test_linearVelocity(self):
+        world = DiscreteDynamicsWorld()
+        world.setGravity(Vector3(0, 0, 0))
+        obj = RigidBody(None, None, 1)
+        obj.setLinearVelocity(Vector3(1, 2, 3))
+        world.addRigidBody(obj)
+        expectedSteps = 64
+        numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
+        self.assertEqual(numSteps, expectedSteps)
+
+        position = obj.getMotionState().getWorldTransform().getOrigin()
+        self.assertEquals(position.x, 1)
+        self.assertEquals(position.y, 2)
+        self.assertEquals(position.z, 3)
