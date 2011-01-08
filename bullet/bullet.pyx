@@ -175,6 +175,8 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btRigidBody(btCollisionObject):
         btRigidBody(btRigidBodyConstructionInfo)
 
+        bool isInWorld()
+
         btMotionState* getMotionState()
 
         void setAngularFactor(btScalar angFac)
@@ -214,6 +216,8 @@ cdef extern from "btBulletDynamicsCommon.h":
         btVector3 getGravity()
 
         void addRigidBody(btRigidBody*)
+        void removeRigidBody(btRigidBody*)
+
         void addAction(btActionInterface*)
 
         int stepSimulation(btScalar, int, btScalar)
@@ -431,6 +435,12 @@ cdef class RigidBody(CollisionObject):
         del info
 
 
+    def isInWorld(self):
+        cdef btRigidBody *body
+        body = <btRigidBody*>self.thisptr
+        return body.isInWorld()
+
+
     def getMotionState(self):
         return self.motion
 
@@ -603,10 +613,16 @@ cdef class DynamicsWorld(CollisionWorld):
         self._rigidBodies = []
 
 
-    def addRigidBody(self, RigidBody body):
+    def addRigidBody(self, RigidBody body not None):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addRigidBody(<btRigidBody*>body.thisptr)
         self._rigidBodies.append(body)
+
+
+    def removeRigidBody(self, RigidBody body not None):
+        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
+        self._rigidBodies.remove(body)
+        world.removeRigidBody(<btRigidBody*>body.thisptr)
 
 
     def addAction(self, ActionInterface action not None):

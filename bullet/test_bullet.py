@@ -206,6 +206,16 @@ class RigidBodyTests(TestCase):
         body.setLinearVelocity(Vector3(1, 2, 3))
 
 
+    def test_isInWorld(self):
+        body = RigidBody()
+        self.assertFalse(body.isInWorld())
+        world = DiscreteDynamicsWorld()
+        world.addRigidBody(body)
+        self.assertTrue(body.isInWorld())
+        world.removeRigidBody(body)
+        self.assertFalse(body.isInWorld())
+
+
 
 class CollisionWorldTests(TestCase):
     def test_empty(self):
@@ -260,6 +270,13 @@ class DiscreteDynamicsWorldTests(TestCase):
         world = DiscreteDynamicsWorld()
         body = RigidBody()
         world.addRigidBody(body)
+
+
+    def test_removeRigidBody(self):
+        world = DiscreteDynamicsWorld()
+        body = RigidBody()
+        world.addRigidBody(body)
+        world.removeRigidBody(body)
 
 
     def test_addAction(self):
