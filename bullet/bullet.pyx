@@ -150,6 +150,10 @@ cdef extern from "btBulletCollisionCommon.h":
         btVector3()
         btVector3(btScalar, btScalar, btScalar)
 
+        void setX(btScalar x)
+        void setY(btScalar y)
+        void setZ(btScalar z)
+
         btScalar getX()
         btScalar getY()
         btScalar getZ()
@@ -171,9 +175,10 @@ cdef extern from "btBulletCollisionCommon.h":
 
         btMotionState* getMotionState()
 
+        void setAngularFactor(btScalar angFac)
+
         void setLinearVelocity(btVector3 velocity)
 
-        void setAngularFactor(btScalar angFac)
 
 
     cdef cppclass btCollisionWorld:
@@ -425,6 +430,12 @@ cdef class RigidBody(CollisionObject):
     def setAngularFactor(self, btScalar angularFactor):
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         body.setAngularFactor(angularFactor)
+
+
+    def setLinearVelocity(self, Vector3 v not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 vel = btVector3(v.x, v.y, v.z)
+        body.setLinearVelocity(vel)
 
 
 

@@ -189,6 +189,11 @@ class RigidBodyTests(TestCase):
         body.setAngularFactor(1.0)
 
 
+    def test_setLinearVelocity(self):
+        body = RigidBody()
+        body.setLinearVelocity(Vector3(1, 2, 3))
+
+
 
 class CollisionWorldTests(TestCase):
     def test_empty(self):
