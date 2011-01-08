@@ -91,6 +91,8 @@ cdef extern from "btBulletDynamicsCommon.h":
         btScalar getRestitution()
 
         btTransform& getWorldTransform()
+        void setWorldTransform(btTransform& worldTrans)
+
 
     cdef cppclass btRigidBody(btCollisionObject)
 
@@ -314,6 +316,31 @@ cdef class BvhTriangleMeshShape(ConvexShape):
 
 
 
+cdef class Transform:
+    cdef btTransform *thisptr
+
+    def __cinit__(self):
+        self.thisptr = new btTransform()
+
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+    def getOrigin(self):
+        cdef btVector3 origin = self.thisptr.getOrigin()
+        return Vector3(origin.getX(), origin.getY(), origin.getZ())
+
+
+    def setOrigin(self, Vector3 origin not None):
+        self.thisptr.setOrigin(btVector3(origin.x, origin.y, origin.z))
+
+
+    def setIdentity(self):
+        self.thisptr.setIdentity()
+
+
+
 cdef class CollisionObject:
     cdef btCollisionObject *thisptr
     cdef CollisionShape _shape
@@ -349,28 +376,9 @@ cdef class CollisionObject:
         return transform
 
 
-cdef class Transform:
-    cdef btTransform *thisptr
+    def setWorldTransform(self, Transform transform not None):
+        self.thisptr.setWorldTransform(transform.thisptr[0])
 
-    def __cinit__(self):
-        self.thisptr = new btTransform()
-
-
-    def __dealloc__(self):
-        del self.thisptr
-
-
-    def getOrigin(self):
-        cdef btVector3 origin = self.thisptr.getOrigin()
-        return Vector3(origin.getX(), origin.getY(), origin.getZ())
-
-
-    def setOrigin(self, Vector3 origin not None):
-        self.thisptr.setOrigin(btVector3(origin.x, origin.y, origin.z))
-
-
-    def setIdentity(self):
-        self.thisptr.setIdentity()
 
 
 cdef class MotionState:

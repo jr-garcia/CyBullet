@@ -182,6 +182,18 @@ class CollisionObjectTests(TestCase):
         self.assertEquals(shape.getRadius(), 3)
 
 
+    def test_worldTransform(self):
+        obj = CollisionObject()
+        trans = Transform()
+        trans.setIdentity()
+        trans.setOrigin(Vector3(3, 5, 7))
+        obj.setWorldTransform(trans)
+        origin = obj.getWorldTransform().getOrigin()
+        self.assertEquals(origin.x, 3)
+        self.assertEquals(origin.y, 5)
+        self.assertEquals(origin.z, 7)
+
+
 
 class RigidBodyTests(TestCase):
     def test_setAngularFactor(self):
