@@ -8,7 +8,7 @@ import numpy
 from bullet import (
     Vector3, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
-    BvhTriangleMeshShape,
+    IndexedMesh, BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
@@ -89,6 +89,24 @@ class CapsuleShapeTests(TestCase):
     def test_instantiate(self):
         shape = CapsuleShape(1.0, 2.0)
         self.assertTrue(isinstance(shape, CollisionShape))
+
+
+class IndexedMeshTests(TestCase):
+    def test_instantiate(self):
+        mesh = IndexedMesh()
+        self.assertTrue(isinstance(mesh, IndexedMesh))
+
+
+    def test_setIndicesInvalidArray(self):
+        mesh = IndexedMesh()
+        self.assertRaises(TypeError, mesh.setIndices, 0, 0, None)
+        self.assertRaises(
+            ValueError, mesh.setIndices, 0, 0, numpy.array([], 'Q'))
+
+
+    def test_setIndices(self):
+        mesh = IndexedMesh()
+        mesh.setIndices(3, 2, numpy.array([1, 2, 3], 'i'))
 
 
 

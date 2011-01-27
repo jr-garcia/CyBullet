@@ -18,7 +18,26 @@ cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
     ctypedef int bool
 
+    cdef enum PHY_ScalarType:
+        PHY_FLOAT
+        PHY_DOUBLE
+        PHY_INTEGER
+        PHY_SHORT
+        PHY_FIXEDPOINT88
+        PHY_UCHAR
+
     cdef cppclass btVector3
+
+    cdef cppclass btIndexedMesh:
+        int m_numTriangles
+        unsigned char *m_triangleIndexBase
+        int m_triangleIndexStride
+        PHY_ScalarType m_indexType
+
+        int m_numVertices
+        unsigned char *m_vertexBase
+        int m_vertexStride
+        PHY_ScalarType m_vertexType
 
     cdef cppclass btStridingMeshInterface:
         pass
@@ -31,6 +50,8 @@ cdef extern from "btBulletCollisionCommon.h":
             int numVertices,
             btScalar *vertexBase,
             int vertexStride)
+
+        void addIndexedMesh(btIndexedMesh &mesh, PHY_ScalarType indexeType)
 
     cdef cppclass btCollisionShape:
         void calculateLocalInertia(btScalar mass, btVector3 &inertia)
@@ -295,6 +316,53 @@ cdef class CapsuleShape(ConvexShape):
     def __cinit__(self, btScalar radius, btScalar height):
         self.thisptr = new btCapsuleShape(radius, height)
 
+
+cdef class IndexedMesh:
+    cdef btIndexedMesh* thisptr
+
+    def __cinit__(self):
+        self.thisptr = new btIndexedMesh()
+        self.thisptr.m_numTriangles = 0;
+        self.thisptr.m_triangleIndexBase = NULL;
+        self.thisptr.m_triangleIndexStride = 0;
+        self.thisptr.m_numVertices = 0;
+        self.thisptr.m_vertexBase = NULL;
+        self.thisptr.m_vertexStride = 0;
+        self.thisptr.m_indexType = PHY_FLOAT
+        self.thisptr.m_vertexType = PHY_FLOAT
+
+
+    def setIndices(self, int numTriangles, int indexStride,
+                   numpy.ndarray indexBase not None):
+        cdef char *dname = indexBase.dtype.char
+        cdef char dtype = dname[0]
+
+        cdef PHY_ScalarType indexType
+
+        if dtype == 'f':
+            indexType = PHY_FLOAT
+        elif dtype == 'd':
+            indexType = PHY_DOUBLE
+        elif dtype == 'i':
+            indexType = PHY_INTEGER
+        elif dtype == 'h':
+            indexType = PHY_SHORT
+        else:
+            raise ValueError("Unsupported index array type")
+
+        self.thisptr.m_numTriangles = numTriangles
+        self.thisptr.m_triangleIndexStride = indexStride
+        self.thisptr.m_triangleIndexBase = indexBase
+        self.thisptr.m_indexType = indexType
+
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+
+cdef class TriangleIndexVertexArray(object):
+    pass
 
 
 cdef class BvhTriangleMeshShape(ConvexShape):
