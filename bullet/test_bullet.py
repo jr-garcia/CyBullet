@@ -109,6 +109,18 @@ class IndexedMeshTests(TestCase):
         mesh.setIndices(3, 2, numpy.array([1, 2, 3], 'i'))
 
 
+    def test_setVerticesInvalidArray(self):
+        mesh = IndexedMesh()
+        self.assertRaises(TypeError, mesh.setVertices, 0, 0, None)
+        self.assertRaises(
+            ValueError, mesh.setVertices, 0, 0, numpy.array([], 'Q'))
+
+
+    def test_setVertices(self):
+        mesh = IndexedMesh()
+        mesh.setVertices(1, 2, numpy.array([1, 2, 3], 'i'))
+
+
 
 class BvhTriangleMeshShapeTests(TestCase):
     def test_incorrectInitializer(self):

@@ -320,6 +320,21 @@ cdef class CapsuleShape(ConvexShape):
 cdef class IndexedMesh:
     cdef btIndexedMesh* thisptr
 
+    cdef PHY_ScalarType _dtypeToScalarType(self, numpy.ndarray array):
+        cdef char *dname = array.dtype.char
+        cdef char dtype = dname[0]
+
+        if dtype == 'f':
+            return PHY_FLOAT
+        elif dtype == 'd':
+            return PHY_DOUBLE
+        elif dtype == 'i':
+            return PHY_INTEGER
+        elif dtype == 'h':
+            return PHY_SHORT
+        return <PHY_ScalarType>-1
+
+
     def __cinit__(self):
         self.thisptr = new btIndexedMesh()
         self.thisptr.m_numTriangles = 0;
@@ -334,26 +349,26 @@ cdef class IndexedMesh:
 
     def setIndices(self, int numTriangles, int indexStride,
                    numpy.ndarray indexBase not None):
-        cdef char *dname = indexBase.dtype.char
-        cdef char dtype = dname[0]
-
-        cdef PHY_ScalarType indexType
-
-        if dtype == 'f':
-            indexType = PHY_FLOAT
-        elif dtype == 'd':
-            indexType = PHY_DOUBLE
-        elif dtype == 'i':
-            indexType = PHY_INTEGER
-        elif dtype == 'h':
-            indexType = PHY_SHORT
-        else:
+        cdef PHY_ScalarType indexType = self._dtypeToScalarType(indexBase)
+        if indexType == -1:
             raise ValueError("Unsupported index array type")
 
         self.thisptr.m_numTriangles = numTriangles
         self.thisptr.m_triangleIndexStride = indexStride
-        self.thisptr.m_triangleIndexBase = indexBase
+        self.thisptr.m_triangleIndexBase = <unsigned char*>indexBase.data
         self.thisptr.m_indexType = indexType
+
+
+    def setVertices(self, int numVertices, int vertexStride,
+                    numpy.ndarray vertexBase not None):
+        cdef PHY_ScalarType vertexType = self._dtypeToScalarType(vertexBase)
+        if vertexType == -1:
+            raise ValueError("Unsupported index array type")
+
+        self.thisptr.m_numVertices = numVertices
+        self.thisptr.m_vertexStride = vertexStride
+        self.thisptr.m_vertexBase = <unsigned char*>vertexBase.data
+        self.thisptr.m_vertexType = vertexType
 
 
     def __dealloc__(self):
