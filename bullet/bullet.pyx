@@ -43,6 +43,7 @@ cdef extern from "btBulletCollisionCommon.h":
         pass
 
     cdef cppclass btTriangleIndexVertexArray(btStridingMeshInterface):
+        btTriangleIndexVertexArray()
         btTriangleIndexVertexArray(
             int numTriangles,
             int *triangleIndexBase,
@@ -51,7 +52,7 @@ cdef extern from "btBulletCollisionCommon.h":
             btScalar *vertexBase,
             int vertexStride)
 
-        void addIndexedMesh(btIndexedMesh &mesh, PHY_ScalarType indexeType)
+        void addIndexedMesh(btIndexedMesh &mesh, PHY_ScalarType indexType)
 
     cdef cppclass btCollisionShape:
         void calculateLocalInertia(btScalar mass, btVector3 &inertia)
@@ -376,8 +377,20 @@ cdef class IndexedMesh:
 
 
 
-cdef class TriangleIndexVertexArray(object):
-    pass
+cdef class TriangleIndexVertexArray:
+    cdef btTriangleIndexVertexArray *thisptr
+
+    def __cinit__(self):
+        self.thisptr = new btTriangleIndexVertexArray()
+
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+    def addIndexedMesh(self, IndexedMesh mesh not None):
+        self.thisptr.addIndexedMesh(mesh.thisptr[0], mesh.thisptr.m_indexType)
+
 
 
 cdef class BvhTriangleMeshShape(ConvexShape):

@@ -8,7 +8,7 @@ import numpy
 from bullet import (
     Vector3, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
-    IndexedMesh, BvhTriangleMeshShape,
+    IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
@@ -91,6 +91,7 @@ class CapsuleShapeTests(TestCase):
         self.assertTrue(isinstance(shape, CollisionShape))
 
 
+
 class IndexedMeshTests(TestCase):
     def test_instantiate(self):
         mesh = IndexedMesh()
@@ -119,6 +120,18 @@ class IndexedMeshTests(TestCase):
     def test_setVertices(self):
         mesh = IndexedMesh()
         mesh.setVertices(1, 2, numpy.array([1, 2, 3], 'i'))
+
+
+
+class TriangleIndexVertexArrayTests(TestCase):
+    def test_addIndexedMesh(self):
+        triangles = TriangleIndexVertexArray()
+
+        for i in range(3):
+            mesh = IndexedMesh()
+            mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
+            mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'i'))
+            triangles.addIndexedMesh(mesh)
 
 
 
