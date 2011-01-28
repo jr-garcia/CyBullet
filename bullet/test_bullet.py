@@ -136,44 +136,9 @@ class TriangleIndexVertexArrayTests(TestCase):
 
 
 class BvhTriangleMeshShapeTests(TestCase):
-    def test_incorrectInitializer(self):
-        goodTriangleType = 'int32'
-        goodTriangleData = [1]
-        badTriangleType = 'int8'
-        badTriangleData = [[1, 2], [3, 4]]
-
-        goodVertexType = 'float32'
-        goodVertexData = [1]
-        badVertexType = 'float64'
-        badVertexData = [[1, 2], [3, 4]]
-
-        goodTriangles = numpy.array(goodTriangleData, goodTriangleType)
-        goodVertices = numpy.array(goodVertexData, goodVertexType)
-
-        badArgs = [
-            (goodTriangles, None),
-            (None, goodVertices),
-            (goodTriangles, numpy.array(badVertexData, goodVertexType)),
-            (goodTriangles, numpy.array(goodVertexData, badVertexType)),
-            (numpy.array(badTriangleData, goodTriangleType), goodVertices),
-            (numpy.array(goodTriangleData, badTriangleType), goodVertices),
-            ]
-
-        for (triangles, vertices) in badArgs:
-            try:
-                BvhTriangleMeshShape(triangles, vertices)
-            except (TypeError, ValueError):
-                pass
-            else:
-                self.fail(
-                    "BvhTriangleMeshShape accepted (%r, %r)" % (
-                        triangles, vertices))
-
-
     def test_initialized(self):
-        BvhTriangleMeshShape(
-            numpy.array([0, 1, 2], 'int32'),
-            numpy.array([1, 2, 3], 'float32'))
+        shape = BvhTriangleMeshShape(TriangleIndexVertexArray())
+        self.assertTrue(isinstance(shape, CollisionShape))
 
 
 

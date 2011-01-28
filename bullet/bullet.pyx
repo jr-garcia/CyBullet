@@ -376,43 +376,33 @@ cdef class IndexedMesh:
         del self.thisptr
 
 
-
-cdef class TriangleIndexVertexArray:
-    cdef btTriangleIndexVertexArray *thisptr
-
-    def __cinit__(self):
-        self.thisptr = new btTriangleIndexVertexArray()
+cdef class StridingMeshInterface:
+    cdef btStridingMeshInterface *thisptr
 
 
     def __dealloc__(self):
         del self.thisptr
 
 
+
+cdef class TriangleIndexVertexArray(StridingMeshInterface):
+    def __cinit__(self):
+        self.thisptr = new btTriangleIndexVertexArray()
+
+
     def addIndexedMesh(self, IndexedMesh mesh not None):
-        self.thisptr.addIndexedMesh(mesh.thisptr[0], mesh.thisptr.m_indexType)
+        cdef btTriangleIndexVertexArray *array
+        array = <btTriangleIndexVertexArray*>self.thisptr
+        array.addIndexedMesh(mesh.thisptr[0], mesh.thisptr.m_indexType)
 
 
 
 cdef class BvhTriangleMeshShape(ConvexShape):
-    cdef btStridingMeshInterface *stride
-    cdef numpy.ndarray triangles
-    cdef numpy.ndarray vertices
+    cdef StridingMeshInterface stride
 
-    def __init__(self,
-                 numpy.ndarray[numpy.int32_t] triangles not None,
-                 numpy.ndarray[numpy.float32_t] vertices not None):
-
-        self.triangles = triangles
-        self.vertices = vertices
-
-        self.stride = new btTriangleIndexVertexArray(
-            len(triangles) / 3, <int*>triangles.data, 3,
-            len(triangles) / 3, <btScalar*>vertices.data, 3)
-        self.thisptr = new btBvhTriangleMeshShape(self.stride, True, True)
-
-
-    def __dealloc__(self):
-        del self.stride
+    def __init__(self, StridingMeshInterface mesh not None):
+        self.stride = mesh
+        self.thisptr = new btBvhTriangleMeshShape(mesh.thisptr, True, False)
 
 
 
