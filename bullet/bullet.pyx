@@ -13,6 +13,9 @@ cdef extern from "Python.h":
     cdef struct _object:
         pass
 
+    ctypedef _object PyObject
+
+
 
 cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
@@ -172,6 +175,10 @@ cdef extern from "btBulletCollisionCommon.h":
         pass
 
 
+    cdef cppclass btIDebugDraw:
+        pass
+
+
     cdef cppclass btRigidBody(btCollisionObject):
         btRigidBody(btRigidBodyConstructionInfo)
 
@@ -188,6 +195,9 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btCollisionWorld:
         btCollisionWorld(
             btDispatcher*, btBroadphaseInterface*, btCollisionConfiguration*)
+
+        void setDebugDrawer(btIDebugDraw *debugDrawer)
+        void debugDrawWorld()
 
         btDispatcher *getDispatcher()
         btBroadphaseInterface *getBroadphase()
@@ -230,6 +240,10 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         btConstraintSolver *getConstraintSolver()
 
+
+cdef extern from "bulletdebugdraw.h":
+    cdef cppclass PythonDebugDraw(btIDebugDraw):
+        PythonDebugDraw(PyObject *debugDraw)
 
 
 # Forward declare some things because of circularity in the API.
@@ -557,6 +571,7 @@ cdef class SequentialImpulseConstraintSolver(ConstraintSolver):
 
 cdef class CollisionWorld:
     cdef btCollisionWorld *thisptr
+    cdef PythonDebugDraw *debugDraw
 
     cdef _object *dispatcher
     cdef _object *broadphase
@@ -585,6 +600,15 @@ cdef class CollisionWorld:
         del self.thisptr
         Py_DECREF(<object>self.dispatcher)
         Py_DECREF(<object>self.broadphase)
+
+
+    def setDebugDrawer(self, debugDrawer):
+        self.debugDraw = new PythonDebugDraw(<PyObject*>debugDrawer);
+        self.thisptr.setDebugDrawer(self.debugDraw)
+
+
+    def debugDrawWorld(self):
+        self.thisptr.debugDrawWorld()
 
 
     def getNumCollisionObjects(self):

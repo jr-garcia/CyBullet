@@ -250,6 +250,12 @@ class CollisionWorldTests(TestCase):
         world.addCollisionObject(obj)
 
 
+    def test_setDebugDrawer(self):
+        world = CollisionWorld()
+        drawer = object()
+        world.setDebugDrawer(drawer)
+
+
 
 class DiscreteDynamicsWorldTests(TestCase):
     def test_empty(self):
