@@ -256,6 +256,56 @@ class CollisionWorldTests(TestCase):
         world.setDebugDrawer(drawer)
 
 
+class DebugRecorder(object):
+    def __init__(self):
+        self.lines = []
+        self.contacts = []
+
+
+    def drawLine(self, *args):
+        self.lines.append(args)
+
+
+    def drawContactPoint(self, *args):
+        self.contacts.append(args)
+
+
+
+class DebugDrawerTests(TestCase):
+    def setUp(self):
+        self.world = CollisionWorld()
+        self.recorder = DebugRecorder()
+        self.world.setDebugDrawer(self.recorder)
+
+
+    def test_lines(self):
+        obj = CollisionObject()
+        shape = BoxShape(Vector3(1, 2, 3))
+        obj.setCollisionShape(shape)
+        self.world.addCollisionObject(obj)
+        self.world.debugDrawWorld()
+        self.assertTrue(len(self.recorder.lines) > 0)
+        for line in self.recorder.lines:
+            self.assertEquals(len(line), 9)
+
+
+    def test_collisions(self):
+        first = CollisionObject()
+        shape = BoxShape(Vector3(2, 1, 1))
+        first.setCollisionShape(shape)
+        self.world.addCollisionObject(first)
+
+        second = CollisionObject()
+        shape = BoxShape(Vector3(1, 2, 1))
+        second.setCollisionShape(shape)
+        self.world.addCollisionObject(second)
+
+        self.world.debugDrawWorld()
+        self.assertTrue(len(self.recorder.contacts) > 0)
+        for contact in self.recorder.contacts:
+            self.assertEquals(len(contact), 11)
+
+
 
 class DiscreteDynamicsWorldTests(TestCase):
     def test_empty(self):

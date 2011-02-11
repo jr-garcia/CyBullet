@@ -29,7 +29,18 @@ public:
             color.getX(), color.getY(), color.getZ());
     }
 
-    virtual void drawContactPoint(const btVector3&, const btVector3&, btScalar, int, const btVector3&) {
+    virtual void drawContactPoint(const btVector3& positionOnB,
+                                  const btVector3& normalOnB,
+                                  btScalar distance, int lifetime,
+                                  const btVector3& color) {
+        char method[] = "drawContactPoint";
+        char format[] = "(ddd ddd di ddd)";
+        PyObject_CallMethod(
+            this->debugDraw, &method[0], &format[0],
+            positionOnB.getX(), positionOnB.getY(), positionOnB.getZ(),
+            normalOnB.getX(), normalOnB.getY(), normalOnB.getZ(),
+            distance, lifetime,
+            color.getX(), color.getY(), color.getZ());
     }
 
     virtual void reportErrorWarning(const char*) {
