@@ -221,6 +221,21 @@ class RigidBodyTests(TestCase):
         self.assertEqual(position.z, 1.5 + 1.5 / expectedSteps)
 
 
+    def test_applyCentralImpulse(self):
+        body = RigidBody(mass=1.0)
+        body.applyCentralImpulse(Vector3(1, 2, 3))
+        world = DiscreteDynamicsWorld()
+        world.setGravity(Vector3(0, 0, 0))
+        world.addRigidBody(body)
+        expectedSteps = 64
+        numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
+        self.assertEqual(numSteps, expectedSteps)
+        position = body.getMotionState().getWorldTransform().getOrigin()
+        self.assertEqual(position.x, 1.0)
+        self.assertEqual(position.y, 2.0)
+        self.assertEqual(position.z, 3.0)
+
+
     def test_isInWorld(self):
         body = RigidBody()
         self.assertFalse(body.isInWorld())
