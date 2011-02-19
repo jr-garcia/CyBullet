@@ -183,6 +183,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
         void setLinearVelocity(btVector3 velocity)
 
+        void applyCentralForce(btVector3 force)
+
 
 
     cdef cppclass btCollisionWorld:
@@ -454,6 +456,12 @@ cdef class RigidBody(CollisionObject):
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 vel = btVector3(v.x, v.y, v.z)
         body.setLinearVelocity(vel)
+
+
+    def applyCentralForce(self, Vector3 v not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 force = btVector3(v.x, v.y, v.z)
+        body.applyCentralForce(force)
 
 
 
