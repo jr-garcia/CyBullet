@@ -75,6 +75,20 @@ class TransformTests(TestCase):
         self.assertEqual(origin.z, 0)
 
 
+    def test_rotation(self):
+        transform = Transform()
+        transform.setRotation(Quaternion.fromScalars(1, 2, 3, 4))
+        quat = transform.getRotation()
+        self.assertTrue(isinstance(quat, Quaternion))
+        self.assertEquals(quat.getX(), 0.18257419764995575)
+        self.assertEquals(quat.getY(), 0.3651483952999115)
+        self.assertEquals(quat.getZ(), 0.54772257804870605)
+        self.assertEquals(quat.getW(), 0.73029673099517822)
+
+    # XXX Quaternion(1, 2, 3, 4) segfaults?
+
+
+
 class DefaultMotionStateTests(TestCase):
     def test_worldTransform(self):
         xform = Transform()
@@ -210,7 +224,6 @@ class CollisionObjectTests(TestCase):
     def test_worldTransform(self):
         obj = CollisionObject()
         trans = Transform()
-        trans.setIdentity()
         trans.setOrigin(Vector3(3, 5, 7))
         obj.setWorldTransform(trans)
         origin = obj.getWorldTransform().getOrigin()

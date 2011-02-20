@@ -72,6 +72,8 @@ cdef extern from "btBulletDynamicsCommon.h":
         btVector3 getOrigin()
         void setOrigin(btVector3)
         void setIdentity()
+        void setRotation(btQuaternion&)
+        btQuaternion getRotation()
 
 
     cdef cppclass btMotionState:
@@ -164,6 +166,7 @@ cdef extern from "btBulletCollisionCommon.h":
 
 
     cdef cppclass btQuaternion:
+        btQuaternion()
         btQuaternion(btScalar x, btScalar y, btScalar z, btScalar w)
         btQuaternion(btVector3 axis, btScalar angle)
 
@@ -388,6 +391,17 @@ cdef class Transform:
 
     def setOrigin(self, Vector3 origin not None):
         self.thisptr.setOrigin(btVector3(origin.x, origin.y, origin.z))
+
+
+    def setRotation(self, Quaternion rot not None):
+        cdef btQuaternion *quat = rot.quaternion
+        self.thisptr.setRotation(quat[0])
+
+
+    def getRotation(self):
+        cdef btQuaternion quat = self.thisptr.getRotation()
+        return Quaternion.fromScalars(
+            quat.getX(), quat.getY(), quat.getZ(), quat.getW())
 
 
     def setIdentity(self):
