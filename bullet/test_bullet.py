@@ -6,7 +6,7 @@ from unittest import TestCase
 import numpy
 
 from bullet import (
-    Vector3, Transform,
+    Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
     BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
@@ -30,6 +30,31 @@ class VectorTests(TestCase):
 
 
 
+class QuaternionTests(TestCase):
+    def test_fromScalars(self):
+        """
+        A L{Quaternion} can be constructed from four scalar values giving x, y,
+        z, and w.
+        """
+        quat = Quaternion.fromScalars(1, 2, 3, 4)
+        self.assertTrue(isinstance(quat, Quaternion))
+        self.assertEquals(quat.getX(), 1)
+        self.assertEquals(quat.getY(), 2)
+        self.assertEquals(quat.getZ(), 3)
+        self.assertEquals(quat.getW(), 4)
+
+
+    def test_fromAxisAngle(self):
+        """
+        A L{Quaternion} can be constructed from a Vector3 giving an axis and a
+        scalar giving an angle from that axis.
+        """
+        quat = Quaternion.fromAxisAngle(Vector3(0, 1, 0), 45)
+        self.assertTrue(isinstance(quat, Quaternion))
+        # XXX Assert something about the value
+
+
+
 class TransformTests(TestCase):
     def test_origin(self):
         transform = Transform()
@@ -48,6 +73,20 @@ class TransformTests(TestCase):
         self.assertEqual(origin.x, 0)
         self.assertEqual(origin.y, 0)
         self.assertEqual(origin.z, 0)
+
+
+    def test_rotation(self):
+        transform = Transform()
+        transform.setRotation(Quaternion.fromScalars(1, 2, 3, 4))
+        quat = transform.getRotation()
+        self.assertTrue(isinstance(quat, Quaternion))
+        self.assertEquals(quat.getX(), 0.18257419764995575)
+        self.assertEquals(quat.getY(), 0.3651483952999115)
+        self.assertEquals(quat.getZ(), 0.54772257804870605)
+        self.assertEquals(quat.getW(), 0.73029673099517822)
+
+    # XXX Quaternion(1, 2, 3, 4) segfaults?
+
 
 
 class DefaultMotionStateTests(TestCase):
@@ -185,7 +224,6 @@ class CollisionObjectTests(TestCase):
     def test_worldTransform(self):
         obj = CollisionObject()
         trans = Transform()
-        trans.setIdentity()
         trans.setOrigin(Vector3(3, 5, 7))
         obj.setWorldTransform(trans)
         origin = obj.getWorldTransform().getOrigin()

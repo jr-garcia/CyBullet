@@ -20,6 +20,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
     cdef cppclass btVector3
 
+    cdef cppclass btQuaternion
+
     cdef cppclass btStridingMeshInterface:
         pass
 
@@ -70,6 +72,8 @@ cdef extern from "btBulletDynamicsCommon.h":
         btVector3 getOrigin()
         void setOrigin(btVector3)
         void setIdentity()
+        void setRotation(btQuaternion&)
+        btQuaternion getRotation()
 
 
     cdef cppclass btMotionState:
@@ -159,6 +163,17 @@ cdef extern from "btBulletCollisionCommon.h":
         btScalar getX()
         btScalar getY()
         btScalar getZ()
+
+
+    cdef cppclass btQuaternion:
+        btQuaternion()
+        btQuaternion(btScalar x, btScalar y, btScalar z, btScalar w)
+        btQuaternion(btVector3 axis, btScalar angle)
+
+        btScalar getX()
+        btScalar getY()
+        btScalar getZ()
+        btScalar getW()
 
 
     cdef cppclass btBroadphaseInterface:
@@ -258,6 +273,43 @@ cdef class Vector3:
 
 
 
+cdef class Quaternion:
+    cdef btQuaternion* quaternion
+
+    def __dealloc__(self):
+        del self.quaternion
+
+
+    @classmethod
+    def fromScalars(cls, btScalar x, btScalar y, btScalar z, btScalar w):
+        q = Quaternion()
+        q.quaternion = new btQuaternion(x, y, z, w)
+        return q
+
+    @classmethod
+    def fromAxisAngle(cls, Vector3 axis not None, btScalar angle):
+        q = Quaternion()
+        q.quaternion = new btQuaternion(
+            btVector3(axis.x, axis.y, axis.z), angle)
+        return q
+
+    def getX(self):
+        return self.quaternion.getX()
+
+
+    def getY(self):
+        return self.quaternion.getY()
+
+
+    def getZ(self):
+        return self.quaternion.getZ()
+
+
+    def getW(self):
+        return self.quaternion.getW()
+
+
+
 cdef class CollisionShape:
     cdef btCollisionShape *thisptr
 
@@ -344,6 +396,17 @@ cdef class Transform:
 
     def setOrigin(self, Vector3 origin not None):
         self.thisptr.setOrigin(btVector3(origin.x, origin.y, origin.z))
+
+
+    def setRotation(self, Quaternion rot not None):
+        cdef btQuaternion *quat = rot.quaternion
+        self.thisptr.setRotation(quat[0])
+
+
+    def getRotation(self):
+        cdef btQuaternion quat = self.thisptr.getRotation()
+        return Quaternion.fromScalars(
+            quat.getX(), quat.getY(), quat.getZ(), quat.getW())
 
 
     def setIdentity(self):
