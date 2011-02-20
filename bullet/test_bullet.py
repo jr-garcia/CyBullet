@@ -219,6 +219,23 @@ class RigidBodyTests(TestCase):
         self.assertEqual(position.x, 0.5 + 0.5 / expectedSteps)
         self.assertEqual(position.y, 1.0 + 1.0 / expectedSteps)
         self.assertEqual(position.z, 1.5 + 1.5 / expectedSteps)
+        # XXX Assert something about rotation as well
+
+
+    def test_applyForce(self):
+        body = RigidBody(mass=1.0)
+        body.applyForce(Vector3(1, 2, 3), Vector3(1, 1, 1))
+        world = DiscreteDynamicsWorld()
+        world.setGravity(Vector3(0, 0, 0))
+        world.addRigidBody(body)
+        expectedSteps = 64
+        numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
+        self.assertEqual(numSteps, expectedSteps)
+        position = body.getMotionState().getWorldTransform().getOrigin()
+        self.assertEqual(position.x, 0.5 + 0.5 / expectedSteps)
+        self.assertEqual(position.y, 1.0 + 1.0 / expectedSteps)
+        self.assertEqual(position.z, 1.5 + 1.5 / expectedSteps)
+        # XXX Assert something about rotation as well
 
 
     def test_applyCentralImpulse(self):
@@ -234,6 +251,23 @@ class RigidBodyTests(TestCase):
         self.assertEqual(position.x, 1.0)
         self.assertEqual(position.y, 2.0)
         self.assertEqual(position.z, 3.0)
+        # XXX Assert something about rotation as well
+
+
+    def test_applyImpulse(self):
+        body = RigidBody(mass=1.0)
+        body.applyImpulse(Vector3(1, 2, 3), Vector3(1, 1, 1))
+        world = DiscreteDynamicsWorld()
+        world.setGravity(Vector3(0, 0, 0))
+        world.addRigidBody(body)
+        expectedSteps = 64
+        numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
+        self.assertEqual(numSteps, expectedSteps)
+        position = body.getMotionState().getWorldTransform().getOrigin()
+        self.assertEqual(position.x, 1.0)
+        self.assertEqual(position.y, 2.0)
+        self.assertEqual(position.z, 3.0)
+        # XXX Assert something about rotation as well
 
 
     def test_isInWorld(self):
