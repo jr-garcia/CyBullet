@@ -23,6 +23,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
     cdef cppclass btVector3
 
+    cdef cppclass btQuaternion
+
     cdef cppclass btStridingMeshInterface:
         pass
 
@@ -73,6 +75,8 @@ cdef extern from "btBulletDynamicsCommon.h":
         btVector3 getOrigin()
         void setOrigin(btVector3)
         void setIdentity()
+        void setRotation(btQuaternion&)
+        btQuaternion getRotation()
 
 
     cdef cppclass btMotionState:
@@ -164,6 +168,17 @@ cdef extern from "btBulletCollisionCommon.h":
         btScalar getZ()
 
 
+    cdef cppclass btQuaternion:
+        btQuaternion()
+        btQuaternion(btScalar x, btScalar y, btScalar z, btScalar w)
+        btQuaternion(btVector3 axis, btScalar angle)
+
+        btScalar getX()
+        btScalar getY()
+        btScalar getZ()
+        btScalar getW()
+
+
     cdef cppclass btBroadphaseInterface:
         pass
 
@@ -190,6 +205,11 @@ cdef extern from "btBulletCollisionCommon.h":
 
         void setLinearVelocity(btVector3 velocity)
 
+        void applyCentralForce(btVector3 force)
+        void applyForce(btVector3 force, btVector3 relativePosition)
+
+        void applyCentralImpulse(btVector3 impulse)
+        void applyImpulse(btVector3 impulse, btVector3 relativePosition)
 
 
     cdef cppclass btCollisionWorld:
@@ -264,6 +284,43 @@ cdef class Vector3:
 
     def __repr__(self):
         return '<Vector x=%s y=%s z=%s>' % (self.x, self.y, self.z)
+
+
+
+cdef class Quaternion:
+    cdef btQuaternion* quaternion
+
+    def __dealloc__(self):
+        del self.quaternion
+
+
+    @classmethod
+    def fromScalars(cls, btScalar x, btScalar y, btScalar z, btScalar w):
+        q = Quaternion()
+        q.quaternion = new btQuaternion(x, y, z, w)
+        return q
+
+    @classmethod
+    def fromAxisAngle(cls, Vector3 axis not None, btScalar angle):
+        q = Quaternion()
+        q.quaternion = new btQuaternion(
+            btVector3(axis.x, axis.y, axis.z), angle)
+        return q
+
+    def getX(self):
+        return self.quaternion.getX()
+
+
+    def getY(self):
+        return self.quaternion.getY()
+
+
+    def getZ(self):
+        return self.quaternion.getZ()
+
+
+    def getW(self):
+        return self.quaternion.getW()
 
 
 
@@ -353,6 +410,17 @@ cdef class Transform:
 
     def setOrigin(self, Vector3 origin not None):
         self.thisptr.setOrigin(btVector3(origin.x, origin.y, origin.z))
+
+
+    def setRotation(self, Quaternion rot not None):
+        cdef btQuaternion *quat = rot.quaternion
+        self.thisptr.setRotation(quat[0])
+
+
+    def getRotation(self):
+        cdef btQuaternion quat = self.thisptr.getRotation()
+        return Quaternion.fromScalars(
+            quat.getX(), quat.getY(), quat.getZ(), quat.getW())
 
 
     def setIdentity(self):
@@ -468,6 +536,34 @@ cdef class RigidBody(CollisionObject):
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 vel = btVector3(v.x, v.y, v.z)
         body.setLinearVelocity(vel)
+
+
+    def applyCentralForce(self, Vector3 f not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 force = btVector3(f.x, f.y, f.z)
+        body.applyCentralForce(force)
+
+
+    def applyForce(self, Vector3 f not None, Vector3 relativePosition not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 force = btVector3(f.x, f.y, f.z)
+        cdef btVector3 pos = btVector3(
+            relativePosition.x, relativePosition.y, relativePosition.z)
+        body.applyForce(force, pos)
+
+
+    def applyCentralImpulse(self, Vector3 i not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
+        body.applyCentralImpulse(impulse)
+
+
+    def applyImpulse(self, Vector3 i not None, Vector3 relativePosition not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
+        cdef btVector3 pos = btVector3(
+            relativePosition.x, relativePosition.y, relativePosition.z)
+        body.applyImpulse(impulse, pos)
 
 
 
