@@ -198,6 +198,11 @@ cdef extern from "btBulletCollisionCommon.h":
 
         void setLinearVelocity(btVector3 velocity)
 
+        void applyCentralForce(btVector3 force)
+        void applyForce(btVector3 force, btVector3 relativePosition)
+
+        void applyCentralImpulse(btVector3 impulse)
+        void applyImpulse(btVector3 impulse, btVector3 relativePosition)
 
 
     cdef cppclass btCollisionWorld:
@@ -517,6 +522,34 @@ cdef class RigidBody(CollisionObject):
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 vel = btVector3(v.x, v.y, v.z)
         body.setLinearVelocity(vel)
+
+
+    def applyCentralForce(self, Vector3 f not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 force = btVector3(f.x, f.y, f.z)
+        body.applyCentralForce(force)
+
+
+    def applyForce(self, Vector3 f not None, Vector3 relativePosition not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 force = btVector3(f.x, f.y, f.z)
+        cdef btVector3 pos = btVector3(
+            relativePosition.x, relativePosition.y, relativePosition.z)
+        body.applyForce(force, pos)
+
+
+    def applyCentralImpulse(self, Vector3 i not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
+        body.applyCentralImpulse(impulse)
+
+
+    def applyImpulse(self, Vector3 i not None, Vector3 relativePosition not None):
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
+        cdef btVector3 pos = btVector3(
+            relativePosition.x, relativePosition.y, relativePosition.z)
+        body.applyImpulse(impulse, pos)
 
 
 
