@@ -253,11 +253,14 @@ class RigidBodyTests(TestCase):
         expectedSteps = 64
         numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
         self.assertEqual(numSteps, expectedSteps)
-        position = body.getMotionState().getWorldTransform().getOrigin()
+        transform = body.getMotionState().getWorldTransform()
+        position = transform.getOrigin()
         self.assertEqual(position.x, 0.5 + 0.5 / expectedSteps)
         self.assertEqual(position.y, 1.0 + 1.0 / expectedSteps)
         self.assertEqual(position.z, 1.5 + 1.5 / expectedSteps)
-        # XXX Assert something about rotation as well
+        rot = transform.getRotation()
+        self.assertEqual(
+            (rot.getX(), rot.getY(), rot.getZ(), rot.getW()), (0, 0, 0, 1))
 
 
     def test_applyForce(self):
@@ -269,11 +272,15 @@ class RigidBodyTests(TestCase):
         expectedSteps = 64
         numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
         self.assertEqual(numSteps, expectedSteps)
-        position = body.getMotionState().getWorldTransform().getOrigin()
+        transform = body.getMotionState().getWorldTransform()
+        position = transform.getOrigin()
         self.assertEqual(position.x, 0.5 + 0.5 / expectedSteps)
         self.assertEqual(position.y, 1.0 + 1.0 / expectedSteps)
         self.assertEqual(position.z, 1.5 + 1.5 / expectedSteps)
-        # XXX Assert something about rotation as well
+        rot = transform.getRotation()
+        self.assertNotEqual(
+            (rot.getX(), rot.getY(), rot.getZ(), rot.getW()),
+            (0, 0, 0, 1))
 
 
     def test_applyCentralImpulse(self):
@@ -285,11 +292,14 @@ class RigidBodyTests(TestCase):
         expectedSteps = 64
         numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
         self.assertEqual(numSteps, expectedSteps)
-        position = body.getMotionState().getWorldTransform().getOrigin()
+        transform = body.getMotionState().getWorldTransform()
+        position = transform.getOrigin()
         self.assertEqual(position.x, 1.0)
         self.assertEqual(position.y, 2.0)
         self.assertEqual(position.z, 3.0)
-        # XXX Assert something about rotation as well
+        rot = transform.getRotation()
+        self.assertEqual(
+            (rot.getX(), rot.getY(), rot.getZ(), rot.getW()), (0, 0, 0, 1))
 
 
     def test_applyImpulse(self):
@@ -301,11 +311,15 @@ class RigidBodyTests(TestCase):
         expectedSteps = 64
         numSteps = world.stepSimulation(1.0, expectedSteps, 1.0 / expectedSteps)
         self.assertEqual(numSteps, expectedSteps)
-        position = body.getMotionState().getWorldTransform().getOrigin()
+        transform = body.getMotionState().getWorldTransform()
+        position = transform.getOrigin()
         self.assertEqual(position.x, 1.0)
         self.assertEqual(position.y, 2.0)
         self.assertEqual(position.z, 3.0)
-        # XXX Assert something about rotation as well
+        rot = transform.getRotation()
+        self.assertNotEqual(
+            (rot.getX(), rot.getY(), rot.getZ(), rot.getW()),
+            (0, 0, 0, 1))
 
 
     def test_isInWorld(self):
