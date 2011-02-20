@@ -6,7 +6,7 @@ from unittest import TestCase
 import numpy
 
 from bullet import (
-    Vector3, Transform,
+    Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
     BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
@@ -27,6 +27,31 @@ class VectorTests(TestCase):
     def test_repr(self):
         v = Vector3(3, 5, 7)
         self.assertEqual(repr(v), '<Vector x=3.0 y=5.0 z=7.0>')
+
+
+
+class QuaternionTests(TestCase):
+    def test_fromScalars(self):
+        """
+        A L{Quaternion} can be constructed from four scalar values giving x, y,
+        z, and w.
+        """
+        quat = Quaternion.fromScalars(1, 2, 3, 4)
+        self.assertTrue(isinstance(quat, Quaternion))
+        self.assertEquals(quat.getX(), 1)
+        self.assertEquals(quat.getY(), 2)
+        self.assertEquals(quat.getZ(), 3)
+        self.assertEquals(quat.getW(), 4)
+
+
+    def test_fromAxisAngle(self):
+        """
+        A L{Quaternion} can be constructed from a Vector3 giving an axis and a
+        scalar giving an angle from that axis.
+        """
+        quat = Quaternion.fromAxisAngle(Vector3(0, 1, 0), 45)
+        self.assertTrue(isinstance(quat, Quaternion))
+        # XXX Assert something about the value
 
 
 
