@@ -1,4 +1,4 @@
-# Copyright (c) 2010 Jean-Paul Calderone
+# Copyright (c) Jean-Paul Calderone
 # See LICENSE for details.
 
 from libcpp cimport bool
@@ -258,6 +258,14 @@ cdef class CollisionObject
 
 
 cdef class Vector3:
+    """
+    A Vector3 represents a point or vector in three-dimensional space.
+
+    When dealing with most vector quantities such as velocity, position, and
+    force, bullet will use a Vector3.
+
+    This class is loosely a wrapper around btVector3.
+    """
     cdef readonly btScalar x
     cdef readonly btScalar y
     cdef readonly btScalar z
@@ -274,6 +282,13 @@ cdef class Vector3:
 
 
 cdef class Quaternion:
+    """
+    A Quaternion represents a point or vector in four-dimensional space.  It is
+    frequently also used to represent rotation and orientation in
+    three-dimensional space.
+
+    This class is a wrapper around btQuaternion.
+    """
     cdef btQuaternion* quaternion
 
     def __dealloc__(self):
@@ -282,35 +297,61 @@ cdef class Quaternion:
 
     @classmethod
     def fromScalars(cls, btScalar x, btScalar y, btScalar z, btScalar w):
+        """
+        Construct a new Quaternion from four scalar components.
+        """
         q = Quaternion()
         q.quaternion = new btQuaternion(x, y, z, w)
         return q
 
+
     @classmethod
     def fromAxisAngle(cls, Vector3 axis not None, btScalar angle):
+        """
+        Construct a new Quaternion from an axis and a rotation around that axis.
+        """
         q = Quaternion()
         q.quaternion = new btQuaternion(
             btVector3(axis.x, axis.y, axis.z), angle)
         return q
 
+
     def getX(self):
+        """
+        Get the X component of the Quaternion.
+        """
         return self.quaternion.getX()
 
 
     def getY(self):
+        """
+        Get the Y component of the Quaternion.
+        """
         return self.quaternion.getY()
 
 
     def getZ(self):
+        """
+        Get the Z component of the Quaternion.
+        """
         return self.quaternion.getZ()
 
 
     def getW(self):
+        """
+        Get the W component of the Quaternion.
+        """
         return self.quaternion.getW()
 
 
 
 cdef class CollisionShape:
+    """
+    A CollisionShape defines the shape of an object in a CollisionWorld.  Shapes
+    are used for collision detection.
+
+    This class is a wrapper around btCollisionShape.
+    """
     cdef btCollisionShape *thisptr
 
 
@@ -320,11 +361,23 @@ cdef class CollisionShape:
 
 
 cdef class ConvexShape(CollisionShape):
-    pass
+    """
+    A ConvexShape is a shape that curves outwards only.  This is a base class
+    for many other types of shapes which are convex.
+
+    This class is loosely a wrapper around btConvexShape.
+    """
 
 
 
 cdef class Box2dShape(ConvexShape):
+    """
+    A Box2dShape is a box primitive around the origin, its sides axis aligned
+    with length specified by half extents, in local shape coordinates.  It has
+    size only in the X and Y dimensions.
+
+    This class is a wrapper around btBox2dShape.
+    """
     def __cinit__(self, Vector3 boxHalfExtents):
         self.thisptr = new btBox2dShape(
             btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
@@ -332,6 +385,13 @@ cdef class Box2dShape(ConvexShape):
 
 
 cdef class BoxShape(ConvexShape):
+    """
+    A Box2dShape is a box primitive around the origin, its sides axis aligned
+    with length specified by half extents, in local shape coordinates.  It has
+    size only in the X and Y dimensions.
+
+    This class is a wrapper around btBox2dShape.
+    """
     def __cinit__(self, Vector3 boxHalfExtents):
         self.thisptr = new btBoxShape(
             btVector3(boxHalfExtents.x, boxHalfExtents.y, boxHalfExtents.z))
@@ -339,22 +399,42 @@ cdef class BoxShape(ConvexShape):
 
 
 cdef class SphereShape(ConvexShape):
+    """
+    A SphereShape is a sphere around the origin, with a specified radius.
+
+    This class is a wrapper around btSphereShape.
+    """
     def __cinit__(self, btScalar radius):
         self.thisptr = new btSphereShape(radius)
 
 
     def getRadius(self):
+        """
+        Return the radius of the sphere.
+        """
         return (<btSphereShape*>self.thisptr).getRadius()
 
 
 
 cdef class CapsuleShape(ConvexShape):
+    """
+    A CapsuleShape is a capsule around the Y axis.  A capsule is a cylinder with
+    a sphere on each end.
+
+    This class is a wrapper around btCapsuleShape.
+    """
     def __cinit__(self, btScalar radius, btScalar height):
         self.thisptr = new btCapsuleShape(radius, height)
 
 
 
 cdef class BvhTriangleMeshShape(ConvexShape):
+    """
+    A BvhTriangleMeshShape is a shape defined by an array of triangle vertex
+    data and an array of indices against those triangles.
+
+    This class is a wrapper around btBvhTriangleMeshShape.
+    """
     cdef btStridingMeshInterface *stride
     cdef numpy.ndarray triangles
     cdef numpy.ndarray vertices
@@ -378,6 +458,15 @@ cdef class BvhTriangleMeshShape(ConvexShape):
 
 
 cdef class Transform:
+    """
+    A Transform represents an a translation and rotation.
+
+    When dealing with the location and orientation of an object in a
+    CollisionWorld, Bullet will use a Transform instance.
+
+    This class is a wrapper around btTransform.  Unlike btTransform, a Transform
+    always starts off set to the identity.
+    """
     cdef btTransform *thisptr
 
     def __cinit__(self):
@@ -390,31 +479,53 @@ cdef class Transform:
 
 
     def getOrigin(self):
+        """
+        Get the origin vector translation as a Vector3.
+        """
         cdef btVector3 origin = self.thisptr.getOrigin()
         return Vector3(origin.getX(), origin.getY(), origin.getZ())
 
 
     def setOrigin(self, Vector3 origin not None):
+        """
+        Set the origin vector translation for this Transform.
+        """
         self.thisptr.setOrigin(btVector3(origin.x, origin.y, origin.z))
 
 
     def setRotation(self, Quaternion rot not None):
+        """
+        Set the rotation of this Transform using a Quaternion.
+        """
         cdef btQuaternion *quat = rot.quaternion
         self.thisptr.setRotation(quat[0])
 
 
     def getRotation(self):
+        """
+        Get the rotation of this Transform as a Quaternion.
+        """
         cdef btQuaternion quat = self.thisptr.getRotation()
         return Quaternion.fromScalars(
             quat.getX(), quat.getY(), quat.getZ(), quat.getW())
 
 
     def setIdentity(self):
+        """
+        Set this Transform to be the identity.
+        """
         self.thisptr.setIdentity()
 
 
 
 cdef class CollisionObject:
+    """
+    A CollisionObject is something which can be collided with when added to a
+    CollisionWorld.  It has a position and orientation as well as a
+    CollisionShape.
+
+    This class is a wrapper around btCollisionObject.
+    """
     cdef btCollisionObject *thisptr
     cdef CollisionShape _shape
 
