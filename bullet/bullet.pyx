@@ -538,29 +538,49 @@ cdef class CollisionObject:
 
 
     def setRestitution(self, btScalar restitution):
+        """
+        Specify a scaling factor to be applied to the normal impulse computed
+        when this object collides with another.
+        """
         self.thisptr.setRestitution(restitution)
 
 
     def getRestitution(self):
+        """
+        Get the restitution value for this object.
+        """
         return self.thisptr.getRestitution()
 
 
     def getCollisionShape(self):
+        """
+        Get the CollisionShape associated with this object.
+        """
         return self._shape
 
 
     def setCollisionShape(self, CollisionShape collisionShape):
+        """
+        Replace this object's CollisionShape.
+        """
         self.thisptr.setCollisionShape(collisionShape.thisptr)
         self._shape = collisionShape
 
 
     def getWorldTransform(self):
+        """
+        Get a copy of the transformation for this CollisionObject as a Transform
+        instance.
+        """
         cdef Transform transform = Transform()
         transform.thisptr[0] = self.thisptr.getWorldTransform()
         return transform
 
 
     def setWorldTransform(self, Transform transform not None):
+        """
+        Replace the transformation for this CollisionObject.
+        """
         self.thisptr.setWorldTransform(transform.thisptr[0])
 
 
@@ -753,6 +773,14 @@ cdef class RigidBody(CollisionObject):
 
 
 cdef class ActionInterface:
+    """
+    ActionInterface is a base class for objects in a DynamicsWorld which are not
+    purely dynamic.
+
+    This class is a wrapper around btActionInterface.
+
+    XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use a subclass instead.
+    """
     cdef btActionInterface *thisptr
 
     def __dealloc__(self):
@@ -761,7 +789,24 @@ cdef class ActionInterface:
 
 
 cdef class CharacterControllerInterface(ActionInterface):
+    """
+    A CharacterControllerInterface is an ActionInterface which allows walking
+    motion to be applied to an object in a DynamicsWorld without physically
+    simulating that walking.
+
+    This class is a wrapper around btCharacterControllerInterface.
+
+    XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use a subclass instead.
+    """
     def setWalkDirection(self, Vector3 walkDirection):
+        """
+        Set the movement direction for this CharacterControllerInterface.  The
+        magnitude and the direction of the given walkDirection will determine
+        how this object moves in the world.
+
+        Calling setWalkDirection will cause a previous call to
+        setVelocityForTimeInterval to be disregarded.
+        """
         cdef btCharacterControllerInterface *controller
         controller = <btCharacterControllerInterface*>self.thisptr
         controller.setWalkDirection(
@@ -771,6 +816,15 @@ cdef class CharacterControllerInterface(ActionInterface):
     def setVelocityForTimeInterval(self,
                                    Vector3 velocity not None,
                                    btScalar timeInterval):
+        """
+        Set the movement direction for this CharacterControllerInterface.  The
+        direction of the given velocity will determine the direction of this
+        object's movement in the world, while the timeInterval will determine
+        the rate of movement.
+
+        Calling setVelocityForTimeInterval will cause a previous call to
+        setWalkDirection to be disregarded.
+        """
         cdef btCharacterControllerInterface *controller
         controller = <btCharacterControllerInterface*>self.thisptr
         controller.setVelocityForTimeInterval(
@@ -779,12 +833,26 @@ cdef class CharacterControllerInterface(ActionInterface):
 
 
 cdef class PairCachingGhostObject(CollisionObject):
+     """
+     A PairCachingGhostObject is a CollisionObject which keeps track of all the
+     objects it is overlapping.
+
+     This class is a wrapper around btPairCachingGhostObject.
+     """
      def __init__(self):
          self.thisptr = new btPairCachingGhostObject()
 
 
 
 cdef class KinematicCharacterController(CharacterControllerInterface):
+    """
+    A KinematicCharacterController is a CharacterControllerInterface which
+    implements movement according to the standard rules of kinematics.  That is,
+    it will move based on a velocity and direction in the usual way, but without
+    regard for interactions with other objects in the world.
+
+    This class is a wrapper around btKinematicCharacterController.
+    """
     cdef readonly PairCachingGhostObject ghost
     cdef ConvexShape shape
 
@@ -797,6 +865,10 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
 
 
     def warp(self, Vector3 origin not None):
+        """
+        Change the location of this object to the given point without traversing
+        the intermediate distance.
+        """
         cdef btKinematicCharacterController *controller
         controller = <btKinematicCharacterController*>self.thisptr
         controller.warp(btVector3(origin.x, origin.y, origin.z))
@@ -851,6 +923,12 @@ cdef class SequentialImpulseConstraintSolver(ConstraintSolver):
 
 
 cdef class CollisionWorld:
+    """
+    A CollisionWorld is a container for CollisionObjects which can detect
+    collisions between those objects.
+
+    This class is a wrapper around btCollisionWorld.
+    """
     cdef btCollisionWorld *thisptr
 
     cdef _object *dispatcher
@@ -883,10 +961,20 @@ cdef class CollisionWorld:
 
 
     def getNumCollisionObjects(self):
+        """
+        Return a count of the number of CollisionObjects which are part of this
+        CollisionWorld.
+        """
         return self.thisptr.getNumCollisionObjects()
 
 
     def addCollisionObject(self, CollisionObject collisionObject):
+        """
+        Add a new CollisionObject to this CollisionWorld.
+
+        If you have a RigidBody to add, you should add it using
+        DynamicsWorld.addRigidBody instead.
+        """
         if collisionObject.thisptr.getCollisionShape() == NULL:
             raise ValueError(
                 "Cannot add CollisionObject without a CollisionShape")
@@ -894,11 +982,20 @@ cdef class CollisionWorld:
 
 
     def removeCollisionObject(self, CollisionObject collisionObject):
+        """
+        Remove a CollisionObject from this CollisionWorld.
+        """
         self.thisptr.removeCollisionObject(collisionObject.thisptr)
 
 
 
 cdef class DynamicsWorld(CollisionWorld):
+    """
+    A DynamicsWorld is a container for RigidBodies which implements dynamics (ie
+    physics) for those bodies.
+
+    This class is a wrapper around btDynamicsWorld.
+    """
     cdef list _rigidBodies
 
     def __init__(self,
@@ -909,18 +1006,27 @@ cdef class DynamicsWorld(CollisionWorld):
 
 
     def addRigidBody(self, RigidBody body not None):
+        """
+        Add a new RigidBody to this DynamicsWorld.
+        """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addRigidBody(<btRigidBody*>body.thisptr)
         self._rigidBodies.append(body)
 
 
     def removeRigidBody(self, RigidBody body not None):
+        """
+        Remove a RigidBody from this DynamicsWorld.
+        """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         self._rigidBodies.remove(body)
         world.removeRigidBody(<btRigidBody*>body.thisptr)
 
 
     def addAction(self, ActionInterface action not None):
+        """
+        Add a new ActionInterface to this DynamicsWorld.
+        """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addAction(<btActionInterface*>action.thisptr)
         self._rigidBodies.append(action)
