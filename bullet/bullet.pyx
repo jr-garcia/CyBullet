@@ -566,6 +566,20 @@ cdef class CollisionObject:
 
 
 cdef class MotionState:
+    """
+    A MotionState is a primarily an object to provide callback methods to the
+    dynamics implementation.
+
+    A MotionState instance can be set on a RigidBody to receive world transform
+    updates for that object.  Bullet may call the setWorldTransform callback
+    only for objects which move to avoid the cost of doing so where no new
+    information will be provided.
+
+    This class is a wrapper around btMotionState.  This wrapping isn't entirely
+    sensible, so it may change in a future release.
+
+    XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use DefaultMotionState instead.
+    """
     cdef btMotionState *thisptr
 
     def __dealloc__(self):
@@ -573,23 +587,56 @@ cdef class MotionState:
 
 
     def getWorldTransform(self):
+        """
+        Get a copy of the transformation for this motion state as a Transform
+        instance.
+        """
         transform = Transform()
         self.thisptr.getWorldTransform(transform.thisptr[0])
         return transform
 
 
     def setWorldTransform(self, Transform centerOfMassWorldTrans not None):
+        """
+        Set the transformation for this motion state.  This will probably have
+        no meaningful effect on the state of the world containing the object
+        this MotionState is associated with.
+
+        XXX If this method is overridden in a subclass, the overridden method
+        will not be called by Bullet.
+        """
         self.thisptr.setWorldTransform(centerOfMassWorldTrans.thisptr[0])
 
 
 
 cdef class DefaultMotionState(MotionState):
+    """
+    A DefaultMotionState is a MotionState which keeps track of the last
+    transformation provided to it.
+
+    A DefaultMotionState can be used with each RigidBody so that the position
+    can be queried after a simulation step.
+
+    This class is a wrapper around btDefaultMotionState.  Like MotionState, this
+    wrapping doesn't really make sense and will probably be changed.
+    """
     def __cinit__(self):
         self.thisptr = new btDefaultMotionState()
 
 
 
 cdef class RigidBody(CollisionObject):
+    """
+    A RigidBody is an object which can be added to a DynamicsWorld and involved
+    in dynamics (ie, it can move because of physics).
+
+    Like a CollisionObject, a RigidBody has a CollisionShape.  Additionally, it
+    may also have a MotionState to keep track of its movements.  It also has a
+    mass which will influence in the usual way how much acceleration it
+    experiences due to forces acting on it.
+
+    This class is a wrapper around btRigidBody.
+    """
     cdef MotionState motion
     cdef CollisionShape shape
 
@@ -615,33 +662,65 @@ cdef class RigidBody(CollisionObject):
 
 
     def isInWorld(self):
+        """
+        Return a boolean indicating whether or not this RigidBody has been added
+        to a CollisionWorld.
+        """
         cdef btRigidBody *body
         body = <btRigidBody*>self.thisptr
         return body.isInWorld()
 
 
     def getMotionState(self):
+        """
+        Return the MotionState associated with this RigidBody.
+        """
         return self.motion
 
 
     def setAngularFactor(self, btScalar angularFactor):
+        """
+        Specify whether this object will be allowed to rotate or not.  If the
+        given angularFactor argument is 0, rotation will not be allowed.  If it
+        is 1, rotation will be allowed.
+        """
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         body.setAngularFactor(angularFactor)
 
 
     def setLinearVelocity(self, Vector3 v not None):
+        """
+        Change the linear velocity of this RigidBody for at least a single
+        simulation step.  It is unspecified whether the change will persist for
+        more than one simulation step.  For reliable and reproducable results,
+        you must set the linear velocity before each simulation tick.  This is
+        best done in the physics tick callback.
+
+        XXX The physics tick callback is presently unexposed.
+        """
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 vel = btVector3(v.x, v.y, v.z)
         body.setLinearVelocity(vel)
 
 
     def applyCentralForce(self, Vector3 f not None):
+        """
+        Apply a force to the center of mass of this RigidBody.  The resulting
+        acceleration is computed in the usual way, dividing the force by the
+        mass of the RigidBody.
+        """
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 force = btVector3(f.x, f.y, f.z)
         body.applyCentralForce(force)
 
 
     def applyForce(self, Vector3 f not None, Vector3 relativePosition not None):
+        """
+        Apply a force to this RigidBody at a specified offset from its center of
+        mass.  The resulting acceleration is computed in the usual way, dividing
+        the force by the mass of the RigidBody.  A force applied off-center may
+        also result in rotation.
+        """
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 force = btVector3(f.x, f.y, f.z)
         cdef btVector3 pos = btVector3(
@@ -650,12 +729,21 @@ cdef class RigidBody(CollisionObject):
 
 
     def applyCentralImpulse(self, Vector3 i not None):
+        """
+        Apply an impulse to this RigidBody.  The resulting acceleration will be
+        equal to the impulse.
+        """
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
         body.applyCentralImpulse(impulse)
 
 
     def applyImpulse(self, Vector3 i not None, Vector3 relativePosition not None):
+        """
+        Apply an impulse to this RigidBody at a specified offset from its center
+        of mass.  The resulting accleration will be equal to the impulse.  An
+        impulse applied off-center may also result in rotation.
+        """
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
         cdef btVector3 pos = btVector3(
