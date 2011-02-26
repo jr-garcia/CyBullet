@@ -876,6 +876,18 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
 
 
 cdef class CollisionDispatcher:
+    """
+    A CollisionDispatcher implements pairwise collision detection.  It supports
+    convex-convex collision detection and convex-concave collision detection.
+
+    Roughly speaking, this is the only CollisionDispatcher available, so you
+    don't have to understand it, just use it.  Or better yet, ignore it and let
+    CollisionWorld (or a subclass) create it for you.
+
+    This class is a wrapper around btCollisionDispatcher.
+
+    XXX Try not to instantiate too many of these, each one leaks some memory.
+    """
     cdef btCollisionConfiguration *config
     cdef btDispatcher *thisptr
 
@@ -892,6 +904,16 @@ cdef class CollisionDispatcher:
 
 
 cdef class BroadphaseInterface:
+    """
+    A BroadphaseInterface generates lists of potentially colliding pairs.  It is
+    intended to be faster than CollisionDispatcher, but it may include pairs of
+    objects which do not actually collide.  It is applied first to narrow the
+    list of pairs the CollisionDispatcher will need to examine.
+
+    This class is loosely a wrapper around btBroadphaseInterface.
+
+    XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use one of the subclasses instead.
+    """
     cdef btBroadphaseInterface *thisptr
 
     def __dealloc__(self):
@@ -900,6 +922,14 @@ cdef class BroadphaseInterface:
 
 
 cdef class AxisSweep3(BroadphaseInterface):
+    """
+    An AxisSweep3 is a BroadphaseInterface implemented using the sweep and prune
+    algorithm.  AxisSweep3 is a good general purpose BroadphaseInterface,
+    particularly for worlds where most objects have little or no motion.
+    However, it can only detect collisions within specified fixed bounds.
+
+    This class is a wrapper around btAxisSweep3.
+    """
     def __cinit__(self, Vector3 lower, Vector3 upper):
         self.thisptr = new btAxisSweep3(
             btVector3(lower.x, lower.y, lower.z),
@@ -908,6 +938,13 @@ cdef class AxisSweep3(BroadphaseInterface):
 
 
 cdef class ConstraintSolver:
+    """
+    A ConstraintSolver determines what contact forces to apply.
+
+    This class is loosely a wrapper around btConstraintSolver.
+
+    XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use one of the subclasses instead.
+    """
     cdef btConstraintSolver *thisptr
 
     def __dealloc__(self):
@@ -915,8 +952,17 @@ cdef class ConstraintSolver:
 
 
 
-
 cdef class SequentialImpulseConstraintSolver(ConstraintSolver):
+    """
+    A SequentialImpulseConstraintSolver is a ConstraintSolver based on a fast
+    SIMD implementation of the Projected Gauss Seidel method.
+
+    This is basically the only ConstraintSolver available, so whether you
+    understood that sentence or not, use this class with your DynamicsWorld.  Or
+    just ignore ConstraintSolvers entirely and let the DynamicsWorld create one.
+
+    This class is a wrapper around btSequentialImpulseConstraintSolver.
+    """
     def __cinit__(self):
         self.thisptr = new btSequentialImpulseConstraintSolver()
 
@@ -994,6 +1040,9 @@ cdef class DynamicsWorld(CollisionWorld):
     A DynamicsWorld is a container for RigidBodies which implements dynamics (ie
     physics) for those bodies.
 
+    For a dynamics world in which simulation time can actually pass, see one of
+    the subclasses of this class.
+
     This class is a wrapper around btDynamicsWorld.
     """
     cdef list _rigidBodies
@@ -1034,6 +1083,12 @@ cdef class DynamicsWorld(CollisionWorld):
 
 
 cdef class DiscreteDynamicsWorld(DynamicsWorld):
+    """
+    A DiscreteDynamicsWorld is a DynamicsWorld in which time passes in fixed
+    increments.
+
+    This class is a wrapper around btDiscreteDynamicsWorld.
+    """
     cdef ConstraintSolver solver
 
     def __init__(self,
@@ -1057,11 +1112,19 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
 
 
     def setGravity(self, Vector3 gravity):
+        """
+        Set the gravity in this world.
+        XXX This belongs on DynamicsWorld.
+        """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.setGravity(btVector3(gravity.x, gravity.y, gravity.z))
 
 
     def getGravity(self):
+        """
+        Get the gravity in this world.
+        XXX This belongs on DynamicsWorld.
+        """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         cdef btVector3 gravity = world.getGravity()
         return Vector3(gravity.getX(), gravity.getY(), gravity.getZ())
@@ -1071,5 +1134,23 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
                        btScalar timeStep,
                        int maxSubSteps = 1,
                        btScalar fixedTimeStep = 1. / 60.):
+        """
+        Advance time in the simulation.
+
+        timeStep specifies the amount of simulation time which will pass during
+        this call.
+
+        maxSubSteps specifies the maximum number of simulation steps which will
+        be taken trying to reach the point in the future specified by timeStep.
+
+        fixedTimeStep specifies the size of each simulation step.  Bullet works
+        best if this value is always the same.
+
+        Observe that if fixedTimeStep * maxSubSteps < timeStep, simulation time
+        is lost and the simulation will not advance as far as you intended it
+        to.
+
+        The number of simulation steps taken is returned.
+        """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         return world.stepSimulation(timeStep, maxSubSteps, fixedTimeStep)
