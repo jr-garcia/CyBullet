@@ -4,7 +4,7 @@
 """
 PyBullet wraps the Bullet Physics library for Python.
 
-Dynamics features are provided by mainly by DynamicsWorld and RigidBody.  For
+Dynamics features are provided mainly by DynamicsWorld and RigidBody.  For
 example:
 
     world = DiscreteDynamicsWorld()
