@@ -1,6 +1,20 @@
 # Copyright (c) Jean-Paul Calderone
 # See LICENSE for details.
 
+"""
+PyBullet wraps the Bullet Physics library for Python.
+
+Dynamics features are provided by mainly by DynamicsWorld and RigidBody.  For
+example:
+
+    world = DiscreteDynamicsWorld()
+    ball = RigidBody(shape=SphereShape(1.0), mass=1.0)
+    world.addRigidBody(ball)
+    world.stepSimulation(1.0, 60, 1.0 / 60.0)
+    print ball.getWorldTransform().getOrigin()
+
+"""
+
 from libcpp cimport bool
 
 cimport numpy
