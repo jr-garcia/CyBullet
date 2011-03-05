@@ -469,6 +469,14 @@ cdef class CapsuleShape(ConvexShape):
 
 
 cdef class IndexedMesh:
+    """
+    An IndexedMesh is a contiguous vertex array and a contiguous array of index
+    data into that vertex array.  It defines a mesh of triangles composed of
+    triples of vertex data given by sequential triples of indices from the index
+    array.
+
+    This class is a wrapper around btIndexedMesh.
+    """
     cdef btIndexedMesh* thisptr
 
     cdef PHY_ScalarType _dtypeToScalarType(self, numpy.ndarray array):
@@ -488,18 +496,29 @@ cdef class IndexedMesh:
 
     def __cinit__(self):
         self.thisptr = new btIndexedMesh()
-        self.thisptr.m_numTriangles = 0;
-        self.thisptr.m_triangleIndexBase = NULL;
-        self.thisptr.m_triangleIndexStride = 0;
-        self.thisptr.m_numVertices = 0;
-        self.thisptr.m_vertexBase = NULL;
-        self.thisptr.m_vertexStride = 0;
+        self.thisptr.m_numTriangles = 0
+        self.thisptr.m_triangleIndexBase = NULL
+        self.thisptr.m_triangleIndexStride = 0
+        self.thisptr.m_numVertices = 0
+        self.thisptr.m_vertexBase = NULL
+        self.thisptr.m_vertexStride = 0
         self.thisptr.m_indexType = PHY_FLOAT
         self.thisptr.m_vertexType = PHY_FLOAT
 
 
     def setIndices(self, int numTriangles, int indexStride,
                    numpy.ndarray indexBase not None):
+        """
+        Specify the index data for for this IndexedMesh.
+
+        numTriangles specifies the total number of triangles this mesh will
+        contain.
+
+        indexStride gives the distance in bytes between the start of each triple
+        of values defining a triangle.
+
+        indexBase is a numpy array giving the index data itself.
+        """
         cdef PHY_ScalarType indexType = self._dtypeToScalarType(indexBase)
         if indexType == -1:
             raise ValueError("Unsupported index array type")
@@ -512,6 +531,17 @@ cdef class IndexedMesh:
 
     def setVertices(self, int numVertices, int vertexStride,
                     numpy.ndarray vertexBase not None):
+        """
+        Specify the vertex data for this IndexedMesh.
+
+        numVertices specifies the total number of vertices this mesh will
+        contain.
+
+        vertexStride gives the distance in bytes between the start of each
+        triple of values defining a vertex.
+
+        vertexBase is a numpy array giving the vertex data itself.
+        """
         cdef PHY_ScalarType vertexType = self._dtypeToScalarType(vertexBase)
         if vertexType == -1:
             raise ValueError("Unsupported index array type")
@@ -524,6 +554,7 @@ cdef class IndexedMesh:
 
     def __dealloc__(self):
         del self.thisptr
+
 
 
 cdef class StridingMeshInterface:
