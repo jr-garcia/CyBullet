@@ -124,19 +124,45 @@ class IndexedMeshTests(TestCase):
 
 
 class TriangleIndexVertexArrayTests(TestCase):
+    def test_rejectIntegerIndexedMesh(self):
+        """
+        TriangleIndexVertexArray.addIndexedMesh raises ValueError if passed an
+        IndexedMesh containing anything other than floats or doubles.
+        """
+        triangles = TriangleIndexVertexArray()
+        mesh = IndexedMesh()
+        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
+        mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'i'))
+        self.assertRaises(ValueError, triangles.addIndexedMesh, mesh)
+
+
     def test_addIndexedMesh(self):
         triangles = TriangleIndexVertexArray()
 
         for i in range(3):
             mesh = IndexedMesh()
             mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
-            mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'i'))
+            mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'f'))
             triangles.addIndexedMesh(mesh)
+
+
+    def test_getNumSubParts(self):
+        """
+        TriangleIndexVertexArray.getNumSubParts returns the number of indexed
+        meshes which have been added to the TriangleIndexVertexArray.
+        """
+        triangles = TriangleIndexVertexArray()
+        self.assertEquals(triangles.getNumSubParts(), 0)
+        mesh = IndexedMesh()
+        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'f'))
+        mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'f'))
+        triangles.addIndexedMesh(mesh)
+        self.assertEquals(triangles.getNumSubParts(), 1)
 
 
 
 class BvhTriangleMeshShapeTests(TestCase):
-    def test_initialized(self):
+    def test_meshInitializer(self):
         shape = BvhTriangleMeshShape(TriangleIndexVertexArray())
         self.assertTrue(isinstance(shape, CollisionShape))
 

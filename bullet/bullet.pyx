@@ -40,7 +40,8 @@ cdef extern from "btBulletCollisionCommon.h":
         PHY_ScalarType m_vertexType
 
     cdef cppclass btStridingMeshInterface:
-        pass
+        int getNumSubParts()
+
 
     cdef cppclass btTriangleIndexVertexArray(btStridingMeshInterface):
         btTriangleIndexVertexArray()
@@ -53,6 +54,7 @@ cdef extern from "btBulletCollisionCommon.h":
             int vertexStride)
 
         void addIndexedMesh(btIndexedMesh &mesh, PHY_ScalarType indexType)
+
 
     cdef cppclass btCollisionShape:
         void calculateLocalInertia(btScalar mass, btVector3 &inertia)
@@ -384,6 +386,14 @@ cdef class StridingMeshInterface:
         del self.thisptr
 
 
+    def getNumSubParts(self):
+        """
+        Return the number of separate continuous vertex arrays are part of this
+        StridingMeshInterface.
+        """
+        return self.thisptr.getNumSubParts()
+
+
 
 cdef class TriangleIndexVertexArray(StridingMeshInterface):
     def __cinit__(self):
@@ -391,6 +401,8 @@ cdef class TriangleIndexVertexArray(StridingMeshInterface):
 
 
     def addIndexedMesh(self, IndexedMesh mesh not None):
+        if mesh.thisptr.m_vertexType == PHY_INTEGER:
+            raise ValueError("XXX")
         cdef btTriangleIndexVertexArray *array
         array = <btTriangleIndexVertexArray*>self.thisptr
         array.addIndexedMesh(mesh.thisptr[0], mesh.thisptr.m_indexType)
