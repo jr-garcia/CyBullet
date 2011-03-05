@@ -558,8 +558,15 @@ cdef class IndexedMesh:
 
 
 cdef class StridingMeshInterface:
-    cdef btStridingMeshInterface *thisptr
+    """
+    A StridingMeshInterface is an object suitable for use in defining a triangle
+    mesh for BvhTriangleMeshShape.
 
+    This class is loosely a wrapper around btStridingMeshInterface.
+
+    XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use TriangleIndexVertexArray instead.
+    """
+    cdef btStridingMeshInterface *thisptr
 
     def __dealloc__(self):
         del self.thisptr
@@ -575,11 +582,27 @@ cdef class StridingMeshInterface:
 
 
 cdef class TriangleIndexVertexArray(StridingMeshInterface):
+    """
+    A TriangleIndexVertexArray is a striding mesh defined in terms of an array
+    of IndexedMesh instances.
+
+    Construct a TriangleIndexVertexArray and add one or more IndexedMesh
+    instances to it to define a triangle mesh for a BvhTriangleMeshShape.
+
+    This class is a wrapper around btTriangleIndexVertexArray.
+    """
     def __cinit__(self):
         self.thisptr = new btTriangleIndexVertexArray()
 
 
     def addIndexedMesh(self, IndexedMesh mesh not None):
+        """
+        Add another IndexedMesh to this index/vertex array.
+
+        XXX When is it necessary to rebuild the optimized bvh on
+        BvhTriangleMeshShape with respect to changes to this
+        TriangleIndexVertexArray.
+        """
         if mesh.thisptr.m_vertexType == PHY_INTEGER:
             raise ValueError("XXX")
         cdef btTriangleIndexVertexArray *array
