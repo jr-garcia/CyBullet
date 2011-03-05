@@ -193,7 +193,7 @@ class TriangleIndexVertexArrayTests(TestCase):
         triangles = TriangleIndexVertexArray()
         self.assertEquals(triangles.getNumSubParts(), 0)
         mesh = IndexedMesh()
-        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'f'))
+        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
         mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'f'))
         triangles.addIndexedMesh(mesh)
         self.assertEquals(triangles.getNumSubParts(), 1)
@@ -204,6 +204,19 @@ class BvhTriangleMeshShapeTests(TestCase):
     def test_meshInitializer(self):
         shape = BvhTriangleMeshShape(TriangleIndexVertexArray())
         self.assertTrue(isinstance(shape, CollisionShape))
+
+
+    def test_buildOptimizedBvh(self):
+        """
+        BvhTriangleMeshShape.buildOptimizedBvh does something.
+        """
+        triangles = TriangleIndexVertexArray()
+        mesh = IndexedMesh()
+        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
+        mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'f'))
+        triangles.addIndexedMesh(mesh)
+        shape = BvhTriangleMeshShape(triangles)
+        shape.buildOptimizedBvh()
 
 
 

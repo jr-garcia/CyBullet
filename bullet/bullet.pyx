@@ -102,6 +102,8 @@ cdef extern from "btBulletCollisionCommon.h":
             bool useQuantizedAabbCompression,
             bool buildBvh)
 
+        void buildOptimizedBvh()
+
 
 cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
     cdef cppclass btBox2dShape(btConvexShape):
@@ -623,6 +625,24 @@ cdef class BvhTriangleMeshShape(ConvexShape):
     def __init__(self, StridingMeshInterface mesh not None):
         self.stride = mesh
         self.thisptr = new btBvhTriangleMeshShape(mesh.thisptr, True, False)
+
+
+    def buildOptimizedBvh(self):
+        """
+        Build the internal optimized Bounding Volume Hierarchy structure to
+        allow fast collision detection between this and other shapes.
+
+        XXX You probably have to call this if you ever change the underlying
+        mesh.  But I don't know.
+
+        XXX You also have to call it before you try to use this shape for
+        collision detection.
+
+        XXX You also must put data into the underlying mesh or an assert will
+        fail in bullet.
+        """
+        # XXX This is executed by the test suite, but it's not actually tested.
+        (<btBvhTriangleMeshShape*>self.thisptr).buildOptimizedBvh()
 
 
 
