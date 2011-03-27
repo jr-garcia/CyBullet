@@ -13,7 +13,7 @@ from OpenGL.GLU import gluPerspective, gluNewQuadric, gluSphere
 
 from bullet.bullet import (
     Vector3, Transform,
-    BoxShape, SphereShape, 
+    BoxShape, SphereShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
     DefaultMotionState,
     RigidBody,
@@ -22,14 +22,18 @@ from bullet.bullet import (
 
 class Ground:
     def __init__(self):
-        self.groundIndices = array(range(9), 'i')
+        self.groundIndices = array(
+            [0, 1, 2,
+             2, 3, 0],
+            'i')
         self.groundVertices = array([
                 0,  0, 0,
                 10, 0, 0,
-                10, 0, 10], 'f')
+                10, 0, 10,
+                0,  0, 10], 'f')
         groundMesh = IndexedMesh()
-        groundMesh.setIndices(9, 0, self.groundIndices)
-        groundMesh.setVertices(3, 0, self.groundVertices)
+        groundMesh.setIndices(2, 3 * 4, self.groundIndices)
+        groundMesh.setVertices(4, 3 * 4, self.groundVertices)
         groundStuff = TriangleIndexVertexArray()
         groundStuff.addIndexedMesh(groundMesh)
         groundShape = BvhTriangleMeshShape(groundStuff)
@@ -37,7 +41,7 @@ class Ground:
 
         groundTransform = Transform()
         groundTransform.setIdentity()
-        groundTransform.setOrigin(Vector3(-1, -5, -1))
+        groundTransform.setOrigin(Vector3(-5, -5, -5))
         groundMotion = DefaultMotionState()
         groundMotion.setWorldTransform(groundTransform)
 
@@ -50,11 +54,11 @@ class Ground:
         glColor(0, 0, 255)
         glTranslate(o.x, o.y, o.z)
         glBegin(GL_TRIANGLES)
-        for i in range(0, len(self.groundIndices), 3):
-            x, y, z = self.groundIndices[i:i + 3]
-            x = self.groundVertices[x]
-            y = self.groundVertices[y]
-            z = self.groundVertices[z]
+        for i in range(len(self.groundIndices)):
+            base = self.groundIndices[i] * 3
+            x = self.groundVertices[base]
+            y = self.groundVertices[base + 1]
+            z = self.groundVertices[base + 2]
             glVertex(x, y, z)
         glEnd()
 
@@ -97,10 +101,11 @@ def main():
     dynamicsWorld = DiscreteDynamicsWorld()
 
     objects.append(Ground())
-    objects.append(Ball(Vector3(1, 10, 0), (255, 0, 0)))
-    objects.append(Ball(Vector3(0, 20, 1), (0, 255, 0)))
-    objects.append(Ball(Vector3(0, 30, 1), (255, 255, 0)))
-    objects.append(Ball(Vector3(0, 40, 1), (0, 255, 255, 0)))
+    objects.append(Ball(Vector3(-5.1, 10, -5.1), (255, 0, 0)))
+    objects.append(Ball(Vector3(-5.1, 20, 5.1), (0, 255, 0)))
+    objects.append(Ball(Vector3(5.1, 30, -5.1), (255, 255, 0)))
+    objects.append(Ball(Vector3(5.1, 40, 5.1), (0, 255, 255, 0)))
+    objects.append(Ball(Vector3(0, 50, 0), (255, 0, 255)))
 
     for o in objects:
         dynamicsWorld.addRigidBody(o.body)

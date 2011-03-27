@@ -1,7 +1,7 @@
 # Copyright (c) PyBullet Team
 # See LICENSE for details.
 
-import pygame.display
+import pygame.display, pygame.locals
 
 from OpenGL.GL import (
     GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_DEPTH_TEST, GL_TRIANGLE_STRIP,
