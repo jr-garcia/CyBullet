@@ -1,3 +1,5 @@
+# Copyright (c) PyBullet Team
+# See LICENSE for details.
 
 import time
 
