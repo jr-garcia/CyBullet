@@ -472,10 +472,22 @@ cdef class CapsuleShape(ConvexShape):
 
 cdef class IndexedMesh:
     """
-    An IndexedMesh is a contiguous vertex array and a contiguous array of index
-    data into that vertex array.  It defines a mesh of triangles composed of
-    triples of vertex data given by sequential triples of indices from the index
-    array.
+
+    An IndexedMesh is a vertex array and an array of index data into that
+    vertex array.  It defines a mesh of triangles composed of triples of vertex
+    data given by sequential triples of indices from the index array.  For
+    example, an IndexedMesh defining two triangles would use an vertex array
+    like::
+
+        numpy.array([0, 0, 0,
+                     1, 0, 0,
+                     1, 0, 1,
+                     0, 0, 1], 'f')
+
+    and an index array like this::
+
+        numpy.array([0, 1, 2,
+                     2, 3, 0], 'i')
 
     This class is a wrapper around btIndexedMesh.
     """
