@@ -32,14 +32,38 @@ cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
     ctypedef int bool
 
+    cdef enum PHY_ScalarType:
+        PHY_FLOAT
+        PHY_DOUBLE
+        PHY_INTEGER
+        PHY_SHORT
+        PHY_FIXEDPOINT88
+        PHY_UCHAR
+
     cdef cppclass btVector3
+
+
+    cdef cppclass btIndexedMesh:
+        int m_numTriangles
+        unsigned char *m_triangleIndexBase
+        int m_triangleIndexStride
+        PHY_ScalarType m_indexType
+
+        int m_numVertices
+        unsigned char *m_vertexBase
+        int m_vertexStride
+        PHY_ScalarType m_vertexType
+
 
     cdef cppclass btQuaternion
 
+
     cdef cppclass btStridingMeshInterface:
-        pass
+        int getNumSubParts()
+
 
     cdef cppclass btTriangleIndexVertexArray(btStridingMeshInterface):
+        btTriangleIndexVertexArray()
         btTriangleIndexVertexArray(
             int numTriangles,
             int *triangleIndexBase,
@@ -47,6 +71,9 @@ cdef extern from "btBulletCollisionCommon.h":
             int numVertices,
             btScalar *vertexBase,
             int vertexStride)
+
+        void addIndexedMesh(btIndexedMesh &mesh, PHY_ScalarType indexType)
+
 
     cdef cppclass btCollisionShape:
         void calculateLocalInertia(btScalar mass, btVector3 &inertia)
@@ -74,6 +101,8 @@ cdef extern from "btBulletCollisionCommon.h":
             btStridingMeshInterface* meshInterface,
             bool useQuantizedAabbCompression,
             bool buildBvh)
+
+        void buildOptimizedBvh()
 
 
 cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
@@ -441,6 +470,160 @@ cdef class CapsuleShape(ConvexShape):
         self.thisptr = new btCapsuleShape(radius, height)
 
 
+cdef class IndexedMesh:
+    """
+
+    An IndexedMesh is a vertex array and an array of index data into that
+    vertex array.  It defines a mesh of triangles composed of triples of vertex
+    data given by sequential triples of indices from the index array.  For
+    example, an IndexedMesh defining two triangles would use an vertex array
+    like::
+
+        numpy.array([0, 0, 0,
+                     1, 0, 0,
+                     1, 0, 1,
+                     0, 0, 1], 'f')
+
+    and an index array like this::
+
+        numpy.array([0, 1, 2,
+                     2, 3, 0], 'i')
+
+    This class is a wrapper around btIndexedMesh.
+    """
+    cdef btIndexedMesh* thisptr
+
+    cdef PHY_ScalarType _dtypeToScalarType(self, numpy.ndarray array):
+        cdef char *dname = array.dtype.char
+        cdef char dtype = dname[0]
+
+        if dtype == 'f':
+            return PHY_FLOAT
+        elif dtype == 'd':
+            return PHY_DOUBLE
+        elif dtype == 'i':
+            return PHY_INTEGER
+        elif dtype == 'h':
+            return PHY_SHORT
+        return <PHY_ScalarType>-1
+
+
+    def __cinit__(self):
+        self.thisptr = new btIndexedMesh()
+        self.thisptr.m_numTriangles = 0
+        self.thisptr.m_triangleIndexBase = NULL
+        self.thisptr.m_triangleIndexStride = 0
+        self.thisptr.m_numVertices = 0
+        self.thisptr.m_vertexBase = NULL
+        self.thisptr.m_vertexStride = 0
+        self.thisptr.m_indexType = PHY_FLOAT
+        self.thisptr.m_vertexType = PHY_FLOAT
+
+
+    def setIndices(self, int numTriangles, int indexStride,
+                   numpy.ndarray indexBase not None):
+        """
+        Specify the index data for for this IndexedMesh.
+
+        numTriangles specifies the total number of triangles this mesh will
+        contain.
+
+        indexStride gives the distance in bytes between the start of each triple
+        of values defining a triangle.
+
+        indexBase is a numpy array giving the index data itself.
+        """
+        cdef PHY_ScalarType indexType = self._dtypeToScalarType(indexBase)
+        if indexType == -1:
+            raise ValueError("Unsupported index array type")
+
+        self.thisptr.m_numTriangles = numTriangles
+        self.thisptr.m_triangleIndexStride = indexStride
+        self.thisptr.m_triangleIndexBase = <unsigned char*>indexBase.data
+        self.thisptr.m_indexType = indexType
+
+
+    def setVertices(self, int numVertices, int vertexStride,
+                    numpy.ndarray vertexBase not None):
+        """
+        Specify the vertex data for this IndexedMesh.
+
+        numVertices specifies the total number of vertices this mesh will
+        contain.
+
+        vertexStride gives the distance in bytes between the start of each
+        triple of values defining a vertex.
+
+        vertexBase is a numpy array giving the vertex data itself.
+        """
+        cdef PHY_ScalarType vertexType = self._dtypeToScalarType(vertexBase)
+        if vertexType == -1:
+            raise ValueError("Unsupported index array type")
+
+        self.thisptr.m_numVertices = numVertices
+        self.thisptr.m_vertexStride = vertexStride
+        self.thisptr.m_vertexBase = <unsigned char*>vertexBase.data
+        self.thisptr.m_vertexType = vertexType
+
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+
+cdef class StridingMeshInterface:
+    """
+    A StridingMeshInterface is an object suitable for use in defining a triangle
+    mesh for BvhTriangleMeshShape.
+
+    This class is loosely a wrapper around btStridingMeshInterface.
+
+    XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use TriangleIndexVertexArray instead.
+    """
+    cdef btStridingMeshInterface *thisptr
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+    def getNumSubParts(self):
+        """
+        Return the number of separate continuous vertex arrays are part of this
+        StridingMeshInterface.
+        """
+        return self.thisptr.getNumSubParts()
+
+
+
+cdef class TriangleIndexVertexArray(StridingMeshInterface):
+    """
+    A TriangleIndexVertexArray is a striding mesh defined in terms of an array
+    of IndexedMesh instances.
+
+    Construct a TriangleIndexVertexArray and add one or more IndexedMesh
+    instances to it to define a triangle mesh for a BvhTriangleMeshShape.
+
+    This class is a wrapper around btTriangleIndexVertexArray.
+    """
+    def __cinit__(self):
+        self.thisptr = new btTriangleIndexVertexArray()
+
+
+    def addIndexedMesh(self, IndexedMesh mesh not None):
+        """
+        Add another IndexedMesh to this index/vertex array.
+
+        XXX When is it necessary to rebuild the optimized bvh on
+        BvhTriangleMeshShape with respect to changes to this
+        TriangleIndexVertexArray.
+        """
+        if mesh.thisptr.m_vertexType == PHY_INTEGER:
+            raise ValueError("XXX")
+        cdef btTriangleIndexVertexArray *array
+        array = <btTriangleIndexVertexArray*>self.thisptr
+        array.addIndexedMesh(mesh.thisptr[0], mesh.thisptr.m_indexType)
+
+
 
 cdef class BvhTriangleMeshShape(ConvexShape):
     """
@@ -449,25 +632,29 @@ cdef class BvhTriangleMeshShape(ConvexShape):
 
     This class is a wrapper around btBvhTriangleMeshShape.
     """
-    cdef btStridingMeshInterface *stride
-    cdef numpy.ndarray triangles
-    cdef numpy.ndarray vertices
+    cdef StridingMeshInterface stride
 
-    def __init__(self,
-                 numpy.ndarray[numpy.int32_t] triangles not None,
-                 numpy.ndarray[numpy.float32_t] vertices not None):
-
-        self.triangles = triangles
-        self.vertices = vertices
-
-        self.stride = new btTriangleIndexVertexArray(
-            len(triangles) / 3, <int*>triangles.data, 3,
-            len(triangles) / 3, <btScalar*>vertices.data, 3)
-        self.thisptr = new btBvhTriangleMeshShape(self.stride, True, True)
+    def __init__(self, StridingMeshInterface mesh not None):
+        self.stride = mesh
+        self.thisptr = new btBvhTriangleMeshShape(mesh.thisptr, True, False)
 
 
-    def __dealloc__(self):
-        del self.stride
+    def buildOptimizedBvh(self):
+        """
+        Build the internal optimized Bounding Volume Hierarchy structure to
+        allow fast collision detection between this and other shapes.
+
+        XXX You probably have to call this if you ever change the underlying
+        mesh.  But I don't know.
+
+        XXX You also have to call it before you try to use this shape for
+        collision detection.
+
+        XXX You also must put data into the underlying mesh or an assert will
+        fail in bullet.
+        """
+        # XXX This is executed by the test suite, but it's not actually tested.
+        (<btBvhTriangleMeshShape*>self.thisptr).buildOptimizedBvh()
 
 
 

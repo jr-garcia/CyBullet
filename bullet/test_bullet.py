@@ -8,7 +8,7 @@ import numpy
 from bullet import (
     Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
-    BvhTriangleMeshShape,
+    IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
@@ -131,45 +131,92 @@ class CapsuleShapeTests(TestCase):
 
 
 
+class IndexedMeshTests(TestCase):
+    def test_instantiate(self):
+        mesh = IndexedMesh()
+        self.assertTrue(isinstance(mesh, IndexedMesh))
+
+
+    def test_setIndicesInvalidArray(self):
+        mesh = IndexedMesh()
+        self.assertRaises(TypeError, mesh.setIndices, 0, 0, None)
+        self.assertRaises(
+            ValueError, mesh.setIndices, 0, 0, numpy.array([], 'Q'))
+
+
+    def test_setIndices(self):
+        mesh = IndexedMesh()
+        mesh.setIndices(3, 2, numpy.array([1, 2, 3], 'i'))
+
+
+    def test_setVerticesInvalidArray(self):
+        mesh = IndexedMesh()
+        self.assertRaises(TypeError, mesh.setVertices, 0, 0, None)
+        self.assertRaises(
+            ValueError, mesh.setVertices, 0, 0, numpy.array([], 'Q'))
+
+
+    def test_setVertices(self):
+        mesh = IndexedMesh()
+        mesh.setVertices(1, 2, numpy.array([1, 2, 3], 'i'))
+
+
+
+class TriangleIndexVertexArrayTests(TestCase):
+    def test_rejectIntegerIndexedMesh(self):
+        """
+        TriangleIndexVertexArray.addIndexedMesh raises ValueError if passed an
+        IndexedMesh containing anything other than floats or doubles.
+        """
+        triangles = TriangleIndexVertexArray()
+        mesh = IndexedMesh()
+        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
+        mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'i'))
+        self.assertRaises(ValueError, triangles.addIndexedMesh, mesh)
+
+
+    def test_addIndexedMesh(self):
+        triangles = TriangleIndexVertexArray()
+
+        for i in range(3):
+            mesh = IndexedMesh()
+            mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
+            mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'f'))
+            triangles.addIndexedMesh(mesh)
+
+
+    def test_getNumSubParts(self):
+        """
+        TriangleIndexVertexArray.getNumSubParts returns the number of indexed
+        meshes which have been added to the TriangleIndexVertexArray.
+        """
+        triangles = TriangleIndexVertexArray()
+        self.assertEquals(triangles.getNumSubParts(), 0)
+        mesh = IndexedMesh()
+        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
+        mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'f'))
+        triangles.addIndexedMesh(mesh)
+        self.assertEquals(triangles.getNumSubParts(), 1)
+
+
+
 class BvhTriangleMeshShapeTests(TestCase):
-    def test_incorrectInitializer(self):
-        goodTriangleType = 'int32'
-        goodTriangleData = [1]
-        badTriangleType = 'int8'
-        badTriangleData = [[1, 2], [3, 4]]
-
-        goodVertexType = 'float32'
-        goodVertexData = [1]
-        badVertexType = 'float64'
-        badVertexData = [[1, 2], [3, 4]]
-
-        goodTriangles = numpy.array(goodTriangleData, goodTriangleType)
-        goodVertices = numpy.array(goodVertexData, goodVertexType)
-
-        badArgs = [
-            (goodTriangles, None),
-            (None, goodVertices),
-            (goodTriangles, numpy.array(badVertexData, goodVertexType)),
-            (goodTriangles, numpy.array(goodVertexData, badVertexType)),
-            (numpy.array(badTriangleData, goodTriangleType), goodVertices),
-            (numpy.array(goodTriangleData, badTriangleType), goodVertices),
-            ]
-
-        for (triangles, vertices) in badArgs:
-            try:
-                BvhTriangleMeshShape(triangles, vertices)
-            except (TypeError, ValueError):
-                pass
-            else:
-                self.fail(
-                    "BvhTriangleMeshShape accepted (%r, %r)" % (
-                        triangles, vertices))
+    def test_meshInitializer(self):
+        shape = BvhTriangleMeshShape(TriangleIndexVertexArray())
+        self.assertTrue(isinstance(shape, CollisionShape))
 
 
-    def test_initialized(self):
-        BvhTriangleMeshShape(
-            numpy.array([0, 1, 2], 'int32'),
-            numpy.array([1, 2, 3], 'float32'))
+    def test_buildOptimizedBvh(self):
+        """
+        BvhTriangleMeshShape.buildOptimizedBvh does something.
+        """
+        triangles = TriangleIndexVertexArray()
+        mesh = IndexedMesh()
+        mesh.setIndices(1, 0, numpy.array([0, 1, 2] * 3, 'i'))
+        mesh.setVertices(3, 0, numpy.array([3, 4, 5], 'f'))
+        triangles.addIndexedMesh(mesh)
+        shape = BvhTriangleMeshShape(triangles)
+        shape.buildOptimizedBvh()
 
 
 
