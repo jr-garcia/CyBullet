@@ -240,6 +240,7 @@ cdef extern from "btBulletCollisionCommon.h":
         void setAngularFactor(btScalar angFac)
 
         void setLinearVelocity(btVector3 velocity)
+        btVector3& getLinearVelocity()
 
         void applyCentralForce(btVector3 force)
         void applyForce(btVector3 force, btVector3 relativePosition)
@@ -922,6 +923,15 @@ cdef class RigidBody(CollisionObject):
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 vel = btVector3(v.x, v.y, v.z)
         body.setLinearVelocity(vel)
+
+
+    def getLinearVelocity(self):
+        """
+        Retrieve the current linear velocity of this RigidBody as a Vector3.
+        """
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 vel = body.getLinearVelocity()
+        return Vector3(vel.getX(), vel.getY(), vel.getZ())
 
 
     def applyCentralForce(self, Vector3 f not None):

@@ -286,9 +286,13 @@ class RigidBodyTests(TestCase):
         body.setAngularFactor(1.0)
 
 
-    def test_setLinearVelocity(self):
+    def test_linearVelocity(self):
         body = RigidBody()
         body.setLinearVelocity(Vector3(1, 2, 3))
+        velocity = body.getLinearVelocity()
+        self.assertEquals(velocity.x, 1)
+        self.assertEquals(velocity.y, 2)
+        self.assertEquals(velocity.z, 3)
 
 
     def test_applyCentralForce(self):
