@@ -46,6 +46,7 @@ def main():
         (bullet.KinematicCharacterController,
          bullet.BoxShape(bullet.Vector3(1, 2, 3)), 5, 1),
         (bullet.CollisionDispatcher,),
+        (bullet.OverlappingPairCache,),
         (bullet.AxisSweep3, bullet.Vector3(0, 0, 0), bullet.Vector3(2, 2, 2)),
         (bullet.SequentialImpulseConstraintSolver,),
         (bullet.CollisionWorld,),

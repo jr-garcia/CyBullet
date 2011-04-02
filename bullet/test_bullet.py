@@ -12,6 +12,7 @@ from bullet import (
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
+    OverlappingPairCache, HashedOverlappingPairCache, AxisSweep3,
     CollisionWorld, DiscreteDynamicsWorld)
 
 
@@ -384,6 +385,20 @@ class RigidBodyTests(TestCase):
 
 
 
+class HashedOverlappingPairCacheTests(TestCase):
+    def test_setInternalGhostPairCallback(self):
+        cache = HashedOverlappingPairCache()
+        cache.setInternalGhostPairCallback()
+
+
+class AxisSweep3Tests(TestCase):
+    def test_getOverlappingPairCache(self):
+        broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(1, 1, 1))
+        cache = broadphase.getOverlappingPairCache()
+        self.assertTrue(isinstance(cache, OverlappingPairCache))
+
+
+
 class CollisionWorldTests(TestCase):
     def test_empty(self):
         world = CollisionWorld()
@@ -450,6 +465,13 @@ class DiscreteDynamicsWorldTests(TestCase):
         world = DiscreteDynamicsWorld()
         action = KinematicCharacterController(SphereShape(1), 1.0, 1)
         world.addAction(action)
+
+
+    def test_removeAction(self):
+        world = DiscreteDynamicsWorld()
+        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+        world.addAction(action)
+        world.removeAction(action)
 
 
     def test_cycle(self):
