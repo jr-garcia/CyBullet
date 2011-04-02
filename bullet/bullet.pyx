@@ -493,7 +493,6 @@ cdef class CapsuleShape(ConvexShape):
 
 cdef class IndexedMesh:
     """
-
     An IndexedMesh is a vertex array and an array of index data into that
     vertex array.  It defines a mesh of triangles composed of triples of vertex
     data given by sequential triples of indices from the index array.  For
