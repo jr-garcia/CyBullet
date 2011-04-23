@@ -6,6 +6,8 @@ from unittest import TestCase
 import numpy
 
 from bullet import (
+    ACTIVE_TAG, ISLAND_SLEEPING, WANTS_DEACTIVATION, DISABLE_DEACTIVATION,
+    DISABLE_SIMULATION,
     Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
@@ -278,6 +280,18 @@ class CollisionObjectTests(TestCase):
         self.assertEquals(origin.x, 3)
         self.assertEquals(origin.y, 5)
         self.assertEquals(origin.z, 7)
+
+
+    def test_activationState(self):
+        """
+        CollisionObject.setActivationState changes an objects activation state
+        and CollisionObject.getActivationState returns the current state.
+        """
+        for state in [ACTIVE_TAG, ISLAND_SLEEPING, WANTS_DEACTIVATION,
+                      DISABLE_DEACTIVATION, DISABLE_SIMULATION]:
+            obj = CollisionObject()
+            obj.setActivationState(state)
+            self.assertEqual(state, obj.getActivationState())
 
 
 

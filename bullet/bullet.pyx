@@ -40,6 +40,12 @@ cdef extern from "btBulletCollisionCommon.h":
         PHY_FIXEDPOINT88
         PHY_UCHAR
 
+    cdef int _ACTIVE_TAG "ACTIVE_TAG"
+    cdef int _ISLAND_SLEEPING "ISLAND_SLEEPING"
+    cdef int _WANTS_DEACTIVATION "WANTS_DEACTIVATION"
+    cdef int _DISABLE_DEACTIVATION "DISABLE_DEACTIVATION"
+    cdef int _DISABLE_SIMULATION "DISABLE_SIMULATION"
+
     cdef cppclass btVector3
 
 
@@ -139,6 +145,9 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         btTransform& getWorldTransform()
         void setWorldTransform(btTransform& worldTrans)
+
+        int getActivationState()
+        void setActivationState(int newState)
 
 
     cdef cppclass btRigidBody(btCollisionObject)
@@ -738,6 +747,12 @@ cdef class Transform:
         self.thisptr.setIdentity()
 
 
+ACTIVE_TAG = _ACTIVE_TAG
+ISLAND_SLEEPING = _ISLAND_SLEEPING
+WANTS_DEACTIVATION = _WANTS_DEACTIVATION
+DISABLE_DEACTIVATION = _DISABLE_DEACTIVATION
+DISABLE_SIMULATION = _DISABLE_SIMULATION
+
 
 cdef class CollisionObject:
     """
@@ -804,6 +819,25 @@ cdef class CollisionObject:
         """
         self.thisptr.setWorldTransform(transform.thisptr[0])
 
+
+    def getActivationState(self):
+        """
+        Return the current activation state of this object.
+        """
+        return self.thisptr.getActivationState()
+
+
+    def setActivationState(self, int newState):
+        """
+        Change the activation state of this object.  newState must be one of:
+
+          - ACTIVE_TAG
+          - ISLAND_SLEEPING
+          - WANTS_DEACTIVATION
+          - DISABLE_DEACTIVATION
+          - DISABLE_SIMULATION
+        """
+        self.thisptr.setActivationState(newState)
 
 
 cdef class MotionState:
