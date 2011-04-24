@@ -43,6 +43,12 @@ cdef extern from "btBulletCollisionCommon.h":
         PHY_FIXEDPOINT88
         PHY_UCHAR
 
+    cdef int _ACTIVE_TAG "ACTIVE_TAG"
+    cdef int _ISLAND_SLEEPING "ISLAND_SLEEPING"
+    cdef int _WANTS_DEACTIVATION "WANTS_DEACTIVATION"
+    cdef int _DISABLE_DEACTIVATION "DISABLE_DEACTIVATION"
+    cdef int _DISABLE_SIMULATION "DISABLE_SIMULATION"
+
     cdef cppclass btVector3
 
 
@@ -143,6 +149,9 @@ cdef extern from "btBulletDynamicsCommon.h":
         btTransform& getWorldTransform()
         void setWorldTransform(btTransform& worldTrans)
 
+        int getActivationState()
+        void setActivationState(int newState)
+
 
     cdef cppclass btRigidBody(btCollisionObject)
 
@@ -157,6 +166,22 @@ cdef extern from "btBulletDynamicsCommon.h":
         void setVelocityForTimeInterval(
             btVector3 velocity, btScalar timeInterval)
 
+
+cdef extern from "BulletCollision/BroadphaseCollision/btOverlappingPairCache.h":
+    cdef cppclass btOverlappingPairCallback:
+        pass
+
+
+    cdef cppclass btGhostPairCallback(btOverlappingPairCallback):
+        pass
+
+
+    cdef cppclass btOverlappingPairCache:
+        void setInternalGhostPairCallback(btOverlappingPairCallback*)
+
+
+    cdef cppclass btHashedOverlappingPairCache(btOverlappingPairCache):
+        pass
 
 
 cdef extern from "BulletCollision/CollisionDispatch/btGhostObject.h":
@@ -223,10 +248,13 @@ cdef extern from "btBulletCollisionCommon.h":
 
 
     cdef cppclass btBroadphaseInterface:
-        pass
+        btOverlappingPairCache* getOverlappingPairCache()
+
 
     cdef cppclass btAxisSweep3(btBroadphaseInterface):
-        btAxisSweep3(btVector3, btVector3)
+        btAxisSweep3(btVector3, btVector3, unsigned short int maxHandles,
+                     btOverlappingPairCache *pairCache,
+                     bool disableRaycastAccelerator)
 
 
     cdef cppclass btDbvtBroadphase(btBroadphaseInterface):
@@ -247,6 +275,7 @@ cdef extern from "btBulletCollisionCommon.h":
         void setAngularFactor(btScalar angFac)
 
         void setLinearVelocity(btVector3 velocity)
+        btVector3& getLinearVelocity()
 
         void applyCentralForce(btVector3 force)
         void applyForce(btVector3 force, btVector3 relativePosition)
@@ -292,6 +321,7 @@ cdef extern from "btBulletDynamicsCommon.h":
         void removeRigidBody(btRigidBody*)
 
         void addAction(btActionInterface*)
+        void removeAction(btActionInterface*)
 
         int stepSimulation(btScalar, int, btScalar)
 
@@ -486,7 +516,6 @@ cdef class CapsuleShape(ConvexShape):
 
 cdef class IndexedMesh:
     """
-
     An IndexedMesh is a vertex array and an array of index data into that
     vertex array.  It defines a mesh of triangles composed of triples of vertex
     data given by sequential triples of indices from the index array.  For
@@ -732,6 +761,12 @@ cdef class Transform:
         self.thisptr.setIdentity()
 
 
+ACTIVE_TAG = _ACTIVE_TAG
+ISLAND_SLEEPING = _ISLAND_SLEEPING
+WANTS_DEACTIVATION = _WANTS_DEACTIVATION
+DISABLE_DEACTIVATION = _DISABLE_DEACTIVATION
+DISABLE_SIMULATION = _DISABLE_SIMULATION
+
 
 cdef class CollisionObject:
     """
@@ -798,6 +833,25 @@ cdef class CollisionObject:
         """
         self.thisptr.setWorldTransform(transform.thisptr[0])
 
+
+    def getActivationState(self):
+        """
+        Return the current activation state of this object.
+        """
+        return self.thisptr.getActivationState()
+
+
+    def setActivationState(self, int newState):
+        """
+        Change the activation state of this object.  newState must be one of:
+
+          - ACTIVE_TAG
+          - ISLAND_SLEEPING
+          - WANTS_DEACTIVATION
+          - DISABLE_DEACTIVATION
+          - DISABLE_SIMULATION
+        """
+        self.thisptr.setActivationState(newState)
 
 
 cdef class MotionState:
@@ -936,6 +990,15 @@ cdef class RigidBody(CollisionObject):
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 vel = btVector3(v.x, v.y, v.z)
         body.setLinearVelocity(vel)
+
+
+    def getLinearVelocity(self):
+        """
+        Retrieve the current linear velocity of this RigidBody as a Vector3.
+        """
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 vel = body.getLinearVelocity()
+        return Vector3(vel.getX(), vel.getY(), vel.getZ())
 
 
     def applyCentralForce(self, Vector3 f not None):
@@ -1118,6 +1181,45 @@ cdef class CollisionDispatcher:
 
 
 
+cdef class OverlappingPairCache:
+    """
+    An OverlappingPairCache manages the addition, removal, and storage of
+    overlapping pairs.
+
+    This class is a wrapper around btOverlappingPairCache.
+
+    XXX This wrapper will cause segfaults.  Use one of the subclasses instead.
+    """
+    cdef btOverlappingPairCache *thisptr
+
+    def __dealloc__(self):
+        del self.thisptr
+
+
+    def setInternalGhostPairCallback(self):
+        """
+        Set the internal ghost pair callback to a new btGhostPairCallback.
+
+        The corresponding C++ API accepts the callback as a parameter.  This API
+        can do that when I learn why you would ever pass something other than a
+        new btGhostPairCallback.
+        """
+        self.thisptr.setInternalGhostPairCallback(new btGhostPairCallback())
+
+
+
+cdef class HashedOverlappingPairCache(OverlappingPairCache):
+    """
+    A HashedOverlappingPairCache manages the addition, removal, and storage of
+    overlapping pairs using a hash table.
+
+    This class is a wrapper around btHashedOverlappingPairCache.
+    """
+    def __cinit__(self):
+        self.thisptr = new btHashedOverlappingPairCache()
+
+
+
 cdef class BroadphaseInterface:
     """
     A BroadphaseInterface generates lists of potentially colliding pairs.  It is
@@ -1130,9 +1232,18 @@ cdef class BroadphaseInterface:
     XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use one of the subclasses instead.
     """
     cdef btBroadphaseInterface *thisptr
+    cdef readonly OverlappingPairCache _paircache
 
     def __dealloc__(self):
         del self.thisptr
+
+
+    def getOverlappingPairCache(self):
+        """
+        Return the OverlappingPairCache used by this BroadphaseInterface.
+        """
+        # Subclasses must take care to set this during their initialization.
+        return self._paircache
 
 
 
@@ -1146,9 +1257,11 @@ cdef class AxisSweep3(BroadphaseInterface):
     This class is a wrapper around btAxisSweep3.
     """
     def __cinit__(self, Vector3 lower, Vector3 upper):
+        self._paircache = HashedOverlappingPairCache()
         self.thisptr = new btAxisSweep3(
             btVector3(lower.x, lower.y, lower.z),
-            btVector3(upper.x, upper.y, upper.z))
+            btVector3(upper.x, upper.y, upper.z),
+            16384, self._paircache.thisptr, False)
 
 
 
@@ -1306,6 +1419,16 @@ cdef class DynamicsWorld(CollisionWorld):
         self._rigidBodies.append(action)
 
 
+    def removeAction(self, ActionInterface action not None):
+        """
+        Remove an ActionInterface which was previously added to this
+        DynamicsWorld.
+        """
+        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
+        world.removeAction(<btActionInterface*>action.thisptr)
+        self._rigidBodies.append(action)
+
+
 
 cdef class DiscreteDynamicsWorld(DynamicsWorld):
     """
@@ -1326,7 +1449,7 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
         if solver is None:
             solver = SequentialImpulseConstraintSolver()
         if broadphase is None:
-            broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))
+            broadphase = AxisSweep3(Vector3(-100, -100, -100), Vector3(100, 100, 100))
 
         self.solver = solver
         self.thisptr = <btCollisionWorld*>new btDiscreteDynamicsWorld(

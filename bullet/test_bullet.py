@@ -6,12 +6,15 @@ from unittest import TestCase
 import numpy
 
 from bullet import (
+    ACTIVE_TAG, ISLAND_SLEEPING, WANTS_DEACTIVATION, DISABLE_DEACTIVATION,
+    DISABLE_SIMULATION,
     Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
+    OverlappingPairCache, HashedOverlappingPairCache, AxisSweep3,
     CollisionWorld, DiscreteDynamicsWorld)
 
 
@@ -279,6 +282,18 @@ class CollisionObjectTests(TestCase):
         self.assertEquals(origin.z, 7)
 
 
+    def test_activationState(self):
+        """
+        CollisionObject.setActivationState changes an objects activation state
+        and CollisionObject.getActivationState returns the current state.
+        """
+        for state in [ACTIVE_TAG, ISLAND_SLEEPING, WANTS_DEACTIVATION,
+                      DISABLE_DEACTIVATION, DISABLE_SIMULATION]:
+            obj = CollisionObject()
+            obj.setActivationState(state)
+            self.assertEqual(state, obj.getActivationState())
+
+
 
 class RigidBodyTests(TestCase):
     def test_setAngularFactor(self):
@@ -286,9 +301,13 @@ class RigidBodyTests(TestCase):
         body.setAngularFactor(1.0)
 
 
-    def test_setLinearVelocity(self):
+    def test_linearVelocity(self):
         body = RigidBody()
         body.setLinearVelocity(Vector3(1, 2, 3))
+        velocity = body.getLinearVelocity()
+        self.assertEquals(velocity.x, 1)
+        self.assertEquals(velocity.y, 2)
+        self.assertEquals(velocity.z, 3)
 
 
     def test_applyCentralForce(self):
@@ -377,6 +396,20 @@ class RigidBodyTests(TestCase):
         self.assertTrue(body.isInWorld())
         world.removeRigidBody(body)
         self.assertFalse(body.isInWorld())
+
+
+
+class HashedOverlappingPairCacheTests(TestCase):
+    def test_setInternalGhostPairCallback(self):
+        cache = HashedOverlappingPairCache()
+        cache.setInternalGhostPairCallback()
+
+
+class AxisSweep3Tests(TestCase):
+    def test_getOverlappingPairCache(self):
+        broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(1, 1, 1))
+        cache = broadphase.getOverlappingPairCache()
+        self.assertTrue(isinstance(cache, OverlappingPairCache))
 
 
 
@@ -510,6 +543,13 @@ class DiscreteDynamicsWorldTests(TestCase):
         world = DiscreteDynamicsWorld()
         action = KinematicCharacterController(SphereShape(1), 1.0, 1)
         world.addAction(action)
+
+
+    def test_removeAction(self):
+        world = DiscreteDynamicsWorld()
+        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+        world.addAction(action)
+        world.removeAction(action)
 
 
     def test_cycle(self):
