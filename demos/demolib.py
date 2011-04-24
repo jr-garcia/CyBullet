@@ -1,7 +1,11 @@
 
+import time
+
+import pygame.display
+
 from OpenGL.GL import (
-    GL_TRIANGLE_STRIP,
-    glColor,
+    GL_TRIANGLE_STRIP, GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT,
+    glPushMatrix, glPopMatrix, glColor, glClear,
     glBegin, glEnd, glTranslate, glVertex)
 from OpenGL.GLU import gluNewQuadric, gluSphere
 
@@ -59,3 +63,19 @@ class Ball:
         glColor(*self.color)
         glTranslate(o.x, o.y, o.z)
         gluSphere(self.quad, self.radius, 25, 25)
+
+
+def simulate(world, objects):
+    while True:
+        time.sleep(1.0 / 60.0)
+        world.stepSimulation(1.0 / 60.0, 60, 1.0 / 60.0)
+
+        glPushMatrix()
+        for o in objects:
+            glPushMatrix()
+            o.render()
+            glPopMatrix()
+        glPopMatrix()
+
+        pygame.display.flip()
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)

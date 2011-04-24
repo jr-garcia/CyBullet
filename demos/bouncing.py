@@ -1,18 +1,15 @@
 # Copyright (c) PyBullet Team
 # See LICENSE for details.
 
-import time
-
 import pygame.locals, pygame.display
 
 from OpenGL.GL import (
-    GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_DEPTH_TEST,
-    glEnable, glPushMatrix, glPopMatrix, glClear, glTranslate)
+    GL_DEPTH_TEST, glEnable, glTranslate)
 from OpenGL.GLU import gluPerspective
 
 from bullet.bullet import Vector3, DiscreteDynamicsWorld
 
-from demolib import Ground, Ball
+from demolib import Ground, Ball, simulate
 
 def main():
     pygame.init()
@@ -35,21 +32,8 @@ def main():
     for o in objects:
         dynamicsWorld.addRigidBody(o.body)
 
-    while True:
-        time.sleep(1.0 / 60.0)
-        dynamicsWorld.stepSimulation(1.0 / 60.0, 60, 1.0 / 60.0)
-
-        glPushMatrix()
-        for o in objects:
-            glPushMatrix()
-            o.render()
-            glPopMatrix()
-        glPopMatrix()
-
-        pygame.display.flip()
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+    simulate(dynamicsWorld, objects)
 
 
 if __name__ == '__main__':
     main()
-
