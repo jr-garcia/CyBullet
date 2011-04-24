@@ -436,7 +436,7 @@ class DebugRecorder(object):
 
 class DebugDrawerTests(TestCase):
     def setUp(self):
-        self.world = CollisionWorld()
+        self.world = DiscreteDynamicsWorld()
         self.recorder = DebugRecorder()
         self.world.setDebugDrawer(self.recorder)
 
@@ -453,17 +453,25 @@ class DebugDrawerTests(TestCase):
 
 
     def test_collisions(self):
-        first = CollisionObject()
-        shape = BoxShape(Vector3(2, 1, 1))
-        first.setCollisionShape(shape)
-        self.world.addCollisionObject(first)
+        def objAt(pos):
+            obj = RigidBody(None, BoxShape(Vector3(1, 1, 1)), 1.0)
+            xform = Transform()
+            xform.setOrigin(pos)
+            obj.setWorldTransform(xform)
+            return obj
 
-        second = CollisionObject()
-        shape = BoxShape(Vector3(1, 2, 1))
-        second.setCollisionShape(shape)
-        self.world.addCollisionObject(second)
+        first = objAt(Vector3(-2, 0, 0))
+        first.applyCentralForce(Vector3(50, 0, 0))
+        second = objAt(Vector3(2, 0, 0))
+        second.applyCentralForce(Vector3(-50, 0, 0))
 
-        self.world.debugDrawWorld()
+        self.world.addRigidBody(first)
+        self.world.addRigidBody(second)
+
+        # Simulate the world enough for them to hit each other
+        for i in range(100):
+            self.world.stepSimulation(1.0 / 60.0)
+            self.world.debugDrawWorld()
         self.assertTrue(len(self.recorder.contacts) > 0)
         for contact in self.recorder.contacts:
             self.assertEquals(len(contact), 11)
