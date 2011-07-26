@@ -4,6 +4,7 @@ from Cython.Distutils import build_ext
 
 setup(
     name="bullet",
+    packages=["bullet"],
     ext_modules=[Extension(
         "bullet.bullet",
         ["bullet/bullet.pyx"],
