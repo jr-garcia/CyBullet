@@ -8,6 +8,10 @@ import numpy
 from bullet import (
     ACTIVE_TAG, ISLAND_SLEEPING, WANTS_DEACTIVATION, DISABLE_DEACTIVATION,
     DISABLE_SIMULATION,
+
+    NO_DEBUG, DRAW_WIREFRAME, DRAW_AABB, DRAW_FEATURES_TEXT,
+    DRAW_CONTACT_POINTS, DRAW_TEXT, DRAW_CONSTRAINTS, DRAW_CONSTRAINT_LIMITS,
+
     Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
@@ -444,6 +448,109 @@ class CollisionWorldTests(TestCase):
         shape = BoxShape(Vector3(2, 3, 4))
         obj.setCollisionShape(shape)
         world.addCollisionObject(obj)
+
+
+    def test_setDebugDrawer(self):
+        """
+        An object can be specified as the debug drawer for a world.
+        """
+        world = CollisionWorld()
+        drawer = object()
+        world.setDebugDrawer(drawer)
+
+
+
+class DebugRecorder(object):
+    def __init__(self):
+        self.mode = 0
+        self.lines = []
+        self.contacts = []
+
+
+    def drawLine(self, *args):
+        self.lines.append(args)
+
+
+    def drawContactPoint(self, *args):
+        self.contacts.append(args)
+
+
+    def setDebugMode(self, mode):
+        self.mode = mode
+
+
+    def getDebugMode(self):
+        return self.mode
+
+
+
+
+
+class DebugDrawerTests(TestCase):
+    def setUp(self):
+        self.world = DiscreteDynamicsWorld()
+        self.recorder = DebugRecorder()
+        self.recorder.setDebugMode(DRAW_WIREFRAME | DRAW_CONTACT_POINTS)
+        self.world.setDebugDrawer(self.recorder)
+
+
+    def test_debugFlags(self):
+        """
+        Various integer debug flags are exposed on the bullet module.
+        """
+        # Values should agree with those from btIDebugDraw.h
+        self.assertEqual(0, NO_DEBUG)
+        self.assertEqual(1 << 0, DRAW_WIREFRAME)
+        self.assertEqual(1 << 1, DRAW_AABB)
+        self.assertEqual(1 << 2, DRAW_FEATURES_TEXT)
+        self.assertEqual(1 << 3, DRAW_CONTACT_POINTS)
+        self.assertEqual(1 << 6, DRAW_TEXT)
+        self.assertEqual(1 << 11, DRAW_CONSTRAINTS)
+        self.assertEqual(1 << 12, DRAW_CONSTRAINT_LIMITS)
+
+
+    def test_lines(self):
+        """
+        Some lines are drawn using the debug drawer when
+        L{CollisionWorld.debugDrawWorld} is called.
+        """
+        obj = CollisionObject()
+        shape = BoxShape(Vector3(1, 2, 3))
+        obj.setCollisionShape(shape)
+        self.world.addCollisionObject(obj)
+        self.world.debugDrawWorld()
+        self.assertTrue(len(self.recorder.lines) > 0)
+        for line in self.recorder.lines:
+            self.assertEquals(len(line), 9)
+
+
+    def test_collisions(self):
+        """
+        When objects collide and L{CollisionWorld.debugDrawWorld} is called,
+        collisions are drawn using the debug drawer.
+        """
+        def objAt(pos):
+            obj = RigidBody(None, BoxShape(Vector3(1, 1, 1)), 1.0)
+            xform = Transform()
+            xform.setOrigin(pos)
+            obj.setWorldTransform(xform)
+            return obj
+
+        first = objAt(Vector3(-2, 0, 0))
+        first.applyCentralForce(Vector3(50, 0, 0))
+        second = objAt(Vector3(2, 0, 0))
+        second.applyCentralForce(Vector3(-50, 0, 0))
+
+        self.world.addRigidBody(first)
+        self.world.addRigidBody(second)
+
+        # Simulate the world enough for them to hit each other
+        for i in range(100):
+            self.world.stepSimulation(1.0 / 60.0)
+            self.world.debugDrawWorld()
+        self.assertTrue(len(self.recorder.contacts) > 0)
+        for contact in self.recorder.contacts:
+            self.assertEquals(len(contact), 11)
 
 
 

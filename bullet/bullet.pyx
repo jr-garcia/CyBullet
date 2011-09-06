@@ -27,6 +27,9 @@ cdef extern from "Python.h":
     cdef struct _object:
         pass
 
+    ctypedef _object PyObject
+
+
 
 cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
@@ -207,6 +210,32 @@ cdef extern from "btBulletCollisionCommon.h" namespace "btRigidBody":
             btVector3 localInteria)
 
 
+cdef extern from "LinearMath/btIDebugDraw.h":
+
+    cdef cppclass btIDebugDraw:
+        pass
+
+cdef extern from "LinearMath/btIDebugDraw.h" namespace "btIDebugDraw":
+        cdef enum DebugDrawModes:
+            DBG_NoDebug
+            DBG_DrawWireframe
+            DBG_DrawAabb
+            DBG_DrawFeaturesText
+            DBG_DrawContactPoints
+            DBG_DrawText
+            DBG_DrawConstraints
+            DBG_DrawConstraintLimits
+
+
+NO_DEBUG = DBG_NoDebug
+DRAW_WIREFRAME = DBG_DrawWireframe
+DRAW_AABB = DBG_DrawAabb
+DRAW_FEATURES_TEXT = DBG_DrawFeaturesText
+DRAW_CONTACT_POINTS = DBG_DrawContactPoints
+DRAW_TEXT = DBG_DrawText
+DRAW_CONSTRAINTS = DBG_DrawConstraints
+DRAW_CONSTRAINT_LIMITS = DBG_DrawConstraintLimits
+
 cdef extern from "btBulletCollisionCommon.h":
     cdef cppclass btCollisionConfiguration:
         pass
@@ -281,6 +310,9 @@ cdef extern from "btBulletCollisionCommon.h":
         btCollisionWorld(
             btDispatcher*, btBroadphaseInterface*, btCollisionConfiguration*)
 
+        void setDebugDrawer(btIDebugDraw *debugDrawer)
+        void debugDrawWorld()
+
         btDispatcher *getDispatcher()
         btBroadphaseInterface *getBroadphase()
 
@@ -323,6 +355,10 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         btConstraintSolver *getConstraintSolver()
 
+
+cdef extern from "bulletdebugdraw.h":
+    cdef cppclass PythonDebugDraw(btIDebugDraw):
+        PythonDebugDraw(PyObject *debugDraw)
 
 
 # Forward declare some things because of circularity in the API.
@@ -927,8 +963,15 @@ cdef class RigidBody(CollisionObject):
         self.motion = motion
         self.shape = shape
 
-        cdef btVector3 inertia
-        shape.thisptr.calculateLocalInertia(mass, inertia)
+        cdef btVector3 inertia = btVector3(0, 0, 0)
+        # TODO This is a weak heuristic to avoid using calculateLocalInertia on
+        # a shape that does not support it (and will probably SIGABRT the
+        # process).  To be really safe, it will probably be necessary to
+        # explicitly list the shapes which cannot have their local inertia
+        # calculated.
+        if mass != 0.0:
+            shape.thisptr.calculateLocalInertia(mass, inertia)
+
         cdef btRigidBodyConstructionInfo* info
         info = new btRigidBodyConstructionInfo(
             mass, self.motion.thisptr, self.shape.thisptr, inertia)
@@ -1290,6 +1333,7 @@ cdef class CollisionWorld:
     This class is a wrapper around btCollisionWorld.
     """
     cdef btCollisionWorld *thisptr
+    cdef PythonDebugDraw *debugDraw
 
     cdef _object *dispatcher
     cdef _object *broadphase
@@ -1318,6 +1362,25 @@ cdef class CollisionWorld:
         del self.thisptr
         Py_DECREF(<object>self.dispatcher)
         Py_DECREF(<object>self.broadphase)
+
+
+    def setDebugDrawer(self, debugDrawer):
+        """
+        Specify a debug drawer object to use for L{debugDrawWorld} calls.
+
+        The debug drawer must have all of the required drawing callback methods.
+        TODO Document them.  See the debugdraw.py demo for now.
+        """
+        self.debugDraw = new PythonDebugDraw(<PyObject*>debugDrawer);
+        self.thisptr.setDebugDrawer(self.debugDraw)
+
+
+    def debugDrawWorld(self):
+        """
+        Draw the current state of the world using the debug drawer provided by a
+        previous call to L{setDebugDrawer}.
+        """
+        self.thisptr.debugDrawWorld()
 
 
     def getNumCollisionObjects(self):

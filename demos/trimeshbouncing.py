@@ -9,26 +9,24 @@ IndexedMeshes.
 """
 
 
-import time
-
 from numpy import array
 
 import pygame.locals, pygame.display
 
 from OpenGL.GL import (
-    GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_DEPTH_TEST, GL_TRIANGLES,
-    glEnable, glPushMatrix, glPopMatrix, glClear, glColor,
+    GL_DEPTH_TEST, GL_TRIANGLES,
+    glEnable, glColor,
     glBegin, glEnd, glTranslate, glVertex)
-from OpenGL.GLU import gluPerspective, gluNewQuadric, gluSphere
+from OpenGL.GLU import gluPerspective
 
 from bullet.bullet import (
     Vector3, Transform,
-    BoxShape, SphereShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
     DefaultMotionState,
     RigidBody,
     DiscreteDynamicsWorld)
 
+from demolib import Ball, simulate
 
 class Ground:
     def __init__(self):
@@ -117,30 +115,6 @@ class Ground:
 
 
 
-class Ball:
-    def __init__(self, position, color):
-        self.radius = 2
-        ballShape = SphereShape(self.radius)
-        ballTransform = Transform()
-        ballTransform.setIdentity()
-        ballTransform.setOrigin(position)
-        ballMotion = DefaultMotionState()
-        ballMotion.setWorldTransform(ballTransform)
-        self.body = RigidBody(ballMotion, ballShape, 2.0)
-        self.body.setRestitution(0.9)
-        self.motion = ballMotion
-        self.quad = gluNewQuadric()
-        self.color = color
-
-
-    def render(self):
-        o = self.motion.getWorldTransform().getOrigin()
-        glColor(*self.color)
-        glTranslate(o.x, o.y, o.z)
-        gluSphere(self.quad, self.radius, 25, 25)
-
-
-
 def main():
     pygame.init()
     pygame.display.set_mode(
@@ -163,19 +137,7 @@ def main():
     for o in objects:
         dynamicsWorld.addRigidBody(o.body)
 
-    while True:
-        time.sleep(1.0 / 60.0)
-        dynamicsWorld.stepSimulation(1.0 / 60.0, 60, 1.0 / 60.0)
-
-        glPushMatrix()
-        for o in objects:
-            glPushMatrix()
-            o.render()
-            glPopMatrix()
-        glPopMatrix()
-
-        pygame.display.flip()
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+    simulate(dynamicsWorld, objects)
 
 
 if __name__ == '__main__':
