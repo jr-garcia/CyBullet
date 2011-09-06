@@ -60,6 +60,12 @@ public:
         char format[] = "()";
         PyObject* mode = NULL;
         mode = PyObject_CallMethod(this->debugDraw, &method[0], &format[0]);
-        return PyLong_AsLong(mode);
+        /* TODO Add proper unit tests for this error handling.
+         */
+        if (mode) {
+            return PyLong_AsLong(mode);
+        } else {
+            return 0;
+        }
     }
 };
