@@ -210,20 +210,21 @@ cdef extern from "btBulletCollisionCommon.h" namespace "btRigidBody":
             btVector3 localInteria)
 
 
-cdef extern from "LinearMath/btIDebugDraw.h" namespace "btIDebugDraw":
-
-    enum:
-        DBG_NoDebug
-        DBG_DrawWireframe
-        DBG_DrawAabb
-        DBG_DrawFeaturesText
-        DBG_DrawContactPoints
-        DBG_DrawText
-        DBG_DrawConstraints
-        DBG_DrawConstraintLimits
+cdef extern from "LinearMath/btIDebugDraw.h":
 
     cdef cppclass btIDebugDraw:
         pass
+
+cdef extern from "LinearMath/btIDebugDraw.h" namespace "btIDebugDraw":
+        cdef enum DebugDrawModes:
+            DBG_NoDebug
+            DBG_DrawWireframe
+            DBG_DrawAabb
+            DBG_DrawFeaturesText
+            DBG_DrawContactPoints
+            DBG_DrawText
+            DBG_DrawConstraints
+            DBG_DrawConstraintLimits
 
 
 NO_DEBUG = DBG_NoDebug
