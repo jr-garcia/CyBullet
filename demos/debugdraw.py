@@ -9,12 +9,16 @@ from OpenGL.GL import (
     glBegin, glEnd, glTranslate, glVertex)
 from OpenGL.GLU import gluPerspective
 
-from bullet.bullet import (Vector3, DiscreteDynamicsWorld)
+from bullet.bullet import (
+    DRAW_WIREFRAME, DRAW_AABB, DRAW_CONTACT_POINTS,
+    Vector3, DiscreteDynamicsWorld)
 
-from demolib import Ball
+from demolib import Ball, step, render
 
 
 class DebugDraw:
+    mode = DRAW_WIREFRAME | DRAW_AABB | DRAW_CONTACT_POINTS
+
     def reset(self):
         self.lines = []
         self.contacts = []
@@ -26,6 +30,14 @@ class DebugDraw:
 
     def drawContactPoint(self, *args):
         self.contacts.append(args)
+
+
+    def setDebugMode(self, mode):
+        self.mode = mode
+
+
+    def getDebugMode(self):
+        return self.mode
 
 
 
@@ -54,18 +66,8 @@ def main():
     for o in objects:
         dynamicsWorld.addRigidBody(o.body)
 
-    timeStep = 1.0 / 60.0
     while True:
-        timeStep - time.time() % timeStep
-        time.sleep(timeStep)
-        dynamicsWorld.stepSimulation(timeStep, 100, timeStep)
-
-        glPushMatrix()
-        for o in objects:
-            glPushMatrix()
-            o.render()
-            glPopMatrix()
-        glPopMatrix()
+        step(dynamicsWorld)
 
         debug.reset()
         dynamicsWorld.debugDrawWorld()
@@ -78,8 +80,7 @@ def main():
             print 'Contact!', debug.contacts
         glEnd()
 
-        pygame.display.flip()
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+        render(objects)
 
 
 if __name__ == '__main__':

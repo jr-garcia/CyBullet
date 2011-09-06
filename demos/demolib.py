@@ -65,17 +65,28 @@ class Ball:
         gluSphere(self.quad, self.radius, 25, 25)
 
 
+def step(world):
+    timeStep = fixedTimeStep = 1.0 / 60.0
+    world.stepSimulation(timeStep, 1, fixedTimeStep)
+    now = time.time()
+    delay = now % timeStep
+    time.sleep(delay)
+
+
+def render(objects):
+    glPushMatrix()
+    for o in objects:
+        glPushMatrix()
+        o.render()
+        glPopMatrix()
+    glPopMatrix()
+
+    pygame.display.flip()
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
+
 def simulate(world, objects):
     while True:
-        time.sleep(1.0 / 60.0)
-        world.stepSimulation(1.0 / 60.0, 60, 1.0 / 60.0)
+        step(world)
+        render(objects)
 
-        glPushMatrix()
-        for o in objects:
-            glPushMatrix()
-            o.render()
-            glPopMatrix()
-        glPopMatrix()
-
-        pygame.display.flip()
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
