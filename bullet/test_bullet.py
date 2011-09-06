@@ -8,6 +8,10 @@ import numpy
 from bullet import (
     ACTIVE_TAG, ISLAND_SLEEPING, WANTS_DEACTIVATION, DISABLE_DEACTIVATION,
     DISABLE_SIMULATION,
+
+    NO_DEBUG, DRAW_WIREFRAME, DRAW_AABB, DRAW_FEATURES_TEXT,
+    DRAW_CONTACT_POINTS, DRAW_TEXT, DRAW_CONSTRAINTS, DRAW_CONSTRAINT_LIMITS,
+
     Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
@@ -472,6 +476,21 @@ class DebugDrawerTests(TestCase):
         self.world = DiscreteDynamicsWorld()
         self.recorder = DebugRecorder()
         self.world.setDebugDrawer(self.recorder)
+
+
+    def test_debugFlags(self):
+        """
+        Various integer debug flags are exposed on the bullet module.
+        """
+        # Values should agree with those from btIDebugDraw.h
+        self.assertEqual(0, NO_DEBUG)
+        self.assertEqual(1 << 0, DRAW_WIREFRAME)
+        self.assertEqual(1 << 1, DRAW_AABB)
+        self.assertEqual(1 << 2, DRAW_FEATURES_TEXT)
+        self.assertEqual(1 << 3, DRAW_CONTACT_POINTS)
+        self.assertEqual(1 << 6, DRAW_TEXT)
+        self.assertEqual(1 << 11, DRAW_CONSTRAINTS)
+        self.assertEqual(1 << 12, DRAW_CONSTRAINT_LIMITS)
 
 
     def test_lines(self):
