@@ -451,9 +451,13 @@ class CollisionWorldTests(TestCase):
 
 
     def test_setDebugDrawer(self):
+        """
+        An object can be specified as the debug drawer for a world.
+        """
         world = CollisionWorld()
         drawer = object()
         world.setDebugDrawer(drawer)
+
 
 
 class DebugRecorder(object):
@@ -506,6 +510,10 @@ class DebugDrawerTests(TestCase):
 
 
     def test_lines(self):
+        """
+        Some lines are drawn using the debug drawer when
+        L{CollisionWorld.debugDrawWorld} is called.
+        """
         obj = CollisionObject()
         shape = BoxShape(Vector3(1, 2, 3))
         obj.setCollisionShape(shape)
@@ -517,6 +525,10 @@ class DebugDrawerTests(TestCase):
 
 
     def test_collisions(self):
+        """
+        When objects collide and L{CollisionWorld.debugDrawWorld} is called,
+        collisions are drawn using the debug drawer.
+        """
         def objAt(pos):
             obj = RigidBody(None, BoxShape(Vector3(1, 1, 1)), 1.0)
             xform = Transform()

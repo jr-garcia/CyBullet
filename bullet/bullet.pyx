@@ -1365,11 +1365,21 @@ cdef class CollisionWorld:
 
 
     def setDebugDrawer(self, debugDrawer):
+        """
+        Specify a debug drawer object to use for L{debugDrawWorld} calls.
+
+        The debug drawer must have all of the required drawing callback methods.
+        TODO Document them.  See the debugdraw.py demo for now.
+        """
         self.debugDraw = new PythonDebugDraw(<PyObject*>debugDrawer);
         self.thisptr.setDebugDrawer(self.debugDraw)
 
 
     def debugDrawWorld(self):
+        """
+        Draw the current state of the world using the debug drawer provided by a
+        previous call to L{setDebugDrawer}.
+        """
         self.thisptr.debugDrawWorld()
 
 
