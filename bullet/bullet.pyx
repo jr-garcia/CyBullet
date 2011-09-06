@@ -962,8 +962,15 @@ cdef class RigidBody(CollisionObject):
         self.motion = motion
         self.shape = shape
 
-        cdef btVector3 inertia
-        shape.thisptr.calculateLocalInertia(mass, inertia)
+        cdef btVector3 inertia = btVector3(0, 0, 0)
+        # TODO This is a weak heuristic to avoid using calculateLocalInertia on
+        # a shape that does not support it (and will probably SIGABRT the
+        # process).  To be really safe, it will probably be necessary to
+        # explicitly list the shapes which cannot have their local inertia
+        # calculated.
+        if mass != 0.0:
+            shape.thisptr.calculateLocalInertia(mass, inertia)
+
         cdef btRigidBodyConstructionInfo* info
         info = new btRigidBodyConstructionInfo(
             mass, self.motion.thisptr, self.shape.thisptr, inertia)
