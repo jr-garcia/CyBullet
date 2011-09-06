@@ -458,6 +458,7 @@ class CollisionWorldTests(TestCase):
 
 class DebugRecorder(object):
     def __init__(self):
+        self.mode = 0
         self.lines = []
         self.contacts = []
 
@@ -470,11 +471,22 @@ class DebugRecorder(object):
         self.contacts.append(args)
 
 
+    def setDebugMode(self, mode):
+        self.mode = mode
+
+
+    def getDebugMode(self):
+        return self.mode
+
+
+
+
 
 class DebugDrawerTests(TestCase):
     def setUp(self):
         self.world = DiscreteDynamicsWorld()
         self.recorder = DebugRecorder()
+        self.recorder.setDebugMode(DRAW_WIREFRAME | DRAW_CONTACT_POINTS)
         self.world.setDebugDrawer(self.recorder)
 
 

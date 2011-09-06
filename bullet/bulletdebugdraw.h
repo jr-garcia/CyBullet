@@ -50,9 +50,16 @@ public:
     }
 
     virtual void setDebugMode(int mode) {
+        char method[] = "setDebugMode";
+        char format[] = "(i)";
+        PyObject_CallMethod(this->debugDraw, &method[0], &format[0], mode);
     }
 
     virtual int getDebugMode() const {
-        return DBG_DrawWireframe | DBG_DrawAabb | DBG_DrawContactPoints;
+        char method[] = "getDebugMode";
+        char format[] = "()";
+        PyObject* mode = NULL;
+        mode = PyObject_CallMethod(this->debugDraw, &method[0], &format[0]);
+        return PyLong_AsLong(mode);
     }
 };
