@@ -1,11 +1,9 @@
 
-import time
-
 import pygame.locals, pygame.display
 
 from OpenGL.GL import (
-    GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_DEPTH_TEST, GL_LINES,
-    glEnable, glPushMatrix, glPopMatrix, glClear, glColor,
+    GL_DEPTH_TEST, GL_LINES,
+    glEnable, glColor,
     glBegin, glEnd, glTranslate, glVertex)
 from OpenGL.GLU import gluPerspective
 
