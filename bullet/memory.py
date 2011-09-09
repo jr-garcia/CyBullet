@@ -3,8 +3,6 @@
 
 import sys
 
-import numpy
-
 import bullet
 
 def memused():
@@ -35,6 +33,10 @@ def main():
         (bullet.Box2dShape, bullet.Vector3(1, 2, 3)),
         (bullet.BoxShape, bullet.Vector3(1, 2, 3)),
         (bullet.SphereShape, 3.0,),
+        (bullet.CylinderShape, bullet.Vector3(1, 2, 3)),
+        (bullet.CylinderShapeX, bullet.Vector3(1, 2, 3)),
+        (bullet.CylinderShapeZ, bullet.Vector3(1, 2, 3)),
+        (bullet.StaticPlaneShape, bullet.Vector3(1, 2, 3), 1),
         (bullet.CapsuleShape, 3.0, 5.0),
         (bullet.IndexedMesh,),
         (bullet.TriangleIndexVertexArray,),

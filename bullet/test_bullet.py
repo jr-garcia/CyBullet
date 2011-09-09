@@ -14,7 +14,9 @@ from bullet import (
 
     Vector3, Quaternion, Transform,
     CollisionShape, BoxShape, Box2dShape, SphereShape, CapsuleShape,
+    CylinderShape, CylinderShapeX, CylinderShapeZ, StaticPlaneShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
+
     ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
@@ -110,6 +112,21 @@ class DefaultMotionStateTests(TestCase):
 
 
 
+class StaticPlaneShapeTests(TestCase):
+    """
+    Tests for L{StaticPlaneShape}, a shape representing an infinite, immobile
+    plane.
+    """
+    def test_instantiate(self):
+        """
+        L{StaticPlaneShape} is initialized with a L{Vector3} giving its surface
+        normal and a I{plane constant} XXX TODO what the heck, plane constant?
+        """
+        shape = StaticPlaneShape(Vector3(3, 5, 9), 1)
+        self.assertTrue(isinstance(shape, StaticPlaneShape))
+
+
+
 class Box2dShapeTests(TestCase):
     def test_instantiate(self):
         shape = Box2dShape(Vector3(3, 5, 7))
@@ -128,6 +145,81 @@ class SphereShapeTests(TestCase):
     def test_instantiate(self):
         shape = SphereShape(3.0)
         self.assertTrue(isinstance(shape, CollisionShape))
+
+
+
+class CylinderShapeTestsMixin(object):
+    def test_cannotInstantiateWithoutHalfExtents(self):
+        """
+        If a Vector3 is not passed as the only argument to the cylinder's
+        initializer, L{TypeError} is raised.
+        """
+        self.assertRaises(TypeError, CylinderShape)
+        self.assertRaises(TypeError, CylinderShape, 1)
+        self.assertRaises(TypeError, CylinderShape, None)
+        self.assertRaises(TypeError, CylinderShape, "foo")
+        self.assertRaises(TypeError, CylinderShape, (1, 2, 3))
+        self.assertRaises(TypeError, CylinderShape, Vector3(1, 2, 3), 5)
+
+
+    def test_getHalfExtentsWithoutMargin(self):
+        """
+        L{CylinderShape.getHalfExtentsWithoutMargin} returns the cylinder's half
+        extents vector.
+        """
+        halfExtents = Vector3(2, 5, 7)
+        shape = CylinderShape(halfExtents)
+        result = shape.getHalfExtentsWithoutMargin()
+        self.assertEqual(result.x, 1.9600000381469727)
+        self.assertEqual(result.y, 4.9600000381469727)
+        self.assertEqual(result.z, 6.9600000381469727)
+
+
+
+class CylinderShapeTests(TestCase, CylinderShapeTestsMixin):
+    def test_instantiate(self):
+        shape = CylinderShape(Vector3(1, 2, 3))
+        self.assertTrue(isinstance(shape, CylinderShape))
+
+
+    def test_radius(self):
+        """
+        L{CylinderShape.getRadius} returns the radius of the cylinder.
+        """
+        shape = CylinderShape(Vector3(1, 2, 3))
+        self.assertEqual(shape.getRadius(), 1)
+
+
+
+
+
+class CylinderShapeXTests(TestCase, CylinderShapeTestsMixin):
+    def test_instantiate(self):
+        shape = CylinderShapeX(Vector3(1, 2, 3))
+        self.assertTrue(isinstance(shape, CylinderShapeX))
+
+
+    def test_radius(self):
+        """
+        L{CylinderShapeX.getRadius} returns the radius of the cylinder.
+        """
+        shape = CylinderShapeX(Vector3(1, 2, 3))
+        self.assertEqual(shape.getRadius(), 2)
+
+
+
+class CylinderShapeZTests(TestCase, CylinderShapeTestsMixin):
+    def test_instantiate(self):
+        shape = CylinderShapeZ(Vector3(1, 2, 3))
+        self.assertTrue(isinstance(shape, CylinderShapeZ))
+
+
+    def test_radius(self):
+        """
+        L{CylinderShapeZ.getRadius} returns the radius of the cylinder.
+        """
+        shape = CylinderShapeZ(Vector3(1, 2, 3))
+        self.assertEqual(shape.getRadius(), 1)
 
 
 

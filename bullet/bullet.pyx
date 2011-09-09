@@ -167,6 +167,34 @@ cdef extern from "btBulletDynamicsCommon.h":
             btVector3 velocity, btScalar timeInterval)
 
 
+
+cdef extern from "BulletCollision/CollisionShapes/btCylinderShape.h":
+    cdef cppclass btCylinderShape(btConvexShape):
+        btCylinderShape()
+        btCylinderShape(btVector3&)
+        btVector3& getHalfExtentsWithoutMargin()
+        btScalar getRadius()
+
+    cdef cppclass btCylinderShapeX(btCylinderShape):
+        btCylinderShapeX(btVector3&)
+
+    cdef cppclass btCylinderShapeZ(btCylinderShape):
+        btCylinderShapeZ(btVector3&)
+
+
+
+cdef extern from "BulletCollision/CollisionShapes/btStaticPlaneShape.h":
+    cdef cppclass btStaticPlaneShape(btCollisionShape):
+        btStaticPlaneShape(btVector3 &planeNormal, btScalar planeConstant)
+
+
+
+cdef extern from "btBulletCollisionCommon.h":
+    cdef cppclass btDispatcher:
+        pass
+
+
+
 cdef extern from "BulletCollision/BroadphaseCollision/btOverlappingPairCache.h":
     cdef cppclass btOverlappingPairCallback:
         pass
@@ -534,6 +562,66 @@ cdef class CapsuleShape(ConvexShape):
     """
     def __cinit__(self, btScalar radius, btScalar height):
         self.thisptr = new btCapsuleShape(radius, height)
+
+
+
+cdef class CylinderShape(ConvexShape):
+    """
+    A CylinderShape is a cylinder with its central axis aligned with the Y axis.
+
+    This class is a wrapper around btCylinderShape.
+    """
+    def __init__(self, Vector3 halfExtents not None):
+        self.thisptr = new btCylinderShape(
+            btVector3(halfExtents.x, halfExtents.y, halfExtents.z))
+
+
+    def getRadius(self):
+        return (<btCylinderShape*>self.thisptr).getRadius()
+
+
+    def getHalfExtentsWithoutMargin(self):
+        cdef btVector3 v = (<btCylinderShape*>self.thisptr).getHalfExtentsWithoutMargin()
+        return Vector3(v.getX(), v.getY(), v.getZ())
+
+
+
+cdef class CylinderShapeX(CylinderShape):
+    """
+    A CylinderShapeX is a cylinder with its central axis aligned with the X
+    axis.
+
+    This class is a wrapper around btCylinderShapeX.
+    """
+    def __init__(self, Vector3 halfExtents not None):
+        self.thisptr = new btCylinderShapeX(
+            btVector3(halfExtents.x, halfExtents.y, halfExtents.z))
+
+
+
+cdef class CylinderShapeZ(CylinderShape):
+    """
+    A CylinderShapeZ is a cylinder with its central axis aligned with the Z
+    axis.
+
+    This class is a wrapper around btCylinderShapeZ.
+    """
+    def __init__(self, Vector3 halfExtents not None):
+        self.thisptr = new btCylinderShapeZ(
+            btVector3(halfExtents.x, halfExtents.y, halfExtents.z))
+
+
+
+cdef class StaticPlaneShape(CollisionShape):
+    """
+    A StaticPlaneShape is an immobile plane.
+
+    This class is a wrapper around btStaticPlaneShape.
+    """
+    def __cinit__(self, Vector3 normal not None, btScalar constant):
+        self.thisptr = new btStaticPlaneShape(
+            btVector3(normal.x, normal.y, normal.z), constant)
+
 
 
 cdef class IndexedMesh:
