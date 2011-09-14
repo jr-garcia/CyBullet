@@ -1,6 +1,8 @@
 # Copyright (c) 2010 Jean-Paul Calderone
 # See LICENSE for details.
 
+from math import pi
+
 from unittest import TestCase
 
 import numpy
@@ -61,6 +63,27 @@ class QuaternionTests(TestCase):
         quat = Quaternion.fromAxisAngle(Vector3(0, 1, 0), 45)
         self.assertTrue(isinstance(quat, Quaternion))
         # XXX Assert something about the value
+
+
+    def test_getAxisAndAngle(self):
+        """
+        A L{Quaternion} represents a rotation around an axis.
+        L{Quaternion.getAngle} returns the rotation in radians,
+        L{Quaternion.getAxis} returns the axis as a L{Vector3}.
+        """
+        quat = Quaternion.fromScalars(0, 0, 0, 1)
+        axis = quat.getAxis()
+        self.assertEqual(axis.x, 1)
+        self.assertEqual(axis.y, 0)
+        self.assertEqual(axis.z, 0)
+        self.assertEqual(quat.getAngle(), 0)
+
+        quat = Quaternion.fromScalars(0, 0, 1, 0)
+        axis = quat.getAxis()
+        self.assertEqual(axis.x, 0)
+        self.assertEqual(axis.y, 0)
+        self.assertEqual(axis.z, 1)
+        self.assertAlmostEqual(quat.getAngle(), pi, 6)
 
 
 

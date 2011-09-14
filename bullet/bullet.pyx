@@ -300,6 +300,9 @@ cdef extern from "btBulletCollisionCommon.h":
         btScalar getZ()
         btScalar getW()
 
+        btVector3 getAxis()
+        btScalar getAngle()
+
 
     cdef cppclass btBroadphaseInterface:
         btOverlappingPairCache* getOverlappingPairCache()
@@ -479,6 +482,21 @@ cdef class Quaternion:
         Get the W component of the Quaternion.
         """
         return self.quaternion.getW()
+
+
+    def getAxis(self):
+        """
+        Return the axis of rotation represented by this quaternion.
+        """
+        cdef btVector3 axis = self.quaternion.getAxis()
+        return Vector3(axis.getX(), axis.getY(), axis.getZ())
+
+
+    def getAngle(self):
+        """
+        Return the angle of rotation represented by this quaternion.
+        """
+        return self.quaternion.getAngle()
 
 
 
