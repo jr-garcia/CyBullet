@@ -291,6 +291,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
         btVector3& normalize()
 
+        # btVector3& operator*=(btScalar&)
+
 
     cdef cppclass btQuaternion:
         btQuaternion()
@@ -422,6 +424,14 @@ cdef class Vector3:
 
     def __repr__(self):
         return '<Vector x=%s y=%s z=%s>' % (self.x, self.y, self.z)
+
+
+    def __mul__(Vector3 self, scale):
+        """
+        Support multiplication of a Vector3 by a scalar.
+        """
+        scale = float(scale)
+        return Vector3(self.x * scale, self.y * scale, self.z * scale)
 
 
     def normalized(self):

@@ -58,6 +58,27 @@ class VectorTests(TestCase):
         self.assertAlmostEqual(n.x ** 2 + n.y ** 2 + n.z ** 2, 1.0, 6)
 
 
+    def test_scalarMultiplication(self):
+        """
+        A L{Vector3} instance multiplied by an integer or a float results in a
+        new L{Vector3} instance scaled by that amount relative to the original.
+        """
+        v = Vector3(2, 4, 6)
+        v2 = v * 2
+        v3 = v * 3.5
+        self.assertEqual(v.x, 2)
+        self.assertEqual(v.y, 4)
+        self.assertEqual(v.z, 6)
+
+        self.assertEqual(v2.x, 4)
+        self.assertEqual(v2.y, 8)
+        self.assertEqual(v2.z, 12)
+
+        self.assertEqual(v3.x, 7)
+        self.assertEqual(v3.y, 14)
+        self.assertEqual(v3.z, 21)
+
+
 
 class QuaternionTests(TestCase):
     def test_fromScalars(self):
