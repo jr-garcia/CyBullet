@@ -2,6 +2,7 @@
 # See LICENSE for details.
 
 from math import pi
+from operator import mul
 
 from unittest import TestCase
 
@@ -84,6 +85,30 @@ class QuaternionTests(TestCase):
         self.assertEqual(axis.y, 0)
         self.assertEqual(axis.z, 1)
         self.assertAlmostEqual(quat.getAngle(), pi, 6)
+
+
+    def test_multiplication(self):
+        """
+        Multiplying one L{Quaternion} by another returns a new L{Quaternion}
+        giving the product of the two.
+        """
+        a = Quaternion.fromAxisAngle(Vector3(1, 0, 0), pi / 4)
+        b = Quaternion.fromAxisAngle(Vector3(1, 0, 0), pi / 6)
+        c = a * b
+        axis = c.getAxis()
+        angle = c.getAngle()
+        self.assertEqual(axis.x, 1)
+        self.assertEqual(axis.y, 0)
+        self.assertEqual(axis.z, 0)
+        self.assertAlmostEqual(angle, pi / 4 + pi / 6, 6)
+
+
+    def test_unrelatedMultiplication(self):
+        """
+        Multiplying a L{Quaternion} but another type results in a L{TypeError}.
+        """
+        self.assertRaises(
+            TypeError, mul, Quaternion.fromScalars(0, 0, 0, 1), "foo")
 
 
 

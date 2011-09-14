@@ -303,6 +303,8 @@ cdef extern from "btBulletCollisionCommon.h":
         btVector3 getAxis()
         btScalar getAngle()
 
+        btQuaternion operator* (btQuaternion)
+
 
     cdef cppclass btBroadphaseInterface:
         btOverlappingPairCache* getOverlappingPairCache()
@@ -454,6 +456,17 @@ cdef class Quaternion:
         q.quaternion = new btQuaternion(
             btVector3(axis.x, axis.y, axis.z), angle)
         return q
+
+
+    def __mul__(Quaternion self, Quaternion other not None):
+        """
+        Support multiplication of two Quaternions.
+        """
+        cdef btQuaternion product = self.quaternion[0] * other.quaternion[0]
+        result = Quaternion()
+        result.quaternion = new btQuaternion(
+            product.getAxis(), product.getAngle())
+        return result
 
 
     def getX(self):
