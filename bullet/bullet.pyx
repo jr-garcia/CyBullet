@@ -289,6 +289,8 @@ cdef extern from "btBulletCollisionCommon.h":
         btScalar getY()
         btScalar getZ()
 
+        btVector3& normalize()
+
 
     cdef cppclass btQuaternion:
         btQuaternion()
@@ -420,6 +422,16 @@ cdef class Vector3:
 
     def __repr__(self):
         return '<Vector x=%s y=%s z=%s>' % (self.x, self.y, self.z)
+
+
+    def normalized(self):
+        """
+        Return a new normalized L{Vector3} pointing in the same direction as
+        this one.
+        """
+        cdef btVector3 v = btVector3(self.x, self.y, self.z)
+        v.normalize()
+        return Vector3(v.getX(), v.getY(), v.getZ())
 
 
 

@@ -41,6 +41,23 @@ class VectorTests(TestCase):
         self.assertEqual(repr(v), '<Vector x=3.0 y=5.0 z=7.0>')
 
 
+    def test_normalized(self):
+        """
+        L{Vector3.normalized} returns a new L{Vector3} pointing in the same
+        direction as the first L{Vector3} but with unit magnitude.
+        """
+        v = Vector3(3, 5, 7)
+        n = v.normalized()
+        self.assertEqual(v.x, 3)
+        self.assertEqual(v.y, 5)
+        self.assertEqual(v.z, 7)
+
+        self.assertAlmostEqual(n.x, 0.3292927, 6)
+        self.assertAlmostEqual(n.y, 0.5488213, 6)
+        self.assertAlmostEqual(n.z, 0.7683498, 6)
+        self.assertAlmostEqual(n.x ** 2 + n.y ** 2 + n.z ** 2, 1.0, 6)
+
+
 
 class QuaternionTests(TestCase):
     def test_fromScalars(self):
