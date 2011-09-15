@@ -519,6 +519,100 @@ class CollisionObjectTests(TestCase):
 
 
 class RigidBodyTests(TestCase):
+    def test_fromConstructionInfo(self):
+        mass = 8
+        motion = DefaultMotionState()
+        shape = SphereShape(3)
+        inertia = Vector3(1, 2, 3)
+        transform = Transform()
+        transform.setOrigin(Vector3(5, 6, 7))
+
+        linearDamping = 0.3
+        angularDamping = 0.4
+        friction = 4.5
+        restition = 5.4
+        linearSleepingThreshold = 4.3
+        angularSleepingThreshold = 3.2
+
+        body = RigidBody.fromConstructionInfo(
+            motion, shape, mass, inertia, transform,
+            linearDamping, angularDamping, friction, restition,
+            linearSleepingThreshold, angularSleepingThreshold)
+
+        self.assertTrue(isinstance(body, RigidBody))
+        self.assertEqual(1. / mass, body.getInvMass())
+        self.assertTrue(motion is body.getMotionState())
+        self.assertTrue(shape is body.getCollisionShape())
+        self.assertAlmostEqual(
+            1. / inertia.x, body.getInvInertiaDiagLocal().x, 6)
+        self.assertAlmostEqual(
+            1. / inertia.y, body.getInvInertiaDiagLocal().y, 6)
+        self.assertAlmostEqual(
+            1. / inertia.z, body.getInvInertiaDiagLocal().z, 6)
+
+        # The worldTransform is ignored if a MotionState is supplied.
+        self.assertEqual(0, body.getWorldTransform().getOrigin().x)
+        self.assertEqual(0, body.getWorldTransform().getOrigin().y)
+        self.assertEqual(0, body.getWorldTransform().getOrigin().z)
+
+        self.assertAlmostEqual(linearDamping, body.getLinearDamping(), 6)
+        self.assertAlmostEqual(angularDamping, body.getAngularDamping(), 6)
+        self.assertAlmostEqual(friction, body.getFriction(), 6)
+        self.assertAlmostEqual(restition, body.getRestitution(), 6)
+        self.assertAlmostEqual(
+            linearSleepingThreshold, body.getLinearSleepingThreshold(), 6)
+        self.assertAlmostEqual(
+            angularSleepingThreshold, body.getAngularSleepingThreshold(), 6)
+
+
+    def test_fromConstructionInfoWithoutMotionState(self):
+        """
+        When L{RigidBody.fromConstructionInfo} is used to construct a
+        L{RigidBody} without a L{MotionState}, the C{worldTransform} parameter
+        is used to specify the body's initial position.
+        """
+        mass = 8
+        shape = SphereShape(3)
+        inertia = Vector3(1, 2, 3)
+        startTransform = Transform()
+        startTransform.setOrigin(Vector3(5, 6, 7))
+
+        linearDamping = 0.3
+        angularDamping = 0.4
+        friction = 4.5
+        restition = 5.4
+        linearSleepingThreshold = 4.3
+        angularSleepingThreshold = 3.2
+
+        body = RigidBody.fromConstructionInfo(
+            None, shape, mass, inertia, startTransform,
+            linearDamping, angularDamping, friction, restition,
+            linearSleepingThreshold, angularSleepingThreshold)
+
+        origin = body.getWorldTransform().getOrigin()
+        self.assertEqual(5, origin.x)
+        self.assertEqual(6, origin.y)
+        self.assertEqual(7, origin.z)
+
+
+    def test_getInvMass(self):
+        """
+        L{RigidBody.getInvMass} returns the inverse of the mass of the body.
+        """
+        body = RigidBody(mass=16)
+        self.assertEqual(1. / 16, body.getInvMass())
+
+
+    def test_getInvInertiaDiagLocal(self):
+        """
+        L{RigidBody.getInvInertiaDiagLocal} returns the inverse of the local
+        inertia vector.
+        """
+        body = RigidBody()
+        inertia = body.getInvInertiaDiagLocal()
+        self.assertTrue(isinstance(inertia, Vector3))
+
+
     def test_setAngularFactor(self):
         body = RigidBody()
         body.setAngularFactor(1.0)

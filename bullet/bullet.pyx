@@ -143,6 +143,8 @@ cdef extern from "btBulletDynamicsCommon.h":
         btCollisionShape* getCollisionShape()
         void setCollisionShape(btCollisionShape*)
 
+        btScalar getFriction()
+
         void setRestitution(btScalar)
         btScalar getRestitution()
 
@@ -230,12 +232,33 @@ cdef extern from "BulletDynamics/Character/btKinematicCharacterController.h":
 
 cdef extern from "btBulletCollisionCommon.h" namespace "btRigidBody":
     cdef cppclass btRigidBodyConstructionInfo:
-        btRigidBodyConstructionInfo()
+        btRigidBodyConstructionInfo(
+            btScalar mass,
+            btMotionState *motionState,
+            btCollisionShape *collisionShape)
         btRigidBodyConstructionInfo(
             btScalar mass,
             btMotionState *motionState,
             btCollisionShape *collisionShape,
             btVector3 localInteria)
+
+        btScalar m_additionalAngularDampingFactor
+        btScalar m_additionalAngularDampingThresholdSqr
+        bool m_additionalDamping
+        btScalar m_additionalDampingFactor
+        btScalar m_additionalLinearDampingThresholdSqr
+        btScalar m_angularDamping
+        btScalar m_angularSleepingThreshold
+        btCollisionShape* m_collisionShape
+        btScalar m_friction
+        btScalar m_linearDamping
+        btScalar m_linearSleepingThreshold
+        btVector3 m_localInertia
+        btScalar m_mass
+        btMotionState* m_motionState
+        btScalar m_restitution
+        btTransform m_startWorldTransform
+
 
 
 cdef extern from "LinearMath/btIDebugDraw.h":
@@ -331,12 +354,19 @@ cdef extern from "btBulletCollisionCommon.h":
 
         bool isInWorld()
 
+        btScalar getInvMass()
+        btVector3& getInvInertiaDiagLocal()
+
         btMotionState* getMotionState()
 
         void setAngularFactor(btScalar angFac)
+        btScalar getAngularDamping()
+        btScalar getAngularSleepingThreshold()
 
         void setLinearVelocity(btVector3 velocity)
         btVector3& getLinearVelocity()
+        btScalar getLinearDamping()
+        btScalar getLinearSleepingThreshold()
 
         void applyCentralForce(btVector3 force)
         void applyForce(btVector3 force, btVector3 relativePosition)
@@ -976,6 +1006,13 @@ cdef class CollisionObject:
         del self.thisptr
 
 
+    def getFriction(self):
+        """
+        Return the friction value for this L{CollisionObject}.
+        """
+        return self.thisptr.getFriction()
+
+
     def setRestitution(self, btScalar restitution):
         """
         Specify a scaling factor to be applied to the normal impulse computed
@@ -1012,6 +1049,7 @@ cdef class CollisionObject:
         instance.
         """
         cdef Transform transform = Transform()
+        # TODO This leaks memory, and then corrupts memory and crashes, I think.
         transform.thisptr[0] = self.thisptr.getWorldTransform()
         return transform
 
@@ -1146,6 +1184,76 @@ cdef class RigidBody(CollisionObject):
         del info
 
 
+    @classmethod
+    def fromConstructionInfo(cls, MotionState motion,
+                             CollisionShape shape, btScalar mass,
+                             Vector3 inertia, Transform worldTransform,
+                             btScalar linearDamping, btScalar angularDamping,
+                             btScalar friction, btScalar restitution,
+                             btScalar linearSleepingThreshold,
+                             btScalar angularSleepingThreshold):
+        """
+        Create a new L{RigidBody} instance, specifying all of its parameters.
+
+        @param motion: A L{MotionState} instance which specifies the body's
+            initial world transform and which will receive motion updates for
+            the body.  If specified, worldTransform is ignored.
+
+        @param shape: A L{CollisionShape} instance which specifies the body's
+            shape for collision detection.
+
+        @param mass: The body's mass.  Setting this to C{0} creates a fixed
+            (static; non-dynamic; stationary) body.
+
+        @param worldTransform: A L{Transform} which specifies the body's initial
+            position and orientation in the world.  Only used if C{motion} is
+            not given.
+
+        @param linearDamping: A value between 0 and 1 which is used to dampen
+            linear velocity.  Higher values dampen more.
+
+        @param angularDamping: A value between 0 and 1 which is used to dampen
+            angular velocity.  Higher values dampen more.
+
+        @param friction: The friction value this body constributes to friction
+            calculates.
+
+        @param restitution: The coefficient of restitution for this body, giving
+            the ratio of speed after and before a collision with another object.
+
+        @param linearSleepingThreshold: See L{getLinearSleepingThreshold}.
+
+        @param angularSleepingThreshold: See L{getAngularSleepingThreshold}.
+        """
+        cdef RigidBody body = cls.__new__(cls)
+        cdef btRigidBodyConstructionInfo *info
+        cdef btMotionState *motionState
+
+        if motion is not None:
+            motionState = motion.thisptr
+        else:
+            motionState = <btMotionState*>0
+
+        info = new btRigidBodyConstructionInfo(
+            mass, motionState, shape.thisptr,
+            btVector3(inertia.x, inertia.y, inertia.z))
+
+        info.m_mass = mass
+        info.m_startWorldTransform = worldTransform.thisptr[0]
+        info.m_linearDamping = linearDamping
+        info.m_angularDamping = angularDamping
+        info.m_friction = friction
+        info.m_restitution = restitution
+        info.m_linearSleepingThreshold = linearSleepingThreshold
+        info.m_angularSleepingThreshold = angularSleepingThreshold
+
+        body.thisptr = new btRigidBody(info[0])
+        body.motion = motion
+        body._shape = shape
+        del info
+        return body
+
+
     def isInWorld(self):
         """
         Return a boolean indicating whether or not this RigidBody has been added
@@ -1154,6 +1262,25 @@ cdef class RigidBody(CollisionObject):
         cdef btRigidBody *body
         body = <btRigidBody*>self.thisptr
         return body.isInWorld()
+
+
+    def getInvMass(self):
+        """
+        Return the inverse of the mass of this L{RigidBody}.
+        """
+        cdef btRigidBody *body
+        body = <btRigidBody*>self.thisptr
+        return body.getInvMass()
+
+
+    def getInvInertiaDiagLocal(self):
+        """
+        Return the inverse of the local inertia vector.
+        """
+        cdef btRigidBody *body
+        body = <btRigidBody*>self.thisptr
+        cdef btVector3 inertia = body.getInvInertiaDiagLocal()
+        return Vector3(inertia.getX(), inertia.getY(), inertia.getZ())
 
 
     def getMotionState(self):
@@ -1195,6 +1322,40 @@ cdef class RigidBody(CollisionObject):
         cdef btRigidBody* body = <btRigidBody*>self.thisptr
         cdef btVector3 vel = body.getLinearVelocity()
         return Vector3(vel.getX(), vel.getY(), vel.getZ())
+
+
+    def getLinearDamping(self):
+        """
+        Return the linear velocity damping value for this RigidBody.
+        """
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        return body.getLinearDamping()
+
+
+    def getLinearSleepingThreshold(self):
+        """
+        Return the linear velocity threshold below which the body will not be
+        deactivated.
+        """
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        return body.getLinearSleepingThreshold()
+
+
+    def getAngularSleepingThreshold(self):
+        """
+        Return the linear velocity threshold below which the body will not be
+        deactivated.
+        """
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        return body.getAngularSleepingThreshold()
+
+
+    def getAngularDamping(self):
+        """
+        Return the angular velocity damping value for this RigidBody.
+        """
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        return body.getAngularDamping()
 
 
     def applyCentralForce(self, Vector3 f not None):
