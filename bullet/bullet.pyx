@@ -144,6 +144,7 @@ cdef extern from "btBulletDynamicsCommon.h":
         void setCollisionShape(btCollisionShape*)
 
         btScalar getFriction()
+        void setFriction(btScalar)
 
         void setRestitution(btScalar)
         btScalar getRestitution()
@@ -314,6 +315,7 @@ cdef extern from "btBulletCollisionCommon.h":
 
         btVector3& normalize()
         btVector3 cross(btVector3&)
+        btScalar dot(btVector3&)
 
         # btVector3& operator+=(btScalar&)
         # btVector3& operator*=(btScalar&)
@@ -498,6 +500,15 @@ cdef class Vector3:
         cdef btVector3 v2 = btVector3(other.x, other.y, other.z)
         cdef btVector3 result = v1.cross(v2)
         return Vector3(result.getX(), result.getY(), result.getZ())
+
+
+    def dot(self, Vector3 other not None):
+        """
+        Return the dot product of this vector and the other one.
+        """
+        cdef btVector3 v1 = btVector3(self.x, self.y, self.z)
+        cdef btVector3 v2 = btVector3(other.x, other.y, other.z)
+        return v1.dot(v2)
 
 
 
@@ -1011,6 +1022,13 @@ cdef class CollisionObject:
         Return the friction value for this L{CollisionObject}.
         """
         return self.thisptr.getFriction()
+
+
+    def setFriction(self, btScalar friction):
+        """
+        Change the friction value for this L{CollisionObject}.
+        """
+        self.thisptr.setFriction(friction)
 
 
     def setRestitution(self, btScalar restitution):

@@ -120,6 +120,16 @@ class VectorTests(TestCase):
         self.assertEqual(v3.z, 1)
 
 
+    def test_dot(self):
+        """
+        L{Vector3.dot} accepts another L{Vector3} and returns a float which is
+        the result of the dot product of the two vectors.
+        """
+        self.assertEqual(Vector3(1, 0, 0).dot(Vector3(0, 1, 0)), 0)
+        self.assertEqual(Vector3(1, 0, 0).dot(Vector3(1, 0, 0)), 1)
+        self.assertEqual(Vector3(2, 0, 0).dot(Vector3(2, 0, 0)), 4)
+
+
 
 class QuaternionTests(TestCase):
     def test_fromScalars(self):
@@ -625,6 +635,12 @@ class RigidBodyTests(TestCase):
         self.assertEquals(velocity.x, 1)
         self.assertEquals(velocity.y, 2)
         self.assertEquals(velocity.z, 3)
+
+
+    def test_friction(self):
+        body = RigidBody()
+        body.setFriction(3.5)
+        self.assertEqual(3.5, body.getFriction())
 
 
     def test_applyCentralForce(self):
