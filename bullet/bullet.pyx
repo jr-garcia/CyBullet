@@ -290,7 +290,9 @@ cdef extern from "btBulletCollisionCommon.h":
         btScalar getZ()
 
         btVector3& normalize()
+        btVector3 cross(btVector3&)
 
+        # btVector3& operator+=(btScalar&)
         # btVector3& operator*=(btScalar&)
 
 
@@ -434,6 +436,20 @@ cdef class Vector3:
         return Vector3(self.x * scale, self.y * scale, self.z * scale)
 
 
+    def __add__(Vector3 self, Vector3 other not None):
+        """
+        Support addition of two Vector3s.
+        """
+        return Vector3(self.x + other.x, self.y + other.y, self.z + other.z)
+
+
+    def __sub__(Vector3 self, Vector3 other not None):
+        """
+        Support subtraction of two Vector3s.
+        """
+        return Vector3(self.x - other.x, self.y - other.y, self.z - other.z)
+
+
     def normalized(self):
         """
         Return a new normalized L{Vector3} pointing in the same direction as
@@ -442,6 +458,16 @@ cdef class Vector3:
         cdef btVector3 v = btVector3(self.x, self.y, self.z)
         v.normalize()
         return Vector3(v.getX(), v.getY(), v.getZ())
+
+
+    def cross(self, Vector3 other not None):
+        """
+        Return the vector cross product of this vector and the other one.
+        """
+        cdef btVector3 v1 = btVector3(self.x, self.y, self.z)
+        cdef btVector3 v2 = btVector3(other.x, other.y, other.z)
+        cdef btVector3 result = v1.cross(v2)
+        return Vector3(result.getX(), result.getY(), result.getZ())
 
 
 

@@ -58,6 +58,34 @@ class VectorTests(TestCase):
         self.assertAlmostEqual(n.x ** 2 + n.y ** 2 + n.z ** 2, 1.0, 6)
 
 
+    def test_vectorAddition(self):
+        """
+        A L{Vector3} instance added to another L{Vector3} instance results in a
+        new L{Vector3} instance with components equal to the sum of the
+        component pairs of the inputs.
+        """
+        v1 = Vector3(1, 2, 3)
+        v2 = Vector3(2, -1, 1)
+        v3 = v1 + v2
+        self.assertEqual(v3.x, 3)
+        self.assertEqual(v3.y, 1)
+        self.assertEqual(v3.z, 4)
+
+
+    def test_vectorSubtraction(self):
+        """
+        A L{Vector3} instance subtracted from another L{Vector3} instance
+        results in a new L{Vector3} instance with components equal to the
+        difference of the component pairs of the inputs.
+        """
+        v1 = Vector3(1, 2, 3)
+        v2 = Vector3(2, -1, 1)
+        v3 = v1 - v2
+        self.assertEqual(v3.x, -1)
+        self.assertEqual(v3.y, 3)
+        self.assertEqual(v3.z, 2)
+
+
     def test_scalarMultiplication(self):
         """
         A L{Vector3} instance multiplied by an integer or a float results in a
@@ -77,6 +105,19 @@ class VectorTests(TestCase):
         self.assertEqual(v3.x, 7)
         self.assertEqual(v3.y, 14)
         self.assertEqual(v3.z, 21)
+
+
+    def test_cross(self):
+        """
+        L{Vector3.cross} accepts another L{Vector3} and returns a new L{Vector3}
+        which is perpendicular to the first two.
+        """
+        v1 = Vector3(1, 0, 0)
+        v2 = Vector3(0, 1, 0)
+        v3 = v1.cross(v2)
+        self.assertEqual(v3.x, 0)
+        self.assertEqual(v3.y, 0)
+        self.assertEqual(v3.z, 1)
 
 
 
