@@ -8,10 +8,12 @@ setup(
     ext_modules=[Extension(
         "bullet.bullet",
         ["bullet/bullet.pyx"],
-        libraries=["LinearMath",
-                   "BulletCollision",
-                   "BulletDynamics",
-                   "BulletSoftBody"],
+        libraries=[
+                "BulletSoftBody",
+                "BulletDynamics",
+                "BulletCollision",
+                "LinearMath",
+                ],
         language="c++")],
     cmdclass={'build_ext': build_ext},
     )
