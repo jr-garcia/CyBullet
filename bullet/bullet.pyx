@@ -1184,7 +1184,7 @@ cdef class RigidBody(CollisionObject):
             shape = BoxShape(Vector3(0.5, 0.5, 0.5))
 
         self.motion = motion
-        self.shape = shape
+        self._shape = shape
 
         cdef btVector3 inertia = btVector3(0, 0, 0)
         # TODO This is a weak heuristic to avoid using calculateLocalInertia on
@@ -1197,7 +1197,7 @@ cdef class RigidBody(CollisionObject):
 
         cdef btRigidBodyConstructionInfo* info
         info = new btRigidBodyConstructionInfo(
-            mass, self.motion.thisptr, self.shape.thisptr, inertia)
+            mass, self.motion.thisptr, self._shape.thisptr, inertia)
         self.thisptr = new btRigidBody(info[0])
         del info
 

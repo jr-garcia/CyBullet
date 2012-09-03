@@ -527,6 +527,28 @@ class CollisionObjectTests(TestCase):
             self.assertEqual(state, obj.getActivationState())
 
 
+class RigidBodyCollisionShapeTests(TestCase):
+    """
+    Tests for L{RigidBody.getCollisionShape}.
+    """
+    def test_defaulInitializer(self):
+        """
+        If no shape is passed to L{RigidBody.__init__}, the default BoxShape is
+        returned from L{RigidBody.getCollisionShape}.
+        """
+        self.assertTrue(isinstance(RigidBody().getCollisionShape(), BoxShape))
+
+
+    def test_initializedValue(self):
+        """
+        If a shape is passed to L{RigidBody.__init__}, that shape is returned
+        from L{RigidBody.getCollisionShape}.
+        """
+        shape = SphereShape(3)
+        body = RigidBody(shape=shape)
+        self.assertTrue(shape is body.getCollisionShape())
+
+
 
 class RigidBodyTests(TestCase):
     def test_fromConstructionInfo(self):
