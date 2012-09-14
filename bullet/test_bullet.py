@@ -20,7 +20,7 @@ from bullet import (
     CylinderShape, CylinderShapeX, CylinderShapeZ, StaticPlaneShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
 
-    ActionInterface, KinematicCharacterController,
+    PairCachingGhostObject, ActionInterface, KinematicCharacterController,
     DefaultMotionState,
     CollisionObject, RigidBody,
     OverlappingPairCache, HashedOverlappingPairCache, AxisSweep3,
@@ -459,7 +459,9 @@ class BvhTriangleMeshShapeTests(TestCase):
 class KinematicCharacterControllerTests(TestCase):
     def setUp(self):
         self.shape = BoxShape(Vector3(1, 2, 3))
-        self.controller = KinematicCharacterController(self.shape, 2.5, 1)
+        self.ghost = PairCachingGhostObject()
+        self.ghost.setCollisionShape(self.shape)
+        self.controller = KinematicCharacterController(self.ghost, 2.5, 1)
 
 
     def test_instantiate(self):
@@ -935,13 +937,21 @@ class DiscreteDynamicsWorldTests(TestCase):
 
     def test_addAction(self):
         world = DiscreteDynamicsWorld()
-        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+
+        shape = SphereShape(1)
+        ghost = PairCachingGhostObject()
+        ghost.setCollisionShape(shape)
+        action = KinematicCharacterController(ghost, 1.0, 1)
         world.addAction(action)
 
 
     def test_removeAction(self):
         world = DiscreteDynamicsWorld()
-        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+
+        shape = SphereShape(1)
+        ghost = PairCachingGhostObject()
+        ghost.setCollisionShape(shape)
+        action = KinematicCharacterController(ghost, 1.0, 1)
         world.addAction(action)
         world.removeAction(action)
 
@@ -990,3 +1000,45 @@ class DiscreteDynamicsWorldTests(TestCase):
         self.assertEquals(position.x, 1)
         self.assertEquals(position.y, 2)
         self.assertEquals(position.z, 3)
+
+
+
+class ControllerWorldIntegrationTests(TestCase):
+    """
+    Tests for use of L{KinematicCharacterController} in a
+    L{DiscreteDynamicsWorld}.
+    """
+    def test_simulate(self):
+        """
+        A L{KinematicCharacterController}'s L{PairCachingGhostObject}'s which
+        has been added to a L{DiscreteDynamicsWorld} is affected by the normal
+        rules of dynamics upon L{DiscreteDynamicsWorld.stepSimulation}.
+        """
+        world = DiscreteDynamicsWorld()
+
+        shape = BoxShape(Vector3(1, 1, 1))
+        ghost = PairCachingGhostObject()
+        ghost.setCollisionShape(shape)
+        ghost.setCollisionFlags(CollisionObject.CF_CHARACTER_OBJECT)
+        transform = Transform()
+        transform.setOrigin(Vector3(1, 2, 3))
+        ghost.setWorldTransform(transform)
+
+        controller = KinematicCharacterController(ghost, 2, 1)
+
+        world.addAction(controller)
+        world.setGravity(Vector3(10, 0, 0))
+
+        # btBroadphaseProxy::CharacterFilter
+        # btBroadphaseProxy::StaticFilter|btBroadphaseProxy::DefaultFilter
+        world.addCollisionObject(ghost)
+
+        expectedSteps = 8
+        timeStep = 1.0 / expectedSteps
+        steps = world.stepSimulation(timeStep * expectedSteps, expectedSteps, timeStep)
+        self.assertEqual(expectedSteps, steps)
+
+        origin = ghost.getWorldTransform().getOrigin()
+        # Original position plus gravitational effects over one second
+        self.assertEqual((1 + 5, 2, 3), (origin.x, origin.y, origin.z))
+

@@ -43,6 +43,13 @@ cdef extern from "btBulletCollisionCommon.h":
         PHY_FIXEDPOINT88
         PHY_UCHAR
 
+    # cdef int _CF_STATIC_OBJECT "btCollisionObject::CF_STATIC_OBJECT"
+    # cdef int _CF_KINEMATIC_OBJECT "btCollisionObject::CF_KINEMATIC_OBJECT"
+    # cdef int _CF_NO_CONTACT_RESPONSE "btCollisionObject::CF_NO_CONTACT_RESPONSE"
+    # cdef int _CF_CUSTOM_MATERIAL_CALLBACK "btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK"
+    cdef int _CF_CHARACTER_OBJECT "btCollisionObject::CF_CHARACTER_OBJECT"
+    # cdef int _CF_DISABLE_SPU_COLLISION_PROCESSING "btCollisionObject::CF_DISABLE_SPU_COLLISION_PROCESSING"
+
     cdef int _ACTIVE_TAG "ACTIVE_TAG"
     cdef int _ISLAND_SLEEPING "ISLAND_SLEEPING"
     cdef int _WANTS_DEACTIVATION "WANTS_DEACTIVATION"
@@ -1009,6 +1016,8 @@ cdef class CollisionObject:
     cdef btCollisionObject *thisptr
     cdef CollisionShape _shape
 
+    CF_CHARACTER_OBJECT = _CF_CHARACTER_OBJECT
+
     def __init__(self):
         self.thisptr = new btCollisionObject()
 
@@ -1097,6 +1106,10 @@ cdef class CollisionObject:
           - DISABLE_SIMULATION
         """
         self.thisptr.setActivationState(newState)
+
+
+    def setCollisionFlags(self, int flags):
+        pass
 
 
 cdef class MotionState:
@@ -1507,14 +1520,13 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
     This class is a wrapper around btKinematicCharacterController.
     """
     cdef readonly PairCachingGhostObject ghost
-    cdef ConvexShape shape
 
-    def __init__(self, ConvexShape shape not None, float stepHeight, int upAxis):
-        self.shape = shape
-        self.ghost = PairCachingGhostObject()
+    def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, int upAxis):
+        self.ghost = ghost
+        # XXX ghost must have a shape and it must not change after this
         self.thisptr = new btKinematicCharacterController(
             <btPairCachingGhostObject*>self.ghost.thisptr,
-            <btConvexShape*>self.shape.thisptr, stepHeight, upAxis)
+            <btConvexShape*>self.ghost._shape.thisptr, stepHeight, upAxis)
 
 
     def warp(self, Vector3 origin not None):
@@ -1747,7 +1759,8 @@ cdef class CollisionWorld:
         if collisionObject.thisptr.getCollisionShape() == NULL:
             raise ValueError(
                 "Cannot add CollisionObject without a CollisionShape")
-        self.thisptr.addCollisionObject(collisionObject.thisptr, 0, 0)
+        self.thisptr.addCollisionObject(
+            collisionObject.thisptr, 2 ** 16 - 1, 2 ** 16 - 1)
 
 
     def removeCollisionObject(self, CollisionObject collisionObject):
