@@ -2,6 +2,7 @@
 import time
 
 import pygame.display
+import pygame.event
 
 from OpenGL.GL import (
     GL_TRIANGLE_STRIP, GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT,
@@ -85,8 +86,14 @@ def render(objects):
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
 
-def simulate(world, objects):
+def simulate(world, objects, controller=None):
     while True:
         step(world)
         render(objects)
+        if controller is not None:
+            events = pygame.event.get()
+            for e in events:
+                if e.type in (pygame.locals.KEYUP, pygame.locals.KEYDOWN):
+                    controller.key(e)
+
 

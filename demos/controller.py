@@ -47,6 +47,26 @@ class Ghost(object):
 
 
 
+class Controller(object):
+    def __init__(self, kinematic):
+        self.kinematic = kinematic
+
+
+    def key(self, event):
+        if event.type == pygame.locals.KEYDOWN:
+            if event.key == pygame.locals.K_UP:
+                self.kinematic.setWalkDirection(Vector3(0, 0, -0.1))
+            elif event.key == pygame.locals.K_DOWN:
+                self.kinematic.setWalkDirection(Vector3(0, 0, 0.1))
+            elif event.key == pygame.locals.K_LEFT:
+                self.kinematic.setWalkDirection(Vector3(-0.1, 0, 0))
+            elif event.key == pygame.locals.K_RIGHT:
+                self.kinematic.setWalkDirection(Vector3(0.1, 0, 0))
+        else:
+            self.kinematic.setWalkDirection(Vector3(0, 0, 0))
+
+
+
 def main():
     pygame.init()
     pygame.display.set_mode(
@@ -71,7 +91,7 @@ def main():
     character.setWalkDirection(Vector3(0, 0, 0))
     dynamicsWorld.addAction(character)
 
-    simulate(dynamicsWorld, [ground, ghost])
+    simulate(dynamicsWorld, [ground, ghost], Controller(character))
 
 
 if __name__ == '__main__':
