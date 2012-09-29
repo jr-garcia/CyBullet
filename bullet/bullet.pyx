@@ -121,6 +121,15 @@ cdef extern from "btBulletCollisionCommon.h":
         void buildOptimizedBvh()
 
 
+    cdef int _DefaultFilter "btBroadphaseProxy::DefaultFilter"
+    cdef int _AllFilter "btBroadphaseProxy::AllFilter"
+
+    cdef cppclass btBroadphaseProxy:
+        short int m_collisionFilterGroup
+        short int m_collisionFilterMask
+
+
+
 cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
     cdef cppclass btBox2dShape(btConvexShape):
         btBox2dShape(btVector3 boxHalfExtents)
@@ -161,6 +170,8 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         int getActivationState()
         void setActivationState(int newState)
+
+        btBroadphaseProxy *getBroadphaseHandle()
 
 
     cdef cppclass btRigidBody(btCollisionObject)
@@ -998,6 +1009,28 @@ cdef class Transform:
         self.thisptr.setIdentity()
 
 
+cdef class BroadphaseProxy:
+    """
+    A BroadphaseProxy wraps collision information about a collision object for
+    use by the Bullet broadphases.
+
+    This class is not a wrapper around btBroadphaseProxy due to the complexities
+    of memory management and object lifetimes.  Instead, it is a snapshot of all
+    of the state on a btBroadphaseProxy at the time the BroadphaseProxy is
+    constructed.
+    """
+    cdef public short int collisionFilterGroup
+    cdef public short int collisionFilterMask
+
+    DefaultFilter = _DefaultFilter
+    AllFilter = _AllFilter
+
+    def __init__(self, short int collisionFilterGroup, short int collisionFilterMask):
+        self.collisionFilterGroup = collisionFilterGroup
+        self.collisionFilterMask = collisionFilterMask
+
+
+
 ACTIVE_TAG = _ACTIVE_TAG
 ISLAND_SLEEPING = _ISLAND_SLEEPING
 WANTS_DEACTIVATION = _WANTS_DEACTIVATION
@@ -1108,8 +1141,18 @@ cdef class CollisionObject:
         self.thisptr.setActivationState(newState)
 
 
-    def setCollisionFlags(self, int flags):
-        pass
+    def getBroadphaseHandle(self):
+        """
+        Return the BroadphaseProxy for this L{CollisionObject} or C{None} if
+        there isn't one.
+        """
+        cdef btBroadphaseProxy *proxy
+        proxy = self.thisptr.getBroadphaseHandle()
+        if NULL == proxy:
+            return None
+        # XXX Cannot figure out how to just pass proxy to BroadphaseProxy
+        return BroadphaseProxy(proxy.m_collisionFilterGroup, proxy.m_collisionFilterMask)
+
 
 
 cdef class MotionState:
@@ -1749,18 +1792,34 @@ cdef class CollisionWorld:
         return self.thisptr.getNumCollisionObjects()
 
 
-    def addCollisionObject(self, CollisionObject collisionObject):
+    def addCollisionObject(self, CollisionObject collisionObject,
+                           short int collisionFilterGroup=BroadphaseProxy.DefaultFilter,
+                           short int collisionFilterMask=BroadphaseProxy.AllFilter):
         """
         Add a new CollisionObject to this CollisionWorld.
 
         If you have a RigidBody to add, you should add it using
         DynamicsWorld.addRigidBody instead.
+
+        @param collisionObject: The L{CollisionObject} instance to add.  This
+            object will now be be checked for collision with other collision
+            objects which have been added.
+
+        @param collisionFilterGroup: A bitmask giving the collision groups this
+            collision object belongs to.
+        @type collisionFilterGroup: short int (C{-1 <= int < 2 ** 15})
+
+        @param collisionFilterMask: A bitmask giving the collision groups this
+            collision object may collide with.  If another collision object is
+            not part of one of the groups set in this mask, this collision
+            object will not collide with it.
+        @type collisionFilterMask: short int (C{-1 <= int < 2 ** 15})
         """
         if collisionObject.thisptr.getCollisionShape() == NULL:
             raise ValueError(
                 "Cannot add CollisionObject without a CollisionShape")
         self.thisptr.addCollisionObject(
-            collisionObject.thisptr, 2 ** 16 - 1, 2 ** 16 - 1)
+            collisionObject.thisptr, collisionFilterGroup, collisionFilterMask)
 
 
     def removeCollisionObject(self, CollisionObject collisionObject):
@@ -1768,6 +1827,7 @@ cdef class CollisionWorld:
         Remove a CollisionObject from this CollisionWorld.
         """
         self.thisptr.removeCollisionObject(collisionObject.thisptr)
+
 
 
 

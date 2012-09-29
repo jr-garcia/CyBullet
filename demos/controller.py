@@ -30,7 +30,7 @@ class Ghost(object):
 
         self.body = PairCachingGhostObject()
         self.body.setRestitution(0.9)
-        self.body.setCollisionFlags(PairCachingGhostObject.CF_CHARACTER_OBJECT)
+        # self.body.setCollisionFlags(PairCachingGhostObject.CF_CHARACTER_OBJECT)
 
         self.shape = SphereShape(self.radius)
         self.body.setCollisionShape(self.shape)

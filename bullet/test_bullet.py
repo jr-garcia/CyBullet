@@ -21,7 +21,8 @@ from bullet import (
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
 
     PairCachingGhostObject, ActionInterface, KinematicCharacterController,
-    DefaultMotionState,
+    BroadphaseProxy, DefaultMotionState,
+
     CollisionObject, RigidBody,
     OverlappingPairCache, HashedOverlappingPairCache, AxisSweep3,
     CollisionWorld, DiscreteDynamicsWorld)
@@ -777,12 +778,37 @@ class CollisionWorldTests(TestCase):
 
 
     def test_addCollisionObject(self):
+        """
+        L{CollisionWorld.addCollisionObject} accepts a L{CollisionObject}
+        instance and adds it to the world for collision detection.  A default
+        collision group and collision mask are used if they are not passed.
+        """
         world = CollisionWorld()
         obj = CollisionObject()
         shape = SphereShape(3)
         obj.setCollisionShape(shape)
         world.addCollisionObject(obj)
         self.assertEqual(world.getNumCollisionObjects(), 1)
+        proxy = obj.getBroadphaseHandle()
+        self.assertEqual(BroadphaseProxy.DefaultFilter, proxy.collisionFilterGroup)
+        self.assertEqual(BroadphaseProxy.AllFilter, proxy.collisionFilterMask)
+
+
+    def test_addCollisionObjectCustomGroupAndMask(self):
+        """
+        The collision group and collision mask passed as the second and third
+        arguments to L{CollisionWorld.addCollisionObject} are used for collision
+        detections on the L{CollisionObject} added.
+        """
+        world = CollisionWorld()
+        obj = CollisionObject()
+        shape = SphereShape(3)
+        obj.setCollisionShape(shape)
+        world.addCollisionObject(obj, 123, 456)
+        self.assertEqual(world.getNumCollisionObjects(), 1)
+        proxy = obj.getBroadphaseHandle()
+        self.assertEqual(123, proxy.collisionFilterGroup)
+        self.assertEqual(456, proxy.collisionFilterMask)
 
 
     def test_removeCollisionObject(self):
@@ -1019,7 +1045,7 @@ class ControllerWorldIntegrationTests(TestCase):
         shape = BoxShape(Vector3(1, 1, 1))
         ghost = PairCachingGhostObject()
         ghost.setCollisionShape(shape)
-        ghost.setCollisionFlags(CollisionObject.CF_CHARACTER_OBJECT)
+        # ghost.setCollisionFlags(CollisionObject.CF_CHARACTER_OBJECT)
         transform = Transform()
         transform.setOrigin(Vector3(1, 2, 3))
         ghost.setWorldTransform(transform)
