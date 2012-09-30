@@ -100,7 +100,7 @@ class Wall(object):
     def __init__(self, position, color):
         self.position = position
         self.color = color
-        self.shape = BoxShape(Vector3(0.5, 0.5, 0.5))
+        self.shape = BoxShape(Vector3(0.5, 0.2, 0.5))
         self.body = RigidBody(None, self.shape, mass=0.0)
         transform = Transform()
         transform.setIdentity()
@@ -111,7 +111,6 @@ class Wall(object):
     def render(self):
         glTranslate(self.position.x, self.position.y, self.position.z)
         glColor(0.75, 0.0, 0.0)
-        glScale(2.0, 1.0, 2.0)
 
         glBegin(GL_POLYGON)
         glVertex3f(  0.5, -0.5, 0.5 )
@@ -194,7 +193,7 @@ def main():
     ghost = Ghost()
     dynamicsWorld.addCollisionObject(ghost.body)
 
-    character = KinematicCharacterController(ghost.body, 0.5, 1)
+    character = KinematicCharacterController(ghost.body, stepHeight=0.1, upAxis=1)
     character.setWalkDirection(Vector3(0, 0, 0))
     dynamicsWorld.addAction(character)
 
