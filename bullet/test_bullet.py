@@ -488,6 +488,17 @@ class KinematicCharacterControllerTests(TestCase):
         self.assertEquals(origin.z, 9)
 
 
+    def test_gravity(self):
+        """
+        L{KinematicCharacterController.setGravity} specifies the effective
+        gravity for the character as a scalar on the Y axis.
+        L{KinematicCharacterController.getGravity} returns the previously set
+        gravity.
+        """
+        self.controller.setGravity(42.5)
+        self.assertEqual(42.5, self.controller.getGravity())
+
+
 
 class CollisionObjectTests(TestCase):
     def test_restitution(self):
