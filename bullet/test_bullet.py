@@ -21,7 +21,8 @@ from bullet import (
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
 
     ActionInterface, KinematicCharacterController,
-    DefaultMotionState,
+    BroadphaseProxy, DefaultMotionState,
+
     CollisionObject, RigidBody,
     OverlappingPairCache, HashedOverlappingPairCache, AxisSweep3,
     CollisionWorld, DiscreteDynamicsWorld)
@@ -527,6 +528,17 @@ class CollisionObjectTests(TestCase):
             self.assertEqual(state, obj.getActivationState())
 
 
+    def test_getBroadphaseHandle(self):
+        """
+        L{CollisionObject.getBroadphaseHandle} returns C{None} when there is no
+        associated BroadphaseProxy (one is probably supplied only after the
+        object is added to a L{CollisionWorld}).
+        """
+        obj = CollisionObject()
+        self.assertEqual(None, obj.getBroadphaseHandle())
+
+
+
 class RigidBodyCollisionShapeTests(TestCase):
     """
     Tests for L{RigidBody.getCollisionShape}.
@@ -775,12 +787,47 @@ class CollisionWorldTests(TestCase):
 
 
     def test_addCollisionObject(self):
+        """
+        L{CollisionWorld.addCollisionObject} accepts a L{CollisionObject}
+        instance and adds it to the world for collision detection.  A default
+        collision group and collision mask are used if they are not passed.
+        """
         world = CollisionWorld()
         obj = CollisionObject()
         shape = SphereShape(3)
         obj.setCollisionShape(shape)
         world.addCollisionObject(obj)
         self.assertEqual(world.getNumCollisionObjects(), 1)
+        proxy = obj.getBroadphaseHandle()
+        self.assertEqual(BroadphaseProxy.DefaultFilter, proxy.collisionFilterGroup)
+        self.assertEqual(BroadphaseProxy.AllFilter, proxy.collisionFilterMask)
+
+
+    def test_addCollisionObjectWithoutShape(self):
+        """
+        L{CollisionWorld.addCollisionObject} raises L{ValueError} when passed a
+        L{CollisionObject} with no defined L{CollisionShape}.
+        """
+        world = CollisionWorld()
+        obj = CollisionObject()
+        self.assertRaises(ValueError, world.addCollisionObject, obj)
+
+
+    def test_addCollisionObjectCustomGroupAndMask(self):
+        """
+        The collision group and collision mask passed as the second and third
+        arguments to L{CollisionWorld.addCollisionObject} are used for collision
+        detections on the L{CollisionObject} added.
+        """
+        world = CollisionWorld()
+        obj = CollisionObject()
+        shape = SphereShape(3)
+        obj.setCollisionShape(shape)
+        world.addCollisionObject(obj, 123, 456)
+        self.assertEqual(world.getNumCollisionObjects(), 1)
+        proxy = obj.getBroadphaseHandle()
+        self.assertEqual(123, proxy.collisionFilterGroup)
+        self.assertEqual(456, proxy.collisionFilterMask)
 
 
     def test_removeCollisionObject(self):
