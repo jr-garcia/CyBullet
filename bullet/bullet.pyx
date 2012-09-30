@@ -1557,14 +1557,13 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
     This class is a wrapper around btKinematicCharacterController.
     """
     cdef readonly PairCachingGhostObject ghost
-    cdef ConvexShape shape
 
-    def __init__(self, ConvexShape shape not None, float stepHeight, int upAxis):
-        self.shape = shape
-        self.ghost = PairCachingGhostObject()
+    def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, int upAxis):
+        self.ghost = ghost
+        # XXX ghost must have a shape and it must not change after this
         self.thisptr = new btKinematicCharacterController(
             <btPairCachingGhostObject*>self.ghost.thisptr,
-            <btConvexShape*>self.shape.thisptr, stepHeight, upAxis)
+            <btConvexShape*>self.ghost._shape.thisptr, stepHeight, upAxis)
 
 
     def warp(self, Vector3 origin not None):
@@ -1840,6 +1839,7 @@ cdef class CollisionWorld:
         Remove a CollisionObject from this CollisionWorld.
         """
         self.thisptr.removeCollisionObject(collisionObject.thisptr)
+
 
 
 

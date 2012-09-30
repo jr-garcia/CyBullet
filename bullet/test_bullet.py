@@ -20,7 +20,7 @@ from bullet import (
     CylinderShape, CylinderShapeX, CylinderShapeZ, StaticPlaneShape,
     IndexedMesh, TriangleIndexVertexArray, BvhTriangleMeshShape,
 
-    ActionInterface, KinematicCharacterController,
+    PairCachingGhostObject, ActionInterface, KinematicCharacterController,
     BroadphaseProxy, DefaultMotionState,
 
     CollisionObject, RigidBody,
@@ -460,7 +460,9 @@ class BvhTriangleMeshShapeTests(TestCase):
 class KinematicCharacterControllerTests(TestCase):
     def setUp(self):
         self.shape = BoxShape(Vector3(1, 2, 3))
-        self.controller = KinematicCharacterController(self.shape, 2.5, 1)
+        self.ghost = PairCachingGhostObject()
+        self.ghost.setCollisionShape(self.shape)
+        self.controller = KinematicCharacterController(self.ghost, 2.5, 1)
 
 
     def test_instantiate(self):
@@ -993,13 +995,21 @@ class DiscreteDynamicsWorldTests(TestCase):
 
     def test_addAction(self):
         world = DiscreteDynamicsWorld()
-        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+
+        shape = SphereShape(1)
+        ghost = PairCachingGhostObject()
+        ghost.setCollisionShape(shape)
+        action = KinematicCharacterController(ghost, 1.0, 1)
         world.addAction(action)
 
 
     def test_removeAction(self):
         world = DiscreteDynamicsWorld()
-        action = KinematicCharacterController(SphereShape(1), 1.0, 1)
+
+        shape = SphereShape(1)
+        ghost = PairCachingGhostObject()
+        ghost.setCollisionShape(shape)
+        action = KinematicCharacterController(ghost, 1.0, 1)
         world.addAction(action)
         world.removeAction(action)
 
@@ -1048,3 +1058,76 @@ class DiscreteDynamicsWorldTests(TestCase):
         self.assertEquals(position.x, 1)
         self.assertEquals(position.y, 2)
         self.assertEquals(position.z, 3)
+
+
+
+class ControllerWorldIntegrationTests(TestCase):
+    """
+    Tests for use of L{KinematicCharacterController} in a
+    L{DiscreteDynamicsWorld}.
+    """
+    def test_simulate(self):
+        """
+        A L{KinematicCharacterController}'s L{PairCachingGhostObject}'s which
+        has been added to a L{DiscreteDynamicsWorld} is affected by the normal
+        rules of dynamics upon L{DiscreteDynamicsWorld.stepSimulation}.
+        """
+        world = DiscreteDynamicsWorld()
+
+        shape = BoxShape(Vector3(1, 1, 1))
+        ghost = PairCachingGhostObject()
+        ghost.setCollisionShape(shape)
+
+        # Based on the Bullet examples, it might be correct to set this
+        # collision flag.  However, it doesn't appear to actually make any
+        # difference.
+        # ghost.setCollisionFlags(CollisionObject.CF_CHARACTER_OBJECT)
+
+        transform = Transform()
+        transform.setOrigin(Vector3(1, 2, 3))
+        ghost.setWorldTransform(transform)
+
+        # Create the controller based on the ghost object just initialized.
+        # Perhaps upAxis controls in which direction the gravity set below
+        # points.
+        controller = KinematicCharacterController(ghost, stepHeight=2, upAxis=1)
+        controller.setGravity(-10)
+
+        # Controllers must be added as actions so they have a chance to make
+        # their non-physical interactions with the world.
+        world.addAction(controller)
+
+        # btBroadphaseProxy::CharacterFilter
+        # btBroadphaseProxy::StaticFilter|btBroadphaseProxy::DefaultFilter
+
+        # Add the controller's ghost to the world so collisions can be detected.
+        # It might be more correct to add it with a collision filter group of
+        # CharacterFilter to mark it as a character.  However, there are no
+        # other collision objects in this test so it can't make a difference
+        # here.  It might also be more correct to add it with a collision filter
+        # like ~CharacterFilter to avoid collisions with other characters.
+        # However, again, no other collision objects in this test, so it matters
+        # not.
+        world.addCollisionObject(ghost)
+
+        # Use an insanely fine grained simulation so that the ultimate position
+        # is pretty close to what we would predict using actual (accurate) math
+        # instead of (inaccurate) simulation math.
+        expectedSteps = 1024
+        timeStep = 1.0 / expectedSteps
+        steps = world.stepSimulation(timeStep * expectedSteps, expectedSteps, timeStep)
+        self.assertEqual(expectedSteps, steps)
+
+
+        # Original position plus gravitational effects over one second
+        expected = (1, 2 + 5, 3)
+
+        # Verify the character's ghost has moved in accordance with gravity.
+        origin = ghost.getWorldTransform().getOrigin()
+
+        # Dynamics (gravity) only moves the ghost along the upAxis, so the other
+        # coordinates should be exact.
+
+        self.assertEqual(expected[0], origin.x)
+        self.assertAlmostEqual(expected[1], origin.y, 2)
+        self.assertEqual(expected[2], origin.z)
