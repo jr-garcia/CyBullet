@@ -245,6 +245,9 @@ cdef extern from "BulletDynamics/Character/btKinematicCharacterController.h":
             btConvexShape *convexShape,
             btScalar stepHeight, int upAxis)
 
+        void setGravity(btScalar gravity)
+        btScalar getGravity()
+
         void warp(btVector3 origin)
 
 
@@ -1570,6 +1573,24 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
         self.thisptr = new btKinematicCharacterController(
             <btPairCachingGhostObject*>self.ghost.thisptr,
             <btConvexShape*>self.ghost._shape.thisptr, stepHeight, upAxis)
+
+
+    def getGravity(self):
+        """
+        Retrieve the gravity which affects this character.
+        """
+        cdef btKinematicCharacterController *controller
+        controller = <btKinematicCharacterController*>self.thisptr
+        return controller.getGravity()
+
+
+    def setGravity(self, btScalar gravity):
+        """
+        Specify the gravity which affects this character.
+        """
+        cdef btKinematicCharacterController *controller
+        controller = <btKinematicCharacterController*>self.thisptr
+        controller.setGravity(gravity)
 
 
     def warp(self, Vector3 origin not None):
