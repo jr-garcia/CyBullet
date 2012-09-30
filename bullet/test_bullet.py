@@ -794,6 +794,16 @@ class CollisionWorldTests(TestCase):
         self.assertEqual(BroadphaseProxy.AllFilter, proxy.collisionFilterMask)
 
 
+    def test_addCollisionObjectWithoutShape(self):
+        """
+        L{CollisionWorld.addCollisionObject} raises L{ValueError} when passed a
+        L{CollisionObject} with no defined L{CollisionShape}.
+        """
+        world = CollisionWorld()
+        obj = CollisionObject()
+        self.assertRaises(ValueError, world.addCollisionObject, obj)
+
+
     def test_addCollisionObjectCustomGroupAndMask(self):
         """
         The collision group and collision mask passed as the second and third
