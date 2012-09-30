@@ -131,6 +131,17 @@ class VectorTests(TestCase):
         self.assertEqual(Vector3(2, 0, 0).dot(Vector3(2, 0, 0)), 4)
 
 
+    def test_length(self):
+        """
+        L{Vector3.length} returns the length (magnitude) of the vector.
+        """
+        self.assertEqual(5, Vector3(5, 0, 0).length())
+        self.assertEqual(5.5, Vector3(5.5, 0, 0).length())
+        self.assertEqual(5, Vector3(3, 4, 0).length())
+        self.assertEqual(5, Vector3(0, 3, 4).length())
+        self.assertEqual(5, Vector3(3, 0, 4).length())
+
+
 
 class QuaternionTests(TestCase):
     def test_fromScalars(self):

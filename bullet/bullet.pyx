@@ -330,6 +330,8 @@ cdef extern from "btBulletCollisionCommon.h":
         btVector3& normalize()
         btVector3 cross(btVector3&)
         btScalar dot(btVector3&)
+        btScalar length()
+
 
         # btVector3& operator+=(btScalar&)
         # btVector3& operator*=(btScalar&)
@@ -523,6 +525,14 @@ cdef class Vector3:
         cdef btVector3 v1 = btVector3(self.x, self.y, self.z)
         cdef btVector3 v2 = btVector3(other.x, other.y, other.z)
         return v1.dot(v2)
+
+
+    def length(self):
+        """
+        Return the length (magnitude) of this vector.
+        """
+        cdef btVector3 v = btVector3(self.x, self.y, self.z)
+        return v.length()
 
 
 
