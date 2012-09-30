@@ -198,7 +198,10 @@ def main():
     character.setWalkDirection(Vector3(0, 0, 0))
     dynamicsWorld.addAction(character)
 
-    pos = ghost.body.getWorldTransform().getOrigin()
+    pos = Vector3(0, 1, 11)
+    ghostTransform = Transform()
+    ghostTransform.setOrigin(pos)
+    ghost.body.setWorldTransform(ghostTransform)
 
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
