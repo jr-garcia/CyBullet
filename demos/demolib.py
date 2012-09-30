@@ -2,6 +2,7 @@
 import time
 
 import pygame.display
+import pygame.event
 
 from OpenGL.GL import (
     GL_TRIANGLE_STRIP, GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT,
@@ -65,6 +66,16 @@ class Ball:
         gluSphere(self.quad, self.radius, 25, 25)
 
 
+class Controller(object):
+    """
+    Input handler which just knows how to exit the main loop.
+    """
+    def key(self, event):
+        if event.key == pygame.locals.K_ESCAPE or event.key == pygame.locals.K_q:
+            raise SystemExit(0)
+
+
+
 def step(world):
     timeStep = fixedTimeStep = 1.0 / 60.0
     world.stepSimulation(timeStep, 1, fixedTimeStep)
@@ -85,8 +96,13 @@ def render(objects):
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
 
-def simulate(world, objects):
+def simulate(world, objects, controller=None):
+    if controller is None:
+        controller = Controller()
     while True:
         step(world)
         render(objects)
-
+        events = pygame.event.get()
+        for e in events:
+            if e.type in (pygame.locals.KEYUP, pygame.locals.KEYDOWN):
+                controller.key(e)
