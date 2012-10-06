@@ -435,10 +435,12 @@ cdef extern from "btBulletDynamicsCommon.h":
         int stepSimulation(btScalar, int, btScalar)
 
 
-    cdef cppclass btDiscreteDynamicsWorld: # (byDynamicsWorld)
+    cdef cppclass btDiscreteDynamicsWorld: # (btDynamicsWorld)
         btDiscreteDynamicsWorld(
             btDispatcher*, btBroadphaseInterface*,
             btConstraintSolver*, btCollisionConfiguration*)
+
+        void addRigidBody(btRigidBody*, short, short)
 
         btConstraintSolver *getConstraintSolver()
 
@@ -1937,6 +1939,29 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
             solver.thisptr, dispatcher.config)
 
         DynamicsWorld.__init__(self, dispatcher, broadphase)
+
+
+    def addRigidBody(self, RigidBody body not None, group=None, mask=None):
+        """
+        Add a new RigidBody to this DynamicsWorld.  Optionally give it a
+        customized collision filter group and mask.
+        """
+        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
+        cdef btDiscreteDynamicsWorld *dynworld = <btDiscreteDynamicsWorld*>self.thisptr
+        if group is None and mask is None:
+            world.addRigidBody(<btRigidBody*>body.thisptr)
+        else:
+            # Supply a default for one or the other if either is not given
+            if group is None:
+                group = BroadphaseProxy.DefaultFilter
+            if mask is None:
+                mask = BroadphaseProxy.AllFilter
+
+            dynworld.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
+
+        self._rigidBodies.append(body)
+
+
 
 
     def setGravity(self, Vector3 gravity):

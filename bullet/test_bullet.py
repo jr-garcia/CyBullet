@@ -1004,6 +1004,20 @@ class DiscreteDynamicsWorldTests(TestCase):
         world.removeRigidBody(body)
 
 
+    def test_addRigidBodyCustomGroupAndMask(self):
+        """
+        The collision group and collision mask passed as the second and third
+        arguments to L{DiscreteDynamicsWorld.addRigidBody} are used for
+        collision detections on the L{RigidBody} added.
+        """
+        world = DiscreteDynamicsWorld()
+        body = RigidBody()
+        world.addRigidBody(body, 1234, 2345)
+        proxy = body.getBroadphaseHandle()
+        self.assertEqual(proxy.collisionFilterGroup, 1234)
+        self.assertEqual(proxy.collisionFilterMask, 2345)
+
+
     def test_addAction(self):
         world = DiscreteDynamicsWorld()
 
