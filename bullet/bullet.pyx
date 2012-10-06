@@ -1945,20 +1945,20 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
         """
         Add a new RigidBody to this DynamicsWorld.  Optionally give it a
         customized collision filter group and mask.
+
+        This always calls the three-argument version of
+        btDiscreteDynamicsWorld::addRigidBody, never the one argument version
+        inherited from btCollisionWorld.
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         cdef btDiscreteDynamicsWorld *dynworld = <btDiscreteDynamicsWorld*>self.thisptr
-        if group is None and mask is None:
-            world.addRigidBody(<btRigidBody*>body.thisptr)
-        else:
-            # Supply a default for one or the other if either is not given
-            if group is None:
-                group = BroadphaseProxy.DefaultFilter
-            if mask is None:
-                mask = BroadphaseProxy.AllFilter
+        # Supply a default for one or the other if either is not given
+        if group is None:
+            group = BroadphaseProxy.DefaultFilter
+        if mask is None:
+            mask = BroadphaseProxy.AllFilter
 
-            dynworld.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
-
+        dynworld.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
         self._rigidBodies.append(body)
 
 

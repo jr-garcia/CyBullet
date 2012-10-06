@@ -992,12 +992,27 @@ class DiscreteDynamicsWorldTests(TestCase):
 
 
     def test_addRigidBody(self):
+        """
+        A L{RigidBody} can be added to a L{DiscreteDynamicsWorld} using
+        L{DiscreteDynamicsWorld.addRigidBody}.  The default collision group is
+        L{BroadphaseProxy.DefaultFilter} and the default collision mask is
+        L{BroadphaseProxy.AllFilter}.
+        """
         world = DiscreteDynamicsWorld()
         body = RigidBody()
         world.addRigidBody(body)
+        proxy = body.getBroadphaseHandle()
+        self.assertEqual(
+            BroadphaseProxy.DefaultFilter, proxy.collisionFilterGroup)
+        self.assertEqual(
+            BroadphaseProxy.AllFilter, proxy.collisionFilterMask)
 
 
     def test_removeRigidBody(self):
+        """
+        A L{RigidBody} in a L{DiscreteDynamicsWorld} can be removed using
+        L{DiscreteDynamicsWorld.removeRigidBody}.
+        """
         world = DiscreteDynamicsWorld()
         body = RigidBody()
         world.addRigidBody(body)
