@@ -15,6 +15,8 @@ example:
 
 """
 
+import sys
+
 from libcpp cimport bool
 
 cimport numpy
@@ -30,6 +32,8 @@ cdef extern from "Python.h":
     ctypedef _object PyObject
 
 
+# Cython template arguments can't be literal pointers
+ctypedef btCollisionObject *btCollisionObjectP
 
 cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
@@ -50,7 +54,6 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef int _DISABLE_SIMULATION "DISABLE_SIMULATION"
 
     cdef cppclass btVector3
-
 
     cdef cppclass btIndexedMesh:
         int m_numTriangles
@@ -146,6 +149,10 @@ cdef extern from "btBulletDynamicsCommon.h":
         btDefaultMotionState()
 
 
+    cdef cppclass btAlignedObjectArray[T]:
+        int size()
+        T at(int)
+
     cdef cppclass btCollisionObject:
         btCollisionObject()
 
@@ -166,6 +173,8 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         btBroadphaseProxy *getBroadphaseHandle()
 
+        void *getUserPointer()
+        void setUserPointer(void *userPointer)
 
     cdef cppclass btRigidBody(btCollisionObject)
 
@@ -392,7 +401,6 @@ cdef extern from "btBulletCollisionCommon.h":
         void applyCentralImpulse(btVector3 impulse)
         void applyImpulse(btVector3 impulse, btVector3 relativePosition)
 
-
     cdef cppclass btCollisionWorld:
         btCollisionWorld(
             btDispatcher*, btBroadphaseInterface*, btCollisionConfiguration*)
@@ -407,6 +415,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
         void addCollisionObject(btCollisionObject*, short int, short int)
         void removeCollisionObject(btCollisionObject*)
+
+        btAlignedObjectArray[btCollisionObjectP]& getCollisionObjectArray()
 
 
 
@@ -1054,6 +1064,8 @@ cdef class CollisionObject:
 
     This class is a wrapper around btCollisionObject.
     """
+    cdef object __weakref__
+
     cdef btCollisionObject *thisptr
     cdef CollisionShape _shape
 
@@ -1711,6 +1723,8 @@ cdef class AxisSweep3(BroadphaseInterface):
     This class is a wrapper around btAxisSweep3.
     """
     def __cinit__(self, Vector3 lower, Vector3 upper):
+        # XXX Will ~btAxisSweep3 segfault when it runs after
+        # ~btHashedOverlappingPairCache?
         self._paircache = HashedOverlappingPairCache()
         self.thisptr = new btAxisSweep3(
             btVector3(lower.x, lower.y, lower.z),
@@ -1784,6 +1798,21 @@ cdef class CollisionWorld:
 
 
     def __dealloc__(self):
+        cdef btCollisionObject *obj
+
+        # XXX Re-call getCollisionObjectArray() every time because Cython
+        # support for local variables of reference type is broken.
+        while self.thisptr.getCollisionObjectArray().size():
+            # XXX Would be trivially faster to remove from the end instead, I
+            # imagine.
+            obj = self.thisptr.getCollisionObjectArray().at(0)
+            self.thisptr.removeCollisionObject(obj)
+            if NULL != obj.getUserPointer():
+                Py_DECREF(<object>obj.getUserPointer())
+            else:
+                print 'Funny, found a collision object with a null user pointer, how did that happen?'
+                sys.stdout.flush()
+
         del self.thisptr
         Py_DECREF(<object>self.dispatcher)
         Py_DECREF(<object>self.broadphase)
@@ -1842,6 +1871,22 @@ cdef class CollisionWorld:
         if collisionObject.thisptr.getCollisionShape() == NULL:
             raise ValueError(
                 "Cannot add CollisionObject without a CollisionShape")
+
+        # Keep the Python object alive as long as Bullet is using the
+        # btCollisionObject it wraps.  This would leak the Python object if we
+        # didn't add a corresponding Py_DECREF somewhere.  We'll do that in
+        # removeCollisionObject.
+        Py_INCREF(collisionObject)
+
+        # Beyond that, we may also need to Py_DECREF in __dealloc__ - for any
+        # collision objects that were not removed from the world before the
+        # world was collected.  To be able to do that, we need references to
+        # those collision objects, not just the underlying btCollisionObject*.
+        # By the time __dealloc__ is called, Cython will have destroyed any
+        # state we keep on this object, so keep it in the user pointer field of
+        # btCollisionObject instead.
+        collisionObject.thisptr.setUserPointer(<void*>collisionObject)
+
         self.thisptr.addCollisionObject(
             collisionObject.thisptr, collisionFilterGroup, collisionFilterMask)
 
@@ -1850,8 +1895,20 @@ cdef class CollisionWorld:
         """
         Remove a CollisionObject from this CollisionWorld.
         """
+        cdef int before = self.thisptr.getNumCollisionObjects()
+        cdef int after
         self.thisptr.removeCollisionObject(collisionObject.thisptr)
+        after = self.thisptr.getNumCollisionObjects()
 
+        if after < before:
+            # Just for the sake of sanity, we'll reset the user data pointer to
+            # NULL here, since we're not going to use it in this case.
+            collisionObject.thisptr.setUserPointer(NULL)
+
+            # The collision object had been previously added to this
+            # CollisionWorld.  That means we Py_INCREFed it, so we need to
+            # Py_DECREF it here to avoid leaking it.
+            Py_DECREF(collisionObject)
 
 
 
