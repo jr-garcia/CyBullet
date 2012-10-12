@@ -1771,6 +1771,8 @@ cdef class CollisionWorld:
 
     This class is a wrapper around btCollisionWorld.
     """
+    cdef object __weakref__
+
     cdef btCollisionWorld *thisptr
     cdef PythonDebugDraw *debugDraw
 
@@ -1800,6 +1802,8 @@ cdef class CollisionWorld:
     def __dealloc__(self):
         cdef btCollisionObject *obj
 
+        print 'Contains', self.thisptr.getCollisionObjectArray().size()
+
         # XXX Re-call getCollisionObjectArray() every time because Cython
         # support for local variables of reference type is broken.
         while self.thisptr.getCollisionObjectArray().size():
@@ -1808,6 +1812,7 @@ cdef class CollisionWorld:
             obj = self.thisptr.getCollisionObjectArray().at(0)
             self.thisptr.removeCollisionObject(obj)
             if NULL != obj.getUserPointer():
+                print 'DECREF', <object>obj.getUserPointer()
                 Py_DECREF(<object>obj.getUserPointer())
             else:
                 print 'Funny, found a collision object with a null user pointer, how did that happen?'
@@ -1877,6 +1882,7 @@ cdef class CollisionWorld:
         # didn't add a corresponding Py_DECREF somewhere.  We'll do that in
         # removeCollisionObject.
         Py_INCREF(collisionObject)
+        print 'INCREF', collisionObject
 
         # Beyond that, we may also need to Py_DECREF in __dealloc__ - for any
         # collision objects that were not removed from the world before the
@@ -1899,6 +1905,8 @@ cdef class CollisionWorld:
         cdef int after
         self.thisptr.removeCollisionObject(collisionObject.thisptr)
         after = self.thisptr.getNumCollisionObjects()
+
+        print 'Removing', collisionObject
 
         if after < before:
             # Just for the sake of sanity, we'll reset the user data pointer to
@@ -1936,8 +1944,11 @@ cdef class DynamicsWorld(CollisionWorld):
         Add a new RigidBody to this DynamicsWorld.
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
+
+        Py_INCREF(body)
+        body.thisptr.setUserPointer(<void*>body)
+
         world.addRigidBody(<btRigidBody*>body.thisptr)
-        self._rigidBodies.append(body)
 
 
     def removeRigidBody(self, RigidBody body not None):
@@ -1945,8 +1956,10 @@ cdef class DynamicsWorld(CollisionWorld):
         Remove a RigidBody from this DynamicsWorld.
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        self._rigidBodies.remove(body)
         world.removeRigidBody(<btRigidBody*>body.thisptr)
+
+        body.thisptr.setUserPointer(NULL)
+        Py_DECREF(body)
 
 
     def addAction(self, ActionInterface action not None):
