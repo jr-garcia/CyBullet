@@ -1810,6 +1810,7 @@ cdef class CollisionWorld:
             # XXX Would be trivially faster to remove from the end instead, I
             # imagine.
             obj = self.thisptr.getCollisionObjectArray().at(0)
+            print 'Got obj', <long><void*>obj
             self.thisptr.removeCollisionObject(obj)
             if NULL != obj.getUserPointer():
                 print 'DECREF', <object>obj.getUserPointer()
@@ -1943,12 +1944,14 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         Add a new RigidBody to this DynamicsWorld.
         """
+        raise NotImplementedError("Come back to this at some point - needs unit tests")
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-
+        print 'Adding rigid body', body, <long><void*>body.thisptr
         Py_INCREF(body)
         body.thisptr.setUserPointer(<void*>body)
-
+        print 'User pointer set to', <long><void*>body
         world.addRigidBody(<btRigidBody*>body.thisptr)
+        print 'Done adding'
 
 
     def removeRigidBody(self, RigidBody body not None):
@@ -2028,10 +2031,9 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
         if mask is None:
             mask = BroadphaseProxy.AllFilter
 
+        Py_INCREF(body)
+        body.thisptr.setUserPointer(<void*>body)
         dynworld.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
-        self._rigidBodies.append(body)
-
-
 
 
     def setGravity(self, Vector3 gravity):
