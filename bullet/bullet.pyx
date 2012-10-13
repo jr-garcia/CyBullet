@@ -1802,18 +1802,14 @@ cdef class CollisionWorld:
     def __dealloc__(self):
         cdef btCollisionObject *obj
 
-        print 'Contains', self.thisptr.getCollisionObjectArray().size()
-
         # XXX Re-call getCollisionObjectArray() every time because Cython
         # support for local variables of reference type is broken.
         while self.thisptr.getCollisionObjectArray().size():
             # XXX Would be trivially faster to remove from the end instead, I
             # imagine.
             obj = self.thisptr.getCollisionObjectArray().at(0)
-            print 'Got obj', <long><void*>obj
             self.thisptr.removeCollisionObject(obj)
             if NULL != obj.getUserPointer():
-                print 'DECREF', <object>obj.getUserPointer()
                 Py_DECREF(<object>obj.getUserPointer())
             else:
                 print 'Funny, found a collision object with a null user pointer, how did that happen?'
@@ -1883,7 +1879,6 @@ cdef class CollisionWorld:
         # didn't add a corresponding Py_DECREF somewhere.  We'll do that in
         # removeCollisionObject.
         Py_INCREF(collisionObject)
-        print 'INCREF', collisionObject
 
         # Beyond that, we may also need to Py_DECREF in __dealloc__ - for any
         # collision objects that were not removed from the world before the
@@ -1906,8 +1901,6 @@ cdef class CollisionWorld:
         cdef int after
         self.thisptr.removeCollisionObject(collisionObject.thisptr)
         after = self.thisptr.getNumCollisionObjects()
-
-        print 'Removing', collisionObject
 
         if after < before:
             # Just for the sake of sanity, we'll reset the user data pointer to
@@ -1946,12 +1939,9 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         raise NotImplementedError("Come back to this at some point - needs unit tests")
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        print 'Adding rigid body', body, <long><void*>body.thisptr
         Py_INCREF(body)
         body.thisptr.setUserPointer(<void*>body)
-        print 'User pointer set to', <long><void*>body
         world.addRigidBody(<btRigidBody*>body.thisptr)
-        print 'Done adding'
 
 
     def removeRigidBody(self, RigidBody body not None):
@@ -2031,8 +2021,11 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
         if mask is None:
             mask = BroadphaseProxy.AllFilter
 
+        # See comments in CollisionWorld.addCollisionBody for an explanation of
+        # these two lines.
         Py_INCREF(body)
         body.thisptr.setUserPointer(<void*>body)
+
         dynworld.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
 
 
