@@ -17,6 +17,7 @@ example:
 
 import sys
 
+from libc.stdint cimport uintptr_t
 from libcpp cimport bool
 
 cimport numpy
@@ -1930,15 +1931,16 @@ cdef class DynamicsWorld(CollisionWorld):
     def __dealloc__(self):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         cdef btActionInterface *action
+        cdef uintptr_t worldPointer, actionPointer
 
-        for key in _actions.keys():
+        for (worldPointer, actionPointer) in _actions.keys():
             # If the action was added to this world...
-            if key[0] == <long>self.thisptr:
-                action = <btActionInterface*><long>key[1]
+            if worldPointer == <uintptr_t>self.thisptr:
+                action = <btActionInterface*>actionPointer
                 # remove it from this world
                 world.removeAction(action)
                 # and remove it from the global actions dictionary.
-                del _actions[key]
+                del _actions[worldPointer, actionPointer]
 
 
     def addRigidBody(self, RigidBody body not None):
@@ -1970,7 +1972,7 @@ cdef class DynamicsWorld(CollisionWorld):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addAction(<btActionInterface*>action.thisptr)
         # TODO long is the wrong type
-        key = (<long>self.thisptr, <long>action.thisptr)
+        key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)
         _actions[key] = action
 
 
@@ -1981,7 +1983,7 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.removeAction(<btActionInterface*>action.thisptr)
-        key = (<long>self.thisptr, <long>action.thisptr)
+        key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)
         del _actions[key]
 
 
