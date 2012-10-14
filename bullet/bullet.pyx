@@ -21,7 +21,6 @@ from libcpp cimport bool
 
 cimport numpy
 
-
 cdef extern from "Python.h":
     cdef void Py_INCREF( object )
     cdef void Py_DECREF( object )
@@ -1580,6 +1579,8 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
 
     This class is a wrapper around btKinematicCharacterController.
     """
+    cdef object __weakref__
+
     cdef readonly PairCachingGhostObject ghost
 
     def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, int upAxis):
@@ -1914,6 +1915,8 @@ cdef class CollisionWorld:
 
 
 
+cdef dict _actions = {}
+
 cdef class DynamicsWorld(CollisionWorld):
     """
     A DynamicsWorld is a container for RigidBodies which implements dynamics (ie
@@ -1924,13 +1927,18 @@ cdef class DynamicsWorld(CollisionWorld):
 
     This class is a wrapper around btDynamicsWorld.
     """
-    cdef list _rigidBodies
+    def __dealloc__(self):
+        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
+        cdef btActionInterface *action
 
-    def __init__(self,
-                 CollisionDispatcher dispatcher = None,
-                 BroadphaseInterface broadphase = None):
-        CollisionWorld.__init__(self, dispatcher, broadphase)
-        self._rigidBodies = []
+        for key in _actions.keys():
+            # If the action was added to this world...
+            if key[0] == <long>self.thisptr:
+                action = <btActionInterface*><long>key[1]
+                # remove it from this world
+                world.removeAction(action)
+                # and remove it from the global actions dictionary.
+                del _actions[key]
 
 
     def addRigidBody(self, RigidBody body not None):
@@ -1961,7 +1969,9 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addAction(<btActionInterface*>action.thisptr)
-        self._rigidBodies.append(action)
+        # TODO long is the wrong type
+        key = (<long>self.thisptr, <long>action.thisptr)
+        _actions[key] = action
 
 
     def removeAction(self, ActionInterface action not None):
@@ -1971,7 +1981,8 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.removeAction(<btActionInterface*>action.thisptr)
-        self._rigidBodies.append(action)
+        key = (<long>self.thisptr, <long>action.thisptr)
+        del _actions[key]
 
 
 

@@ -806,13 +806,19 @@ class AxisSweep3Tests(TestCase):
 
 
 class WorldObjectGCMixin(object):
-    def _worldKeepsObjectAlive(self, worldType, objType):
+    def _worldKeepsObjectAlive(self, worldType, objType, objName=None):
         world = worldType()
 
         obj = objType()
-        obj.setCollisionShape(SphereShape(1))
 
-        add = getattr(worldType, 'add' + objType.__name__)
+        # If it can have a collision shape set, set it.
+        if getattr(obj, 'setCollisionShape', None):
+            obj.setCollisionShape(SphereShape(1))
+
+        if objName is None:
+            objName = objType.__name__
+
+        add = getattr(worldType, 'add' + objName)
         add(world, obj)
 
         ref = weakref(obj)
@@ -822,14 +828,20 @@ class WorldObjectGCMixin(object):
         self.assertNotEqual(None, ref())
 
 
-    def _worldForgetsRemovedObject(self, worldType, objType):
+    def _worldForgetsRemovedObject(self, worldType, objType, objName=None):
         world = worldType()
 
         obj = objType()
-        obj.setCollisionShape(SphereShape(1))
 
-        add = getattr(worldType, 'add' + objType.__name__)
-        remove = getattr(worldType, 'remove' + objType.__name__)
+        # If it can have a collision shape set, set it.
+        if getattr(obj, 'setCollisionShape', None):
+            obj.setCollisionShape(SphereShape(1))
+
+        if objName is None:
+            objName = objType.__name__
+
+        add = getattr(worldType, 'add' + objName)
+        remove = getattr(worldType, 'remove' + objName)
         add(world, obj)
         remove(world, obj)
 
@@ -840,13 +852,19 @@ class WorldObjectGCMixin(object):
         self.assertEqual(None, ref())
 
 
-    def _worldCollectionForgetsObject(self, worldType, objType):
+    def _worldCollectionForgetsObject(self, worldType, objType, objName=None):
         world = worldType()
 
         obj = objType()
-        obj.setCollisionShape(SphereShape(1))
 
-        add = getattr(worldType, 'add' + objType.__name__)
+        # If it can have a collision shape set, set it.
+        if getattr(obj, 'setCollisionShape', None):
+            obj.setCollisionShape(SphereShape(1))
+
+        if objName is None:
+            objName = objType.__name__
+
+        add = getattr(worldType, 'add' + objName)
         add(world, obj)
 
         ref = weakref(obj)
@@ -1157,25 +1175,57 @@ class DiscreteDynamicsWorldTests(TestCase, WorldObjectGCMixin):
         self._worldCollectionForgetsObject(DiscreteDynamicsWorld, RigidBody)
 
 
-    def test_addAction(self):
-        world = DiscreteDynamicsWorld()
-
+    def _createAction(self):
         shape = SphereShape(1)
         ghost = PairCachingGhostObject()
         ghost.setCollisionShape(shape)
         action = KinematicCharacterController(ghost, 1.0, 1)
+        return action
+
+
+    def test_addAction(self):
+        action = self._createAction()
+        world = DiscreteDynamicsWorld()
         world.addAction(action)
 
 
     def test_removeAction(self):
+        action = self._createAction()
         world = DiscreteDynamicsWorld()
-
-        shape = SphereShape(1)
-        ghost = PairCachingGhostObject()
-        ghost.setCollisionShape(shape)
-        action = KinematicCharacterController(ghost, 1.0, 1)
         world.addAction(action)
         world.removeAction(action)
+
+
+    def test_dynamicsWorldKeepsActionAlive(self):
+        """
+        When an action has been added to a L{DiscreteDynamicsWorld} using
+        L{DiscreteDynamicsWorld.addAction}, the action is kept alive even if no
+        other references to it exist.
+        """
+        self._worldKeepsObjectAlive(
+            DiscreteDynamicsWorld, self._createAction, 'Action')
+
+
+    def test_dynamicsWorldForgetsRemovedAction(self):
+        """
+        After an action which was previously added to a L{DiscreteDynamicsWorld}
+        is removed from it using L{DiscreteDynamicsWorld.removeAction}, the
+        L{DiscreteDynamicsWorld} no longer keeps the action alive.
+        """
+        self._worldForgetsRemovedObject(
+            DiscreteDynamicsWorld, self._createAction, 'Action')
+
+
+    def test_dynamicsWorldCollectionForgetsAction(self):
+        """
+        Any actions which are still part of a L{DiscreteDynamicsWorld} (having
+        been passed to L{DiscreteDynamicsWorld.addAction} but not
+        L{DiscreteDynamicsWorld.removeAction}) when the L{DiscreteDynamicsWorld}
+        is collected are no longer kept alive by that L{DiscreteDynamicsWorld}
+        afterwards.
+        """
+        self._worldCollectionForgetsObject(
+            DiscreteDynamicsWorld, self._createAction, 'Action')
 
 
     def test_cycle(self):
