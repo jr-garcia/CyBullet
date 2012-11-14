@@ -3,6 +3,8 @@
 
 from math import pi
 from operator import mul
+from gc import collect
+from weakref import ref as weakref
 
 from unittest import TestCase
 
@@ -803,8 +805,77 @@ class AxisSweep3Tests(TestCase):
         self.assertTrue(isinstance(cache, OverlappingPairCache))
 
 
+class WorldObjectGCMixin(object):
+    def _worldKeepsObjectAlive(self, worldType, objType, objName=None):
+        world = worldType()
 
-class CollisionWorldTests(TestCase):
+        obj = objType()
+
+        # If it can have a collision shape set, set it.
+        if getattr(obj, 'setCollisionShape', None):
+            obj.setCollisionShape(SphereShape(1))
+
+        if objName is None:
+            objName = objType.__name__
+
+        add = getattr(worldType, 'add' + objName)
+        add(world, obj)
+
+        ref = weakref(obj)
+        del obj
+        collect()
+
+        self.assertNotEqual(None, ref())
+
+
+    def _worldForgetsRemovedObject(self, worldType, objType, objName=None):
+        world = worldType()
+
+        obj = objType()
+
+        # If it can have a collision shape set, set it.
+        if getattr(obj, 'setCollisionShape', None):
+            obj.setCollisionShape(SphereShape(1))
+
+        if objName is None:
+            objName = objType.__name__
+
+        add = getattr(worldType, 'add' + objName)
+        remove = getattr(worldType, 'remove' + objName)
+        add(world, obj)
+        remove(world, obj)
+
+        ref = weakref(obj)
+        del obj
+        collect()
+
+        self.assertEqual(None, ref())
+
+
+    def _worldCollectionForgetsObject(self, worldType, objType, objName=None):
+        world = worldType()
+
+        obj = objType()
+
+        # If it can have a collision shape set, set it.
+        if getattr(obj, 'setCollisionShape', None):
+            obj.setCollisionShape(SphereShape(1))
+
+        if objName is None:
+            objName = objType.__name__
+
+        add = getattr(worldType, 'add' + objName)
+        add(world, obj)
+
+        ref = weakref(obj)
+        del obj, world
+        collect()
+
+        self.assertEqual(None, ref())
+
+
+
+class CollisionWorldTests(TestCase, WorldObjectGCMixin):
     def test_empty(self):
         world = CollisionWorld()
         self.assertEqual(world.getNumCollisionObjects(), 0)
@@ -862,6 +933,47 @@ class CollisionWorldTests(TestCase):
         world.addCollisionObject(obj)
         world.removeCollisionObject(obj)
         self.assertEqual(world.getNumCollisionObjects(), 0)
+
+
+    def test_removeCollisionObjectNeverAdded(self):
+        """
+        Though it is useless and should be avoided, calling
+        L{CollisionWorld.removeCollisionObject} with a L{CollisionWorld} which
+        is not currently part of the L{CollisionWorld} is a no-op.
+        """
+        world = CollisionWorld()
+        obj = CollisionObject()
+        world.removeCollisionObject(obj)
+        self.assertEqual(world.getNumCollisionObjects(), 0)
+
+
+    def test_collisionWorldKeepsCollisionObjectAlive(self):
+        """
+        When a L{CollisionObject} has been added to a L{CollisionWorld} using
+        L{CollisionWorld.addCollisionObject}, the L{CollisionObject} is kept
+        alive even if no other references to it exist.
+        """
+        self._worldKeepsObjectAlive(CollisionWorld, CollisionObject)
+
+
+    def test_collisionWorldForgetsRemovedCollisionObject(self):
+        """
+        After a L{CollisionObject} which was previously added to a
+        L{CollisionWorld} is removed from it using
+        L{CollisionWorld.removeCollisionObject}, the L{CollisionWorld} no longer
+        keeps the L{CollisionObject} alive.
+        """
+        self._worldForgetsRemovedObject(CollisionWorld, CollisionObject)
+
+
+    def test_collisionWorldCollectionForgetsCollisionObject(self):
+        """
+        Any L{CollisionObject}s which are still part of a L{CollisionWorld}
+        (having been passed to L{CollisionWorld.addCollisionObject} but not
+        L{CollisionWorld.removeCollisionObject}) when the L{CollisionWorld} is
+        collected are no longer kept alive by that L{CollisionWorld} afterwards.
+        """
+        self._worldCollectionForgetsObject(CollisionWorld, CollisionObject)
 
 
     def test_addBoxShape(self):
@@ -976,7 +1088,7 @@ class DebugDrawerTests(TestCase):
 
 
 
-class DiscreteDynamicsWorldTests(TestCase):
+class DiscreteDynamicsWorldTests(TestCase, WorldObjectGCMixin):
     def test_empty(self):
         world = DiscreteDynamicsWorld()
         self.assertEqual(world.getNumCollisionObjects(), 0)
@@ -1033,25 +1145,87 @@ class DiscreteDynamicsWorldTests(TestCase):
         self.assertEqual(proxy.collisionFilterMask, 2345)
 
 
-    def test_addAction(self):
-        world = DiscreteDynamicsWorld()
+    def test_dynamicsWorldKeepsRigidBodyAlive(self):
+        """
+        When a L{RigidBody} has been added to a L{DiscreteDynamicsWorld} using
+        L{DiscreteDynamicsWorld.addRigidBody}, the L{RigidBody} is kept alive
+        even if no other references to it exist.
+        """
+        self._worldKeepsObjectAlive(DiscreteDynamicsWorld, RigidBody)
 
+
+    def test_dynamicsWorldForgetsRemovedRigidBody(self):
+        """
+        After a L{RigidBody} which was previously added to a
+        L{DiscreteDynamicsWorld} is removed from it using
+        L{DiscreteDynamicsWorld.removeRigidBody}, the L{DiscreteDynamicsWorld}
+        no longer keeps the L{RigidBody} alive.
+        """
+        self._worldForgetsRemovedObject(DiscreteDynamicsWorld, RigidBody)
+
+
+    def test_dynamicsWorldCollectionForgetsRigidBody(self):
+        """
+        Any L{RigidBody}s which are still part of a L{DiscreteDynamicsWorld}
+        (having been passed to L{DiscreteDynamicsWorld.addRigidBody} but not
+        L{DiscreteDynamicsWorld.removeRigidBody}) when the
+        L{DiscreteDynamicsWorld} is collected are no longer kept alive by that
+        L{DiscreteDynamicsWorld} afterwards.
+        """
+        self._worldCollectionForgetsObject(DiscreteDynamicsWorld, RigidBody)
+
+
+    def _createAction(self):
         shape = SphereShape(1)
         ghost = PairCachingGhostObject()
         ghost.setCollisionShape(shape)
         action = KinematicCharacterController(ghost, 1.0, 1)
+        return action
+
+
+    def test_addAction(self):
+        action = self._createAction()
+        world = DiscreteDynamicsWorld()
         world.addAction(action)
 
 
     def test_removeAction(self):
+        action = self._createAction()
         world = DiscreteDynamicsWorld()
-
-        shape = SphereShape(1)
-        ghost = PairCachingGhostObject()
-        ghost.setCollisionShape(shape)
-        action = KinematicCharacterController(ghost, 1.0, 1)
         world.addAction(action)
         world.removeAction(action)
+
+
+    def test_dynamicsWorldKeepsActionAlive(self):
+        """
+        When an action has been added to a L{DiscreteDynamicsWorld} using
+        L{DiscreteDynamicsWorld.addAction}, the action is kept alive even if no
+        other references to it exist.
+        """
+        self._worldKeepsObjectAlive(
+            DiscreteDynamicsWorld, self._createAction, 'Action')
+
+
+    def test_dynamicsWorldForgetsRemovedAction(self):
+        """
+        After an action which was previously added to a L{DiscreteDynamicsWorld}
+        is removed from it using L{DiscreteDynamicsWorld.removeAction}, the
+        L{DiscreteDynamicsWorld} no longer keeps the action alive.
+        """
+        self._worldForgetsRemovedObject(
+            DiscreteDynamicsWorld, self._createAction, 'Action')
+
+
+    def test_dynamicsWorldCollectionForgetsAction(self):
+        """
+        Any actions which are still part of a L{DiscreteDynamicsWorld} (having
+        been passed to L{DiscreteDynamicsWorld.addAction} but not
+        L{DiscreteDynamicsWorld.removeAction}) when the L{DiscreteDynamicsWorld}
+        is collected are no longer kept alive by that L{DiscreteDynamicsWorld}
+        afterwards.
+        """
+        self._worldCollectionForgetsObject(
+            DiscreteDynamicsWorld, self._createAction, 'Action')
 
 
     def test_cycle(self):
@@ -1171,3 +1345,61 @@ class ControllerWorldIntegrationTests(TestCase):
         self.assertEqual(expected[0], origin.x)
         self.assertAlmostEqual(expected[1], origin.y, 2)
         self.assertEqual(expected[2], origin.z)
+
+
+
+class CrashTests(TestCase):
+    """
+    Tests for uses of L{bullet} which at some point triggered crashes of one sort of another.
+    """
+    def test_collisionObjectInCollisionWorld(self):
+        """
+        A L{CollisionObject} cannot safely be deallocated before the
+        L{CollisionWorld} which contains it.
+        """
+        world = CollisionWorld()
+        shape = SphereShape(1)
+        obj = CollisionObject()
+        obj.setCollisionShape(shape)
+        world.addCollisionObject(obj)
+        del obj
+        collect()
+        del world
+        collect()
+
+
+    def test_rigidBodyInDiscreteDynamicsWorld(self):
+        """
+        A L{RigidBody} cannot safely be deallocated before the
+        L{DiscreteDynamicsWorld} which contains it.
+        """
+        world = DiscreteDynamicsWorld()
+        body = RigidBody(shape=SphereShape(1))
+        world.addRigidBody(body)
+        del body
+        collect()
+        del world
+        collect()
+
+
+    def test_ghostInDiscreteDynamicsWorld(self):
+        """
+        A L{PairCachingGhostObject} cannot safely be deallocated before the
+        L{DiscreteDynamicsWorld} which contains it.
+        """
+        broadphase = AxisSweep3(Vector3(-1, -1, -1), Vector3(1, 1, 1))
+        paircache = broadphase.getOverlappingPairCache()
+        paircache.setInternalGhostPairCallback()
+        world = DiscreteDynamicsWorld()
+        ghost = PairCachingGhostObject()
+        ghost.setCollisionShape(SphereShape(1))
+        world.addCollisionObject(ghost)
+
+        del ghost
+        collect()
+        del paircache
+        collect()
+        del broadphase
+        collect()
+        del world
+        collect()

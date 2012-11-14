@@ -15,10 +15,12 @@ example:
 
 """
 
+import sys
+
+from libc.stdint cimport uintptr_t
 from libcpp cimport bool
 
 cimport numpy
-
 
 cdef extern from "Python.h":
     cdef void Py_INCREF( object )
@@ -30,6 +32,8 @@ cdef extern from "Python.h":
     ctypedef _object PyObject
 
 
+# Cython template arguments can't be literal pointers
+ctypedef btCollisionObject *btCollisionObjectP
 
 cdef extern from "btBulletCollisionCommon.h":
     ctypedef float btScalar
@@ -50,7 +54,6 @@ cdef extern from "btBulletCollisionCommon.h":
     cdef int _DISABLE_SIMULATION "DISABLE_SIMULATION"
 
     cdef cppclass btVector3
-
 
     cdef cppclass btIndexedMesh:
         int m_numTriangles
@@ -146,6 +149,10 @@ cdef extern from "btBulletDynamicsCommon.h":
         btDefaultMotionState()
 
 
+    cdef cppclass btAlignedObjectArray[T]:
+        int size()
+        T at(int)
+
     cdef cppclass btCollisionObject:
         btCollisionObject()
 
@@ -166,6 +173,8 @@ cdef extern from "btBulletDynamicsCommon.h":
 
         btBroadphaseProxy *getBroadphaseHandle()
 
+        void *getUserPointer()
+        void setUserPointer(void *userPointer)
 
     cdef cppclass btRigidBody(btCollisionObject)
 
@@ -392,7 +401,6 @@ cdef extern from "btBulletCollisionCommon.h":
         void applyCentralImpulse(btVector3 impulse)
         void applyImpulse(btVector3 impulse, btVector3 relativePosition)
 
-
     cdef cppclass btCollisionWorld:
         btCollisionWorld(
             btDispatcher*, btBroadphaseInterface*, btCollisionConfiguration*)
@@ -407,6 +415,8 @@ cdef extern from "btBulletCollisionCommon.h":
 
         void addCollisionObject(btCollisionObject*, short int, short int)
         void removeCollisionObject(btCollisionObject*)
+
+        btAlignedObjectArray[btCollisionObjectP]& getCollisionObjectArray()
 
 
 
@@ -1054,6 +1064,8 @@ cdef class CollisionObject:
 
     This class is a wrapper around btCollisionObject.
     """
+    cdef object __weakref__
+
     cdef btCollisionObject *thisptr
     cdef CollisionShape _shape
 
@@ -1568,6 +1580,8 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
 
     This class is a wrapper around btKinematicCharacterController.
     """
+    cdef object __weakref__
+
     cdef readonly PairCachingGhostObject ghost
 
     def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, int upAxis):
@@ -1711,6 +1725,8 @@ cdef class AxisSweep3(BroadphaseInterface):
     This class is a wrapper around btAxisSweep3.
     """
     def __cinit__(self, Vector3 lower, Vector3 upper):
+        # XXX Will ~btAxisSweep3 segfault when it runs after
+        # ~btHashedOverlappingPairCache?
         self._paircache = HashedOverlappingPairCache()
         self.thisptr = new btAxisSweep3(
             btVector3(lower.x, lower.y, lower.z),
@@ -1757,6 +1773,8 @@ cdef class CollisionWorld:
 
     This class is a wrapper around btCollisionWorld.
     """
+    cdef object __weakref__
+
     cdef btCollisionWorld *thisptr
     cdef PythonDebugDraw *debugDraw
 
@@ -1784,6 +1802,18 @@ cdef class CollisionWorld:
 
 
     def __dealloc__(self):
+        cdef btCollisionObject *obj
+
+        # XXX Re-call getCollisionObjectArray() every time because Cython
+        # support for local variables of reference type is broken.
+        while self.thisptr.getCollisionObjectArray().size():
+            # XXX Would be trivially faster to remove from the end instead, I
+            # imagine.
+            obj = self.thisptr.getCollisionObjectArray().at(0)
+            self.thisptr.removeCollisionObject(obj)
+            if NULL != obj.getUserPointer():
+                Py_DECREF(<object>obj.getUserPointer())
+
         del self.thisptr
         Py_DECREF(<object>self.dispatcher)
         Py_DECREF(<object>self.broadphase)
@@ -1842,6 +1872,22 @@ cdef class CollisionWorld:
         if collisionObject.thisptr.getCollisionShape() == NULL:
             raise ValueError(
                 "Cannot add CollisionObject without a CollisionShape")
+
+        # Keep the Python object alive as long as Bullet is using the
+        # btCollisionObject it wraps.  This would leak the Python object if we
+        # didn't add a corresponding Py_DECREF somewhere.  We'll do that in
+        # removeCollisionObject.
+        Py_INCREF(collisionObject)
+
+        # Beyond that, we may also need to Py_DECREF in __dealloc__ - for any
+        # collision objects that were not removed from the world before the
+        # world was collected.  To be able to do that, we need references to
+        # those collision objects, not just the underlying btCollisionObject*.
+        # By the time __dealloc__ is called, Cython will have destroyed any
+        # state we keep on this object, so keep it in the user pointer field of
+        # btCollisionObject instead.
+        collisionObject.thisptr.setUserPointer(<void*>collisionObject)
+
         self.thisptr.addCollisionObject(
             collisionObject.thisptr, collisionFilterGroup, collisionFilterMask)
 
@@ -1850,10 +1896,24 @@ cdef class CollisionWorld:
         """
         Remove a CollisionObject from this CollisionWorld.
         """
+        cdef int before = self.thisptr.getNumCollisionObjects()
+        cdef int after
         self.thisptr.removeCollisionObject(collisionObject.thisptr)
+        after = self.thisptr.getNumCollisionObjects()
+
+        if after < before:
+            # Just for the sake of sanity, we'll reset the user data pointer to
+            # NULL here, since we're not going to use it in this case.
+            collisionObject.thisptr.setUserPointer(NULL)
+
+            # The collision object had been previously added to this
+            # CollisionWorld.  That means we Py_INCREFed it, so we need to
+            # Py_DECREF it here to avoid leaking it.
+            Py_DECREF(collisionObject)
 
 
 
+cdef dict _actions = {}
 
 cdef class DynamicsWorld(CollisionWorld):
     """
@@ -1863,24 +1923,22 @@ cdef class DynamicsWorld(CollisionWorld):
     For a dynamics world in which simulation time can actually pass, see one of
     the subclasses of this class.
 
-    This class is a wrapper around btDynamicsWorld.
+    This class is a wrapper around btDynamicsWorld, which is pure virtual - so
+    don't instantiate this class!
     """
-    cdef list _rigidBodies
-
-    def __init__(self,
-                 CollisionDispatcher dispatcher = None,
-                 BroadphaseInterface broadphase = None):
-        CollisionWorld.__init__(self, dispatcher, broadphase)
-        self._rigidBodies = []
-
-
-    def addRigidBody(self, RigidBody body not None):
-        """
-        Add a new RigidBody to this DynamicsWorld.
-        """
+    def __dealloc__(self):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        world.addRigidBody(<btRigidBody*>body.thisptr)
-        self._rigidBodies.append(body)
+        cdef btActionInterface *action
+        cdef uintptr_t worldPointer, actionPointer
+
+        for (worldPointer, actionPointer) in _actions.keys():
+            # If the action was added to this world...
+            if worldPointer == <uintptr_t>self.thisptr:
+                action = <btActionInterface*>actionPointer
+                # remove it from this world
+                world.removeAction(action)
+                # and remove it from the global actions dictionary.
+                del _actions[worldPointer, actionPointer]
 
 
     def removeRigidBody(self, RigidBody body not None):
@@ -1888,8 +1946,10 @@ cdef class DynamicsWorld(CollisionWorld):
         Remove a RigidBody from this DynamicsWorld.
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        self._rigidBodies.remove(body)
         world.removeRigidBody(<btRigidBody*>body.thisptr)
+
+        body.thisptr.setUserPointer(NULL)
+        Py_DECREF(body)
 
 
     def addAction(self, ActionInterface action not None):
@@ -1898,7 +1958,8 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addAction(<btActionInterface*>action.thisptr)
-        self._rigidBodies.append(action)
+        key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)
+        _actions[key] = action
 
 
     def removeAction(self, ActionInterface action not None):
@@ -1908,7 +1969,8 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.removeAction(<btActionInterface*>action.thisptr)
-        self._rigidBodies.append(action)
+        key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)
+        del _actions[key]
 
 
 
@@ -1950,18 +2012,19 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
         btDiscreteDynamicsWorld::addRigidBody, never the one argument version
         inherited from btCollisionWorld.
         """
-        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        cdef btDiscreteDynamicsWorld *dynworld = <btDiscreteDynamicsWorld*>self.thisptr
+        cdef btDiscreteDynamicsWorld *world = <btDiscreteDynamicsWorld*>self.thisptr
         # Supply a default for one or the other if either is not given
         if group is None:
             group = BroadphaseProxy.DefaultFilter
         if mask is None:
             mask = BroadphaseProxy.AllFilter
 
-        dynworld.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
-        self._rigidBodies.append(body)
+        # See comments in CollisionWorld.addCollisionBody for an explanation of
+        # these two lines.
+        Py_INCREF(body)
+        body.thisptr.setUserPointer(<void*>body)
 
-
+        world.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
 
 
     def setGravity(self, Vector3 gravity):
