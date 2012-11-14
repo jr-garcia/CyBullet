@@ -1813,9 +1813,6 @@ cdef class CollisionWorld:
             self.thisptr.removeCollisionObject(obj)
             if NULL != obj.getUserPointer():
                 Py_DECREF(<object>obj.getUserPointer())
-            else:
-                print 'Funny, found a collision object with a null user pointer, how did that happen?'
-                sys.stdout.flush()
 
         del self.thisptr
         Py_DECREF(<object>self.dispatcher)
@@ -2026,8 +2023,7 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
         btDiscreteDynamicsWorld::addRigidBody, never the one argument version
         inherited from btCollisionWorld.
         """
-        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        cdef btDiscreteDynamicsWorld *dynworld = <btDiscreteDynamicsWorld*>self.thisptr
+        cdef btDiscreteDynamicsWorld *world = <btDiscreteDynamicsWorld*>self.thisptr
         # Supply a default for one or the other if either is not given
         if group is None:
             group = BroadphaseProxy.DefaultFilter
@@ -2039,7 +2035,7 @@ cdef class DiscreteDynamicsWorld(DynamicsWorld):
         Py_INCREF(body)
         body.thisptr.setUserPointer(<void*>body)
 
-        dynworld.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
+        world.addRigidBody(<btRigidBody*>body.thisptr, group, mask)
 
 
     def setGravity(self, Vector3 gravity):
