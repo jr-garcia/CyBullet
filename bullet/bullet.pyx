@@ -1923,7 +1923,8 @@ cdef class DynamicsWorld(CollisionWorld):
     For a dynamics world in which simulation time can actually pass, see one of
     the subclasses of this class.
 
-    This class is a wrapper around btDynamicsWorld.
+    This class is a wrapper around btDynamicsWorld, which is pure virtual - so
+    don't instantiate this class!
     """
     def __dealloc__(self):
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
@@ -1938,17 +1939,6 @@ cdef class DynamicsWorld(CollisionWorld):
                 world.removeAction(action)
                 # and remove it from the global actions dictionary.
                 del _actions[worldPointer, actionPointer]
-
-
-    def addRigidBody(self, RigidBody body not None):
-        """
-        Add a new RigidBody to this DynamicsWorld.
-        """
-        raise NotImplementedError("Come back to this at some point - needs unit tests")
-        cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
-        Py_INCREF(body)
-        body.thisptr.setUserPointer(<void*>body)
-        world.addRigidBody(<btRigidBody*>body.thisptr)
 
 
     def removeRigidBody(self, RigidBody body not None):
@@ -1968,7 +1958,6 @@ cdef class DynamicsWorld(CollisionWorld):
         """
         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
         world.addAction(<btActionInterface*>action.thisptr)
-        # TODO long is the wrong type
         key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)
         _actions[key] = action
 
