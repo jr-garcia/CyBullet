@@ -1,6 +1,18 @@
+from setuptools import Extension, setup
+from numpy import get_include
+from sys import platform
 
-from distutils.core import Extension, setup
-from Cython.Distutils import build_ext
+plat = platform
+incl = [get_include()]
+extrac = []
+
+if 'win' in plat:
+    extrac.append('/EHsc')
+elif 'linux' in plat:
+    extrac.extend(['-w', '-O3'])
+else:
+    print('Bullet Setup.py warning: Unknown platform \'{}\''.format(plat))
+
 
 setup(
     name="bullet",
@@ -14,6 +26,7 @@ setup(
                 "BulletCollision",
                 "LinearMath",
                 ],
+        include_dirs=incl,
+        extra_compile_args=extrac,
         language="c++")],
-    cmdclass={'build_ext': build_ext},
     )
