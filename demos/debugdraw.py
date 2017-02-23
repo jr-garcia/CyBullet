@@ -75,7 +75,7 @@ def main():
             glVertex(*line[:3])
             glVertex(*line[3:6])
         if debug.contacts:
-            print 'Contact!', debug.contacts
+            print('Contact!', debug.contacts)
         glEnd()
 
         render(objects)

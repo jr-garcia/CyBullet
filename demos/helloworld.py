@@ -1,12 +1,8 @@
 # Copyright (c) 2010 Jean-Paul Calderone
 # See LICENSE for details.
 
-from bullet.bullet import (
-    Vector3, Transform,
-    BoxShape,
-    DefaultMotionState,
-    RigidBody,
-    DiscreteDynamicsWorld)
+from bullet.bullet import (Vector3, Transform, BoxShape, DefaultMotionState, RigidBody, DiscreteDynamicsWorld)
+
 
 def main():
     dynamicsWorld = DiscreteDynamicsWorld()
@@ -34,7 +30,7 @@ def main():
 
         for obj in ballMotion, groundMotion:
             o = obj.getWorldTransform().getOrigin()
-            print 'world pos = %0.6f,%0.6f,%0.6f' % (o.x, o.y, o.z)
+            print('world pos = %0.6f,%0.6f,%0.6f' % (o.x, o.y, o.z))
 
 
 main()
