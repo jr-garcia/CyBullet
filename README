@@ -5,7 +5,7 @@ https://launchpad.net/pybullet
 
 Build
 =====
-Building CyBullet requires Cython and Bullet Physics headers and libraries. If these are
+Building CyBullet requires Numpy, Cython and Bullet Physics headers and libraries. If these are
 in the default search path on your platform, then a simple distutils build
 command should succeed:
 
