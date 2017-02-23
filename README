@@ -1,10 +1,11 @@
 About
 =====
-PyBullet is a Python wrapper of the Bullet Physics library.
+CyBullet is a Python binding of the Bullet Physics library, based on the original PyBullet from:
+https://launchpad.net/pybullet
 
 Build
 =====
-Building PyBullet requires Bullet Physics headers and libraries.  If these are
+Building CyBullet requires Cython and Bullet Physics headers and libraries. If these are
 in the default search path on your platform, then a simple distutils build
 command should succeed:
 
@@ -18,20 +19,20 @@ and --library-dirs command line options:
 
 Install
 =======
-You can install PyBullet using the normal distutils install command:
+You can install CyBullet using the normal distutils install command:
 
     $ python setup.py install
 
 Documentation
 =============
-To learn how to use PyBullet, there are several resources available:
+To learn how to use CyBullet, there are several resources available:
 
   - The Python API documentation for the bullet package
-  - The programs in the PyBullet demos/ directory
+  - The programs in the CyBullet demos/ directory
 
-PyBullet attempts to be a very thin wrapper around the Bullet Physics C++ API.
+CyBullet attempts to be a very thin wrapper around the Bullet Physics C++ API.
 This means that much of the Bullet Physics documentation is useful in learning
-and understanding PyBullet:
+and understanding CyBullet:
 
   - The Bullet Physics API documentation:
       http://bulletphysics.com/Bullet/BulletFull/
@@ -41,4 +42,8 @@ and understanding PyBullet:
 
 Bugs
 ====
-Please report bugs at https://bugs.launchpad.net/pybullet
+Please report bugs at https://github.com/jr-garcia/CyBullet
+
+License
+=====
+Zlib license.
