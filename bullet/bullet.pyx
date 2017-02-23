@@ -15,450 +15,7 @@ example:
 
 """
 
-import sys
-
-from libc.stdint cimport uintptr_t
-from libcpp cimport bool
-
-cimport numpy
-
-cdef extern from "Python.h":
-    cdef void Py_INCREF( object )
-    cdef void Py_DECREF( object )
-
-    cdef struct _object:
-        pass
-
-    ctypedef _object PyObject
-
-
-# Cython template arguments can't be literal pointers
-ctypedef btCollisionObject *btCollisionObjectP
-
-cdef extern from "btBulletCollisionCommon.h":
-    ctypedef float btScalar
-    ctypedef int bool
-
-    cdef enum PHY_ScalarType:
-        PHY_FLOAT
-        PHY_DOUBLE
-        PHY_INTEGER
-        PHY_SHORT
-        PHY_FIXEDPOINT88
-        PHY_UCHAR
-
-    cdef int _ACTIVE_TAG "ACTIVE_TAG"
-    cdef int _ISLAND_SLEEPING "ISLAND_SLEEPING"
-    cdef int _WANTS_DEACTIVATION "WANTS_DEACTIVATION"
-    cdef int _DISABLE_DEACTIVATION "DISABLE_DEACTIVATION"
-    cdef int _DISABLE_SIMULATION "DISABLE_SIMULATION"
-
-    cdef cppclass btVector3
-
-    cdef cppclass btIndexedMesh:
-        int m_numTriangles
-        unsigned char *m_triangleIndexBase
-        int m_triangleIndexStride
-        PHY_ScalarType m_indexType
-
-        int m_numVertices
-        unsigned char *m_vertexBase
-        int m_vertexStride
-        PHY_ScalarType m_vertexType
-
-
-    cdef cppclass btQuaternion
-
-
-    cdef cppclass btStridingMeshInterface:
-        int getNumSubParts()
-
-
-    cdef cppclass btTriangleIndexVertexArray(btStridingMeshInterface):
-        btTriangleIndexVertexArray()
-        btTriangleIndexVertexArray(
-            int numTriangles,
-            int *triangleIndexBase,
-            int triangleIndexStride,
-            int numVertices,
-            btScalar *vertexBase,
-            int vertexStride)
-
-        void addIndexedMesh(btIndexedMesh &mesh, PHY_ScalarType indexType)
-
-
-    cdef cppclass btCollisionShape:
-        void calculateLocalInertia(btScalar mass, btVector3 &inertia)
-
-
-    cdef cppclass btConvexShape(btCollisionShape):
-        pass
-
-    cdef cppclass btBoxShape(btConvexShape):
-        btBoxShape(btVector3 boxHalfExtents)
-
-
-    cdef cppclass btSphereShape(btConvexShape):
-        btSphereShape(btScalar radius)
-
-        btScalar getRadius()
-
-
-    cdef cppclass btCapsuleShape(btConvexShape):
-        btCapsuleShape(btScalar radius, btScalar height)
-
-
-    cdef cppclass btBvhTriangleMeshShape(btConvexShape):
-        btBvhTriangleMeshShape(
-            btStridingMeshInterface* meshInterface,
-            bool useQuantizedAabbCompression,
-            bool buildBvh)
-
-        void buildOptimizedBvh()
-
-
-    cdef int _DefaultFilter "btBroadphaseProxy::DefaultFilter"
-    cdef int _AllFilter "btBroadphaseProxy::AllFilter"
-
-    cdef cppclass btBroadphaseProxy:
-        short int m_collisionFilterGroup
-        short int m_collisionFilterMask
-
-
-
-cdef extern from "BulletCollision/CollisionShapes/btBox2dShape.h":
-    cdef cppclass btBox2dShape(btConvexShape):
-        btBox2dShape(btVector3 boxHalfExtents)
-
-
-cdef extern from "btBulletDynamicsCommon.h":
-    cdef cppclass btTransform:
-        btVector3 getOrigin()
-        void setOrigin(btVector3)
-        void setIdentity()
-        void setRotation(btQuaternion&)
-        btQuaternion getRotation()
-
-
-    cdef cppclass btMotionState:
-        void getWorldTransform(btTransform &transform)
-        void setWorldTransform(btTransform &transform)
-
-
-    cdef cppclass btDefaultMotionState(btMotionState):
-        btDefaultMotionState()
-
-
-    cdef cppclass btAlignedObjectArray[T]:
-        int size()
-        T at(int)
-
-    cdef cppclass btCollisionObject:
-        btCollisionObject()
-
-        btCollisionShape* getCollisionShape()
-        void setCollisionShape(btCollisionShape*)
-
-        btScalar getFriction()
-        void setFriction(btScalar)
-
-        void setRestitution(btScalar)
-        btScalar getRestitution()
-
-        btTransform& getWorldTransform()
-        void setWorldTransform(btTransform& worldTrans)
-
-        int getActivationState()
-        void setActivationState(int newState)
-
-        btBroadphaseProxy *getBroadphaseHandle()
-
-        void *getUserPointer()
-        void setUserPointer(void *userPointer)
-
-    cdef cppclass btRigidBody(btCollisionObject)
-
-
-    cdef cppclass btActionInterface:
-        pass
-
-
-    cdef cppclass btCharacterControllerInterface(btActionInterface):
-        void setWalkDirection(btVector3 walkDirection)
-
-        void setVelocityForTimeInterval(
-            btVector3 velocity, btScalar timeInterval)
-
-
-
-cdef extern from "BulletCollision/CollisionShapes/btCylinderShape.h":
-    cdef cppclass btCylinderShape(btConvexShape):
-        btCylinderShape()
-        btCylinderShape(btVector3&)
-        btVector3& getHalfExtentsWithoutMargin()
-        btScalar getRadius()
-
-    cdef cppclass btCylinderShapeX(btCylinderShape):
-        btCylinderShapeX(btVector3&)
-
-    cdef cppclass btCylinderShapeZ(btCylinderShape):
-        btCylinderShapeZ(btVector3&)
-
-
-
-cdef extern from "BulletCollision/CollisionShapes/btStaticPlaneShape.h":
-    cdef cppclass btStaticPlaneShape(btCollisionShape):
-        btStaticPlaneShape(btVector3 &planeNormal, btScalar planeConstant)
-
-
-
-cdef extern from "btBulletCollisionCommon.h":
-    cdef cppclass btDispatcher:
-        pass
-
-
-
-cdef extern from "BulletCollision/BroadphaseCollision/btOverlappingPairCache.h":
-    cdef cppclass btOverlappingPairCallback:
-        pass
-
-
-    cdef cppclass btGhostPairCallback(btOverlappingPairCallback):
-        pass
-
-
-    cdef cppclass btOverlappingPairCache:
-        void setInternalGhostPairCallback(btOverlappingPairCallback*)
-
-
-    cdef cppclass btHashedOverlappingPairCache(btOverlappingPairCache):
-        pass
-
-
-cdef extern from "BulletCollision/CollisionDispatch/btGhostObject.h":
-    cdef cppclass btPairCachingGhostObject(btCollisionObject):
-        pass
-
-
-cdef extern from "BulletDynamics/Character/btKinematicCharacterController.h":
-    cdef cppclass btKinematicCharacterController(btCharacterControllerInterface):
-        btKinematicCharacterController(
-            btPairCachingGhostObject *ghostObject,
-            btConvexShape *convexShape,
-            btScalar stepHeight, int upAxis)
-
-        void setGravity(btScalar gravity)
-        btScalar getGravity()
-
-        void warp(btVector3 origin)
-
-
-
-cdef extern from "btBulletCollisionCommon.h" namespace "btRigidBody":
-    cdef cppclass btRigidBodyConstructionInfo:
-        btRigidBodyConstructionInfo(
-            btScalar mass,
-            btMotionState *motionState,
-            btCollisionShape *collisionShape)
-        btRigidBodyConstructionInfo(
-            btScalar mass,
-            btMotionState *motionState,
-            btCollisionShape *collisionShape,
-            btVector3 localInteria)
-
-        btScalar m_additionalAngularDampingFactor
-        btScalar m_additionalAngularDampingThresholdSqr
-        bool m_additionalDamping
-        btScalar m_additionalDampingFactor
-        btScalar m_additionalLinearDampingThresholdSqr
-        btScalar m_angularDamping
-        btScalar m_angularSleepingThreshold
-        btCollisionShape* m_collisionShape
-        btScalar m_friction
-        btScalar m_linearDamping
-        btScalar m_linearSleepingThreshold
-        btVector3 m_localInertia
-        btScalar m_mass
-        btMotionState* m_motionState
-        btScalar m_restitution
-        btTransform m_startWorldTransform
-
-
-
-cdef extern from "LinearMath/btIDebugDraw.h":
-
-    cdef cppclass btIDebugDraw:
-        pass
-
-cdef extern from "LinearMath/btIDebugDraw.h" namespace "btIDebugDraw":
-        cdef enum DebugDrawModes:
-            DBG_NoDebug
-            DBG_DrawWireframe
-            DBG_DrawAabb
-            DBG_DrawFeaturesText
-            DBG_DrawContactPoints
-            DBG_DrawText
-            DBG_DrawConstraints
-            DBG_DrawConstraintLimits
-
-
-NO_DEBUG = DBG_NoDebug
-DRAW_WIREFRAME = DBG_DrawWireframe
-DRAW_AABB = DBG_DrawAabb
-DRAW_FEATURES_TEXT = DBG_DrawFeaturesText
-DRAW_CONTACT_POINTS = DBG_DrawContactPoints
-DRAW_TEXT = DBG_DrawText
-DRAW_CONSTRAINTS = DBG_DrawConstraints
-DRAW_CONSTRAINT_LIMITS = DBG_DrawConstraintLimits
-
-cdef extern from "btBulletCollisionCommon.h":
-    cdef cppclass btCollisionConfiguration:
-        pass
-
-    cdef cppclass btDefaultCollisionConfiguration(btCollisionConfiguration):
-        pass
-
-    cdef cppclass btDispatcher:
-        pass
-
-    cdef cppclass btCollisionDispatcher(btDispatcher):
-        btCollisionDispatcher(btCollisionConfiguration*)
-
-    cdef cppclass btVector3:
-        btVector3()
-        btVector3(btScalar, btScalar, btScalar)
-
-        void setX(btScalar x)
-        void setY(btScalar y)
-        void setZ(btScalar z)
-
-        btScalar getX()
-        btScalar getY()
-        btScalar getZ()
-
-        btVector3& normalize()
-        btVector3 cross(btVector3&)
-        btScalar dot(btVector3&)
-        btScalar length()
-
-
-        # btVector3& operator+=(btScalar&)
-        # btVector3& operator*=(btScalar&)
-
-
-    cdef cppclass btQuaternion:
-        btQuaternion()
-        btQuaternion(btScalar x, btScalar y, btScalar z, btScalar w)
-        btQuaternion(btVector3 axis, btScalar angle)
-
-        btScalar getX()
-        btScalar getY()
-        btScalar getZ()
-        btScalar getW()
-
-        btVector3 getAxis()
-        btScalar getAngle()
-
-        btQuaternion operator* (btQuaternion)
-
-
-    cdef cppclass btBroadphaseInterface:
-        btOverlappingPairCache* getOverlappingPairCache()
-
-
-    cdef cppclass btAxisSweep3(btBroadphaseInterface):
-        btAxisSweep3(btVector3, btVector3, unsigned short int maxHandles,
-                     btOverlappingPairCache *pairCache,
-                     bool disableRaycastAccelerator)
-
-
-    cdef cppclass btDbvtBroadphase(btBroadphaseInterface):
-        pass
-
-
-    cdef cppclass btRigidBody(btCollisionObject):
-        btRigidBody(btRigidBodyConstructionInfo)
-
-        bool isInWorld()
-
-        btScalar getInvMass()
-        btVector3& getInvInertiaDiagLocal()
-
-        btMotionState* getMotionState()
-
-        void setAngularFactor(btScalar angFac)
-        btScalar getAngularDamping()
-        btScalar getAngularSleepingThreshold()
-
-        void setLinearVelocity(btVector3 velocity)
-        btVector3& getLinearVelocity()
-        btScalar getLinearDamping()
-        btScalar getLinearSleepingThreshold()
-
-        void applyCentralForce(btVector3 force)
-        void applyForce(btVector3 force, btVector3 relativePosition)
-
-        void applyCentralImpulse(btVector3 impulse)
-        void applyImpulse(btVector3 impulse, btVector3 relativePosition)
-
-    cdef cppclass btCollisionWorld:
-        btCollisionWorld(
-            btDispatcher*, btBroadphaseInterface*, btCollisionConfiguration*)
-
-        void setDebugDrawer(btIDebugDraw *debugDrawer)
-        void debugDrawWorld()
-
-        btDispatcher *getDispatcher()
-        btBroadphaseInterface *getBroadphase()
-
-        int getNumCollisionObjects()
-
-        void addCollisionObject(btCollisionObject*, short int, short int)
-        void removeCollisionObject(btCollisionObject*)
-
-        btAlignedObjectArray[btCollisionObjectP]& getCollisionObjectArray()
-
-
-
-cdef extern from "btBulletDynamicsCommon.h":
-    cdef cppclass btConstraintSolver:
-        pass
-
-
-    cdef cppclass btSequentialImpulseConstraintSolver(btConstraintSolver):
-        btSequentialImpulseConstraintSolver()
-
-
-    cdef cppclass btDynamicsWorld: # (btCollisionWorld):
-        btDynamicsWorld(
-            btDispatcher*, btBroadphaseInterface*, btCollisionConfiguration*)
-
-        void setGravity(btVector3)
-        btVector3 getGravity()
-
-        void addRigidBody(btRigidBody*)
-        void removeRigidBody(btRigidBody*)
-
-        void addAction(btActionInterface*)
-        void removeAction(btActionInterface*)
-
-        int stepSimulation(btScalar, int, btScalar)
-
-
-    cdef cppclass btDiscreteDynamicsWorld: # (btDynamicsWorld)
-        btDiscreteDynamicsWorld(
-            btDispatcher*, btBroadphaseInterface*,
-            btConstraintSolver*, btCollisionConfiguration*)
-
-        void addRigidBody(btRigidBody*, short, short)
-
-        btConstraintSolver *getConstraintSolver()
-
-
-cdef extern from "bulletdebugdraw.h":
-    cdef cppclass PythonDebugDraw(btIDebugDraw):
-        PythonDebugDraw(PyObject *debugDraw)
-
+from cBullet cimport *
 
 # Forward declare some things because of circularity in the API.
 cdef class CollisionObject
@@ -546,6 +103,12 @@ cdef class Vector3:
         cdef btVector3 v = btVector3(self.x, self.y, self.z)
         return v.length()
 
+    @staticmethod
+    cdef frombtVector3(btVector3 vec):
+        return Vector3(vec.getX(), vec.getY(), vec.getZ())
+
+    cdef btVector3 tobtVector3(self):
+        return btVector3(self.x, self.y, self.z)
 
 
 cdef class Quaternion:
@@ -582,6 +145,9 @@ cdef class Quaternion:
             btVector3(axis.x, axis.y, axis.z), angle)
         return q
 
+    @staticmethod
+    cdef frombtQuat(btQuaternion quat):
+        return Quaternion.fromScalars(quat.getX(), quat.getY(), quat.getZ(), quat.getW())
 
     def __mul__(Quaternion self, Quaternion other not None):
         """
@@ -636,6 +202,8 @@ cdef class Quaternion:
         """
         return self.quaternion.getAngle()
 
+    def __repr__(self):
+        return '<x=%s y=%s z=%s w=%s>' % (self.getX(), self.getY(), self.getZ(), self.getW())
 
 
 cdef class CollisionShape:
@@ -647,6 +215,12 @@ cdef class CollisionShape:
     """
     cdef btCollisionShape *thisptr
 
+    def calculateLocalInertia(self, mass, Vector3 inertia):
+        cdef btVector3 nvec = btVector3(inertia.x, inertia.y, inertia.z)
+        self.thisptr.calculateLocalInertia(mass , nvec)
+        inertia.x = nvec.getX()
+        inertia.y = nvec.getY()
+        inertia.z = nvec.getZ()
 
     def __dealloc__(self):
         del self.thisptr
@@ -679,11 +253,11 @@ cdef class Box2dShape(ConvexShape):
 
 cdef class BoxShape(ConvexShape):
     """
-    A Box2dShape is a box primitive around the origin, its sides axis aligned
+    A BoxShape is a box primitive around the origin, its sides axis aligned
     with length specified by half extents, in local shape coordinates.  It has
-    size only in the X and Y dimensions.
+    size in the X, Y and Z dimensions.
 
-    This class is a wrapper around btBox2dShape.
+    This class is a wrapper around btBoxShape.
     """
     def __cinit__(self, Vector3 boxHalfExtents):
         self.thisptr = new btBoxShape(
@@ -1055,6 +629,14 @@ WANTS_DEACTIVATION = _WANTS_DEACTIVATION
 DISABLE_DEACTIVATION = _DISABLE_DEACTIVATION
 DISABLE_SIMULATION = _DISABLE_SIMULATION
 
+CF_STATIC_OBJECT = _CF_STATIC_OBJECT
+CF_KINEMATIC_OBJECT = _CF_KINEMATIC_OBJECT
+CF_NO_CONTACT_RESPONSE = _CF_NO_CONTACT_RESPONSE
+CF_CUSTOM_MATERIAL_CALLBACK = _CF_CUSTOM_MATERIAL_CALLBACK
+CF_CHARACTER_OBJECT = _CF_CHARACTER_OBJECT
+CF_DISABLE_VISUALIZE_OBJECT = _CF_DISABLE_VISUALIZE_OBJECT
+CF_DISABLE_SPU_COLLISION_PROCESSING = _CF_DISABLE_SPU_COLLISION_PROCESSING
+
 
 cdef class CollisionObject:
     """
@@ -1172,6 +754,19 @@ cdef class CollisionObject:
         return BroadphaseProxy(proxy.m_collisionFilterGroup, proxy.m_collisionFilterMask)
 
 
+    def forceActivationState(self, int newState):
+        self.thisptr.forceActivationState(newState)
+
+    def activate(self, bool forceActivation=False):
+        self.thisptr.activate(forceActivation)
+
+    def getCollisionFlags(self):
+        return self.thisptr.getCollisionFlags()
+
+    def setCollisionFlags(self, int flags):
+        self.thisptr.setCollisionFlags(flags)
+
+
 
 cdef class MotionState:
     """
@@ -1215,6 +810,62 @@ cdef class MotionState:
         """
         self.thisptr.setWorldTransform(centerOfMassWorldTrans.thisptr[0])
 
+# cdef cppclass coverrMotionState(btMotionState):
+#     PyObject *obj
+#     btTransform mInitialPosition
+#     coverrMotionState(const btTransform &initialPosition):
+#         # this.obj = obj
+#         print("created cpp coverrmot")
+#
+#     void setWorldTransform(const btTransform &worldTrans):
+#         cdef btVector3 cvec = worldTrans.getOrigin()
+#         cdef Vector3 origin = Vector3(cvec.getX(), cvec.getY(), cvec.getZ())
+#         cdef btQuaternion quat = worldTrans.getRotation()
+#         cdef Quaternion rot = Quaternion.fromScalars(
+#             quat.getX(), quat.getY(), quat.getZ(), quat.getW())
+#         cdef Transform pyTrans = Transform()
+#         pyTrans.setOrigin(origin)
+#         pyTrans.setRotation(rot)
+#         print('setWorld', pyTrans)
+#
+#     void getWorldTransform(btTransform &worldTrans):
+#         print('getworld')
+#         # worldTrans = mInitialPosition
+
+cdef class overridableMotionState(MotionState): # todo: turn into abstract
+    cdef Transform _nTrans
+    def __cinit__(self, Transform initialTransformation):
+        self._nTrans = Transform()
+        # self.thisptr = new coverrMotionState(trans, <PyObject *>self)
+        self.thisptr = new MyMotionState(initialTransformation.thisptr[0])
+        (<MyMotionState*>self.thisptr).setPyCallback(self._stwL)
+
+    property worldTrans:
+        "Set this to change body's transformation."
+        def __get__(self):
+            return self._nTrans
+
+        def __set__(self, Transform value):
+            self._nTrans = value
+            (<MyMotionState*>self.thisptr).setKinematicPos(value.thisptr[0])
+
+    def setWorldTransform(self, Transform transform):
+        pass
+
+    def _stwL(self):
+        cdef btTransform* cTrans = &(<MyMotionState*>self.thisptr).mworldTrans
+        cdef btVector3 pos = cTrans.getOrigin()
+        cdef btQuaternion rot = cTrans.getRotation()
+        try:
+            self._nTrans.setOrigin(Vector3.frombtVector3(pos))
+            self._nTrans.setRotation(Quaternion.frombtQuat(rot))
+            self.setWorldTransform(self._nTrans)
+        except Exception as ex:
+            raise
+
+    def __dealloc__(self):
+        print('dealloc')
+        del self.thisptr
 
 
 cdef class DefaultMotionState(MotionState):
@@ -1231,6 +882,16 @@ cdef class DefaultMotionState(MotionState):
     def __cinit__(self):
         self.thisptr = new btDefaultMotionState()
 
+    # def setWorldTransform(self, Transform centerOfMassWorldTrans not None):
+    #     """
+    #     Set the transformation for this motion state.  This will probably have
+    #     no meaningful effect on the state of the world containing the object
+    #     this MotionState is associated with.
+    #
+    #     XXX If this method is overridden in a subclass, the overridden method
+    #     will not be called by Bullet.
+    #     """
+    #     self.thisptr.setWorldTransform(centerOfMassWorldTrans.thisptr[0])
 
 
 cdef class RigidBody(CollisionObject):
@@ -1497,6 +1158,67 @@ cdef class RigidBody(CollisionObject):
             relativePosition.x, relativePosition.y, relativePosition.z)
         body.applyImpulse(impulse, pos)
 
+    def setGravity(self, Vector3 acceleration):
+        cdef btVector3 nvec = btVector3(acceleration.x, acceleration.y, acceleration.z)
+        (<btRigidBody*>self.thisptr).setGravity(nvec)
+
+    def setMassProps(self, float mass, Vector3 inertia):
+        cdef btVector3 nvec = btVector3(inertia.x, inertia.y, inertia.z)
+        (<btRigidBody*>self.thisptr).setMassProps(mass, nvec)
+
+    def updateInertiaTensor(self):
+        (<btRigidBody*>self.thisptr).updateInertiaTensor()
+
+    # def getAabb (self, btVector3 &aabbMin, btVector3 &aabbMax):
+    #     pass
+    #
+    # def setMotionState (self, btMotionState *motionState):
+    #     pass
+    #
+    # def translate (self, const btVector3 &v):
+    #     pass
+    #
+    # def btTransform & getCenterOfMassTransform (self) const:
+    #     pass
+    #
+    def getAngularVelocity (self):
+        """
+        Retrieve the current angular velocity of this RigidBody as a Vector3.
+        """
+        cdef btRigidBody* body = <btRigidBody*>self.thisptr
+        cdef btVector3 vel = body.getAngularVelocity()
+        return Vector3(vel.getX(), vel.getY(), vel.getZ())
+
+    def setAngularVelocity (self, Vector3 ang_vel):
+        cdef btVector3 btang_vel = btVector3(ang_vel.x, ang_vel.y, ang_vel.z)
+        (<btRigidBody*>self.thisptr).setAngularVelocity(btang_vel)
+
+    def setSleepingThresholds(self, float linear, float angular):
+        """
+        Set the linear and angular velocity thresholds.
+        """
+        cdef btRigidBody * body = <btRigidBody *> self.thisptr
+        body.setSleepingThresholds(linear, angular)
+
+    property linearSleepingThreshold:
+        "Body's linearSleepingThreshold."
+
+        def __get__(self):
+            return self.getLinearSleepingThreshold()
+
+        def __set__(self, float value):
+            angular = self.getLinearSleepingThreshold()
+            self.setSleepingThresholds(value, angular)
+
+    property angularSleepingThreshold:
+        "Body's angularSleepingThreshold."
+
+        def __get__(self):
+            return self.getAngularSleepingThreshold()
+
+        def __set__(self, float value):
+            linear = self.getLinearSleepingThreshold()
+            self.setSleepingThresholds(linear, value)
 
 
 cdef class ActionInterface:
@@ -1911,6 +1633,117 @@ cdef class CollisionWorld:
             # Py_DECREF it here to avoid leaking it.
             Py_DECREF(collisionObject)
 
+    def getCollisionObjectArray(self):
+        collisionObjectArray = []
+        # cdef btAlignedObjectArray[btCollisionObjectP]& btarr = self.thisptr.getCollisionObjectArray()
+        for i in range(self.getNumCollisionObjects()):
+            obj = <object>self.thisptr.getCollisionObjectArray().at(i).getUserPointer()
+            collisionObjectArray.append(obj)
+        return collisionObjectArray
+
+    def rayTestClosest(self, Vector3 rayFromWorld, Vector3 rayToWorld):
+        cdef btVector3 fromVec = btVector3(rayFromWorld.x, rayFromWorld.y, rayFromWorld.z)
+        cdef btVector3 toVec = btVector3(rayToWorld.x, rayToWorld.y, rayToWorld.z)
+        cdef ClosestRayResultCallback btRes = ClosestRayResultCallback()
+        btRes.build(fromVec, toVec)
+        self.thisptr.rayTest(fromVec, toVec, btRes)
+        try:
+            if btRes.hasHit():
+                rayResult = RayResult()
+                rayResult.closestHitFraction = btRes.m_closestHitFraction
+                rayResult.collisionObject = <object>btRes.m_collisionObject.getUserPointer()
+                if rayResult.collisionObject is None:
+                    raise RuntimeError('Collision object not found in world.')
+                rayResult.collisionFilterGroup = btRes.m_collisionFilterGroup
+                rayResult.collisionFilterMask = btRes.m_collisionFilterMask
+                rayResult.flags = btRes.m_flags
+
+                rayResult.rayFromWorld = Vector3.frombtVector3(btRes.m_rayFromWorld)
+                rayResult.rayToWorld = Vector3.frombtVector3(btRes.m_rayToWorld)
+                rayResult.hitNormalWorld = Vector3.frombtVector3(btRes.m_hitNormalWorld)
+                rayResult.hitPointWorld  = Vector3.frombtVector3(btRes.m_hitPointWorld)
+                return rayResult
+            else:
+                return None
+        except Exception as ex:
+            print('Error in cyBullet/rayTestClosest: ' + ex.message)
+
+
+# cdef class LocalShapeInfo:
+#     shapePart = 0
+#     triangleIndex = 0
+#
+#     def __cinit__(self):
+#         pass
+#
+#
+# cdef class LocalRayResult:
+#     collisionObject = None
+#     localShapeInfo = None
+#     hitNormalLocal = Vector3()
+#     hitFraction = 0.0
+#
+#     def __cinit__(self, collisionObject, localShapeInfo, hitNormalLocal, hitFraction):
+#         self.collisionObject = collisionObject
+#         self.localShapeInfo = localShapeInfo
+#         self.hitNormalLocal = hitNormalLocal
+#         self.hitFraction = hitFraction
+
+
+cdef class RayResult:
+    cdef readonly float closestHitFraction
+    cdef readonly CollisionObject collisionObject
+    cdef readonly int collisionFilterGroup
+    cdef readonly int collisionFilterMask
+    cdef readonly int flags
+
+    cdef readonly Vector3 rayFromWorld
+    cdef readonly Vector3 rayToWorld
+    cdef readonly Vector3 hitNormalWorld
+    cdef readonly Vector3 hitPointWorld
+
+    # def needsCollision(self, BroadphaseProxy proxy0):
+    #     return self.btRayCallback.needsCollision(proxy0.thisptr[0])
+
+    def __cinit__(self):
+        pass
+        # self.closestHitFraction = None
+        # self.collisionObject = None
+        # self.collisionFilterGroup = None
+        # self.collisionFilterMask = None
+        # self.flags = None
+        #
+        # self.rayFromWorld = None
+        # self.rayToWorld = None
+        # self.hitNormalWorld = None
+        # self.hitPointWorld = None
+
+
+cdef cppclass ClosestRayResultCallback(RayResultCallback):
+    btVector3 m_rayFromWorld
+    btVector3 m_rayToWorld
+    btVector3 m_hitNormalWorld
+    btVector3 m_hitPointWorld
+
+    ClosestRayResultCallback():
+        pass
+
+    void build(const btVector3 &fromVec, const btVector3 &toVec):
+        this.m_rayFromWorld = fromVec
+        this.m_rayToWorld = toVec
+
+    btScalar addSingleResult(LocalRayResult& rayResult, bool normalInWorldSpace):
+        # caller already does the filter on the m_closestHitFraction
+        assert(rayResult.m_hitFraction <= this.m_closestHitFraction)
+        this.m_closestHitFraction = rayResult.m_hitFraction
+        this.m_collisionObject = rayResult.m_collisionObject
+        if normalInWorldSpace:
+            this.m_hitNormalWorld = rayResult.m_hitNormalLocal
+        else:
+            this.m_hitNormalWorld = m_collisionObject.getWorldTransform().getBasis() * rayResult.m_hitNormalLocal
+
+        this.m_hitPointWorld.setInterpolate3(this.m_rayFromWorld, this.m_rayToWorld, rayResult.m_hitFraction)
+        return rayResult.m_hitFraction
 
 
 cdef dict _actions = {}

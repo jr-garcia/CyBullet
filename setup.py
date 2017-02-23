@@ -19,7 +19,7 @@ setup(
     packages=["bullet"],
     ext_modules=[Extension(
         "bullet.bullet",
-        ["bullet/bullet.pyx"],
+        ["bullet/bullet.pyx", "bullet/overr.cpp"],
         libraries=[
                 "BulletSoftBody",
                 "BulletDynamics",
