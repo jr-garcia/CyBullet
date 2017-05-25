@@ -1306,12 +1306,12 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
 
     cdef readonly PairCachingGhostObject ghost
 
-    def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, int upAxis):
+    def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, Vector3 upAxis):
         self.ghost = ghost
         # XXX ghost must have a shape and it must not change after this
         self.thisptr = new btKinematicCharacterController(
             <btPairCachingGhostObject*>self.ghost.thisptr,
-            <btConvexShape*>self.ghost._shape.thisptr, stepHeight, upAxis)
+            <btConvexShape*>self.ghost._shape.thisptr, stepHeight, upAxis.tobtVector3())
 
 
     def warp(self, Vector3 origin not None):
@@ -1330,16 +1330,16 @@ cdef class KinematicCharacterController(CharacterControllerInterface):
         """
         cdef btKinematicCharacterController *controller
         controller = <btKinematicCharacterController*>self.thisptr
-        return controller.getGravity()
+        return Vector3.frombtVector3(controller.getGravity())
 
 
-    def setGravity(self, btScalar gravity):
+    def setGravity(self, Vector3 gravity):
         """
         Specify the gravity which affects this character.
         """
         cdef btKinematicCharacterController *controller
         controller = <btKinematicCharacterController*>self.thisptr
-        controller.setGravity(gravity)
+        controller.setGravity(gravity.tobtVector3())
 
 
 

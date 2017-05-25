@@ -267,10 +267,10 @@ cdef extern from "BulletDynamics/Character/btKinematicCharacterController.h":
         btKinematicCharacterController(
             btPairCachingGhostObject *ghostObject,
             btConvexShape *convexShape,
-            btScalar stepHeight, int upAxis)
+            btScalar stepHeight, const btVector3& up)
 
-        void setGravity(btScalar gravity)
-        btScalar getGravity()
+        void setGravity(const btVector3& gravity);
+        btVector3 getGravity() const;
 
         void warp(btVector3 origin)
 
