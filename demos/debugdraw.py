@@ -7,7 +7,7 @@ from OpenGL.GL import (
     glBegin, glEnd, glTranslate, glVertex)
 from OpenGL.GLU import gluPerspective
 
-from bullet.bullet import (
+from bullet import (
     DRAW_WIREFRAME, DRAW_AABB, DRAW_CONTACT_POINTS,
     Vector3, DiscreteDynamicsWorld)
 

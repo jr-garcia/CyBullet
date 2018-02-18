@@ -1,7 +1,7 @@
 # Copyright (c) 2010 Jean-Paul Calderone
 # See LICENSE for details.
 
-from bullet.bullet import (Vector3, Transform, BoxShape, DefaultMotionState, RigidBody, DiscreteDynamicsWorld)
+from bullet import (Vector3, Transform, BoxShape, DefaultMotionState, RigidBody, DiscreteDynamicsWorld)
 
 
 def main():

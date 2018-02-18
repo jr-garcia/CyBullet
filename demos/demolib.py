@@ -10,7 +10,7 @@ from OpenGL.GL import (
     glBegin, glEnd, glTranslate, glVertex)
 from OpenGL.GLU import gluNewQuadric, gluSphere
 
-from bullet.bullet import (
+from bullet import (
     Vector3, Transform, BoxShape, SphereShape, DefaultMotionState, RigidBody)
 
 

@@ -7,7 +7,7 @@ from OpenGL.GL import (
     GL_DEPTH_TEST, glEnable, glTranslate)
 from OpenGL.GLU import gluPerspective
 
-from bullet.bullet import Vector3, DiscreteDynamicsWorld
+from bullet import Vector3, DiscreteDynamicsWorld
 
 from demolib import Ground, Ball, simulate
 

@@ -13,7 +13,7 @@ from OpenGL.GL import (
 from OpenGL.GLU import (
     gluLookAt, gluPerspective, gluNewQuadric, gluSphere)
 
-from bullet.bullet import (
+from bullet import (
     Vector3, Transform, SphereShape, BoxShape, PairCachingGhostObject,
     KinematicCharacterController, AxisSweep3, DiscreteDynamicsWorld,
     RigidBody)
