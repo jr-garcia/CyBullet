@@ -9,6 +9,7 @@ extrac = []
 if 'win' in plat:
     extrac.append('/EHsc')
 elif 'linux' in plat:
+    incl.extend(['/usr/local/include/bullet', '/usr/include/bullet'])
     extrac.extend(['-w', '-O3'])
 else:
     print('Bullet Setup.py warning: Unknown platform \'{}\''.format(plat))
@@ -28,5 +29,6 @@ setup(
                 ],
         include_dirs=incl,
         extra_compile_args=extrac,
-        language="c++")],
-    )
+        language="c++",
+        install_requires=['numpy'])
+    ])
