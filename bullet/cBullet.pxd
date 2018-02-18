@@ -313,25 +313,25 @@ cdef extern from "LinearMath/btIDebugDraw.h":
         pass
 
 cdef extern from "LinearMath/btIDebugDraw.h" namespace "btIDebugDraw":
-        cdef enum DebugDrawModes:
-            DBG_NoDebug
-            DBG_DrawWireframe
-            DBG_DrawAabb
-            DBG_DrawFeaturesText
-            DBG_DrawContactPoints
-            DBG_DrawText
-            DBG_DrawConstraints
-            DBG_DrawConstraintLimits
+    cdef enum DebugDrawModes:
+        DBG_NoDebug
+        DBG_DrawWireframe
+        DBG_DrawAabb
+        DBG_DrawFeaturesText
+        DBG_DrawContactPoints
+        DBG_DrawText
+        DBG_DrawConstraints
+        DBG_DrawConstraintLimits
 
 
-NO_DEBUG = DBG_NoDebug
-DRAW_WIREFRAME = DBG_DrawWireframe
-DRAW_AABB = DBG_DrawAabb
-DRAW_FEATURES_TEXT = DBG_DrawFeaturesText
-DRAW_CONTACT_POINTS = DBG_DrawContactPoints
-DRAW_TEXT = DBG_DrawText
-DRAW_CONSTRAINTS = DBG_DrawConstraints
-DRAW_CONSTRAINT_LIMITS = DBG_DrawConstraintLimits
+    cdef int _NO_DEBUG "btIDebugDraw::DBG_NoDebug"
+    cdef int _DRAW_WIREFRAME "btIDebugDraw::DBG_DrawWireframe"
+    cdef int _DRAW_AABB "btIDebugDraw::DBG_DrawAabb"
+    cdef int _DRAW_FEATURES_TEXT "btIDebugDraw::DBG_DrawFeaturesText"
+    cdef int _DRAW_CONTACT_POINTS "btIDebugDraw::DBG_DrawContactPoints"
+    cdef int _DRAW_TEXT "btIDebugDraw::DBG_DrawText"
+    cdef int _DRAW_CONSTRAINTS "btIDebugDraw::DBG_DrawConstraints"
+    cdef int _DRAW_CONSTRAINT_LIMITS "btIDebugDraw::DBG_DrawConstraintLimits"
     
 cdef extern from "btBulletCollisionCommon.h" namespace "btCollisionWorld":
     cdef cppclass LocalShapeInfo:

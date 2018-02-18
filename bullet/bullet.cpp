@@ -1081,7 +1081,7 @@ typedef btCollisionObject *__pyx_t_6bullet_7cBullet_btCollisionObjectP;
 struct __pyx_t_6bullet_6bullet_ClosestRayResultCallback;
 struct __pyx_t_6bullet_6bullet_ClosestRayResultCallback : public btCollisionWorld::RayResultCallback {
 
-  /* "bullet/bullet.pyx":1722
+  /* "bullet/bullet.pyx":1731
  * 
  * 
  * cdef cppclass ClosestRayResultCallback(RayResultCallback):             # <<<<<<<<<<<<<<
@@ -1347,7 +1347,7 @@ struct __pyx_obj_6bullet_6bullet_CollisionObject {
 };
 
 
-/* "bullet/bullet.pyx":771
+/* "bullet/bullet.pyx":780
  * 
  * 
  * cdef class MotionState:             # <<<<<<<<<<<<<<
@@ -1360,7 +1360,7 @@ struct __pyx_obj_6bullet_6bullet_MotionState {
 };
 
 
-/* "bullet/bullet.pyx":835
+/* "bullet/bullet.pyx":844
  * #         # worldTrans = mInitialPosition
  * 
  * cdef class overridableMotionState(MotionState): # todo: turn into abstract             # <<<<<<<<<<<<<<
@@ -1373,7 +1373,7 @@ struct __pyx_obj_6bullet_6bullet_overridableMotionState {
 };
 
 
-/* "bullet/bullet.pyx":871
+/* "bullet/bullet.pyx":880
  * 
  * 
  * cdef class DefaultMotionState(MotionState):             # <<<<<<<<<<<<<<
@@ -1385,7 +1385,7 @@ struct __pyx_obj_6bullet_6bullet_DefaultMotionState {
 };
 
 
-/* "bullet/bullet.pyx":897
+/* "bullet/bullet.pyx":906
  * 
  * 
  * cdef class RigidBody(CollisionObject):             # <<<<<<<<<<<<<<
@@ -1399,7 +1399,7 @@ struct __pyx_obj_6bullet_6bullet_RigidBody {
 };
 
 
-/* "bullet/bullet.pyx":1224
+/* "bullet/bullet.pyx":1233
  * 
  * 
  * cdef class ActionInterface:             # <<<<<<<<<<<<<<
@@ -1412,7 +1412,7 @@ struct __pyx_obj_6bullet_6bullet_ActionInterface {
 };
 
 
-/* "bullet/bullet.pyx":1240
+/* "bullet/bullet.pyx":1249
  * 
  * 
  * cdef class CharacterControllerInterface(ActionInterface):             # <<<<<<<<<<<<<<
@@ -1424,7 +1424,7 @@ struct __pyx_obj_6bullet_6bullet_CharacterControllerInterface {
 };
 
 
-/* "bullet/bullet.pyx":1284
+/* "bullet/bullet.pyx":1293
  * 
  * 
  * cdef class PairCachingGhostObject(CollisionObject):             # <<<<<<<<<<<<<<
@@ -1436,7 +1436,7 @@ struct __pyx_obj_6bullet_6bullet_PairCachingGhostObject {
 };
 
 
-/* "bullet/bullet.pyx":1296
+/* "bullet/bullet.pyx":1305
  * 
  * 
  * cdef class KinematicCharacterController(CharacterControllerInterface):             # <<<<<<<<<<<<<<
@@ -1450,7 +1450,7 @@ struct __pyx_obj_6bullet_6bullet_KinematicCharacterController {
 };
 
 
-/* "bullet/bullet.pyx":1346
+/* "bullet/bullet.pyx":1355
  * 
  * 
  * cdef class CollisionDispatcher:             # <<<<<<<<<<<<<<
@@ -1464,7 +1464,7 @@ struct __pyx_obj_6bullet_6bullet_CollisionDispatcher {
 };
 
 
-/* "bullet/bullet.pyx":1374
+/* "bullet/bullet.pyx":1383
  * 
  * 
  * cdef class OverlappingPairCache:             # <<<<<<<<<<<<<<
@@ -1477,7 +1477,7 @@ struct __pyx_obj_6bullet_6bullet_OverlappingPairCache {
 };
 
 
-/* "bullet/bullet.pyx":1401
+/* "bullet/bullet.pyx":1410
  * 
  * 
  * cdef class HashedOverlappingPairCache(OverlappingPairCache):             # <<<<<<<<<<<<<<
@@ -1489,7 +1489,7 @@ struct __pyx_obj_6bullet_6bullet_HashedOverlappingPairCache {
 };
 
 
-/* "bullet/bullet.pyx":1413
+/* "bullet/bullet.pyx":1422
  * 
  * 
  * cdef class BroadphaseInterface:             # <<<<<<<<<<<<<<
@@ -1503,7 +1503,7 @@ struct __pyx_obj_6bullet_6bullet_BroadphaseInterface {
 };
 
 
-/* "bullet/bullet.pyx":1440
+/* "bullet/bullet.pyx":1449
  * 
  * 
  * cdef class AxisSweep3(BroadphaseInterface):             # <<<<<<<<<<<<<<
@@ -1515,7 +1515,7 @@ struct __pyx_obj_6bullet_6bullet_AxisSweep3 {
 };
 
 
-/* "bullet/bullet.pyx":1460
+/* "bullet/bullet.pyx":1469
  * 
  * 
  * cdef class ConstraintSolver:             # <<<<<<<<<<<<<<
@@ -1528,7 +1528,7 @@ struct __pyx_obj_6bullet_6bullet_ConstraintSolver {
 };
 
 
-/* "bullet/bullet.pyx":1475
+/* "bullet/bullet.pyx":1484
  * 
  * 
  * cdef class SequentialImpulseConstraintSolver(ConstraintSolver):             # <<<<<<<<<<<<<<
@@ -1540,7 +1540,7 @@ struct __pyx_obj_6bullet_6bullet_SequentialImpulseConstraintSolver {
 };
 
 
-/* "bullet/bullet.pyx":1491
+/* "bullet/bullet.pyx":1500
  * 
  * 
  * cdef class CollisionWorld:             # <<<<<<<<<<<<<<
@@ -1557,7 +1557,7 @@ struct __pyx_obj_6bullet_6bullet_CollisionWorld {
 };
 
 
-/* "bullet/bullet.pyx":1693
+/* "bullet/bullet.pyx":1702
  * 
  * 
  * cdef class RayResult:             # <<<<<<<<<<<<<<
@@ -1578,7 +1578,7 @@ struct __pyx_obj_6bullet_6bullet_RayResult {
 };
 
 
-/* "bullet/bullet.pyx":1751
+/* "bullet/bullet.pyx":1760
  * cdef dict _actions = {}
  * 
  * cdef class DynamicsWorld(CollisionWorld):             # <<<<<<<<<<<<<<
@@ -1590,7 +1590,7 @@ struct __pyx_obj_6bullet_6bullet_DynamicsWorld {
 };
 
 
-/* "bullet/bullet.pyx":1810
+/* "bullet/bullet.pyx":1819
  * 
  * 
  * cdef class DiscreteDynamicsWorld(DynamicsWorld):             # <<<<<<<<<<<<<<
@@ -2101,9 +2101,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_bool(bool value);
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum__btIDebugDraw_3a__3a_DebugDrawModes(enum btIDebugDraw::DebugDrawModes value);
-
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -2398,6 +2395,7 @@ static const char __pyx_k_angular[] = "angular";
 static const char __pyx_k_dealloc[] = "dealloc";
 static const char __pyx_k_inertia[] = "inertia";
 static const char __pyx_k_message[] = "message";
+static const char __pyx_k_NO_DEBUG[] = "NO_DEBUG";
 static const char __pyx_k_constant[] = "constant";
 static const char __pyx_k_friction[] = "friction";
 static const char __pyx_k_getstate[] = "__getstate__";
@@ -2406,6 +2404,8 @@ static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_timeStep[] = "timeStep";
 static const char __pyx_k_velocity[] = "velocity";
 static const char __pyx_k_AllFilter[] = "AllFilter";
+static const char __pyx_k_DRAW_AABB[] = "DRAW_AABB";
+static const char __pyx_k_DRAW_TEXT[] = "DRAW_TEXT";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_indexBase[] = "indexBase";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
@@ -2442,6 +2442,7 @@ static const char __pyx_k_fixedTimeStep[] = "fixedTimeStep";
 static const char __pyx_k_fromAxisAngle[] = "fromAxisAngle";
 static const char __pyx_k_linearDamping[] = "linearDamping";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
+static const char __pyx_k_DRAW_WIREFRAME[] = "DRAW_WIREFRAME";
 static const char __pyx_k_angularDamping[] = "angularDamping";
 static const char __pyx_k_boxHalfExtents[] = "boxHalfExtents";
 static const char __pyx_k_worldTransform[] = "worldTransform";
@@ -2452,14 +2453,17 @@ static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_x_s_y_s_z_s_w_s[] = "<x=%s y=%s z=%s w=%s>";
 static const char __pyx_k_CF_STATIC_OBJECT[] = "CF_STATIC_OBJECT";
+static const char __pyx_k_DRAW_CONSTRAINTS[] = "DRAW_CONSTRAINTS";
 static const char __pyx_k_relativePosition[] = "relativePosition";
 static const char __pyx_k_setWorldTransform[] = "setWorldTransform";
 static const char __pyx_k_DISABLE_SIMULATION[] = "DISABLE_SIMULATION";
+static const char __pyx_k_DRAW_FEATURES_TEXT[] = "DRAW_FEATURES_TEXT";
 static const char __pyx_k_Vector_x_s_y_s_z_s[] = "<Vector x=%s y=%s z=%s>";
 static const char __pyx_k_WANTS_DEACTIVATION[] = "WANTS_DEACTIVATION";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_CF_CHARACTER_OBJECT[] = "CF_CHARACTER_OBJECT";
 static const char __pyx_k_CF_KINEMATIC_OBJECT[] = "CF_KINEMATIC_OBJECT";
+static const char __pyx_k_DRAW_CONTACT_POINTS[] = "DRAW_CONTACT_POINTS";
 static const char __pyx_k_collisionFilterMask[] = "collisionFilterMask";
 static const char __pyx_k_DISABLE_DEACTIVATION[] = "DISABLE_DEACTIVATION";
 static const char __pyx_k_collisionFilterGroup[] = "collisionFilterGroup";
@@ -2467,6 +2471,7 @@ static const char __pyx_k_fromConstructionInfo[] = "fromConstructionInfo";
 static const char __pyx_k_initialTransformation[] = "initialTransformation";
 static const char __pyx_k_setSleepingThresholds[] = "setSleepingThresholds";
 static const char __pyx_k_CF_NO_CONTACT_RESPONSE[] = "CF_NO_CONTACT_RESPONSE";
+static const char __pyx_k_DRAW_CONSTRAINT_LIMITS[] = "DRAW_CONSTRAINT_LIMITS";
 static const char __pyx_k_getNumCollisionObjects[] = "getNumCollisionObjects";
 static const char __pyx_k_linearSleepingThreshold[] = "linearSleepingThreshold";
 static const char __pyx_k_angularSleepingThreshold[] = "angularSleepingThreshold";
@@ -2507,6 +2512,13 @@ static PyObject *__pyx_kp_s_Cannot_add_CollisionObject_witho;
 static PyObject *__pyx_kp_s_Collision_object_not_found_in_wo;
 static PyObject *__pyx_n_s_DISABLE_DEACTIVATION;
 static PyObject *__pyx_n_s_DISABLE_SIMULATION;
+static PyObject *__pyx_n_s_DRAW_AABB;
+static PyObject *__pyx_n_s_DRAW_CONSTRAINTS;
+static PyObject *__pyx_n_s_DRAW_CONSTRAINT_LIMITS;
+static PyObject *__pyx_n_s_DRAW_CONTACT_POINTS;
+static PyObject *__pyx_n_s_DRAW_FEATURES_TEXT;
+static PyObject *__pyx_n_s_DRAW_TEXT;
+static PyObject *__pyx_n_s_DRAW_WIREFRAME;
 static PyObject *__pyx_n_s_DefaultFilter;
 static PyObject *__pyx_kp_s_Error_in_cyBullet_rayTestClosest;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
@@ -2514,6 +2526,7 @@ static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
 static PyObject *__pyx_n_s_ISLAND_SLEEPING;
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0x49;
+static PyObject *__pyx_n_s_NO_DEBUG;
 static PyObject *__pyx_kp_u_Non_native_byte_order_not_suppor;
 static PyObject *__pyx_n_s_PickleError;
 static PyObject *__pyx_n_s_RuntimeError;
@@ -10517,7 +10530,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15BroadphaseProxy_4__setstate_cython__
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":654
+/* "bullet/bullet.pyx":663
  *     cdef CollisionShape _shape
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -10546,7 +10559,7 @@ static int __pyx_pf_6bullet_6bullet_15CollisionObject___init__(struct __pyx_obj_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "bullet/bullet.pyx":655
+  /* "bullet/bullet.pyx":664
  * 
  *     def __init__(self):
  *         self.thisptr = new btCollisionObject()             # <<<<<<<<<<<<<<
@@ -10555,7 +10568,7 @@ static int __pyx_pf_6bullet_6bullet_15CollisionObject___init__(struct __pyx_obj_
  */
   __pyx_v_self->thisptr = new btCollisionObject();
 
-  /* "bullet/bullet.pyx":654
+  /* "bullet/bullet.pyx":663
  *     cdef CollisionShape _shape
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -10569,7 +10582,7 @@ static int __pyx_pf_6bullet_6bullet_15CollisionObject___init__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":658
+/* "bullet/bullet.pyx":667
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -10592,7 +10605,7 @@ static void __pyx_pf_6bullet_6bullet_15CollisionObject_2__dealloc__(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":659
+  /* "bullet/bullet.pyx":668
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -10601,7 +10614,7 @@ static void __pyx_pf_6bullet_6bullet_15CollisionObject_2__dealloc__(struct __pyx
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":658
+  /* "bullet/bullet.pyx":667
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -10613,7 +10626,7 @@ static void __pyx_pf_6bullet_6bullet_15CollisionObject_2__dealloc__(struct __pyx
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":662
+/* "bullet/bullet.pyx":671
  * 
  * 
  *     def getFriction(self):             # <<<<<<<<<<<<<<
@@ -10641,7 +10654,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_4getFriction(struct 
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getFriction", 0);
 
-  /* "bullet/bullet.pyx":666
+  /* "bullet/bullet.pyx":675
  *         Return the friction value for this L{CollisionObject}.
  *         """
  *         return self.thisptr.getFriction()             # <<<<<<<<<<<<<<
@@ -10649,13 +10662,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_4getFriction(struct 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getFriction()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 666, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getFriction()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 675, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":662
+  /* "bullet/bullet.pyx":671
  * 
  * 
  *     def getFriction(self):             # <<<<<<<<<<<<<<
@@ -10674,7 +10687,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_4getFriction(struct 
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":669
+/* "bullet/bullet.pyx":678
  * 
  * 
  *     def setFriction(self, btScalar friction):             # <<<<<<<<<<<<<<
@@ -10691,7 +10704,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_7setFriction(PyObjec
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setFriction (wrapper)", 0);
   assert(__pyx_arg_friction); {
-    __pyx_v_friction = __pyx_PyFloat_AsFloat(__pyx_arg_friction); if (unlikely((__pyx_v_friction == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 669, __pyx_L3_error)
+    __pyx_v_friction = __pyx_PyFloat_AsFloat(__pyx_arg_friction); if (unlikely((__pyx_v_friction == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 678, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -10711,7 +10724,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_6setFriction(struct 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setFriction", 0);
 
-  /* "bullet/bullet.pyx":673
+  /* "bullet/bullet.pyx":682
  *         Change the friction value for this L{CollisionObject}.
  *         """
  *         self.thisptr.setFriction(friction)             # <<<<<<<<<<<<<<
@@ -10720,7 +10733,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_6setFriction(struct 
  */
   __pyx_v_self->thisptr->setFriction(__pyx_v_friction);
 
-  /* "bullet/bullet.pyx":669
+  /* "bullet/bullet.pyx":678
  * 
  * 
  *     def setFriction(self, btScalar friction):             # <<<<<<<<<<<<<<
@@ -10735,7 +10748,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_6setFriction(struct 
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":676
+/* "bullet/bullet.pyx":685
  * 
  * 
  *     def setRestitution(self, btScalar restitution):             # <<<<<<<<<<<<<<
@@ -10752,7 +10765,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_9setRestitution(PyOb
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setRestitution (wrapper)", 0);
   assert(__pyx_arg_restitution); {
-    __pyx_v_restitution = __pyx_PyFloat_AsFloat(__pyx_arg_restitution); if (unlikely((__pyx_v_restitution == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 676, __pyx_L3_error)
+    __pyx_v_restitution = __pyx_PyFloat_AsFloat(__pyx_arg_restitution); if (unlikely((__pyx_v_restitution == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 685, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -10772,7 +10785,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_8setRestitution(stru
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setRestitution", 0);
 
-  /* "bullet/bullet.pyx":681
+  /* "bullet/bullet.pyx":690
  *         when this object collides with another.
  *         """
  *         self.thisptr.setRestitution(restitution)             # <<<<<<<<<<<<<<
@@ -10781,7 +10794,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_8setRestitution(stru
  */
   __pyx_v_self->thisptr->setRestitution(__pyx_v_restitution);
 
-  /* "bullet/bullet.pyx":676
+  /* "bullet/bullet.pyx":685
  * 
  * 
  *     def setRestitution(self, btScalar restitution):             # <<<<<<<<<<<<<<
@@ -10796,7 +10809,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_8setRestitution(stru
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":684
+/* "bullet/bullet.pyx":693
  * 
  * 
  *     def getRestitution(self):             # <<<<<<<<<<<<<<
@@ -10824,7 +10837,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_10getRestitution(str
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getRestitution", 0);
 
-  /* "bullet/bullet.pyx":688
+  /* "bullet/bullet.pyx":697
  *         Get the restitution value for this object.
  *         """
  *         return self.thisptr.getRestitution()             # <<<<<<<<<<<<<<
@@ -10832,13 +10845,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_10getRestitution(str
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getRestitution()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 688, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->thisptr->getRestitution()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 697, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":684
+  /* "bullet/bullet.pyx":693
  * 
  * 
  *     def getRestitution(self):             # <<<<<<<<<<<<<<
@@ -10857,7 +10870,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_10getRestitution(str
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":691
+/* "bullet/bullet.pyx":700
  * 
  * 
  *     def getCollisionShape(self):             # <<<<<<<<<<<<<<
@@ -10884,7 +10897,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_12getCollisionShape(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getCollisionShape", 0);
 
-  /* "bullet/bullet.pyx":695
+  /* "bullet/bullet.pyx":704
  *         Get the CollisionShape associated with this object.
  *         """
  *         return self._shape             # <<<<<<<<<<<<<<
@@ -10896,7 +10909,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_12getCollisionShape(
   __pyx_r = ((PyObject *)__pyx_v_self->_shape);
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":691
+  /* "bullet/bullet.pyx":700
  * 
  * 
  *     def getCollisionShape(self):             # <<<<<<<<<<<<<<
@@ -10911,7 +10924,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_12getCollisionShape(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":698
+/* "bullet/bullet.pyx":707
  * 
  * 
  *     def setCollisionShape(self, CollisionShape collisionShape):             # <<<<<<<<<<<<<<
@@ -10926,7 +10939,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_15setCollisionShape(
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setCollisionShape (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_collisionShape), __pyx_ptype_6bullet_6bullet_CollisionShape, 1, "collisionShape", 0))) __PYX_ERR(1, 698, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_collisionShape), __pyx_ptype_6bullet_6bullet_CollisionShape, 1, "collisionShape", 0))) __PYX_ERR(1, 707, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_15CollisionObject_14setCollisionShape(((struct __pyx_obj_6bullet_6bullet_CollisionObject *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_CollisionShape *)__pyx_v_collisionShape));
 
   /* function exit code */
@@ -10943,7 +10956,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_14setCollisionShape(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setCollisionShape", 0);
 
-  /* "bullet/bullet.pyx":702
+  /* "bullet/bullet.pyx":711
  *         Replace this object's CollisionShape.
  *         """
  *         self.thisptr.setCollisionShape(collisionShape.thisptr)             # <<<<<<<<<<<<<<
@@ -10952,7 +10965,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_14setCollisionShape(
  */
   __pyx_v_self->thisptr->setCollisionShape(__pyx_v_collisionShape->thisptr);
 
-  /* "bullet/bullet.pyx":703
+  /* "bullet/bullet.pyx":712
  *         """
  *         self.thisptr.setCollisionShape(collisionShape.thisptr)
  *         self._shape = collisionShape             # <<<<<<<<<<<<<<
@@ -10965,7 +10978,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_14setCollisionShape(
   __Pyx_DECREF(((PyObject *)__pyx_v_self->_shape));
   __pyx_v_self->_shape = __pyx_v_collisionShape;
 
-  /* "bullet/bullet.pyx":698
+  /* "bullet/bullet.pyx":707
  * 
  * 
  *     def setCollisionShape(self, CollisionShape collisionShape):             # <<<<<<<<<<<<<<
@@ -10980,7 +10993,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_14setCollisionShape(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":706
+/* "bullet/bullet.pyx":715
  * 
  * 
  *     def getWorldTransform(self):             # <<<<<<<<<<<<<<
@@ -11009,19 +11022,19 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_16getWorldTransform(
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getWorldTransform", 0);
 
-  /* "bullet/bullet.pyx":711
+  /* "bullet/bullet.pyx":720
  *         instance.
  *         """
  *         cdef Transform transform = Transform()             # <<<<<<<<<<<<<<
  *         # TODO This leaks memory, and then corrupts memory and crashes, I think.
  *         transform.thisptr[0] = self.thisptr.getWorldTransform()
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Transform), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 711, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Transform), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 720, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_transform = ((struct __pyx_obj_6bullet_6bullet_Transform *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":713
+  /* "bullet/bullet.pyx":722
  *         cdef Transform transform = Transform()
  *         # TODO This leaks memory, and then corrupts memory and crashes, I think.
  *         transform.thisptr[0] = self.thisptr.getWorldTransform()             # <<<<<<<<<<<<<<
@@ -11030,7 +11043,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_16getWorldTransform(
  */
   (__pyx_v_transform->thisptr[0]) = __pyx_v_self->thisptr->getWorldTransform();
 
-  /* "bullet/bullet.pyx":714
+  /* "bullet/bullet.pyx":723
  *         # TODO This leaks memory, and then corrupts memory and crashes, I think.
  *         transform.thisptr[0] = self.thisptr.getWorldTransform()
  *         return transform             # <<<<<<<<<<<<<<
@@ -11042,7 +11055,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_16getWorldTransform(
   __pyx_r = ((PyObject *)__pyx_v_transform);
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":706
+  /* "bullet/bullet.pyx":715
  * 
  * 
  *     def getWorldTransform(self):             # <<<<<<<<<<<<<<
@@ -11062,7 +11075,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_16getWorldTransform(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":717
+/* "bullet/bullet.pyx":726
  * 
  * 
  *     def setWorldTransform(self, Transform transform not None):             # <<<<<<<<<<<<<<
@@ -11077,7 +11090,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_19setWorldTransform(
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setWorldTransform (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_transform), __pyx_ptype_6bullet_6bullet_Transform, 0, "transform", 0))) __PYX_ERR(1, 717, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_transform), __pyx_ptype_6bullet_6bullet_Transform, 0, "transform", 0))) __PYX_ERR(1, 726, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_15CollisionObject_18setWorldTransform(((struct __pyx_obj_6bullet_6bullet_CollisionObject *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Transform *)__pyx_v_transform));
 
   /* function exit code */
@@ -11094,7 +11107,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_18setWorldTransform(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setWorldTransform", 0);
 
-  /* "bullet/bullet.pyx":721
+  /* "bullet/bullet.pyx":730
  *         Replace the transformation for this CollisionObject.
  *         """
  *         self.thisptr.setWorldTransform(transform.thisptr[0])             # <<<<<<<<<<<<<<
@@ -11103,7 +11116,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_18setWorldTransform(
  */
   __pyx_v_self->thisptr->setWorldTransform((__pyx_v_transform->thisptr[0]));
 
-  /* "bullet/bullet.pyx":717
+  /* "bullet/bullet.pyx":726
  * 
  * 
  *     def setWorldTransform(self, Transform transform not None):             # <<<<<<<<<<<<<<
@@ -11118,7 +11131,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_18setWorldTransform(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":724
+/* "bullet/bullet.pyx":733
  * 
  * 
  *     def getActivationState(self):             # <<<<<<<<<<<<<<
@@ -11146,7 +11159,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_20getActivationState
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getActivationState", 0);
 
-  /* "bullet/bullet.pyx":728
+  /* "bullet/bullet.pyx":737
  *         Return the current activation state of this object.
  *         """
  *         return self.thisptr.getActivationState()             # <<<<<<<<<<<<<<
@@ -11154,13 +11167,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_20getActivationState
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->thisptr->getActivationState()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 728, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->thisptr->getActivationState()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 737, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":724
+  /* "bullet/bullet.pyx":733
  * 
  * 
  *     def getActivationState(self):             # <<<<<<<<<<<<<<
@@ -11179,7 +11192,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_20getActivationState
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":731
+/* "bullet/bullet.pyx":740
  * 
  * 
  *     def setActivationState(self, int newState):             # <<<<<<<<<<<<<<
@@ -11196,7 +11209,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_23setActivationState
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setActivationState (wrapper)", 0);
   assert(__pyx_arg_newState); {
-    __pyx_v_newState = __Pyx_PyInt_As_int(__pyx_arg_newState); if (unlikely((__pyx_v_newState == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 731, __pyx_L3_error)
+    __pyx_v_newState = __Pyx_PyInt_As_int(__pyx_arg_newState); if (unlikely((__pyx_v_newState == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 740, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -11216,7 +11229,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_22setActivationState
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setActivationState", 0);
 
-  /* "bullet/bullet.pyx":741
+  /* "bullet/bullet.pyx":750
  *           - DISABLE_SIMULATION
  *         """
  *         self.thisptr.setActivationState(newState)             # <<<<<<<<<<<<<<
@@ -11225,7 +11238,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_22setActivationState
  */
   __pyx_v_self->thisptr->setActivationState(__pyx_v_newState);
 
-  /* "bullet/bullet.pyx":731
+  /* "bullet/bullet.pyx":740
  * 
  * 
  *     def setActivationState(self, int newState):             # <<<<<<<<<<<<<<
@@ -11240,7 +11253,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_22setActivationState
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":744
+/* "bullet/bullet.pyx":753
  * 
  * 
  *     def getBroadphaseHandle(self):             # <<<<<<<<<<<<<<
@@ -11272,7 +11285,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("getBroadphaseHandle", 0);
 
-  /* "bullet/bullet.pyx":750
+  /* "bullet/bullet.pyx":759
  *         """
  *         cdef btBroadphaseProxy *proxy
  *         proxy = self.thisptr.getBroadphaseHandle()             # <<<<<<<<<<<<<<
@@ -11281,7 +11294,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
  */
   __pyx_v_proxy = __pyx_v_self->thisptr->getBroadphaseHandle();
 
-  /* "bullet/bullet.pyx":751
+  /* "bullet/bullet.pyx":760
  *         cdef btBroadphaseProxy *proxy
  *         proxy = self.thisptr.getBroadphaseHandle()
  *         if NULL == proxy:             # <<<<<<<<<<<<<<
@@ -11291,7 +11304,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
   __pyx_t_1 = ((NULL == __pyx_v_proxy) != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":752
+    /* "bullet/bullet.pyx":761
  *         proxy = self.thisptr.getBroadphaseHandle()
  *         if NULL == proxy:
  *             return None             # <<<<<<<<<<<<<<
@@ -11303,7 +11316,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
     __pyx_r = Py_None;
     goto __pyx_L0;
 
-    /* "bullet/bullet.pyx":751
+    /* "bullet/bullet.pyx":760
  *         cdef btBroadphaseProxy *proxy
  *         proxy = self.thisptr.getBroadphaseHandle()
  *         if NULL == proxy:             # <<<<<<<<<<<<<<
@@ -11312,7 +11325,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
  */
   }
 
-  /* "bullet/bullet.pyx":754
+  /* "bullet/bullet.pyx":763
  *             return None
  *         # XXX Cannot figure out how to just pass proxy to BroadphaseProxy
  *         return BroadphaseProxy(proxy.m_collisionFilterGroup, proxy.m_collisionFilterMask)             # <<<<<<<<<<<<<<
@@ -11320,11 +11333,11 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyInt_From_short(__pyx_v_proxy->m_collisionFilterGroup); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 754, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_short(__pyx_v_proxy->m_collisionFilterGroup); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_proxy->m_collisionFilterMask); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 754, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_short(__pyx_v_proxy->m_collisionFilterMask); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 754, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -11332,14 +11345,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 754, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":744
+  /* "bullet/bullet.pyx":753
  * 
  * 
  *     def getBroadphaseHandle(self):             # <<<<<<<<<<<<<<
@@ -11360,7 +11373,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_24getBroadphaseHandl
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":757
+/* "bullet/bullet.pyx":766
  * 
  * 
  *     def forceActivationState(self, int newState):             # <<<<<<<<<<<<<<
@@ -11376,7 +11389,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_27forceActivationSta
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("forceActivationState (wrapper)", 0);
   assert(__pyx_arg_newState); {
-    __pyx_v_newState = __Pyx_PyInt_As_int(__pyx_arg_newState); if (unlikely((__pyx_v_newState == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 757, __pyx_L3_error)
+    __pyx_v_newState = __Pyx_PyInt_As_int(__pyx_arg_newState); if (unlikely((__pyx_v_newState == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 766, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -11396,7 +11409,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_26forceActivationSta
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("forceActivationState", 0);
 
-  /* "bullet/bullet.pyx":758
+  /* "bullet/bullet.pyx":767
  * 
  *     def forceActivationState(self, int newState):
  *         self.thisptr.forceActivationState(newState)             # <<<<<<<<<<<<<<
@@ -11405,7 +11418,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_26forceActivationSta
  */
   __pyx_v_self->thisptr->forceActivationState(__pyx_v_newState);
 
-  /* "bullet/bullet.pyx":757
+  /* "bullet/bullet.pyx":766
  * 
  * 
  *     def forceActivationState(self, int newState):             # <<<<<<<<<<<<<<
@@ -11420,7 +11433,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_26forceActivationSta
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":760
+/* "bullet/bullet.pyx":769
  *         self.thisptr.forceActivationState(newState)
  * 
  *     def activate(self, bool forceActivation=False):             # <<<<<<<<<<<<<<
@@ -11456,7 +11469,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_29activate(PyObject 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "activate") < 0)) __PYX_ERR(1, 760, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "activate") < 0)) __PYX_ERR(1, 769, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -11467,14 +11480,14 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_29activate(PyObject 
       }
     }
     if (values[0]) {
-      __pyx_v_forceActivation = __Pyx_PyInt_As_bool(values[0]); if (unlikely((__pyx_v_forceActivation == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 760, __pyx_L3_error)
+      __pyx_v_forceActivation = __Pyx_PyInt_As_bool(values[0]); if (unlikely((__pyx_v_forceActivation == ((bool)-1)) && PyErr_Occurred())) __PYX_ERR(1, 769, __pyx_L3_error)
     } else {
       __pyx_v_forceActivation = ((bool)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("activate", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 760, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("activate", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 769, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.CollisionObject.activate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -11492,7 +11505,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_28activate(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("activate", 0);
 
-  /* "bullet/bullet.pyx":761
+  /* "bullet/bullet.pyx":770
  * 
  *     def activate(self, bool forceActivation=False):
  *         self.thisptr.activate(forceActivation)             # <<<<<<<<<<<<<<
@@ -11501,7 +11514,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_28activate(struct __
  */
   __pyx_v_self->thisptr->activate(__pyx_v_forceActivation);
 
-  /* "bullet/bullet.pyx":760
+  /* "bullet/bullet.pyx":769
  *         self.thisptr.forceActivationState(newState)
  * 
  *     def activate(self, bool forceActivation=False):             # <<<<<<<<<<<<<<
@@ -11516,7 +11529,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_28activate(struct __
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":763
+/* "bullet/bullet.pyx":772
  *         self.thisptr.activate(forceActivation)
  * 
  *     def getCollisionFlags(self):             # <<<<<<<<<<<<<<
@@ -11543,7 +11556,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_30getCollisionFlags(
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getCollisionFlags", 0);
 
-  /* "bullet/bullet.pyx":764
+  /* "bullet/bullet.pyx":773
  * 
  *     def getCollisionFlags(self):
  *         return self.thisptr.getCollisionFlags()             # <<<<<<<<<<<<<<
@@ -11551,13 +11564,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_30getCollisionFlags(
  *     def setCollisionFlags(self, int flags):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->thisptr->getCollisionFlags()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 764, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->thisptr->getCollisionFlags()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 773, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":763
+  /* "bullet/bullet.pyx":772
  *         self.thisptr.activate(forceActivation)
  * 
  *     def getCollisionFlags(self):             # <<<<<<<<<<<<<<
@@ -11576,7 +11589,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_30getCollisionFlags(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":766
+/* "bullet/bullet.pyx":775
  *         return self.thisptr.getCollisionFlags()
  * 
  *     def setCollisionFlags(self, int flags):             # <<<<<<<<<<<<<<
@@ -11592,7 +11605,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_15CollisionObject_33setCollisionFlags(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setCollisionFlags (wrapper)", 0);
   assert(__pyx_arg_flags); {
-    __pyx_v_flags = __Pyx_PyInt_As_int(__pyx_arg_flags); if (unlikely((__pyx_v_flags == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 766, __pyx_L3_error)
+    __pyx_v_flags = __Pyx_PyInt_As_int(__pyx_arg_flags); if (unlikely((__pyx_v_flags == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 775, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -11612,7 +11625,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_32setCollisionFlags(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setCollisionFlags", 0);
 
-  /* "bullet/bullet.pyx":767
+  /* "bullet/bullet.pyx":776
  * 
  *     def setCollisionFlags(self, int flags):
  *         self.thisptr.setCollisionFlags(flags)             # <<<<<<<<<<<<<<
@@ -11621,7 +11634,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_32setCollisionFlags(
  */
   __pyx_v_self->thisptr->setCollisionFlags(__pyx_v_flags);
 
-  /* "bullet/bullet.pyx":766
+  /* "bullet/bullet.pyx":775
  *         return self.thisptr.getCollisionFlags()
  * 
  *     def setCollisionFlags(self, int flags):             # <<<<<<<<<<<<<<
@@ -11743,7 +11756,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15CollisionObject_36__setstate_cython_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":788
+/* "bullet/bullet.pyx":797
  *     cdef btMotionState *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -11766,7 +11779,7 @@ static void __pyx_pf_6bullet_6bullet_11MotionState___dealloc__(struct __pyx_obj_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":789
+  /* "bullet/bullet.pyx":798
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -11775,7 +11788,7 @@ static void __pyx_pf_6bullet_6bullet_11MotionState___dealloc__(struct __pyx_obj_
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":788
+  /* "bullet/bullet.pyx":797
  *     cdef btMotionState *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -11787,7 +11800,7 @@ static void __pyx_pf_6bullet_6bullet_11MotionState___dealloc__(struct __pyx_obj_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":792
+/* "bullet/bullet.pyx":801
  * 
  * 
  *     def getWorldTransform(self):             # <<<<<<<<<<<<<<
@@ -11816,19 +11829,19 @@ static PyObject *__pyx_pf_6bullet_6bullet_11MotionState_2getWorldTransform(struc
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getWorldTransform", 0);
 
-  /* "bullet/bullet.pyx":797
+  /* "bullet/bullet.pyx":806
  *         instance.
  *         """
  *         transform = Transform()             # <<<<<<<<<<<<<<
  *         self.thisptr.getWorldTransform(transform.thisptr[0])
  *         return transform
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Transform), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 797, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Transform), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 806, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_transform = ((struct __pyx_obj_6bullet_6bullet_Transform *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":798
+  /* "bullet/bullet.pyx":807
  *         """
  *         transform = Transform()
  *         self.thisptr.getWorldTransform(transform.thisptr[0])             # <<<<<<<<<<<<<<
@@ -11837,7 +11850,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_11MotionState_2getWorldTransform(struc
  */
   __pyx_v_self->thisptr->getWorldTransform((__pyx_v_transform->thisptr[0]));
 
-  /* "bullet/bullet.pyx":799
+  /* "bullet/bullet.pyx":808
  *         transform = Transform()
  *         self.thisptr.getWorldTransform(transform.thisptr[0])
  *         return transform             # <<<<<<<<<<<<<<
@@ -11849,7 +11862,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_11MotionState_2getWorldTransform(struc
   __pyx_r = ((PyObject *)__pyx_v_transform);
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":792
+  /* "bullet/bullet.pyx":801
  * 
  * 
  *     def getWorldTransform(self):             # <<<<<<<<<<<<<<
@@ -11869,7 +11882,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_11MotionState_2getWorldTransform(struc
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":802
+/* "bullet/bullet.pyx":811
  * 
  * 
  *     def setWorldTransform(self, Transform centerOfMassWorldTrans not None):             # <<<<<<<<<<<<<<
@@ -11884,7 +11897,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_11MotionState_5setWorldTransform(PyObj
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setWorldTransform (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_centerOfMassWorldTrans), __pyx_ptype_6bullet_6bullet_Transform, 0, "centerOfMassWorldTrans", 0))) __PYX_ERR(1, 802, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_centerOfMassWorldTrans), __pyx_ptype_6bullet_6bullet_Transform, 0, "centerOfMassWorldTrans", 0))) __PYX_ERR(1, 811, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_11MotionState_4setWorldTransform(((struct __pyx_obj_6bullet_6bullet_MotionState *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Transform *)__pyx_v_centerOfMassWorldTrans));
 
   /* function exit code */
@@ -11901,7 +11914,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_11MotionState_4setWorldTransform(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setWorldTransform", 0);
 
-  /* "bullet/bullet.pyx":811
+  /* "bullet/bullet.pyx":820
  *         will not be called by Bullet.
  *         """
  *         self.thisptr.setWorldTransform(centerOfMassWorldTrans.thisptr[0])             # <<<<<<<<<<<<<<
@@ -11910,7 +11923,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_11MotionState_4setWorldTransform(struc
  */
   __pyx_v_self->thisptr->setWorldTransform((__pyx_v_centerOfMassWorldTrans->thisptr[0]));
 
-  /* "bullet/bullet.pyx":802
+  /* "bullet/bullet.pyx":811
  * 
  * 
  *     def setWorldTransform(self, Transform centerOfMassWorldTrans not None):             # <<<<<<<<<<<<<<
@@ -12032,7 +12045,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_11MotionState_8__setstate_cython__(CYT
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":837
+/* "bullet/bullet.pyx":846
  * cdef class overridableMotionState(MotionState): # todo: turn into abstract
  *     cdef Transform _nTrans
  *     def __cinit__(self, Transform initialTransformation):             # <<<<<<<<<<<<<<
@@ -12066,7 +12079,7 @@ static int __pyx_pw_6bullet_6bullet_22overridableMotionState_1__cinit__(PyObject
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 837, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 846, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -12077,13 +12090,13 @@ static int __pyx_pw_6bullet_6bullet_22overridableMotionState_1__cinit__(PyObject
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 837, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 846, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.overridableMotionState.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_initialTransformation), __pyx_ptype_6bullet_6bullet_Transform, 1, "initialTransformation", 0))) __PYX_ERR(1, 837, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_initialTransformation), __pyx_ptype_6bullet_6bullet_Transform, 1, "initialTransformation", 0))) __PYX_ERR(1, 846, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_22overridableMotionState___cinit__(((struct __pyx_obj_6bullet_6bullet_overridableMotionState *)__pyx_v_self), __pyx_v_initialTransformation);
 
   /* function exit code */
@@ -12101,14 +12114,14 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState___cinit__(struct __
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "bullet/bullet.pyx":838
+  /* "bullet/bullet.pyx":847
  *     cdef Transform _nTrans
  *     def __cinit__(self, Transform initialTransformation):
  *         self._nTrans = Transform()             # <<<<<<<<<<<<<<
  *         # self.thisptr = new coverrMotionState(trans, <PyObject *>self)
  *         self.thisptr = new MyMotionState(initialTransformation.thisptr[0])
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Transform), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 838, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Transform), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 847, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_nTrans);
@@ -12116,7 +12129,7 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState___cinit__(struct __
   __pyx_v_self->_nTrans = ((struct __pyx_obj_6bullet_6bullet_Transform *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":840
+  /* "bullet/bullet.pyx":849
  *         self._nTrans = Transform()
  *         # self.thisptr = new coverrMotionState(trans, <PyObject *>self)
  *         self.thisptr = new MyMotionState(initialTransformation.thisptr[0])             # <<<<<<<<<<<<<<
@@ -12125,19 +12138,19 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState___cinit__(struct __
  */
   __pyx_v_self->__pyx_base.thisptr = new MyMotionState((__pyx_v_initialTransformation->thisptr[0]));
 
-  /* "bullet/bullet.pyx":841
+  /* "bullet/bullet.pyx":850
  *         # self.thisptr = new coverrMotionState(trans, <PyObject *>self)
  *         self.thisptr = new MyMotionState(initialTransformation.thisptr[0])
  *         (<MyMotionState*>self.thisptr).setPyCallback(self._stwL)             # <<<<<<<<<<<<<<
  * 
  *     property worldTrans:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stwL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 841, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_stwL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 850, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   ((MyMotionState *)__pyx_v_self->__pyx_base.thisptr)->setPyCallback(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":837
+  /* "bullet/bullet.pyx":846
  * cdef class overridableMotionState(MotionState): # todo: turn into abstract
  *     cdef Transform _nTrans
  *     def __cinit__(self, Transform initialTransformation):             # <<<<<<<<<<<<<<
@@ -12157,7 +12170,7 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState___cinit__(struct __
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":845
+/* "bullet/bullet.pyx":854
  *     property worldTrans:
  *         "Set this to change body's transformation."
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12183,7 +12196,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "bullet/bullet.pyx":846
+  /* "bullet/bullet.pyx":855
  *         "Set this to change body's transformation."
  *         def __get__(self):
  *             return self._nTrans             # <<<<<<<<<<<<<<
@@ -12195,7 +12208,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_
   __pyx_r = ((PyObject *)__pyx_v_self->_nTrans);
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":845
+  /* "bullet/bullet.pyx":854
  *     property worldTrans:
  *         "Set this to change body's transformation."
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -12210,7 +12223,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":848
+/* "bullet/bullet.pyx":857
  *             return self._nTrans
  * 
  *         def __set__(self, Transform value):             # <<<<<<<<<<<<<<
@@ -12224,7 +12237,7 @@ static int __pyx_pw_6bullet_6bullet_22overridableMotionState_10worldTrans_3__set
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_value), __pyx_ptype_6bullet_6bullet_Transform, 1, "value", 0))) __PYX_ERR(1, 848, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_value), __pyx_ptype_6bullet_6bullet_Transform, 1, "value", 0))) __PYX_ERR(1, 857, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_2__set__(((struct __pyx_obj_6bullet_6bullet_overridableMotionState *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Transform *)__pyx_v_value));
 
   /* function exit code */
@@ -12241,7 +12254,7 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_2__set
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "bullet/bullet.pyx":849
+  /* "bullet/bullet.pyx":858
  * 
  *         def __set__(self, Transform value):
  *             self._nTrans = value             # <<<<<<<<<<<<<<
@@ -12254,7 +12267,7 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_2__set
   __Pyx_DECREF(((PyObject *)__pyx_v_self->_nTrans));
   __pyx_v_self->_nTrans = __pyx_v_value;
 
-  /* "bullet/bullet.pyx":850
+  /* "bullet/bullet.pyx":859
  *         def __set__(self, Transform value):
  *             self._nTrans = value
  *             (<MyMotionState*>self.thisptr).setKinematicPos(value.thisptr[0])             # <<<<<<<<<<<<<<
@@ -12263,7 +12276,7 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_2__set
  */
   ((MyMotionState *)__pyx_v_self->__pyx_base.thisptr)->setKinematicPos((__pyx_v_value->thisptr[0]));
 
-  /* "bullet/bullet.pyx":848
+  /* "bullet/bullet.pyx":857
  *             return self._nTrans
  * 
  *         def __set__(self, Transform value):             # <<<<<<<<<<<<<<
@@ -12277,7 +12290,7 @@ static int __pyx_pf_6bullet_6bullet_22overridableMotionState_10worldTrans_2__set
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":852
+/* "bullet/bullet.pyx":861
  *             (<MyMotionState*>self.thisptr).setKinematicPos(value.thisptr[0])
  * 
  *     def setWorldTransform(self, Transform transform):             # <<<<<<<<<<<<<<
@@ -12291,7 +12304,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_22overridableMotionState_3setWorldTran
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setWorldTransform (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_transform), __pyx_ptype_6bullet_6bullet_Transform, 1, "transform", 0))) __PYX_ERR(1, 852, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_transform), __pyx_ptype_6bullet_6bullet_Transform, 1, "transform", 0))) __PYX_ERR(1, 861, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_22overridableMotionState_2setWorldTransform(((struct __pyx_obj_6bullet_6bullet_overridableMotionState *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Transform *)__pyx_v_transform));
 
   /* function exit code */
@@ -12315,7 +12328,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_2setWorldTran
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":855
+/* "bullet/bullet.pyx":864
  *         pass
  * 
  *     def _stwL(self):             # <<<<<<<<<<<<<<
@@ -12354,7 +12367,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
   int __pyx_t_9;
   __Pyx_RefNannySetupContext("_stwL", 0);
 
-  /* "bullet/bullet.pyx":856
+  /* "bullet/bullet.pyx":865
  * 
  *     def _stwL(self):
  *         cdef btTransform* cTrans = &(<MyMotionState*>self.thisptr).mworldTrans             # <<<<<<<<<<<<<<
@@ -12363,7 +12376,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
  */
   __pyx_v_cTrans = (&((MyMotionState *)__pyx_v_self->__pyx_base.thisptr)->mworldTrans);
 
-  /* "bullet/bullet.pyx":857
+  /* "bullet/bullet.pyx":866
  *     def _stwL(self):
  *         cdef btTransform* cTrans = &(<MyMotionState*>self.thisptr).mworldTrans
  *         cdef btVector3 pos = cTrans.getOrigin()             # <<<<<<<<<<<<<<
@@ -12372,7 +12385,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
  */
   __pyx_v_pos = __pyx_v_cTrans->getOrigin();
 
-  /* "bullet/bullet.pyx":858
+  /* "bullet/bullet.pyx":867
  *         cdef btTransform* cTrans = &(<MyMotionState*>self.thisptr).mworldTrans
  *         cdef btVector3 pos = cTrans.getOrigin()
  *         cdef btQuaternion rot = cTrans.getRotation()             # <<<<<<<<<<<<<<
@@ -12381,7 +12394,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
  */
   __pyx_v_rot = __pyx_v_cTrans->getRotation();
 
-  /* "bullet/bullet.pyx":859
+  /* "bullet/bullet.pyx":868
  *         cdef btVector3 pos = cTrans.getOrigin()
  *         cdef btQuaternion rot = cTrans.getRotation()
  *         try:             # <<<<<<<<<<<<<<
@@ -12397,16 +12410,16 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "bullet/bullet.pyx":860
+      /* "bullet/bullet.pyx":869
  *         cdef btQuaternion rot = cTrans.getRotation()
  *         try:
  *             self._nTrans.setOrigin(Vector3.frombtVector3(pos))             # <<<<<<<<<<<<<<
  *             self._nTrans.setRotation(Quaternion.frombtQuat(rot))
  *             self.setWorldTransform(self._nTrans)
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_nTrans), __pyx_n_s_setOrigin); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 860, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_nTrans), __pyx_n_s_setOrigin); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 869, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_pos); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 860, __pyx_L3_error)
+      __pyx_t_6 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_pos); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 869, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -12419,14 +12432,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
         }
       }
       if (!__pyx_t_7) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 860, __pyx_L3_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 869, __pyx_L3_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 860, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 869, __pyx_L3_error)
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -12435,20 +12448,20 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_6};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 860, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 869, __pyx_L3_error)
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         } else
         #endif
         {
-          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 860, __pyx_L3_error)
+          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 869, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
           __Pyx_GIVEREF(__pyx_t_6);
           PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_t_6);
           __pyx_t_6 = 0;
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 860, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 869, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -12456,16 +12469,16 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "bullet/bullet.pyx":861
+      /* "bullet/bullet.pyx":870
  *         try:
  *             self._nTrans.setOrigin(Vector3.frombtVector3(pos))
  *             self._nTrans.setRotation(Quaternion.frombtQuat(rot))             # <<<<<<<<<<<<<<
  *             self.setWorldTransform(self._nTrans)
  *         except Exception as ex:
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_nTrans), __pyx_n_s_setRotation); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 861, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->_nTrans), __pyx_n_s_setRotation); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 870, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = __pyx_f_6bullet_6bullet_10Quaternion_frombtQuat(__pyx_v_rot); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 861, __pyx_L3_error)
+      __pyx_t_8 = __pyx_f_6bullet_6bullet_10Quaternion_frombtQuat(__pyx_v_rot); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 870, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_6 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -12478,14 +12491,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
         }
       }
       if (!__pyx_t_6) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 861, __pyx_L3_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 870, __pyx_L3_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_8};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 861, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 870, __pyx_L3_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -12494,20 +12507,20 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_8};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 861, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 870, __pyx_L3_error)
           __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         } else
         #endif
         {
-          __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 861, __pyx_L3_error)
+          __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 870, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
           __Pyx_GIVEREF(__pyx_t_8);
           PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_8);
           __pyx_t_8 = 0;
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 861, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 870, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         }
@@ -12515,14 +12528,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "bullet/bullet.pyx":862
+      /* "bullet/bullet.pyx":871
  *             self._nTrans.setOrigin(Vector3.frombtVector3(pos))
  *             self._nTrans.setRotation(Quaternion.frombtQuat(rot))
  *             self.setWorldTransform(self._nTrans)             # <<<<<<<<<<<<<<
  *         except Exception as ex:
  *             raise
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setWorldTransform); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 862, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setWorldTransform); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 871, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_7 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -12535,13 +12548,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
         }
       }
       if (!__pyx_t_7) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, ((PyObject *)__pyx_v_self->_nTrans)); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 862, __pyx_L3_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, ((PyObject *)__pyx_v_self->_nTrans)); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 871, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_7, ((PyObject *)__pyx_v_self->_nTrans)};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 862, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 871, __pyx_L3_error)
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
@@ -12549,19 +12562,19 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_7, ((PyObject *)__pyx_v_self->_nTrans)};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 862, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 871, __pyx_L3_error)
           __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else
         #endif
         {
-          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 862, __pyx_L3_error)
+          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 871, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
           __Pyx_INCREF(((PyObject *)__pyx_v_self->_nTrans));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_self->_nTrans));
           PyTuple_SET_ITEM(__pyx_t_8, 0+1, ((PyObject *)__pyx_v_self->_nTrans));
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 862, __pyx_L3_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 871, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -12569,7 +12582,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "bullet/bullet.pyx":859
+      /* "bullet/bullet.pyx":868
  *         cdef btVector3 pos = cTrans.getOrigin()
  *         cdef btQuaternion rot = cTrans.getRotation()
  *         try:             # <<<<<<<<<<<<<<
@@ -12588,7 +12601,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "bullet/bullet.pyx":863
+    /* "bullet/bullet.pyx":872
  *             self._nTrans.setRotation(Quaternion.frombtQuat(rot))
  *             self.setWorldTransform(self._nTrans)
  *         except Exception as ex:             # <<<<<<<<<<<<<<
@@ -12598,14 +12611,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
     __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_9) {
       __Pyx_AddTraceback("bullet.bullet.overridableMotionState._stwL", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_8) < 0) __PYX_ERR(1, 863, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_8) < 0) __PYX_ERR(1, 872, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_5);
       __pyx_v_ex = __pyx_t_5;
 
-      /* "bullet/bullet.pyx":864
+      /* "bullet/bullet.pyx":873
  *             self.setWorldTransform(self._nTrans)
  *         except Exception as ex:
  *             raise             # <<<<<<<<<<<<<<
@@ -12617,12 +12630,12 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
       __Pyx_XGIVEREF(__pyx_t_8);
       __Pyx_ErrRestoreWithState(__pyx_t_4, __pyx_t_5, __pyx_t_8);
       __pyx_t_4 = 0; __pyx_t_5 = 0; __pyx_t_8 = 0; 
-      __PYX_ERR(1, 864, __pyx_L5_except_error)
+      __PYX_ERR(1, 873, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "bullet/bullet.pyx":859
+    /* "bullet/bullet.pyx":868
  *         cdef btVector3 pos = cTrans.getOrigin()
  *         cdef btQuaternion rot = cTrans.getRotation()
  *         try:             # <<<<<<<<<<<<<<
@@ -12637,7 +12650,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
     __pyx_L8_try_end:;
   }
 
-  /* "bullet/bullet.pyx":855
+  /* "bullet/bullet.pyx":864
  *         pass
  * 
  *     def _stwL(self):             # <<<<<<<<<<<<<<
@@ -12663,7 +12676,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_4_stwL(struct
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":866
+/* "bullet/bullet.pyx":875
  *             raise
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -12686,16 +12699,16 @@ static void __pyx_pf_6bullet_6bullet_22overridableMotionState_6__dealloc__(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":867
+  /* "bullet/bullet.pyx":876
  * 
  *     def __dealloc__(self):
  *         print('dealloc')             # <<<<<<<<<<<<<<
  *         del self.thisptr
  * 
  */
-  if (__Pyx_PrintOne(0, __pyx_n_s_dealloc) < 0) __PYX_ERR(1, 867, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_n_s_dealloc) < 0) __PYX_ERR(1, 876, __pyx_L1_error)
 
-  /* "bullet/bullet.pyx":868
+  /* "bullet/bullet.pyx":877
  *     def __dealloc__(self):
  *         print('dealloc')
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -12704,7 +12717,7 @@ static void __pyx_pf_6bullet_6bullet_22overridableMotionState_6__dealloc__(struc
  */
   delete __pyx_v_self->__pyx_base.thisptr;
 
-  /* "bullet/bullet.pyx":866
+  /* "bullet/bullet.pyx":875
  *             raise
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -12827,7 +12840,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22overridableMotionState_10__setstate_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":882
+/* "bullet/bullet.pyx":891
  *     wrapping doesn't really make sense and will probably be changed.
  *     """
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -12856,7 +12869,7 @@ static int __pyx_pf_6bullet_6bullet_18DefaultMotionState___cinit__(struct __pyx_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "bullet/bullet.pyx":883
+  /* "bullet/bullet.pyx":892
  *     """
  *     def __cinit__(self):
  *         self.thisptr = new btDefaultMotionState()             # <<<<<<<<<<<<<<
@@ -12865,7 +12878,7 @@ static int __pyx_pf_6bullet_6bullet_18DefaultMotionState___cinit__(struct __pyx_
  */
   __pyx_v_self->__pyx_base.thisptr = new btDefaultMotionState();
 
-  /* "bullet/bullet.pyx":882
+  /* "bullet/bullet.pyx":891
  *     wrapping doesn't really make sense and will probably be changed.
  *     """
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -12986,7 +12999,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_18DefaultMotionState_4__setstate_cytho
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":912
+/* "bullet/bullet.pyx":921
  *     cdef CollisionShape shape
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -13007,7 +13020,7 @@ static int __pyx_pw_6bullet_6bullet_9RigidBody_1__init__(PyObject *__pyx_v_self,
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_motion,&__pyx_n_s_shape,&__pyx_n_s_mass,0};
     PyObject* values[3] = {0,0,0};
 
-    /* "bullet/bullet.pyx":913
+    /* "bullet/bullet.pyx":922
  * 
  *     def __init__(self,
  *                  MotionState motion = None,             # <<<<<<<<<<<<<<
@@ -13016,7 +13029,7 @@ static int __pyx_pw_6bullet_6bullet_9RigidBody_1__init__(PyObject *__pyx_v_self,
  */
     values[0] = (PyObject *)((struct __pyx_obj_6bullet_6bullet_MotionState *)Py_None);
 
-    /* "bullet/bullet.pyx":914
+    /* "bullet/bullet.pyx":923
  *     def __init__(self,
  *                  MotionState motion = None,
  *                  CollisionShape shape = None,             # <<<<<<<<<<<<<<
@@ -13058,7 +13071,7 @@ static int __pyx_pw_6bullet_6bullet_9RigidBody_1__init__(PyObject *__pyx_v_self,
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 912, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 921, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -13075,24 +13088,24 @@ static int __pyx_pw_6bullet_6bullet_9RigidBody_1__init__(PyObject *__pyx_v_self,
     __pyx_v_motion = ((struct __pyx_obj_6bullet_6bullet_MotionState *)values[0]);
     __pyx_v_shape = ((struct __pyx_obj_6bullet_6bullet_CollisionShape *)values[1]);
     if (values[2]) {
-      __pyx_v_mass = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_mass == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 915, __pyx_L3_error)
+      __pyx_v_mass = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_mass == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 924, __pyx_L3_error)
     } else {
       __pyx_v_mass = ((btScalar)0.0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 912, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 921, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.RigidBody.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_motion), __pyx_ptype_6bullet_6bullet_MotionState, 1, "motion", 0))) __PYX_ERR(1, 913, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), __pyx_ptype_6bullet_6bullet_CollisionShape, 1, "shape", 0))) __PYX_ERR(1, 914, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_motion), __pyx_ptype_6bullet_6bullet_MotionState, 1, "motion", 0))) __PYX_ERR(1, 922, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), __pyx_ptype_6bullet_6bullet_CollisionShape, 1, "shape", 0))) __PYX_ERR(1, 923, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody___init__(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), __pyx_v_motion, __pyx_v_shape, __pyx_v_mass);
 
-  /* "bullet/bullet.pyx":912
+  /* "bullet/bullet.pyx":921
  *     cdef CollisionShape shape
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -13122,7 +13135,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
   __Pyx_INCREF((PyObject *)__pyx_v_motion);
   __Pyx_INCREF((PyObject *)__pyx_v_shape);
 
-  /* "bullet/bullet.pyx":916
+  /* "bullet/bullet.pyx":925
  *                  CollisionShape shape = None,
  *                  btScalar mass = 0.0):
  *         if motion is None:             # <<<<<<<<<<<<<<
@@ -13133,19 +13146,19 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "bullet/bullet.pyx":917
+    /* "bullet/bullet.pyx":926
  *                  btScalar mass = 0.0):
  *         if motion is None:
  *             motion = DefaultMotionState()             # <<<<<<<<<<<<<<
  *         if shape is None:
  *             shape = BoxShape(Vector3(0.5, 0.5, 0.5))
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_DefaultMotionState), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 917, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_DefaultMotionState), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 926, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_motion, ((struct __pyx_obj_6bullet_6bullet_MotionState *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "bullet/bullet.pyx":916
+    /* "bullet/bullet.pyx":925
  *                  CollisionShape shape = None,
  *                  btScalar mass = 0.0):
  *         if motion is None:             # <<<<<<<<<<<<<<
@@ -13154,7 +13167,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
   }
 
-  /* "bullet/bullet.pyx":918
+  /* "bullet/bullet.pyx":927
  *         if motion is None:
  *             motion = DefaultMotionState()
  *         if shape is None:             # <<<<<<<<<<<<<<
@@ -13165,27 +13178,27 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":919
+    /* "bullet/bullet.pyx":928
  *             motion = DefaultMotionState()
  *         if shape is None:
  *             shape = BoxShape(Vector3(0.5, 0.5, 0.5))             # <<<<<<<<<<<<<<
  * 
  *         self.motion = motion
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__46, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 919, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__46, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 928, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 919, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 928, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_BoxShape), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 919, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_BoxShape), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 928, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_shape, ((struct __pyx_obj_6bullet_6bullet_CollisionShape *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "bullet/bullet.pyx":918
+    /* "bullet/bullet.pyx":927
  *         if motion is None:
  *             motion = DefaultMotionState()
  *         if shape is None:             # <<<<<<<<<<<<<<
@@ -13194,7 +13207,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
   }
 
-  /* "bullet/bullet.pyx":921
+  /* "bullet/bullet.pyx":930
  *             shape = BoxShape(Vector3(0.5, 0.5, 0.5))
  * 
  *         self.motion = motion             # <<<<<<<<<<<<<<
@@ -13207,7 +13220,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
   __Pyx_DECREF(((PyObject *)__pyx_v_self->motion));
   __pyx_v_self->motion = __pyx_v_motion;
 
-  /* "bullet/bullet.pyx":922
+  /* "bullet/bullet.pyx":931
  * 
  *         self.motion = motion
  *         self._shape = shape             # <<<<<<<<<<<<<<
@@ -13220,7 +13233,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
   __Pyx_DECREF(((PyObject *)__pyx_v_self->__pyx_base._shape));
   __pyx_v_self->__pyx_base._shape = __pyx_v_shape;
 
-  /* "bullet/bullet.pyx":924
+  /* "bullet/bullet.pyx":933
  *         self._shape = shape
  * 
  *         cdef btVector3 inertia = btVector3(0, 0, 0)             # <<<<<<<<<<<<<<
@@ -13229,7 +13242,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
   __pyx_v_inertia = btVector3(0.0, 0.0, 0.0);
 
-  /* "bullet/bullet.pyx":930
+  /* "bullet/bullet.pyx":939
  *         # explicitly list the shapes which cannot have their local inertia
  *         # calculated.
  *         if mass != 0.0:             # <<<<<<<<<<<<<<
@@ -13239,7 +13252,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
   __pyx_t_1 = ((__pyx_v_mass != 0.0) != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":931
+    /* "bullet/bullet.pyx":940
  *         # calculated.
  *         if mass != 0.0:
  *             shape.thisptr.calculateLocalInertia(mass, inertia)             # <<<<<<<<<<<<<<
@@ -13248,7 +13261,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
     __pyx_v_shape->thisptr->calculateLocalInertia(__pyx_v_mass, __pyx_v_inertia);
 
-    /* "bullet/bullet.pyx":930
+    /* "bullet/bullet.pyx":939
  *         # explicitly list the shapes which cannot have their local inertia
  *         # calculated.
  *         if mass != 0.0:             # <<<<<<<<<<<<<<
@@ -13257,7 +13270,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
   }
 
-  /* "bullet/bullet.pyx":934
+  /* "bullet/bullet.pyx":943
  * 
  *         cdef btRigidBodyConstructionInfo* info
  *         info = new btRigidBodyConstructionInfo(             # <<<<<<<<<<<<<<
@@ -13266,7 +13279,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
   __pyx_v_info = new btRigidBody::btRigidBodyConstructionInfo(__pyx_v_mass, __pyx_v_self->motion->thisptr, __pyx_v_self->__pyx_base._shape->thisptr, __pyx_v_inertia);
 
-  /* "bullet/bullet.pyx":936
+  /* "bullet/bullet.pyx":945
  *         info = new btRigidBodyConstructionInfo(
  *             mass, self.motion.thisptr, self._shape.thisptr, inertia)
  *         self.thisptr = new btRigidBody(info[0])             # <<<<<<<<<<<<<<
@@ -13275,7 +13288,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
   __pyx_v_self->__pyx_base.thisptr = new btRigidBody((__pyx_v_info[0]));
 
-  /* "bullet/bullet.pyx":937
+  /* "bullet/bullet.pyx":946
  *             mass, self.motion.thisptr, self._shape.thisptr, inertia)
  *         self.thisptr = new btRigidBody(info[0])
  *         del info             # <<<<<<<<<<<<<<
@@ -13284,7 +13297,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
  */
   delete __pyx_v_info;
 
-  /* "bullet/bullet.pyx":912
+  /* "bullet/bullet.pyx":921
  *     cdef CollisionShape shape
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -13307,7 +13320,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody___init__(struct __pyx_obj_6bullet
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":941
+/* "bullet/bullet.pyx":950
  * 
  *     @classmethod
  *     def fromConstructionInfo(cls, MotionState motion,             # <<<<<<<<<<<<<<
@@ -13374,65 +13387,65 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_3fromConstructionInfo(PyObj
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_shape)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 1); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 1); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_mass)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 2); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 2); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_inertia)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 3); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 3); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_worldTransform)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 4); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 4); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_linearDamping)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 5); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 5); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_angularDamping)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 6); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 6); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_friction)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 7); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 7); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_restitution)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 8); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 8); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_linearSleepingThreshold)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 9); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 9); __PYX_ERR(1, 950, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_angularSleepingThreshold)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 10); __PYX_ERR(1, 941, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, 10); __PYX_ERR(1, 950, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fromConstructionInfo") < 0)) __PYX_ERR(1, 941, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "fromConstructionInfo") < 0)) __PYX_ERR(1, 950, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 11) {
       goto __pyx_L5_argtuple_error;
@@ -13451,28 +13464,28 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_3fromConstructionInfo(PyObj
     }
     __pyx_v_motion = ((struct __pyx_obj_6bullet_6bullet_MotionState *)values[0]);
     __pyx_v_shape = ((struct __pyx_obj_6bullet_6bullet_CollisionShape *)values[1]);
-    __pyx_v_mass = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_mass == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 942, __pyx_L3_error)
+    __pyx_v_mass = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_mass == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 951, __pyx_L3_error)
     __pyx_v_inertia = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)values[3]);
     __pyx_v_worldTransform = ((struct __pyx_obj_6bullet_6bullet_Transform *)values[4]);
-    __pyx_v_linearDamping = __pyx_PyFloat_AsFloat(values[5]); if (unlikely((__pyx_v_linearDamping == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 944, __pyx_L3_error)
-    __pyx_v_angularDamping = __pyx_PyFloat_AsFloat(values[6]); if (unlikely((__pyx_v_angularDamping == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 944, __pyx_L3_error)
-    __pyx_v_friction = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_friction == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 945, __pyx_L3_error)
-    __pyx_v_restitution = __pyx_PyFloat_AsFloat(values[8]); if (unlikely((__pyx_v_restitution == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 945, __pyx_L3_error)
-    __pyx_v_linearSleepingThreshold = __pyx_PyFloat_AsFloat(values[9]); if (unlikely((__pyx_v_linearSleepingThreshold == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 946, __pyx_L3_error)
-    __pyx_v_angularSleepingThreshold = __pyx_PyFloat_AsFloat(values[10]); if (unlikely((__pyx_v_angularSleepingThreshold == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 947, __pyx_L3_error)
+    __pyx_v_linearDamping = __pyx_PyFloat_AsFloat(values[5]); if (unlikely((__pyx_v_linearDamping == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 953, __pyx_L3_error)
+    __pyx_v_angularDamping = __pyx_PyFloat_AsFloat(values[6]); if (unlikely((__pyx_v_angularDamping == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 953, __pyx_L3_error)
+    __pyx_v_friction = __pyx_PyFloat_AsFloat(values[7]); if (unlikely((__pyx_v_friction == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 954, __pyx_L3_error)
+    __pyx_v_restitution = __pyx_PyFloat_AsFloat(values[8]); if (unlikely((__pyx_v_restitution == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 954, __pyx_L3_error)
+    __pyx_v_linearSleepingThreshold = __pyx_PyFloat_AsFloat(values[9]); if (unlikely((__pyx_v_linearSleepingThreshold == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 955, __pyx_L3_error)
+    __pyx_v_angularSleepingThreshold = __pyx_PyFloat_AsFloat(values[10]); if (unlikely((__pyx_v_angularSleepingThreshold == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 956, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 941, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("fromConstructionInfo", 1, 11, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 950, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.RigidBody.fromConstructionInfo", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_motion), __pyx_ptype_6bullet_6bullet_MotionState, 1, "motion", 0))) __PYX_ERR(1, 941, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), __pyx_ptype_6bullet_6bullet_CollisionShape, 1, "shape", 0))) __PYX_ERR(1, 942, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_inertia), __pyx_ptype_6bullet_6bullet_Vector3, 1, "inertia", 0))) __PYX_ERR(1, 943, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_worldTransform), __pyx_ptype_6bullet_6bullet_Transform, 1, "worldTransform", 0))) __PYX_ERR(1, 943, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_motion), __pyx_ptype_6bullet_6bullet_MotionState, 1, "motion", 0))) __PYX_ERR(1, 950, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_shape), __pyx_ptype_6bullet_6bullet_CollisionShape, 1, "shape", 0))) __PYX_ERR(1, 951, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_inertia), __pyx_ptype_6bullet_6bullet_Vector3, 1, "inertia", 0))) __PYX_ERR(1, 952, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_worldTransform), __pyx_ptype_6bullet_6bullet_Transform, 1, "worldTransform", 0))) __PYX_ERR(1, 952, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(((PyTypeObject*)__pyx_v_cls), __pyx_v_motion, __pyx_v_shape, __pyx_v_mass, __pyx_v_inertia, __pyx_v_worldTransform, __pyx_v_linearDamping, __pyx_v_angularDamping, __pyx_v_friction, __pyx_v_restitution, __pyx_v_linearSleepingThreshold, __pyx_v_angularSleepingThreshold);
 
   /* function exit code */
@@ -13496,7 +13509,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
   btMotionState *__pyx_t_4;
   __Pyx_RefNannySetupContext("fromConstructionInfo", 0);
 
-  /* "bullet/bullet.pyx":981
+  /* "bullet/bullet.pyx":990
  *         @param angularSleepingThreshold: See L{getAngularSleepingThreshold}.
  *         """
  *         cdef RigidBody body = cls.__new__(cls)             # <<<<<<<<<<<<<<
@@ -13505,15 +13518,15 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   if (unlikely(((PyObject *)__pyx_v_cls) == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object.__new__(X): X is not a type object (NoneType)");
-    __PYX_ERR(1, 981, __pyx_L1_error)
+    __PYX_ERR(1, 990, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_tp_new(((PyObject *)__pyx_v_cls), __pyx_empty_tuple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 981, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_tp_new(((PyObject *)__pyx_v_cls), __pyx_empty_tuple); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 990, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_6bullet_6bullet_RigidBody)))) __PYX_ERR(1, 981, __pyx_L1_error)
+  if (!(likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_6bullet_6bullet_RigidBody)))) __PYX_ERR(1, 990, __pyx_L1_error)
   __pyx_v_body = ((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":985
+  /* "bullet/bullet.pyx":994
  *         cdef btMotionState *motionState
  * 
  *         if motion is not None:             # <<<<<<<<<<<<<<
@@ -13524,7 +13537,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (__pyx_t_3) {
 
-    /* "bullet/bullet.pyx":986
+    /* "bullet/bullet.pyx":995
  * 
  *         if motion is not None:
  *             motionState = motion.thisptr             # <<<<<<<<<<<<<<
@@ -13534,7 +13547,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
     __pyx_t_4 = __pyx_v_motion->thisptr;
     __pyx_v_motionState = __pyx_t_4;
 
-    /* "bullet/bullet.pyx":985
+    /* "bullet/bullet.pyx":994
  *         cdef btMotionState *motionState
  * 
  *         if motion is not None:             # <<<<<<<<<<<<<<
@@ -13544,7 +13557,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
     goto __pyx_L3;
   }
 
-  /* "bullet/bullet.pyx":988
+  /* "bullet/bullet.pyx":997
  *             motionState = motion.thisptr
  *         else:
  *             motionState = <btMotionState*>0             # <<<<<<<<<<<<<<
@@ -13556,7 +13569,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
   }
   __pyx_L3:;
 
-  /* "bullet/bullet.pyx":990
+  /* "bullet/bullet.pyx":999
  *             motionState = <btMotionState*>0
  * 
  *         info = new btRigidBodyConstructionInfo(             # <<<<<<<<<<<<<<
@@ -13565,7 +13578,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info = new btRigidBody::btRigidBodyConstructionInfo(__pyx_v_mass, __pyx_v_motionState, __pyx_v_shape->thisptr, btVector3(__pyx_v_inertia->x, __pyx_v_inertia->y, __pyx_v_inertia->z));
 
-  /* "bullet/bullet.pyx":994
+  /* "bullet/bullet.pyx":1003
  *             btVector3(inertia.x, inertia.y, inertia.z))
  * 
  *         info.m_mass = mass             # <<<<<<<<<<<<<<
@@ -13574,7 +13587,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_mass = __pyx_v_mass;
 
-  /* "bullet/bullet.pyx":995
+  /* "bullet/bullet.pyx":1004
  * 
  *         info.m_mass = mass
  *         info.m_startWorldTransform = worldTransform.thisptr[0]             # <<<<<<<<<<<<<<
@@ -13583,7 +13596,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_startWorldTransform = (__pyx_v_worldTransform->thisptr[0]);
 
-  /* "bullet/bullet.pyx":996
+  /* "bullet/bullet.pyx":1005
  *         info.m_mass = mass
  *         info.m_startWorldTransform = worldTransform.thisptr[0]
  *         info.m_linearDamping = linearDamping             # <<<<<<<<<<<<<<
@@ -13592,7 +13605,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_linearDamping = __pyx_v_linearDamping;
 
-  /* "bullet/bullet.pyx":997
+  /* "bullet/bullet.pyx":1006
  *         info.m_startWorldTransform = worldTransform.thisptr[0]
  *         info.m_linearDamping = linearDamping
  *         info.m_angularDamping = angularDamping             # <<<<<<<<<<<<<<
@@ -13601,7 +13614,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_angularDamping = __pyx_v_angularDamping;
 
-  /* "bullet/bullet.pyx":998
+  /* "bullet/bullet.pyx":1007
  *         info.m_linearDamping = linearDamping
  *         info.m_angularDamping = angularDamping
  *         info.m_friction = friction             # <<<<<<<<<<<<<<
@@ -13610,7 +13623,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_friction = __pyx_v_friction;
 
-  /* "bullet/bullet.pyx":999
+  /* "bullet/bullet.pyx":1008
  *         info.m_angularDamping = angularDamping
  *         info.m_friction = friction
  *         info.m_restitution = restitution             # <<<<<<<<<<<<<<
@@ -13619,7 +13632,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_restitution = __pyx_v_restitution;
 
-  /* "bullet/bullet.pyx":1000
+  /* "bullet/bullet.pyx":1009
  *         info.m_friction = friction
  *         info.m_restitution = restitution
  *         info.m_linearSleepingThreshold = linearSleepingThreshold             # <<<<<<<<<<<<<<
@@ -13628,7 +13641,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_linearSleepingThreshold = __pyx_v_linearSleepingThreshold;
 
-  /* "bullet/bullet.pyx":1001
+  /* "bullet/bullet.pyx":1010
  *         info.m_restitution = restitution
  *         info.m_linearSleepingThreshold = linearSleepingThreshold
  *         info.m_angularSleepingThreshold = angularSleepingThreshold             # <<<<<<<<<<<<<<
@@ -13637,7 +13650,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_info->m_angularSleepingThreshold = __pyx_v_angularSleepingThreshold;
 
-  /* "bullet/bullet.pyx":1003
+  /* "bullet/bullet.pyx":1012
  *         info.m_angularSleepingThreshold = angularSleepingThreshold
  * 
  *         body.thisptr = new btRigidBody(info[0])             # <<<<<<<<<<<<<<
@@ -13646,7 +13659,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   __pyx_v_body->__pyx_base.thisptr = new btRigidBody((__pyx_v_info[0]));
 
-  /* "bullet/bullet.pyx":1004
+  /* "bullet/bullet.pyx":1013
  * 
  *         body.thisptr = new btRigidBody(info[0])
  *         body.motion = motion             # <<<<<<<<<<<<<<
@@ -13659,7 +13672,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
   __Pyx_DECREF(((PyObject *)__pyx_v_body->motion));
   __pyx_v_body->motion = __pyx_v_motion;
 
-  /* "bullet/bullet.pyx":1005
+  /* "bullet/bullet.pyx":1014
  *         body.thisptr = new btRigidBody(info[0])
  *         body.motion = motion
  *         body._shape = shape             # <<<<<<<<<<<<<<
@@ -13672,7 +13685,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
   __Pyx_DECREF(((PyObject *)__pyx_v_body->__pyx_base._shape));
   __pyx_v_body->__pyx_base._shape = __pyx_v_shape;
 
-  /* "bullet/bullet.pyx":1006
+  /* "bullet/bullet.pyx":1015
  *         body.motion = motion
  *         body._shape = shape
  *         del info             # <<<<<<<<<<<<<<
@@ -13681,7 +13694,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
  */
   delete __pyx_v_info;
 
-  /* "bullet/bullet.pyx":1007
+  /* "bullet/bullet.pyx":1016
  *         body._shape = shape
  *         del info
  *         return body             # <<<<<<<<<<<<<<
@@ -13693,7 +13706,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
   __pyx_r = ((PyObject *)__pyx_v_body);
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":941
+  /* "bullet/bullet.pyx":950
  * 
  *     @classmethod
  *     def fromConstructionInfo(cls, MotionState motion,             # <<<<<<<<<<<<<<
@@ -13713,7 +13726,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_2fromConstructionInfo(PyTyp
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1010
+/* "bullet/bullet.pyx":1019
  * 
  * 
  *     def isInWorld(self):             # <<<<<<<<<<<<<<
@@ -13742,7 +13755,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_4isInWorld(struct __pyx_obj
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("isInWorld", 0);
 
-  /* "bullet/bullet.pyx":1016
+  /* "bullet/bullet.pyx":1025
  *         """
  *         cdef btRigidBody *body
  *         body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -13751,7 +13764,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_4isInWorld(struct __pyx_obj
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1017
+  /* "bullet/bullet.pyx":1026
  *         cdef btRigidBody *body
  *         body = <btRigidBody*>self.thisptr
  *         return body.isInWorld()             # <<<<<<<<<<<<<<
@@ -13759,13 +13772,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_4isInWorld(struct __pyx_obj
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_bool(__pyx_v_body->isInWorld()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1017, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_bool(__pyx_v_body->isInWorld()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1026, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1010
+  /* "bullet/bullet.pyx":1019
  * 
  * 
  *     def isInWorld(self):             # <<<<<<<<<<<<<<
@@ -13784,7 +13797,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_4isInWorld(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1020
+/* "bullet/bullet.pyx":1029
  * 
  * 
  *     def getInvMass(self):             # <<<<<<<<<<<<<<
@@ -13813,7 +13826,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_6getInvMass(struct __pyx_ob
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getInvMass", 0);
 
-  /* "bullet/bullet.pyx":1025
+  /* "bullet/bullet.pyx":1034
  *         """
  *         cdef btRigidBody *body
  *         body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -13822,7 +13835,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_6getInvMass(struct __pyx_ob
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1026
+  /* "bullet/bullet.pyx":1035
  *         cdef btRigidBody *body
  *         body = <btRigidBody*>self.thisptr
  *         return body.getInvMass()             # <<<<<<<<<<<<<<
@@ -13830,13 +13843,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_6getInvMass(struct __pyx_ob
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getInvMass()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1026, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getInvMass()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1035, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1020
+  /* "bullet/bullet.pyx":1029
  * 
  * 
  *     def getInvMass(self):             # <<<<<<<<<<<<<<
@@ -13855,7 +13868,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_6getInvMass(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1029
+/* "bullet/bullet.pyx":1038
  * 
  * 
  *     def getInvInertiaDiagLocal(self):             # <<<<<<<<<<<<<<
@@ -13888,7 +13901,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_8getInvInertiaDiagLocal(str
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("getInvInertiaDiagLocal", 0);
 
-  /* "bullet/bullet.pyx":1034
+  /* "bullet/bullet.pyx":1043
  *         """
  *         cdef btRigidBody *body
  *         body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -13897,7 +13910,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_8getInvInertiaDiagLocal(str
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1035
+  /* "bullet/bullet.pyx":1044
  *         cdef btRigidBody *body
  *         body = <btRigidBody*>self.thisptr
  *         cdef btVector3 inertia = body.getInvInertiaDiagLocal()             # <<<<<<<<<<<<<<
@@ -13906,7 +13919,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_8getInvInertiaDiagLocal(str
  */
   __pyx_v_inertia = __pyx_v_body->getInvInertiaDiagLocal();
 
-  /* "bullet/bullet.pyx":1036
+  /* "bullet/bullet.pyx":1045
  *         body = <btRigidBody*>self.thisptr
  *         cdef btVector3 inertia = body.getInvInertiaDiagLocal()
  *         return Vector3(inertia.getX(), inertia.getY(), inertia.getZ())             # <<<<<<<<<<<<<<
@@ -13914,13 +13927,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_8getInvInertiaDiagLocal(str
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_inertia.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1036, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_inertia.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1045, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_inertia.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1036, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_inertia.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1045, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_inertia.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1036, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_inertia.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1045, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1036, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1045, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -13931,14 +13944,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_8getInvInertiaDiagLocal(str
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1036, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1045, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1029
+  /* "bullet/bullet.pyx":1038
  * 
  * 
  *     def getInvInertiaDiagLocal(self):             # <<<<<<<<<<<<<<
@@ -13960,7 +13973,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_8getInvInertiaDiagLocal(str
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1039
+/* "bullet/bullet.pyx":1048
  * 
  * 
  *     def getMotionState(self):             # <<<<<<<<<<<<<<
@@ -13987,7 +14000,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_10getMotionState(struct __p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getMotionState", 0);
 
-  /* "bullet/bullet.pyx":1043
+  /* "bullet/bullet.pyx":1052
  *         Return the MotionState associated with this RigidBody.
  *         """
  *         return self.motion             # <<<<<<<<<<<<<<
@@ -13999,7 +14012,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_10getMotionState(struct __p
   __pyx_r = ((PyObject *)__pyx_v_self->motion);
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1039
+  /* "bullet/bullet.pyx":1048
  * 
  * 
  *     def getMotionState(self):             # <<<<<<<<<<<<<<
@@ -14014,7 +14027,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_10getMotionState(struct __p
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1046
+/* "bullet/bullet.pyx":1055
  * 
  * 
  *     def setAngularFactor(self, btScalar angularFactor):             # <<<<<<<<<<<<<<
@@ -14031,7 +14044,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_13setAngularFactor(PyObject
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setAngularFactor (wrapper)", 0);
   assert(__pyx_arg_angularFactor); {
-    __pyx_v_angularFactor = __pyx_PyFloat_AsFloat(__pyx_arg_angularFactor); if (unlikely((__pyx_v_angularFactor == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1046, __pyx_L3_error)
+    __pyx_v_angularFactor = __pyx_PyFloat_AsFloat(__pyx_arg_angularFactor); if (unlikely((__pyx_v_angularFactor == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1055, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -14052,7 +14065,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_12setAngularFactor(struct _
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setAngularFactor", 0);
 
-  /* "bullet/bullet.pyx":1052
+  /* "bullet/bullet.pyx":1061
  *         is 1, rotation will be allowed.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14061,7 +14074,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_12setAngularFactor(struct _
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1053
+  /* "bullet/bullet.pyx":1062
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         body.setAngularFactor(angularFactor)             # <<<<<<<<<<<<<<
@@ -14070,7 +14083,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_12setAngularFactor(struct _
  */
   __pyx_v_body->setAngularFactor(__pyx_v_angularFactor);
 
-  /* "bullet/bullet.pyx":1046
+  /* "bullet/bullet.pyx":1055
  * 
  * 
  *     def setAngularFactor(self, btScalar angularFactor):             # <<<<<<<<<<<<<<
@@ -14085,7 +14098,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_12setAngularFactor(struct _
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1056
+/* "bullet/bullet.pyx":1065
  * 
  * 
  *     def setLinearVelocity(self, Vector3 v not None):             # <<<<<<<<<<<<<<
@@ -14100,7 +14113,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_15setLinearVelocity(PyObjec
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setLinearVelocity (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_v), __pyx_ptype_6bullet_6bullet_Vector3, 0, "v", 0))) __PYX_ERR(1, 1056, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_v), __pyx_ptype_6bullet_6bullet_Vector3, 0, "v", 0))) __PYX_ERR(1, 1065, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_14setLinearVelocity(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_v));
 
   /* function exit code */
@@ -14119,7 +14132,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_14setLinearVelocity(struct 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setLinearVelocity", 0);
 
-  /* "bullet/bullet.pyx":1066
+  /* "bullet/bullet.pyx":1075
  *         XXX The physics tick callback is presently unexposed.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14128,7 +14141,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_14setLinearVelocity(struct 
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1067
+  /* "bullet/bullet.pyx":1076
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 vel = btVector3(v.x, v.y, v.z)             # <<<<<<<<<<<<<<
@@ -14137,7 +14150,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_14setLinearVelocity(struct 
  */
   __pyx_v_vel = btVector3(__pyx_v_v->x, __pyx_v_v->y, __pyx_v_v->z);
 
-  /* "bullet/bullet.pyx":1068
+  /* "bullet/bullet.pyx":1077
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 vel = btVector3(v.x, v.y, v.z)
  *         body.setLinearVelocity(vel)             # <<<<<<<<<<<<<<
@@ -14146,7 +14159,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_14setLinearVelocity(struct 
  */
   __pyx_v_body->setLinearVelocity(__pyx_v_vel);
 
-  /* "bullet/bullet.pyx":1056
+  /* "bullet/bullet.pyx":1065
  * 
  * 
  *     def setLinearVelocity(self, Vector3 v not None):             # <<<<<<<<<<<<<<
@@ -14161,7 +14174,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_14setLinearVelocity(struct 
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1071
+/* "bullet/bullet.pyx":1080
  * 
  * 
  *     def getLinearVelocity(self):             # <<<<<<<<<<<<<<
@@ -14194,7 +14207,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_16getLinearVelocity(struct 
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("getLinearVelocity", 0);
 
-  /* "bullet/bullet.pyx":1075
+  /* "bullet/bullet.pyx":1084
  *         Retrieve the current linear velocity of this RigidBody as a Vector3.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14203,7 +14216,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_16getLinearVelocity(struct 
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1076
+  /* "bullet/bullet.pyx":1085
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 vel = body.getLinearVelocity()             # <<<<<<<<<<<<<<
@@ -14212,7 +14225,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_16getLinearVelocity(struct 
  */
   __pyx_v_vel = __pyx_v_body->getLinearVelocity();
 
-  /* "bullet/bullet.pyx":1077
+  /* "bullet/bullet.pyx":1086
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 vel = body.getLinearVelocity()
  *         return Vector3(vel.getX(), vel.getY(), vel.getZ())             # <<<<<<<<<<<<<<
@@ -14220,13 +14233,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_16getLinearVelocity(struct 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_vel.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1077, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_vel.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1086, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_vel.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1077, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_vel.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1086, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_vel.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1077, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_vel.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1086, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1077, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1086, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -14237,14 +14250,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_16getLinearVelocity(struct 
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1077, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1086, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1071
+  /* "bullet/bullet.pyx":1080
  * 
  * 
  *     def getLinearVelocity(self):             # <<<<<<<<<<<<<<
@@ -14266,7 +14279,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_16getLinearVelocity(struct 
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1080
+/* "bullet/bullet.pyx":1089
  * 
  * 
  *     def getLinearDamping(self):             # <<<<<<<<<<<<<<
@@ -14295,7 +14308,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_18getLinearDamping(struct _
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getLinearDamping", 0);
 
-  /* "bullet/bullet.pyx":1084
+  /* "bullet/bullet.pyx":1093
  *         Return the linear velocity damping value for this RigidBody.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14304,7 +14317,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_18getLinearDamping(struct _
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1085
+  /* "bullet/bullet.pyx":1094
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         return body.getLinearDamping()             # <<<<<<<<<<<<<<
@@ -14312,13 +14325,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_18getLinearDamping(struct _
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getLinearDamping()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1085, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getLinearDamping()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1094, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1080
+  /* "bullet/bullet.pyx":1089
  * 
  * 
  *     def getLinearDamping(self):             # <<<<<<<<<<<<<<
@@ -14337,7 +14350,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_18getLinearDamping(struct _
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1088
+/* "bullet/bullet.pyx":1097
  * 
  * 
  *     def getLinearSleepingThreshold(self):             # <<<<<<<<<<<<<<
@@ -14366,7 +14379,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_20getLinearSleepingThreshol
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getLinearSleepingThreshold", 0);
 
-  /* "bullet/bullet.pyx":1093
+  /* "bullet/bullet.pyx":1102
  *         deactivated.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14375,7 +14388,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_20getLinearSleepingThreshol
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1094
+  /* "bullet/bullet.pyx":1103
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         return body.getLinearSleepingThreshold()             # <<<<<<<<<<<<<<
@@ -14383,13 +14396,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_20getLinearSleepingThreshol
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getLinearSleepingThreshold()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1094, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getLinearSleepingThreshold()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1088
+  /* "bullet/bullet.pyx":1097
  * 
  * 
  *     def getLinearSleepingThreshold(self):             # <<<<<<<<<<<<<<
@@ -14408,7 +14421,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_20getLinearSleepingThreshol
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1097
+/* "bullet/bullet.pyx":1106
  * 
  * 
  *     def getAngularSleepingThreshold(self):             # <<<<<<<<<<<<<<
@@ -14437,7 +14450,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_22getAngularSleepingThresho
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getAngularSleepingThreshold", 0);
 
-  /* "bullet/bullet.pyx":1102
+  /* "bullet/bullet.pyx":1111
  *         deactivated.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14446,7 +14459,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_22getAngularSleepingThresho
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1103
+  /* "bullet/bullet.pyx":1112
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         return body.getAngularSleepingThreshold()             # <<<<<<<<<<<<<<
@@ -14454,13 +14467,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_22getAngularSleepingThresho
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getAngularSleepingThreshold()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1103, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getAngularSleepingThreshold()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1097
+  /* "bullet/bullet.pyx":1106
  * 
  * 
  *     def getAngularSleepingThreshold(self):             # <<<<<<<<<<<<<<
@@ -14479,7 +14492,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_22getAngularSleepingThresho
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1106
+/* "bullet/bullet.pyx":1115
  * 
  * 
  *     def getAngularDamping(self):             # <<<<<<<<<<<<<<
@@ -14508,7 +14521,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24getAngularDamping(struct 
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getAngularDamping", 0);
 
-  /* "bullet/bullet.pyx":1110
+  /* "bullet/bullet.pyx":1119
  *         Return the angular velocity damping value for this RigidBody.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14517,7 +14530,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24getAngularDamping(struct 
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1111
+  /* "bullet/bullet.pyx":1120
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         return body.getAngularDamping()             # <<<<<<<<<<<<<<
@@ -14525,13 +14538,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24getAngularDamping(struct 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getAngularDamping()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1111, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_body->getAngularDamping()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1106
+  /* "bullet/bullet.pyx":1115
  * 
  * 
  *     def getAngularDamping(self):             # <<<<<<<<<<<<<<
@@ -14550,7 +14563,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24getAngularDamping(struct 
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1114
+/* "bullet/bullet.pyx":1123
  * 
  * 
  *     def applyCentralForce(self, Vector3 f not None):             # <<<<<<<<<<<<<<
@@ -14565,7 +14578,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_27applyCentralForce(PyObjec
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("applyCentralForce (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_f), __pyx_ptype_6bullet_6bullet_Vector3, 0, "f", 0))) __PYX_ERR(1, 1114, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_f), __pyx_ptype_6bullet_6bullet_Vector3, 0, "f", 0))) __PYX_ERR(1, 1123, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_26applyCentralForce(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_f));
 
   /* function exit code */
@@ -14584,7 +14597,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_26applyCentralForce(struct 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("applyCentralForce", 0);
 
-  /* "bullet/bullet.pyx":1120
+  /* "bullet/bullet.pyx":1129
  *         mass of the RigidBody.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14593,7 +14606,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_26applyCentralForce(struct 
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1121
+  /* "bullet/bullet.pyx":1130
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 force = btVector3(f.x, f.y, f.z)             # <<<<<<<<<<<<<<
@@ -14602,7 +14615,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_26applyCentralForce(struct 
  */
   __pyx_v_force = btVector3(__pyx_v_f->x, __pyx_v_f->y, __pyx_v_f->z);
 
-  /* "bullet/bullet.pyx":1122
+  /* "bullet/bullet.pyx":1131
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 force = btVector3(f.x, f.y, f.z)
  *         body.applyCentralForce(force)             # <<<<<<<<<<<<<<
@@ -14611,7 +14624,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_26applyCentralForce(struct 
  */
   __pyx_v_body->applyCentralForce(__pyx_v_force);
 
-  /* "bullet/bullet.pyx":1114
+  /* "bullet/bullet.pyx":1123
  * 
  * 
  *     def applyCentralForce(self, Vector3 f not None):             # <<<<<<<<<<<<<<
@@ -14626,7 +14639,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_26applyCentralForce(struct 
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1125
+/* "bullet/bullet.pyx":1134
  * 
  * 
  *     def applyForce(self, Vector3 f not None, Vector3 relativePosition not None):             # <<<<<<<<<<<<<<
@@ -14666,11 +14679,11 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_29applyForce(PyObject *__py
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_relativePosition)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("applyForce", 1, 2, 2, 1); __PYX_ERR(1, 1125, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("applyForce", 1, 2, 2, 1); __PYX_ERR(1, 1134, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "applyForce") < 0)) __PYX_ERR(1, 1125, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "applyForce") < 0)) __PYX_ERR(1, 1134, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -14683,14 +14696,14 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_29applyForce(PyObject *__py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("applyForce", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1125, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("applyForce", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1134, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.RigidBody.applyForce", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_f), __pyx_ptype_6bullet_6bullet_Vector3, 0, "f", 0))) __PYX_ERR(1, 1125, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_relativePosition), __pyx_ptype_6bullet_6bullet_Vector3, 0, "relativePosition", 0))) __PYX_ERR(1, 1125, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_f), __pyx_ptype_6bullet_6bullet_Vector3, 0, "f", 0))) __PYX_ERR(1, 1134, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_relativePosition), __pyx_ptype_6bullet_6bullet_Vector3, 0, "relativePosition", 0))) __PYX_ERR(1, 1134, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_28applyForce(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), __pyx_v_f, __pyx_v_relativePosition);
 
   /* function exit code */
@@ -14710,7 +14723,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_28applyForce(struct __pyx_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("applyForce", 0);
 
-  /* "bullet/bullet.pyx":1132
+  /* "bullet/bullet.pyx":1141
  *         also result in rotation.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14719,7 +14732,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_28applyForce(struct __pyx_o
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1133
+  /* "bullet/bullet.pyx":1142
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 force = btVector3(f.x, f.y, f.z)             # <<<<<<<<<<<<<<
@@ -14728,7 +14741,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_28applyForce(struct __pyx_o
  */
   __pyx_v_force = btVector3(__pyx_v_f->x, __pyx_v_f->y, __pyx_v_f->z);
 
-  /* "bullet/bullet.pyx":1134
+  /* "bullet/bullet.pyx":1143
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 force = btVector3(f.x, f.y, f.z)
  *         cdef btVector3 pos = btVector3(             # <<<<<<<<<<<<<<
@@ -14737,7 +14750,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_28applyForce(struct __pyx_o
  */
   __pyx_v_pos = btVector3(__pyx_v_relativePosition->x, __pyx_v_relativePosition->y, __pyx_v_relativePosition->z);
 
-  /* "bullet/bullet.pyx":1136
+  /* "bullet/bullet.pyx":1145
  *         cdef btVector3 pos = btVector3(
  *             relativePosition.x, relativePosition.y, relativePosition.z)
  *         body.applyForce(force, pos)             # <<<<<<<<<<<<<<
@@ -14746,7 +14759,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_28applyForce(struct __pyx_o
  */
   __pyx_v_body->applyForce(__pyx_v_force, __pyx_v_pos);
 
-  /* "bullet/bullet.pyx":1125
+  /* "bullet/bullet.pyx":1134
  * 
  * 
  *     def applyForce(self, Vector3 f not None, Vector3 relativePosition not None):             # <<<<<<<<<<<<<<
@@ -14761,7 +14774,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_28applyForce(struct __pyx_o
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1139
+/* "bullet/bullet.pyx":1148
  * 
  * 
  *     def applyCentralImpulse(self, Vector3 i not None):             # <<<<<<<<<<<<<<
@@ -14776,7 +14789,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_31applyCentralImpulse(PyObj
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("applyCentralImpulse (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_i), __pyx_ptype_6bullet_6bullet_Vector3, 0, "i", 0))) __PYX_ERR(1, 1139, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_i), __pyx_ptype_6bullet_6bullet_Vector3, 0, "i", 0))) __PYX_ERR(1, 1148, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_30applyCentralImpulse(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_i));
 
   /* function exit code */
@@ -14795,7 +14808,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_30applyCentralImpulse(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("applyCentralImpulse", 0);
 
-  /* "bullet/bullet.pyx":1144
+  /* "bullet/bullet.pyx":1153
  *         equal to the impulse.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14804,7 +14817,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_30applyCentralImpulse(struc
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1145
+  /* "bullet/bullet.pyx":1154
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 impulse = btVector3(i.x, i.y, i.z)             # <<<<<<<<<<<<<<
@@ -14813,7 +14826,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_30applyCentralImpulse(struc
  */
   __pyx_v_impulse = btVector3(__pyx_v_i->x, __pyx_v_i->y, __pyx_v_i->z);
 
-  /* "bullet/bullet.pyx":1146
+  /* "bullet/bullet.pyx":1155
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
  *         body.applyCentralImpulse(impulse)             # <<<<<<<<<<<<<<
@@ -14822,7 +14835,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_30applyCentralImpulse(struc
  */
   __pyx_v_body->applyCentralImpulse(__pyx_v_impulse);
 
-  /* "bullet/bullet.pyx":1139
+  /* "bullet/bullet.pyx":1148
  * 
  * 
  *     def applyCentralImpulse(self, Vector3 i not None):             # <<<<<<<<<<<<<<
@@ -14837,7 +14850,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_30applyCentralImpulse(struc
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1149
+/* "bullet/bullet.pyx":1158
  * 
  * 
  *     def applyImpulse(self, Vector3 i not None, Vector3 relativePosition not None):             # <<<<<<<<<<<<<<
@@ -14877,11 +14890,11 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_33applyImpulse(PyObject *__
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_relativePosition)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("applyImpulse", 1, 2, 2, 1); __PYX_ERR(1, 1149, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("applyImpulse", 1, 2, 2, 1); __PYX_ERR(1, 1158, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "applyImpulse") < 0)) __PYX_ERR(1, 1149, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "applyImpulse") < 0)) __PYX_ERR(1, 1158, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -14894,14 +14907,14 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_33applyImpulse(PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("applyImpulse", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1149, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("applyImpulse", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1158, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.RigidBody.applyImpulse", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_i), __pyx_ptype_6bullet_6bullet_Vector3, 0, "i", 0))) __PYX_ERR(1, 1149, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_relativePosition), __pyx_ptype_6bullet_6bullet_Vector3, 0, "relativePosition", 0))) __PYX_ERR(1, 1149, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_i), __pyx_ptype_6bullet_6bullet_Vector3, 0, "i", 0))) __PYX_ERR(1, 1158, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_relativePosition), __pyx_ptype_6bullet_6bullet_Vector3, 0, "relativePosition", 0))) __PYX_ERR(1, 1158, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_32applyImpulse(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), __pyx_v_i, __pyx_v_relativePosition);
 
   /* function exit code */
@@ -14921,7 +14934,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_32applyImpulse(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("applyImpulse", 0);
 
-  /* "bullet/bullet.pyx":1155
+  /* "bullet/bullet.pyx":1164
  *         impulse applied off-center may also result in rotation.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -14930,7 +14943,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_32applyImpulse(struct __pyx
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1156
+  /* "bullet/bullet.pyx":1165
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 impulse = btVector3(i.x, i.y, i.z)             # <<<<<<<<<<<<<<
@@ -14939,7 +14952,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_32applyImpulse(struct __pyx
  */
   __pyx_v_impulse = btVector3(__pyx_v_i->x, __pyx_v_i->y, __pyx_v_i->z);
 
-  /* "bullet/bullet.pyx":1157
+  /* "bullet/bullet.pyx":1166
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 impulse = btVector3(i.x, i.y, i.z)
  *         cdef btVector3 pos = btVector3(             # <<<<<<<<<<<<<<
@@ -14948,7 +14961,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_32applyImpulse(struct __pyx
  */
   __pyx_v_pos = btVector3(__pyx_v_relativePosition->x, __pyx_v_relativePosition->y, __pyx_v_relativePosition->z);
 
-  /* "bullet/bullet.pyx":1159
+  /* "bullet/bullet.pyx":1168
  *         cdef btVector3 pos = btVector3(
  *             relativePosition.x, relativePosition.y, relativePosition.z)
  *         body.applyImpulse(impulse, pos)             # <<<<<<<<<<<<<<
@@ -14957,7 +14970,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_32applyImpulse(struct __pyx
  */
   __pyx_v_body->applyImpulse(__pyx_v_impulse, __pyx_v_pos);
 
-  /* "bullet/bullet.pyx":1149
+  /* "bullet/bullet.pyx":1158
  * 
  * 
  *     def applyImpulse(self, Vector3 i not None, Vector3 relativePosition not None):             # <<<<<<<<<<<<<<
@@ -14972,7 +14985,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_32applyImpulse(struct __pyx
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1161
+/* "bullet/bullet.pyx":1170
  *         body.applyImpulse(impulse, pos)
  * 
  *     def setGravity(self, Vector3 acceleration):             # <<<<<<<<<<<<<<
@@ -14986,7 +14999,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_35setGravity(PyObject *__py
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setGravity (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_acceleration), __pyx_ptype_6bullet_6bullet_Vector3, 1, "acceleration", 0))) __PYX_ERR(1, 1161, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_acceleration), __pyx_ptype_6bullet_6bullet_Vector3, 1, "acceleration", 0))) __PYX_ERR(1, 1170, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_34setGravity(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_acceleration));
 
   /* function exit code */
@@ -15004,7 +15017,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_34setGravity(struct __pyx_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setGravity", 0);
 
-  /* "bullet/bullet.pyx":1162
+  /* "bullet/bullet.pyx":1171
  * 
  *     def setGravity(self, Vector3 acceleration):
  *         cdef btVector3 nvec = btVector3(acceleration.x, acceleration.y, acceleration.z)             # <<<<<<<<<<<<<<
@@ -15013,7 +15026,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_34setGravity(struct __pyx_o
  */
   __pyx_v_nvec = btVector3(__pyx_v_acceleration->x, __pyx_v_acceleration->y, __pyx_v_acceleration->z);
 
-  /* "bullet/bullet.pyx":1163
+  /* "bullet/bullet.pyx":1172
  *     def setGravity(self, Vector3 acceleration):
  *         cdef btVector3 nvec = btVector3(acceleration.x, acceleration.y, acceleration.z)
  *         (<btRigidBody*>self.thisptr).setGravity(nvec)             # <<<<<<<<<<<<<<
@@ -15022,7 +15035,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_34setGravity(struct __pyx_o
  */
   ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr)->setGravity(__pyx_v_nvec);
 
-  /* "bullet/bullet.pyx":1161
+  /* "bullet/bullet.pyx":1170
  *         body.applyImpulse(impulse, pos)
  * 
  *     def setGravity(self, Vector3 acceleration):             # <<<<<<<<<<<<<<
@@ -15037,7 +15050,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_34setGravity(struct __pyx_o
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1165
+/* "bullet/bullet.pyx":1174
  *         (<btRigidBody*>self.thisptr).setGravity(nvec)
  * 
  *     def setMassProps(self, float mass, Vector3 inertia):             # <<<<<<<<<<<<<<
@@ -15076,11 +15089,11 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_37setMassProps(PyObject *__
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_inertia)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("setMassProps", 1, 2, 2, 1); __PYX_ERR(1, 1165, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("setMassProps", 1, 2, 2, 1); __PYX_ERR(1, 1174, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setMassProps") < 0)) __PYX_ERR(1, 1165, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setMassProps") < 0)) __PYX_ERR(1, 1174, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -15088,18 +15101,18 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_37setMassProps(PyObject *__
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_mass = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_mass == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1165, __pyx_L3_error)
+    __pyx_v_mass = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_mass == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1174, __pyx_L3_error)
     __pyx_v_inertia = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setMassProps", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1165, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setMassProps", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1174, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.RigidBody.setMassProps", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_inertia), __pyx_ptype_6bullet_6bullet_Vector3, 1, "inertia", 0))) __PYX_ERR(1, 1165, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_inertia), __pyx_ptype_6bullet_6bullet_Vector3, 1, "inertia", 0))) __PYX_ERR(1, 1174, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_36setMassProps(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), __pyx_v_mass, __pyx_v_inertia);
 
   /* function exit code */
@@ -15117,7 +15130,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_36setMassProps(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setMassProps", 0);
 
-  /* "bullet/bullet.pyx":1166
+  /* "bullet/bullet.pyx":1175
  * 
  *     def setMassProps(self, float mass, Vector3 inertia):
  *         cdef btVector3 nvec = btVector3(inertia.x, inertia.y, inertia.z)             # <<<<<<<<<<<<<<
@@ -15126,7 +15139,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_36setMassProps(struct __pyx
  */
   __pyx_v_nvec = btVector3(__pyx_v_inertia->x, __pyx_v_inertia->y, __pyx_v_inertia->z);
 
-  /* "bullet/bullet.pyx":1167
+  /* "bullet/bullet.pyx":1176
  *     def setMassProps(self, float mass, Vector3 inertia):
  *         cdef btVector3 nvec = btVector3(inertia.x, inertia.y, inertia.z)
  *         (<btRigidBody*>self.thisptr).setMassProps(mass, nvec)             # <<<<<<<<<<<<<<
@@ -15135,7 +15148,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_36setMassProps(struct __pyx
  */
   ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr)->setMassProps(__pyx_v_mass, __pyx_v_nvec);
 
-  /* "bullet/bullet.pyx":1165
+  /* "bullet/bullet.pyx":1174
  *         (<btRigidBody*>self.thisptr).setGravity(nvec)
  * 
  *     def setMassProps(self, float mass, Vector3 inertia):             # <<<<<<<<<<<<<<
@@ -15150,7 +15163,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_36setMassProps(struct __pyx
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1169
+/* "bullet/bullet.pyx":1178
  *         (<btRigidBody*>self.thisptr).setMassProps(mass, nvec)
  * 
  *     def updateInertiaTensor(self):             # <<<<<<<<<<<<<<
@@ -15176,7 +15189,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_38updateInertiaTensor(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("updateInertiaTensor", 0);
 
-  /* "bullet/bullet.pyx":1170
+  /* "bullet/bullet.pyx":1179
  * 
  *     def updateInertiaTensor(self):
  *         (<btRigidBody*>self.thisptr).updateInertiaTensor()             # <<<<<<<<<<<<<<
@@ -15185,7 +15198,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_38updateInertiaTensor(struc
  */
   ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr)->updateInertiaTensor();
 
-  /* "bullet/bullet.pyx":1169
+  /* "bullet/bullet.pyx":1178
  *         (<btRigidBody*>self.thisptr).setMassProps(mass, nvec)
  * 
  *     def updateInertiaTensor(self):             # <<<<<<<<<<<<<<
@@ -15200,7 +15213,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_38updateInertiaTensor(struc
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1184
+/* "bullet/bullet.pyx":1193
  *     #     pass
  *     #
  *     def getAngularVelocity (self):             # <<<<<<<<<<<<<<
@@ -15233,7 +15246,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_40getAngularVelocity(struct
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("getAngularVelocity", 0);
 
-  /* "bullet/bullet.pyx":1188
+  /* "bullet/bullet.pyx":1197
  *         Retrieve the current angular velocity of this RigidBody as a Vector3.
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr             # <<<<<<<<<<<<<<
@@ -15242,7 +15255,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_40getAngularVelocity(struct
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1189
+  /* "bullet/bullet.pyx":1198
  *         """
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 vel = body.getAngularVelocity()             # <<<<<<<<<<<<<<
@@ -15251,7 +15264,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_40getAngularVelocity(struct
  */
   __pyx_v_vel = __pyx_v_body->getAngularVelocity();
 
-  /* "bullet/bullet.pyx":1190
+  /* "bullet/bullet.pyx":1199
  *         cdef btRigidBody* body = <btRigidBody*>self.thisptr
  *         cdef btVector3 vel = body.getAngularVelocity()
  *         return Vector3(vel.getX(), vel.getY(), vel.getZ())             # <<<<<<<<<<<<<<
@@ -15259,13 +15272,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_40getAngularVelocity(struct
  *     def setAngularVelocity (self, Vector3 ang_vel):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_vel.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1190, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_vel.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_vel.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1190, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_vel.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_vel.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1190, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_vel.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1190, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -15276,14 +15289,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_40getAngularVelocity(struct
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1190, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1184
+  /* "bullet/bullet.pyx":1193
  *     #     pass
  *     #
  *     def getAngularVelocity (self):             # <<<<<<<<<<<<<<
@@ -15305,7 +15318,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_40getAngularVelocity(struct
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1192
+/* "bullet/bullet.pyx":1201
  *         return Vector3(vel.getX(), vel.getY(), vel.getZ())
  * 
  *     def setAngularVelocity (self, Vector3 ang_vel):             # <<<<<<<<<<<<<<
@@ -15319,7 +15332,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_43setAngularVelocity(PyObje
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setAngularVelocity (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ang_vel), __pyx_ptype_6bullet_6bullet_Vector3, 1, "ang_vel", 0))) __PYX_ERR(1, 1192, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ang_vel), __pyx_ptype_6bullet_6bullet_Vector3, 1, "ang_vel", 0))) __PYX_ERR(1, 1201, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_9RigidBody_42setAngularVelocity(((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_ang_vel));
 
   /* function exit code */
@@ -15337,7 +15350,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_42setAngularVelocity(struct
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setAngularVelocity", 0);
 
-  /* "bullet/bullet.pyx":1193
+  /* "bullet/bullet.pyx":1202
  * 
  *     def setAngularVelocity (self, Vector3 ang_vel):
  *         cdef btVector3 btang_vel = btVector3(ang_vel.x, ang_vel.y, ang_vel.z)             # <<<<<<<<<<<<<<
@@ -15346,7 +15359,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_42setAngularVelocity(struct
  */
   __pyx_v_btang_vel = btVector3(__pyx_v_ang_vel->x, __pyx_v_ang_vel->y, __pyx_v_ang_vel->z);
 
-  /* "bullet/bullet.pyx":1194
+  /* "bullet/bullet.pyx":1203
  *     def setAngularVelocity (self, Vector3 ang_vel):
  *         cdef btVector3 btang_vel = btVector3(ang_vel.x, ang_vel.y, ang_vel.z)
  *         (<btRigidBody*>self.thisptr).setAngularVelocity(btang_vel)             # <<<<<<<<<<<<<<
@@ -15355,7 +15368,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_42setAngularVelocity(struct
  */
   ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr)->setAngularVelocity(__pyx_v_btang_vel);
 
-  /* "bullet/bullet.pyx":1192
+  /* "bullet/bullet.pyx":1201
  *         return Vector3(vel.getX(), vel.getY(), vel.getZ())
  * 
  *     def setAngularVelocity (self, Vector3 ang_vel):             # <<<<<<<<<<<<<<
@@ -15370,7 +15383,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_42setAngularVelocity(struct
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1196
+/* "bullet/bullet.pyx":1205
  *         (<btRigidBody*>self.thisptr).setAngularVelocity(btang_vel)
  * 
  *     def setSleepingThresholds(self, float linear, float angular):             # <<<<<<<<<<<<<<
@@ -15410,11 +15423,11 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_45setSleepingThresholds(PyO
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_angular)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("setSleepingThresholds", 1, 2, 2, 1); __PYX_ERR(1, 1196, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("setSleepingThresholds", 1, 2, 2, 1); __PYX_ERR(1, 1205, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setSleepingThresholds") < 0)) __PYX_ERR(1, 1196, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setSleepingThresholds") < 0)) __PYX_ERR(1, 1205, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -15422,12 +15435,12 @@ static PyObject *__pyx_pw_6bullet_6bullet_9RigidBody_45setSleepingThresholds(PyO
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_linear = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_linear == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1196, __pyx_L3_error)
-    __pyx_v_angular = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_angular == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1196, __pyx_L3_error)
+    __pyx_v_linear = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_linear == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1205, __pyx_L3_error)
+    __pyx_v_angular = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_angular == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1205, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setSleepingThresholds", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1196, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setSleepingThresholds", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1205, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.RigidBody.setSleepingThresholds", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -15446,7 +15459,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_44setSleepingThresholds(str
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setSleepingThresholds", 0);
 
-  /* "bullet/bullet.pyx":1200
+  /* "bullet/bullet.pyx":1209
  *         Set the linear and angular velocity thresholds.
  *         """
  *         cdef btRigidBody * body = <btRigidBody *> self.thisptr             # <<<<<<<<<<<<<<
@@ -15455,7 +15468,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_44setSleepingThresholds(str
  */
   __pyx_v_body = ((btRigidBody *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1201
+  /* "bullet/bullet.pyx":1210
  *         """
  *         cdef btRigidBody * body = <btRigidBody *> self.thisptr
  *         body.setSleepingThresholds(linear, angular)             # <<<<<<<<<<<<<<
@@ -15464,7 +15477,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_44setSleepingThresholds(str
  */
   __pyx_v_body->setSleepingThresholds(__pyx_v_linear, __pyx_v_angular);
 
-  /* "bullet/bullet.pyx":1196
+  /* "bullet/bullet.pyx":1205
  *         (<btRigidBody*>self.thisptr).setAngularVelocity(btang_vel)
  * 
  *     def setSleepingThresholds(self, float linear, float angular):             # <<<<<<<<<<<<<<
@@ -15479,7 +15492,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_44setSleepingThresholds(str
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1206
+/* "bullet/bullet.pyx":1215
  *         "Body's linearSleepingThreshold."
  * 
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15508,7 +15521,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold__
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "bullet/bullet.pyx":1207
+  /* "bullet/bullet.pyx":1216
  * 
  *         def __get__(self):
  *             return self.getLinearSleepingThreshold()             # <<<<<<<<<<<<<<
@@ -15516,7 +15529,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold__
  *         def __set__(self, float value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getLinearSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1207, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getLinearSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -15529,10 +15542,10 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold__
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1207, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1216, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1207, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1216, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -15540,7 +15553,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1206
+  /* "bullet/bullet.pyx":1215
  *         "Body's linearSleepingThreshold."
  * 
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15561,7 +15574,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold__
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1209
+/* "bullet/bullet.pyx":1218
  *             return self.getLinearSleepingThreshold()
  * 
  *         def __set__(self, float value):             # <<<<<<<<<<<<<<
@@ -15577,7 +15590,7 @@ static int __pyx_pw_6bullet_6bullet_9RigidBody_23linearSleepingThreshold_3__set_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1209, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1218, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -15604,14 +15617,14 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold_2__set_
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "bullet/bullet.pyx":1210
+  /* "bullet/bullet.pyx":1219
  * 
  *         def __set__(self, float value):
  *             angular = self.getLinearSleepingThreshold()             # <<<<<<<<<<<<<<
  *             self.setSleepingThresholds(value, angular)
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getLinearSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1210, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getLinearSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -15624,26 +15637,26 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold_2__set_
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1210, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1219, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1210, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1219, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_angular = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":1211
+  /* "bullet/bullet.pyx":1220
  *         def __set__(self, float value):
  *             angular = self.getLinearSleepingThreshold()
  *             self.setSleepingThresholds(value, angular)             # <<<<<<<<<<<<<<
  * 
  *     property angularSleepingThreshold:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setSleepingThresholds); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1211, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setSleepingThresholds); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1220, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1211, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1220, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -15660,7 +15673,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold_2__set_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_v_angular};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1211, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1220, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -15669,14 +15682,14 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold_2__set_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_v_angular};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1211, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1220, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1211, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -15687,14 +15700,14 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold_2__set_
     __Pyx_GIVEREF(__pyx_v_angular);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_angular);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1211, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1220, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":1209
+  /* "bullet/bullet.pyx":1218
  *             return self.getLinearSleepingThreshold()
  * 
  *         def __set__(self, float value):             # <<<<<<<<<<<<<<
@@ -15719,7 +15732,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_23linearSleepingThreshold_2__set_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1216
+/* "bullet/bullet.pyx":1225
  *         "Body's angularSleepingThreshold."
  * 
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15748,7 +15761,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "bullet/bullet.pyx":1217
+  /* "bullet/bullet.pyx":1226
  * 
  *         def __get__(self):
  *             return self.getAngularSleepingThreshold()             # <<<<<<<<<<<<<<
@@ -15756,7 +15769,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_
  *         def __set__(self, float value):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getAngularSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1217, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getAngularSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -15769,10 +15782,10 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1217, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1226, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1217, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1226, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -15780,7 +15793,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1216
+  /* "bullet/bullet.pyx":1225
  *         "Body's angularSleepingThreshold."
  * 
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -15801,7 +15814,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1219
+/* "bullet/bullet.pyx":1228
  *             return self.getAngularSleepingThreshold()
  * 
  *         def __set__(self, float value):             # <<<<<<<<<<<<<<
@@ -15817,7 +15830,7 @@ static int __pyx_pw_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_3__set
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
   assert(__pyx_arg_value); {
-    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1219, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(__pyx_arg_value); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1228, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -15844,14 +15857,14 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_2__set
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
 
-  /* "bullet/bullet.pyx":1220
+  /* "bullet/bullet.pyx":1229
  * 
  *         def __set__(self, float value):
  *             linear = self.getLinearSleepingThreshold()             # <<<<<<<<<<<<<<
  *             self.setSleepingThresholds(linear, value)
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getLinearSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1220, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getLinearSleepingThreshold); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -15864,26 +15877,26 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_2__set
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1220, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1229, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1220, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1229, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_linear = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":1221
+  /* "bullet/bullet.pyx":1230
  *         def __set__(self, float value):
  *             linear = self.getLinearSleepingThreshold()
  *             self.setSleepingThresholds(linear, value)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setSleepingThresholds); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1221, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setSleepingThresholds); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1221, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -15900,7 +15913,7 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_2__set
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_linear, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1221, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1230, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -15909,14 +15922,14 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_2__set
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_linear, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1221, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1230, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1221, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -15927,14 +15940,14 @@ static int __pyx_pf_6bullet_6bullet_9RigidBody_24angularSleepingThreshold_2__set
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1221, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1230, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":1219
+  /* "bullet/bullet.pyx":1228
  *             return self.getAngularSleepingThreshold()
  * 
  *         def __set__(self, float value):             # <<<<<<<<<<<<<<
@@ -16066,7 +16079,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RigidBody_48__setstate_cython__(CYTHO
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1235
+/* "bullet/bullet.pyx":1244
  *     cdef btActionInterface *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -16089,7 +16102,7 @@ static void __pyx_pf_6bullet_6bullet_15ActionInterface___dealloc__(struct __pyx_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":1236
+  /* "bullet/bullet.pyx":1245
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -16098,7 +16111,7 @@ static void __pyx_pf_6bullet_6bullet_15ActionInterface___dealloc__(struct __pyx_
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":1235
+  /* "bullet/bullet.pyx":1244
  *     cdef btActionInterface *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -16217,7 +16230,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_15ActionInterface_4__setstate_cython__
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1250
+/* "bullet/bullet.pyx":1259
  *     XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use a subclass instead.
  *     """
  *     def setWalkDirection(self, Vector3 walkDirection):             # <<<<<<<<<<<<<<
@@ -16232,7 +16245,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_28CharacterControllerInterface_1setWal
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setWalkDirection (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_walkDirection), __pyx_ptype_6bullet_6bullet_Vector3, 1, "walkDirection", 0))) __PYX_ERR(1, 1250, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_walkDirection), __pyx_ptype_6bullet_6bullet_Vector3, 1, "walkDirection", 0))) __PYX_ERR(1, 1259, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_28CharacterControllerInterface_setWalkDirection(((struct __pyx_obj_6bullet_6bullet_CharacterControllerInterface *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_walkDirection));
 
   /* function exit code */
@@ -16250,7 +16263,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_setWalk
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setWalkDirection", 0);
 
-  /* "bullet/bullet.pyx":1260
+  /* "bullet/bullet.pyx":1269
  *         """
  *         cdef btCharacterControllerInterface *controller
  *         controller = <btCharacterControllerInterface*>self.thisptr             # <<<<<<<<<<<<<<
@@ -16259,7 +16272,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_setWalk
  */
   __pyx_v_controller = ((btCharacterControllerInterface *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1261
+  /* "bullet/bullet.pyx":1270
  *         cdef btCharacterControllerInterface *controller
  *         controller = <btCharacterControllerInterface*>self.thisptr
  *         controller.setWalkDirection(             # <<<<<<<<<<<<<<
@@ -16268,7 +16281,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_setWalk
  */
   __pyx_v_controller->setWalkDirection(btVector3(__pyx_v_walkDirection->x, __pyx_v_walkDirection->y, __pyx_v_walkDirection->z));
 
-  /* "bullet/bullet.pyx":1250
+  /* "bullet/bullet.pyx":1259
  *     XXX THIS WRAPPER MAY CAUSE SEGFAULTS.  Use a subclass instead.
  *     """
  *     def setWalkDirection(self, Vector3 walkDirection):             # <<<<<<<<<<<<<<
@@ -16283,7 +16296,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_setWalk
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1265
+/* "bullet/bullet.pyx":1274
  * 
  * 
  *     def setVelocityForTimeInterval(self,             # <<<<<<<<<<<<<<
@@ -16323,11 +16336,11 @@ static PyObject *__pyx_pw_6bullet_6bullet_28CharacterControllerInterface_3setVel
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_timeInterval)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("setVelocityForTimeInterval", 1, 2, 2, 1); __PYX_ERR(1, 1265, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("setVelocityForTimeInterval", 1, 2, 2, 1); __PYX_ERR(1, 1274, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setVelocityForTimeInterval") < 0)) __PYX_ERR(1, 1265, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "setVelocityForTimeInterval") < 0)) __PYX_ERR(1, 1274, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -16336,17 +16349,17 @@ static PyObject *__pyx_pw_6bullet_6bullet_28CharacterControllerInterface_3setVel
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_velocity = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)values[0]);
-    __pyx_v_timeInterval = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_timeInterval == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1267, __pyx_L3_error)
+    __pyx_v_timeInterval = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_timeInterval == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1276, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("setVelocityForTimeInterval", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1265, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("setVelocityForTimeInterval", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1274, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.CharacterControllerInterface.setVelocityForTimeInterval", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_velocity), __pyx_ptype_6bullet_6bullet_Vector3, 0, "velocity", 0))) __PYX_ERR(1, 1266, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_velocity), __pyx_ptype_6bullet_6bullet_Vector3, 0, "velocity", 0))) __PYX_ERR(1, 1275, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_28CharacterControllerInterface_2setVelocityForTimeInterval(((struct __pyx_obj_6bullet_6bullet_CharacterControllerInterface *)__pyx_v_self), __pyx_v_velocity, __pyx_v_timeInterval);
 
   /* function exit code */
@@ -16364,7 +16377,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_2setVel
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setVelocityForTimeInterval", 0);
 
-  /* "bullet/bullet.pyx":1278
+  /* "bullet/bullet.pyx":1287
  *         """
  *         cdef btCharacterControllerInterface *controller
  *         controller = <btCharacterControllerInterface*>self.thisptr             # <<<<<<<<<<<<<<
@@ -16373,7 +16386,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_2setVel
  */
   __pyx_v_controller = ((btCharacterControllerInterface *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1279
+  /* "bullet/bullet.pyx":1288
  *         cdef btCharacterControllerInterface *controller
  *         controller = <btCharacterControllerInterface*>self.thisptr
  *         controller.setVelocityForTimeInterval(             # <<<<<<<<<<<<<<
@@ -16382,7 +16395,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_2setVel
  */
   __pyx_v_controller->setVelocityForTimeInterval(btVector3(__pyx_v_velocity->x, __pyx_v_velocity->y, __pyx_v_velocity->z), __pyx_v_timeInterval);
 
-  /* "bullet/bullet.pyx":1265
+  /* "bullet/bullet.pyx":1274
  * 
  * 
  *     def setVelocityForTimeInterval(self,             # <<<<<<<<<<<<<<
@@ -16504,7 +16517,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28CharacterControllerInterface_6__sets
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1291
+/* "bullet/bullet.pyx":1300
  *      This class is a wrapper around btPairCachingGhostObject.
  *      """
  *      def __init__(self):             # <<<<<<<<<<<<<<
@@ -16534,7 +16547,7 @@ static int __pyx_pf_6bullet_6bullet_22PairCachingGhostObject___init__(struct __p
   btPairCachingGhostObject *__pyx_t_1;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "bullet/bullet.pyx":1292
+  /* "bullet/bullet.pyx":1301
  *      """
  *      def __init__(self):
  *          self.thisptr = new btPairCachingGhostObject()             # <<<<<<<<<<<<<<
@@ -16545,11 +16558,11 @@ static int __pyx_pf_6bullet_6bullet_22PairCachingGhostObject___init__(struct __p
     __pyx_t_1 = new btPairCachingGhostObject();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 1292, __pyx_L1_error)
+    __PYX_ERR(1, 1301, __pyx_L1_error)
   }
   __pyx_v_self->__pyx_base.thisptr = __pyx_t_1;
 
-  /* "bullet/bullet.pyx":1291
+  /* "bullet/bullet.pyx":1300
  *      This class is a wrapper around btPairCachingGhostObject.
  *      """
  *      def __init__(self):             # <<<<<<<<<<<<<<
@@ -16675,7 +16688,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_22PairCachingGhostObject_4__setstate_c
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1309
+/* "bullet/bullet.pyx":1318
  *     cdef readonly PairCachingGhostObject ghost
  * 
  *     def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, Vector3 upAxis):             # <<<<<<<<<<<<<<
@@ -16717,17 +16730,17 @@ static int __pyx_pw_6bullet_6bullet_28KinematicCharacterController_1__init__(PyO
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_stepHeight)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(1, 1309, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 1); __PYX_ERR(1, 1318, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_upAxis)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(1, 1309, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, 2); __PYX_ERR(1, 1318, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 1309, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 1318, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -16737,19 +16750,19 @@ static int __pyx_pw_6bullet_6bullet_28KinematicCharacterController_1__init__(PyO
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
     __pyx_v_ghost = ((struct __pyx_obj_6bullet_6bullet_PairCachingGhostObject *)values[0]);
-    __pyx_v_stepHeight = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_stepHeight == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1309, __pyx_L3_error)
+    __pyx_v_stepHeight = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_stepHeight == (float)-1) && PyErr_Occurred())) __PYX_ERR(1, 1318, __pyx_L3_error)
     __pyx_v_upAxis = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1309, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1318, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.KinematicCharacterController.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ghost), __pyx_ptype_6bullet_6bullet_PairCachingGhostObject, 0, "ghost", 0))) __PYX_ERR(1, 1309, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upAxis), __pyx_ptype_6bullet_6bullet_Vector3, 1, "upAxis", 0))) __PYX_ERR(1, 1309, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_ghost), __pyx_ptype_6bullet_6bullet_PairCachingGhostObject, 0, "ghost", 0))) __PYX_ERR(1, 1318, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upAxis), __pyx_ptype_6bullet_6bullet_Vector3, 1, "upAxis", 0))) __PYX_ERR(1, 1318, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_28KinematicCharacterController___init__(((struct __pyx_obj_6bullet_6bullet_KinematicCharacterController *)__pyx_v_self), __pyx_v_ghost, __pyx_v_stepHeight, __pyx_v_upAxis);
 
   /* function exit code */
@@ -16766,7 +16779,7 @@ static int __pyx_pf_6bullet_6bullet_28KinematicCharacterController___init__(stru
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "bullet/bullet.pyx":1310
+  /* "bullet/bullet.pyx":1319
  * 
  *     def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, Vector3 upAxis):
  *         self.ghost = ghost             # <<<<<<<<<<<<<<
@@ -16779,7 +16792,7 @@ static int __pyx_pf_6bullet_6bullet_28KinematicCharacterController___init__(stru
   __Pyx_DECREF(((PyObject *)__pyx_v_self->ghost));
   __pyx_v_self->ghost = __pyx_v_ghost;
 
-  /* "bullet/bullet.pyx":1312
+  /* "bullet/bullet.pyx":1321
  *         self.ghost = ghost
  *         # XXX ghost must have a shape and it must not change after this
  *         self.thisptr = new btKinematicCharacterController(             # <<<<<<<<<<<<<<
@@ -16788,7 +16801,7 @@ static int __pyx_pf_6bullet_6bullet_28KinematicCharacterController___init__(stru
  */
   __pyx_v_self->__pyx_base.__pyx_base.thisptr = new btKinematicCharacterController(((btPairCachingGhostObject *)__pyx_v_self->ghost->__pyx_base.thisptr), ((btConvexShape *)__pyx_v_self->ghost->__pyx_base._shape->thisptr), __pyx_v_stepHeight, ((struct __pyx_vtabstruct_6bullet_6bullet_Vector3 *)__pyx_v_upAxis->__pyx_vtab)->tobtVector3(__pyx_v_upAxis));
 
-  /* "bullet/bullet.pyx":1309
+  /* "bullet/bullet.pyx":1318
  *     cdef readonly PairCachingGhostObject ghost
  * 
  *     def __init__(self, PairCachingGhostObject ghost not None, float stepHeight, Vector3 upAxis):             # <<<<<<<<<<<<<<
@@ -16802,7 +16815,7 @@ static int __pyx_pf_6bullet_6bullet_28KinematicCharacterController___init__(stru
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1317
+/* "bullet/bullet.pyx":1326
  * 
  * 
  *     def warp(self, Vector3 origin not None):             # <<<<<<<<<<<<<<
@@ -16817,7 +16830,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_28KinematicCharacterController_3warp(P
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("warp (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin), __pyx_ptype_6bullet_6bullet_Vector3, 0, "origin", 0))) __PYX_ERR(1, 1317, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_origin), __pyx_ptype_6bullet_6bullet_Vector3, 0, "origin", 0))) __PYX_ERR(1, 1326, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_28KinematicCharacterController_2warp(((struct __pyx_obj_6bullet_6bullet_KinematicCharacterController *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_origin));
 
   /* function exit code */
@@ -16835,7 +16848,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_2warp(s
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("warp", 0);
 
-  /* "bullet/bullet.pyx":1323
+  /* "bullet/bullet.pyx":1332
  *         """
  *         cdef btKinematicCharacterController *controller
  *         controller = <btKinematicCharacterController*>self.thisptr             # <<<<<<<<<<<<<<
@@ -16844,7 +16857,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_2warp(s
  */
   __pyx_v_controller = ((btKinematicCharacterController *)__pyx_v_self->__pyx_base.__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1324
+  /* "bullet/bullet.pyx":1333
  *         cdef btKinematicCharacterController *controller
  *         controller = <btKinematicCharacterController*>self.thisptr
  *         controller.warp(btVector3(origin.x, origin.y, origin.z))             # <<<<<<<<<<<<<<
@@ -16853,7 +16866,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_2warp(s
  */
   __pyx_v_controller->warp(btVector3(__pyx_v_origin->x, __pyx_v_origin->y, __pyx_v_origin->z));
 
-  /* "bullet/bullet.pyx":1317
+  /* "bullet/bullet.pyx":1326
  * 
  * 
  *     def warp(self, Vector3 origin not None):             # <<<<<<<<<<<<<<
@@ -16868,7 +16881,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_2warp(s
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1327
+/* "bullet/bullet.pyx":1336
  * 
  * 
  *     def getGravity(self):             # <<<<<<<<<<<<<<
@@ -16897,7 +16910,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_4getGra
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getGravity", 0);
 
-  /* "bullet/bullet.pyx":1332
+  /* "bullet/bullet.pyx":1341
  *         """
  *         cdef btKinematicCharacterController *controller
  *         controller = <btKinematicCharacterController*>self.thisptr             # <<<<<<<<<<<<<<
@@ -16906,7 +16919,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_4getGra
  */
   __pyx_v_controller = ((btKinematicCharacterController *)__pyx_v_self->__pyx_base.__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1333
+  /* "bullet/bullet.pyx":1342
  *         cdef btKinematicCharacterController *controller
  *         controller = <btKinematicCharacterController*>self.thisptr
  *         return Vector3.frombtVector3(controller.getGravity())             # <<<<<<<<<<<<<<
@@ -16914,13 +16927,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_4getGra
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_controller->getGravity()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1333, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_controller->getGravity()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1342, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1327
+  /* "bullet/bullet.pyx":1336
  * 
  * 
  *     def getGravity(self):             # <<<<<<<<<<<<<<
@@ -16939,7 +16952,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_4getGra
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1336
+/* "bullet/bullet.pyx":1345
  * 
  * 
  *     def setGravity(self, Vector3 gravity):             # <<<<<<<<<<<<<<
@@ -16954,7 +16967,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_28KinematicCharacterController_7setGra
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setGravity (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_gravity), __pyx_ptype_6bullet_6bullet_Vector3, 1, "gravity", 0))) __PYX_ERR(1, 1336, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_gravity), __pyx_ptype_6bullet_6bullet_Vector3, 1, "gravity", 0))) __PYX_ERR(1, 1345, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_28KinematicCharacterController_6setGravity(((struct __pyx_obj_6bullet_6bullet_KinematicCharacterController *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_gravity));
 
   /* function exit code */
@@ -16972,7 +16985,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_6setGra
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setGravity", 0);
 
-  /* "bullet/bullet.pyx":1341
+  /* "bullet/bullet.pyx":1350
  *         """
  *         cdef btKinematicCharacterController *controller
  *         controller = <btKinematicCharacterController*>self.thisptr             # <<<<<<<<<<<<<<
@@ -16981,7 +16994,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_6setGra
  */
   __pyx_v_controller = ((btKinematicCharacterController *)__pyx_v_self->__pyx_base.__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1342
+  /* "bullet/bullet.pyx":1351
  *         cdef btKinematicCharacterController *controller
  *         controller = <btKinematicCharacterController*>self.thisptr
  *         controller.setGravity(gravity.tobtVector3())             # <<<<<<<<<<<<<<
@@ -16990,7 +17003,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_6setGra
  */
   __pyx_v_controller->setGravity(((struct __pyx_vtabstruct_6bullet_6bullet_Vector3 *)__pyx_v_gravity->__pyx_vtab)->tobtVector3(__pyx_v_gravity));
 
-  /* "bullet/bullet.pyx":1336
+  /* "bullet/bullet.pyx":1345
  * 
  * 
  *     def setGravity(self, Vector3 gravity):             # <<<<<<<<<<<<<<
@@ -17005,7 +17018,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_6setGra
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1307
+/* "bullet/bullet.pyx":1316
  *     cdef object __weakref__
  * 
  *     cdef readonly PairCachingGhostObject ghost             # <<<<<<<<<<<<<<
@@ -17149,7 +17162,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_28KinematicCharacterController_10__set
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1362
+/* "bullet/bullet.pyx":1371
  *     cdef btDispatcher *thisptr
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -17179,7 +17192,7 @@ static int __pyx_pf_6bullet_6bullet_19CollisionDispatcher___cinit__(struct __pyx
   btDefaultCollisionConfiguration *__pyx_t_1;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "bullet/bullet.pyx":1364
+  /* "bullet/bullet.pyx":1373
  *     def __cinit__(self):
  *         # XXX btDefaultCollisionConfiguration leaks I suppose.
  *         self.config = new btDefaultCollisionConfiguration()             # <<<<<<<<<<<<<<
@@ -17190,11 +17203,11 @@ static int __pyx_pf_6bullet_6bullet_19CollisionDispatcher___cinit__(struct __pyx
     __pyx_t_1 = new btDefaultCollisionConfiguration();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 1364, __pyx_L1_error)
+    __PYX_ERR(1, 1373, __pyx_L1_error)
   }
   __pyx_v_self->config = __pyx_t_1;
 
-  /* "bullet/bullet.pyx":1365
+  /* "bullet/bullet.pyx":1374
  *         # XXX btDefaultCollisionConfiguration leaks I suppose.
  *         self.config = new btDefaultCollisionConfiguration()
  *         self.thisptr = new btCollisionDispatcher(self.config)             # <<<<<<<<<<<<<<
@@ -17203,7 +17216,7 @@ static int __pyx_pf_6bullet_6bullet_19CollisionDispatcher___cinit__(struct __pyx
  */
   __pyx_v_self->thisptr = new btCollisionDispatcher(__pyx_v_self->config);
 
-  /* "bullet/bullet.pyx":1362
+  /* "bullet/bullet.pyx":1371
  *     cdef btDispatcher *thisptr
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -17222,7 +17235,7 @@ static int __pyx_pf_6bullet_6bullet_19CollisionDispatcher___cinit__(struct __pyx
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1368
+/* "bullet/bullet.pyx":1377
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -17245,7 +17258,7 @@ static void __pyx_pf_6bullet_6bullet_19CollisionDispatcher_2__dealloc__(struct _
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":1369
+  /* "bullet/bullet.pyx":1378
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -17254,7 +17267,7 @@ static void __pyx_pf_6bullet_6bullet_19CollisionDispatcher_2__dealloc__(struct _
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":1370
+  /* "bullet/bullet.pyx":1379
  *     def __dealloc__(self):
  *         del self.thisptr
  *         del self.config             # <<<<<<<<<<<<<<
@@ -17263,7 +17276,7 @@ static void __pyx_pf_6bullet_6bullet_19CollisionDispatcher_2__dealloc__(struct _
  */
   delete __pyx_v_self->config;
 
-  /* "bullet/bullet.pyx":1368
+  /* "bullet/bullet.pyx":1377
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -17382,7 +17395,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_19CollisionDispatcher_6__setstate_cyth
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1385
+/* "bullet/bullet.pyx":1394
  *     cdef btOverlappingPairCache *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -17405,7 +17418,7 @@ static void __pyx_pf_6bullet_6bullet_20OverlappingPairCache___dealloc__(struct _
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":1386
+  /* "bullet/bullet.pyx":1395
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -17414,7 +17427,7 @@ static void __pyx_pf_6bullet_6bullet_20OverlappingPairCache___dealloc__(struct _
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":1385
+  /* "bullet/bullet.pyx":1394
  *     cdef btOverlappingPairCache *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -17426,7 +17439,7 @@ static void __pyx_pf_6bullet_6bullet_20OverlappingPairCache___dealloc__(struct _
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":1389
+/* "bullet/bullet.pyx":1398
  * 
  * 
  *     def setInternalGhostPairCallback(self):             # <<<<<<<<<<<<<<
@@ -17454,7 +17467,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_20OverlappingPairCache_2setInternalGho
   btGhostPairCallback *__pyx_t_1;
   __Pyx_RefNannySetupContext("setInternalGhostPairCallback", 0);
 
-  /* "bullet/bullet.pyx":1397
+  /* "bullet/bullet.pyx":1406
  *         new btGhostPairCallback.
  *         """
  *         self.thisptr.setInternalGhostPairCallback(new btGhostPairCallback())             # <<<<<<<<<<<<<<
@@ -17465,11 +17478,11 @@ static PyObject *__pyx_pf_6bullet_6bullet_20OverlappingPairCache_2setInternalGho
     __pyx_t_1 = new btGhostPairCallback();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 1397, __pyx_L1_error)
+    __PYX_ERR(1, 1406, __pyx_L1_error)
   }
   __pyx_v_self->thisptr->setInternalGhostPairCallback(__pyx_t_1);
 
-  /* "bullet/bullet.pyx":1389
+  /* "bullet/bullet.pyx":1398
  * 
  * 
  *     def setInternalGhostPairCallback(self):             # <<<<<<<<<<<<<<
@@ -17596,7 +17609,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_20OverlappingPairCache_6__setstate_cyt
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1408
+/* "bullet/bullet.pyx":1417
  *     This class is a wrapper around btHashedOverlappingPairCache.
  *     """
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -17626,7 +17639,7 @@ static int __pyx_pf_6bullet_6bullet_26HashedOverlappingPairCache___cinit__(struc
   btHashedOverlappingPairCache *__pyx_t_1;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "bullet/bullet.pyx":1409
+  /* "bullet/bullet.pyx":1418
  *     """
  *     def __cinit__(self):
  *         self.thisptr = new btHashedOverlappingPairCache()             # <<<<<<<<<<<<<<
@@ -17637,11 +17650,11 @@ static int __pyx_pf_6bullet_6bullet_26HashedOverlappingPairCache___cinit__(struc
     __pyx_t_1 = new btHashedOverlappingPairCache();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 1409, __pyx_L1_error)
+    __PYX_ERR(1, 1418, __pyx_L1_error)
   }
   __pyx_v_self->__pyx_base.thisptr = __pyx_t_1;
 
-  /* "bullet/bullet.pyx":1408
+  /* "bullet/bullet.pyx":1417
  *     This class is a wrapper around btHashedOverlappingPairCache.
  *     """
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -17767,7 +17780,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_26HashedOverlappingPairCache_4__setsta
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1427
+/* "bullet/bullet.pyx":1436
  *     cdef readonly OverlappingPairCache _paircache
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -17790,7 +17803,7 @@ static void __pyx_pf_6bullet_6bullet_19BroadphaseInterface___dealloc__(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":1428
+  /* "bullet/bullet.pyx":1437
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -17799,7 +17812,7 @@ static void __pyx_pf_6bullet_6bullet_19BroadphaseInterface___dealloc__(struct __
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":1427
+  /* "bullet/bullet.pyx":1436
  *     cdef readonly OverlappingPairCache _paircache
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -17811,7 +17824,7 @@ static void __pyx_pf_6bullet_6bullet_19BroadphaseInterface___dealloc__(struct __
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":1431
+/* "bullet/bullet.pyx":1440
  * 
  * 
  *     def getOverlappingPairCache(self):             # <<<<<<<<<<<<<<
@@ -17838,7 +17851,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_19BroadphaseInterface_2getOverlappingP
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("getOverlappingPairCache", 0);
 
-  /* "bullet/bullet.pyx":1436
+  /* "bullet/bullet.pyx":1445
  *         """
  *         # Subclasses must take care to set this during their initialization.
  *         return self._paircache             # <<<<<<<<<<<<<<
@@ -17850,7 +17863,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_19BroadphaseInterface_2getOverlappingP
   __pyx_r = ((PyObject *)__pyx_v_self->_paircache);
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1431
+  /* "bullet/bullet.pyx":1440
  * 
  * 
  *     def getOverlappingPairCache(self):             # <<<<<<<<<<<<<<
@@ -17865,7 +17878,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_19BroadphaseInterface_2getOverlappingP
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1425
+/* "bullet/bullet.pyx":1434
  *     """
  *     cdef btBroadphaseInterface *thisptr
  *     cdef readonly OverlappingPairCache _paircache             # <<<<<<<<<<<<<<
@@ -18009,7 +18022,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_19BroadphaseInterface_6__setstate_cyth
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1449
+/* "bullet/bullet.pyx":1458
  *     This class is a wrapper around btAxisSweep3.
  *     """
  *     def __cinit__(self, Vector3 lower, Vector3 upper):             # <<<<<<<<<<<<<<
@@ -18048,11 +18061,11 @@ static int __pyx_pw_6bullet_6bullet_10AxisSweep3_1__cinit__(PyObject *__pyx_v_se
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_upper)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, 1); __PYX_ERR(1, 1449, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, 1); __PYX_ERR(1, 1458, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 1449, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(1, 1458, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -18065,14 +18078,14 @@ static int __pyx_pw_6bullet_6bullet_10AxisSweep3_1__cinit__(PyObject *__pyx_v_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1449, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1458, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.AxisSweep3.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lower), __pyx_ptype_6bullet_6bullet_Vector3, 1, "lower", 0))) __PYX_ERR(1, 1449, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upper), __pyx_ptype_6bullet_6bullet_Vector3, 1, "upper", 0))) __PYX_ERR(1, 1449, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lower), __pyx_ptype_6bullet_6bullet_Vector3, 1, "lower", 0))) __PYX_ERR(1, 1458, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upper), __pyx_ptype_6bullet_6bullet_Vector3, 1, "upper", 0))) __PYX_ERR(1, 1458, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_10AxisSweep3___cinit__(((struct __pyx_obj_6bullet_6bullet_AxisSweep3 *)__pyx_v_self), __pyx_v_lower, __pyx_v_upper);
 
   /* function exit code */
@@ -18090,14 +18103,14 @@ static int __pyx_pf_6bullet_6bullet_10AxisSweep3___cinit__(struct __pyx_obj_6bul
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "bullet/bullet.pyx":1452
+  /* "bullet/bullet.pyx":1461
  *         # XXX Will ~btAxisSweep3 segfault when it runs after
  *         # ~btHashedOverlappingPairCache?
  *         self._paircache = HashedOverlappingPairCache()             # <<<<<<<<<<<<<<
  *         self.thisptr = new btAxisSweep3(
  *             btVector3(lower.x, lower.y, lower.z),
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_HashedOverlappingPairCache), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1452, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_HashedOverlappingPairCache), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1461, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->__pyx_base._paircache);
@@ -18105,7 +18118,7 @@ static int __pyx_pf_6bullet_6bullet_10AxisSweep3___cinit__(struct __pyx_obj_6bul
   __pyx_v_self->__pyx_base._paircache = ((struct __pyx_obj_6bullet_6bullet_OverlappingPairCache *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":1453
+  /* "bullet/bullet.pyx":1462
  *         # ~btHashedOverlappingPairCache?
  *         self._paircache = HashedOverlappingPairCache()
  *         self.thisptr = new btAxisSweep3(             # <<<<<<<<<<<<<<
@@ -18114,7 +18127,7 @@ static int __pyx_pf_6bullet_6bullet_10AxisSweep3___cinit__(struct __pyx_obj_6bul
  */
   __pyx_v_self->__pyx_base.thisptr = new btAxisSweep3(btVector3(__pyx_v_lower->x, __pyx_v_lower->y, __pyx_v_lower->z), btVector3(__pyx_v_upper->x, __pyx_v_upper->y, __pyx_v_upper->z), 0x4000, __pyx_v_self->__pyx_base._paircache->thisptr, 0);
 
-  /* "bullet/bullet.pyx":1449
+  /* "bullet/bullet.pyx":1458
  *     This class is a wrapper around btAxisSweep3.
  *     """
  *     def __cinit__(self, Vector3 lower, Vector3 upper):             # <<<<<<<<<<<<<<
@@ -18241,7 +18254,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_10AxisSweep3_4__setstate_cython__(CYTH
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1470
+/* "bullet/bullet.pyx":1479
  *     cdef btConstraintSolver *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18264,7 +18277,7 @@ static void __pyx_pf_6bullet_6bullet_16ConstraintSolver___dealloc__(struct __pyx
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":1471
+  /* "bullet/bullet.pyx":1480
  * 
  *     def __dealloc__(self):
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -18273,7 +18286,7 @@ static void __pyx_pf_6bullet_6bullet_16ConstraintSolver___dealloc__(struct __pyx
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":1470
+  /* "bullet/bullet.pyx":1479
  *     cdef btConstraintSolver *thisptr
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18392,7 +18405,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_16ConstraintSolver_4__setstate_cython_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1486
+/* "bullet/bullet.pyx":1495
  *     This class is a wrapper around btSequentialImpulseConstraintSolver.
  *     """
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -18421,7 +18434,7 @@ static int __pyx_pf_6bullet_6bullet_33SequentialImpulseConstraintSolver___cinit_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "bullet/bullet.pyx":1487
+  /* "bullet/bullet.pyx":1496
  *     """
  *     def __cinit__(self):
  *         self.thisptr = new btSequentialImpulseConstraintSolver()             # <<<<<<<<<<<<<<
@@ -18430,7 +18443,7 @@ static int __pyx_pf_6bullet_6bullet_33SequentialImpulseConstraintSolver___cinit_
  */
   __pyx_v_self->__pyx_base.thisptr = new btSequentialImpulseConstraintSolver();
 
-  /* "bullet/bullet.pyx":1486
+  /* "bullet/bullet.pyx":1495
  *     This class is a wrapper around btSequentialImpulseConstraintSolver.
  *     """
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -18551,7 +18564,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_33SequentialImpulseConstraintSolver_4_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1506
+/* "bullet/bullet.pyx":1515
  *     cdef _object *broadphase
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -18571,7 +18584,7 @@ static int __pyx_pw_6bullet_6bullet_14CollisionWorld_1__init__(PyObject *__pyx_v
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_dispatcher,&__pyx_n_s_broadphase,0};
     PyObject* values[2] = {0,0};
 
-    /* "bullet/bullet.pyx":1507
+    /* "bullet/bullet.pyx":1516
  * 
  *     def __init__(self,
  *                  CollisionDispatcher dispatcher = None,             # <<<<<<<<<<<<<<
@@ -18580,7 +18593,7 @@ static int __pyx_pw_6bullet_6bullet_14CollisionWorld_1__init__(PyObject *__pyx_v
  */
     values[0] = (PyObject *)((struct __pyx_obj_6bullet_6bullet_CollisionDispatcher *)Py_None);
 
-    /* "bullet/bullet.pyx":1508
+    /* "bullet/bullet.pyx":1517
  *     def __init__(self,
  *                  CollisionDispatcher dispatcher = None,
  *                  BroadphaseInterface broadphase = None):             # <<<<<<<<<<<<<<
@@ -18614,7 +18627,7 @@ static int __pyx_pw_6bullet_6bullet_14CollisionWorld_1__init__(PyObject *__pyx_v
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 1506, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 1515, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -18631,17 +18644,17 @@ static int __pyx_pw_6bullet_6bullet_14CollisionWorld_1__init__(PyObject *__pyx_v
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1506, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1515, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.CollisionWorld.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dispatcher), __pyx_ptype_6bullet_6bullet_CollisionDispatcher, 1, "dispatcher", 0))) __PYX_ERR(1, 1507, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_broadphase), __pyx_ptype_6bullet_6bullet_BroadphaseInterface, 1, "broadphase", 0))) __PYX_ERR(1, 1508, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dispatcher), __pyx_ptype_6bullet_6bullet_CollisionDispatcher, 1, "dispatcher", 0))) __PYX_ERR(1, 1516, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_broadphase), __pyx_ptype_6bullet_6bullet_BroadphaseInterface, 1, "broadphase", 0))) __PYX_ERR(1, 1517, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(((struct __pyx_obj_6bullet_6bullet_CollisionWorld *)__pyx_v_self), __pyx_v_dispatcher, __pyx_v_broadphase);
 
-  /* "bullet/bullet.pyx":1506
+  /* "bullet/bullet.pyx":1515
  *     cdef _object *broadphase
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -18670,7 +18683,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
   __Pyx_INCREF((PyObject *)__pyx_v_dispatcher);
   __Pyx_INCREF((PyObject *)__pyx_v_broadphase);
 
-  /* "bullet/bullet.pyx":1509
+  /* "bullet/bullet.pyx":1518
  *                  CollisionDispatcher dispatcher = None,
  *                  BroadphaseInterface broadphase = None):
  *         if dispatcher is None:             # <<<<<<<<<<<<<<
@@ -18681,19 +18694,19 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "bullet/bullet.pyx":1510
+    /* "bullet/bullet.pyx":1519
  *                  BroadphaseInterface broadphase = None):
  *         if dispatcher is None:
  *             dispatcher = CollisionDispatcher()             # <<<<<<<<<<<<<<
  *         if broadphase is None:
  *             broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_CollisionDispatcher), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1510, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_CollisionDispatcher), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1519, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_dispatcher, ((struct __pyx_obj_6bullet_6bullet_CollisionDispatcher *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "bullet/bullet.pyx":1509
+    /* "bullet/bullet.pyx":1518
  *                  CollisionDispatcher dispatcher = None,
  *                  BroadphaseInterface broadphase = None):
  *         if dispatcher is None:             # <<<<<<<<<<<<<<
@@ -18702,7 +18715,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
   }
 
-  /* "bullet/bullet.pyx":1511
+  /* "bullet/bullet.pyx":1520
  *         if dispatcher is None:
  *             dispatcher = CollisionDispatcher()
  *         if broadphase is None:             # <<<<<<<<<<<<<<
@@ -18713,18 +18726,18 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":1512
+    /* "bullet/bullet.pyx":1521
  *             dispatcher = CollisionDispatcher()
  *         if broadphase is None:
  *             broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))             # <<<<<<<<<<<<<<
  * 
  *         Py_INCREF(dispatcher)
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__71, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1512, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__71, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1521, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__72, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1512, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__72, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1521, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1512, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1521, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -18732,13 +18745,13 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_AxisSweep3), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1512, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_AxisSweep3), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1521, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF_SET(__pyx_v_broadphase, ((struct __pyx_obj_6bullet_6bullet_BroadphaseInterface *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "bullet/bullet.pyx":1511
+    /* "bullet/bullet.pyx":1520
  *         if dispatcher is None:
  *             dispatcher = CollisionDispatcher()
  *         if broadphase is None:             # <<<<<<<<<<<<<<
@@ -18747,7 +18760,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
   }
 
-  /* "bullet/bullet.pyx":1514
+  /* "bullet/bullet.pyx":1523
  *             broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))
  * 
  *         Py_INCREF(dispatcher)             # <<<<<<<<<<<<<<
@@ -18756,7 +18769,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
   Py_INCREF(((PyObject *)__pyx_v_dispatcher));
 
-  /* "bullet/bullet.pyx":1515
+  /* "bullet/bullet.pyx":1524
  * 
  *         Py_INCREF(dispatcher)
  *         self.dispatcher = <_object*>dispatcher             # <<<<<<<<<<<<<<
@@ -18765,7 +18778,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
   __pyx_v_self->dispatcher = ((struct _object *)__pyx_v_dispatcher);
 
-  /* "bullet/bullet.pyx":1517
+  /* "bullet/bullet.pyx":1526
  *         self.dispatcher = <_object*>dispatcher
  * 
  *         Py_INCREF(broadphase)             # <<<<<<<<<<<<<<
@@ -18774,7 +18787,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
   Py_INCREF(((PyObject *)__pyx_v_broadphase));
 
-  /* "bullet/bullet.pyx":1518
+  /* "bullet/bullet.pyx":1527
  * 
  *         Py_INCREF(broadphase)
  *         self.broadphase = <_object*>broadphase             # <<<<<<<<<<<<<<
@@ -18783,7 +18796,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
   __pyx_v_self->broadphase = ((struct _object *)__pyx_v_broadphase);
 
-  /* "bullet/bullet.pyx":1521
+  /* "bullet/bullet.pyx":1530
  * 
  *         # Allow subclasses to initialize this differently.
  *         if self.thisptr == NULL:             # <<<<<<<<<<<<<<
@@ -18793,7 +18806,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
   __pyx_t_1 = ((__pyx_v_self->thisptr == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":1522
+    /* "bullet/bullet.pyx":1531
  *         # Allow subclasses to initialize this differently.
  *         if self.thisptr == NULL:
  *             self.thisptr = new btCollisionWorld(             # <<<<<<<<<<<<<<
@@ -18802,7 +18815,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
     __pyx_v_self->thisptr = new btCollisionWorld(__pyx_v_dispatcher->thisptr, __pyx_v_broadphase->thisptr, __pyx_v_dispatcher->config);
 
-    /* "bullet/bullet.pyx":1521
+    /* "bullet/bullet.pyx":1530
  * 
  *         # Allow subclasses to initialize this differently.
  *         if self.thisptr == NULL:             # <<<<<<<<<<<<<<
@@ -18811,7 +18824,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
  */
   }
 
-  /* "bullet/bullet.pyx":1506
+  /* "bullet/bullet.pyx":1515
  *     cdef _object *broadphase
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -18835,7 +18848,7 @@ static int __pyx_pf_6bullet_6bullet_14CollisionWorld___init__(struct __pyx_obj_6
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1526
+/* "bullet/bullet.pyx":1535
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18862,7 +18875,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":1531
+  /* "bullet/bullet.pyx":1540
  *         # XXX Re-call getCollisionObjectArray() every time because Cython
  *         # support for local variables of reference type is broken.
  *         while self.thisptr.getCollisionObjectArray().size():             # <<<<<<<<<<<<<<
@@ -18873,7 +18886,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
     __pyx_t_1 = (__pyx_v_self->thisptr->getCollisionObjectArray().size() != 0);
     if (!__pyx_t_1) break;
 
-    /* "bullet/bullet.pyx":1534
+    /* "bullet/bullet.pyx":1543
  *             # XXX Would be trivially faster to remove from the end instead, I
  *             # imagine.
  *             obj = self.thisptr.getCollisionObjectArray().at(0)             # <<<<<<<<<<<<<<
@@ -18882,7 +18895,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
  */
     __pyx_v_obj = __pyx_v_self->thisptr->getCollisionObjectArray().at(0);
 
-    /* "bullet/bullet.pyx":1535
+    /* "bullet/bullet.pyx":1544
  *             # imagine.
  *             obj = self.thisptr.getCollisionObjectArray().at(0)
  *             self.thisptr.removeCollisionObject(obj)             # <<<<<<<<<<<<<<
@@ -18891,7 +18904,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
  */
     __pyx_v_self->thisptr->removeCollisionObject(__pyx_v_obj);
 
-    /* "bullet/bullet.pyx":1536
+    /* "bullet/bullet.pyx":1545
  *             obj = self.thisptr.getCollisionObjectArray().at(0)
  *             self.thisptr.removeCollisionObject(obj)
  *             if NULL != obj.getUserPointer():             # <<<<<<<<<<<<<<
@@ -18901,7 +18914,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
     __pyx_t_1 = ((NULL != __pyx_v_obj->getUserPointer()) != 0);
     if (__pyx_t_1) {
 
-      /* "bullet/bullet.pyx":1537
+      /* "bullet/bullet.pyx":1546
  *             self.thisptr.removeCollisionObject(obj)
  *             if NULL != obj.getUserPointer():
  *                 Py_DECREF(<object>obj.getUserPointer())             # <<<<<<<<<<<<<<
@@ -18911,7 +18924,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
       __pyx_t_2 = __pyx_v_obj->getUserPointer();
       Py_DECREF(((PyObject *)__pyx_t_2));
 
-      /* "bullet/bullet.pyx":1536
+      /* "bullet/bullet.pyx":1545
  *             obj = self.thisptr.getCollisionObjectArray().at(0)
  *             self.thisptr.removeCollisionObject(obj)
  *             if NULL != obj.getUserPointer():             # <<<<<<<<<<<<<<
@@ -18921,7 +18934,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
     }
   }
 
-  /* "bullet/bullet.pyx":1539
+  /* "bullet/bullet.pyx":1548
  *                 Py_DECREF(<object>obj.getUserPointer())
  * 
  *         del self.thisptr             # <<<<<<<<<<<<<<
@@ -18930,7 +18943,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
  */
   delete __pyx_v_self->thisptr;
 
-  /* "bullet/bullet.pyx":1540
+  /* "bullet/bullet.pyx":1549
  * 
  *         del self.thisptr
  *         Py_DECREF(<object>self.dispatcher)             # <<<<<<<<<<<<<<
@@ -18942,7 +18955,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
   Py_DECREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "bullet/bullet.pyx":1541
+  /* "bullet/bullet.pyx":1550
  *         del self.thisptr
  *         Py_DECREF(<object>self.dispatcher)
  *         Py_DECREF(<object>self.broadphase)             # <<<<<<<<<<<<<<
@@ -18954,7 +18967,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
   Py_DECREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "bullet/bullet.pyx":1526
+  /* "bullet/bullet.pyx":1535
  * 
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -18966,7 +18979,7 @@ static void __pyx_pf_6bullet_6bullet_14CollisionWorld_2__dealloc__(struct __pyx_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":1544
+/* "bullet/bullet.pyx":1553
  * 
  * 
  *     def setDebugDrawer(self, debugDrawer):             # <<<<<<<<<<<<<<
@@ -18993,7 +19006,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_4setDebugDrawer(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setDebugDrawer", 0);
 
-  /* "bullet/bullet.pyx":1551
+  /* "bullet/bullet.pyx":1560
  *         TODO Document them.  See the debugdraw.py demo for now.
  *         """
  *         self.debugDraw = new PythonDebugDraw(<PyObject*>debugDrawer);             # <<<<<<<<<<<<<<
@@ -19002,7 +19015,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_4setDebugDrawer(struc
  */
   __pyx_v_self->debugDraw = new PythonDebugDraw(((PyObject *)__pyx_v_debugDrawer));
 
-  /* "bullet/bullet.pyx":1552
+  /* "bullet/bullet.pyx":1561
  *         """
  *         self.debugDraw = new PythonDebugDraw(<PyObject*>debugDrawer);
  *         self.thisptr.setDebugDrawer(self.debugDraw)             # <<<<<<<<<<<<<<
@@ -19011,7 +19024,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_4setDebugDrawer(struc
  */
   __pyx_v_self->thisptr->setDebugDrawer(__pyx_v_self->debugDraw);
 
-  /* "bullet/bullet.pyx":1544
+  /* "bullet/bullet.pyx":1553
  * 
  * 
  *     def setDebugDrawer(self, debugDrawer):             # <<<<<<<<<<<<<<
@@ -19026,7 +19039,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_4setDebugDrawer(struc
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1555
+/* "bullet/bullet.pyx":1564
  * 
  * 
  *     def debugDrawWorld(self):             # <<<<<<<<<<<<<<
@@ -19053,7 +19066,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_6debugDrawWorld(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("debugDrawWorld", 0);
 
-  /* "bullet/bullet.pyx":1560
+  /* "bullet/bullet.pyx":1569
  *         previous call to L{setDebugDrawer}.
  *         """
  *         self.thisptr.debugDrawWorld()             # <<<<<<<<<<<<<<
@@ -19062,7 +19075,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_6debugDrawWorld(struc
  */
   __pyx_v_self->thisptr->debugDrawWorld();
 
-  /* "bullet/bullet.pyx":1555
+  /* "bullet/bullet.pyx":1564
  * 
  * 
  *     def debugDrawWorld(self):             # <<<<<<<<<<<<<<
@@ -19077,7 +19090,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_6debugDrawWorld(struc
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1563
+/* "bullet/bullet.pyx":1572
  * 
  * 
  *     def getNumCollisionObjects(self):             # <<<<<<<<<<<<<<
@@ -19105,7 +19118,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_8getNumCollisionObjec
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("getNumCollisionObjects", 0);
 
-  /* "bullet/bullet.pyx":1568
+  /* "bullet/bullet.pyx":1577
  *         CollisionWorld.
  *         """
  *         return self.thisptr.getNumCollisionObjects()             # <<<<<<<<<<<<<<
@@ -19113,13 +19126,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_8getNumCollisionObjec
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->thisptr->getNumCollisionObjects()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1568, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->thisptr->getNumCollisionObjects()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1563
+  /* "bullet/bullet.pyx":1572
  * 
  * 
  *     def getNumCollisionObjects(self):             # <<<<<<<<<<<<<<
@@ -19138,7 +19151,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_8getNumCollisionObjec
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1571
+/* "bullet/bullet.pyx":1580
  * 
  * 
  *     def addCollisionObject(self, CollisionObject collisionObject,             # <<<<<<<<<<<<<<
@@ -19191,7 +19204,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_14CollisionWorld_11addCollisionObject(
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "addCollisionObject") < 0)) __PYX_ERR(1, 1571, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "addCollisionObject") < 0)) __PYX_ERR(1, 1580, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -19206,25 +19219,25 @@ static PyObject *__pyx_pw_6bullet_6bullet_14CollisionWorld_11addCollisionObject(
     }
     __pyx_v_collisionObject = ((struct __pyx_obj_6bullet_6bullet_CollisionObject *)values[0]);
     if (values[1]) {
-      __pyx_v_collisionFilterGroup = __Pyx_PyInt_As_short(values[1]); if (unlikely((__pyx_v_collisionFilterGroup == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1572, __pyx_L3_error)
+      __pyx_v_collisionFilterGroup = __Pyx_PyInt_As_short(values[1]); if (unlikely((__pyx_v_collisionFilterGroup == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1581, __pyx_L3_error)
     } else {
       __pyx_v_collisionFilterGroup = __pyx_k__73;
     }
     if (values[2]) {
-      __pyx_v_collisionFilterMask = __Pyx_PyInt_As_short(values[2]); if (unlikely((__pyx_v_collisionFilterMask == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1573, __pyx_L3_error)
+      __pyx_v_collisionFilterMask = __Pyx_PyInt_As_short(values[2]); if (unlikely((__pyx_v_collisionFilterMask == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1582, __pyx_L3_error)
     } else {
       __pyx_v_collisionFilterMask = __pyx_k__74;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("addCollisionObject", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1571, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("addCollisionObject", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1580, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.CollisionWorld.addCollisionObject", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_collisionObject), __pyx_ptype_6bullet_6bullet_CollisionObject, 1, "collisionObject", 0))) __PYX_ERR(1, 1571, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_collisionObject), __pyx_ptype_6bullet_6bullet_CollisionObject, 1, "collisionObject", 0))) __PYX_ERR(1, 1580, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(((struct __pyx_obj_6bullet_6bullet_CollisionWorld *)__pyx_v_self), __pyx_v_collisionObject, __pyx_v_collisionFilterGroup, __pyx_v_collisionFilterMask);
 
   /* function exit code */
@@ -19243,7 +19256,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("addCollisionObject", 0);
 
-  /* "bullet/bullet.pyx":1594
+  /* "bullet/bullet.pyx":1603
  *         @type collisionFilterMask: short int (C{-1 <= int < 2 ** 15})
  *         """
  *         if collisionObject.thisptr.getCollisionShape() == NULL:             # <<<<<<<<<<<<<<
@@ -19253,20 +19266,20 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(
   __pyx_t_1 = ((__pyx_v_collisionObject->thisptr->getCollisionShape() == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":1595
+    /* "bullet/bullet.pyx":1604
  *         """
  *         if collisionObject.thisptr.getCollisionShape() == NULL:
  *             raise ValueError(             # <<<<<<<<<<<<<<
  *                 "Cannot add CollisionObject without a CollisionShape")
  * 
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__75, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1595, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__75, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1604, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(1, 1595, __pyx_L1_error)
+    __PYX_ERR(1, 1604, __pyx_L1_error)
 
-    /* "bullet/bullet.pyx":1594
+    /* "bullet/bullet.pyx":1603
  *         @type collisionFilterMask: short int (C{-1 <= int < 2 ** 15})
  *         """
  *         if collisionObject.thisptr.getCollisionShape() == NULL:             # <<<<<<<<<<<<<<
@@ -19275,7 +19288,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(
  */
   }
 
-  /* "bullet/bullet.pyx":1602
+  /* "bullet/bullet.pyx":1611
  *         # didn't add a corresponding Py_DECREF somewhere.  We'll do that in
  *         # removeCollisionObject.
  *         Py_INCREF(collisionObject)             # <<<<<<<<<<<<<<
@@ -19284,7 +19297,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(
  */
   Py_INCREF(((PyObject *)__pyx_v_collisionObject));
 
-  /* "bullet/bullet.pyx":1611
+  /* "bullet/bullet.pyx":1620
  *         # state we keep on this object, so keep it in the user pointer field of
  *         # btCollisionObject instead.
  *         collisionObject.thisptr.setUserPointer(<void*>collisionObject)             # <<<<<<<<<<<<<<
@@ -19293,7 +19306,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(
  */
   __pyx_v_collisionObject->thisptr->setUserPointer(((void *)__pyx_v_collisionObject));
 
-  /* "bullet/bullet.pyx":1613
+  /* "bullet/bullet.pyx":1622
  *         collisionObject.thisptr.setUserPointer(<void*>collisionObject)
  * 
  *         self.thisptr.addCollisionObject(             # <<<<<<<<<<<<<<
@@ -19302,7 +19315,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(
  */
   __pyx_v_self->thisptr->addCollisionObject(__pyx_v_collisionObject->thisptr, __pyx_v_collisionFilterGroup, __pyx_v_collisionFilterMask);
 
-  /* "bullet/bullet.pyx":1571
+  /* "bullet/bullet.pyx":1580
  * 
  * 
  *     def addCollisionObject(self, CollisionObject collisionObject,             # <<<<<<<<<<<<<<
@@ -19323,7 +19336,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_10addCollisionObject(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1617
+/* "bullet/bullet.pyx":1626
  * 
  * 
  *     def removeCollisionObject(self, CollisionObject collisionObject):             # <<<<<<<<<<<<<<
@@ -19338,7 +19351,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_14CollisionWorld_13removeCollisionObje
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("removeCollisionObject (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_collisionObject), __pyx_ptype_6bullet_6bullet_CollisionObject, 1, "collisionObject", 0))) __PYX_ERR(1, 1617, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_collisionObject), __pyx_ptype_6bullet_6bullet_CollisionObject, 1, "collisionObject", 0))) __PYX_ERR(1, 1626, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObject(((struct __pyx_obj_6bullet_6bullet_CollisionWorld *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_CollisionObject *)__pyx_v_collisionObject));
 
   /* function exit code */
@@ -19358,7 +19371,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("removeCollisionObject", 0);
 
-  /* "bullet/bullet.pyx":1621
+  /* "bullet/bullet.pyx":1630
  *         Remove a CollisionObject from this CollisionWorld.
  *         """
  *         cdef int before = self.thisptr.getNumCollisionObjects()             # <<<<<<<<<<<<<<
@@ -19367,7 +19380,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
  */
   __pyx_v_before = __pyx_v_self->thisptr->getNumCollisionObjects();
 
-  /* "bullet/bullet.pyx":1623
+  /* "bullet/bullet.pyx":1632
  *         cdef int before = self.thisptr.getNumCollisionObjects()
  *         cdef int after
  *         self.thisptr.removeCollisionObject(collisionObject.thisptr)             # <<<<<<<<<<<<<<
@@ -19376,7 +19389,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
  */
   __pyx_v_self->thisptr->removeCollisionObject(__pyx_v_collisionObject->thisptr);
 
-  /* "bullet/bullet.pyx":1624
+  /* "bullet/bullet.pyx":1633
  *         cdef int after
  *         self.thisptr.removeCollisionObject(collisionObject.thisptr)
  *         after = self.thisptr.getNumCollisionObjects()             # <<<<<<<<<<<<<<
@@ -19385,7 +19398,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
  */
   __pyx_v_after = __pyx_v_self->thisptr->getNumCollisionObjects();
 
-  /* "bullet/bullet.pyx":1626
+  /* "bullet/bullet.pyx":1635
  *         after = self.thisptr.getNumCollisionObjects()
  * 
  *         if after < before:             # <<<<<<<<<<<<<<
@@ -19395,7 +19408,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
   __pyx_t_1 = ((__pyx_v_after < __pyx_v_before) != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":1629
+    /* "bullet/bullet.pyx":1638
  *             # Just for the sake of sanity, we'll reset the user data pointer to
  *             # NULL here, since we're not going to use it in this case.
  *             collisionObject.thisptr.setUserPointer(NULL)             # <<<<<<<<<<<<<<
@@ -19404,7 +19417,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
  */
     __pyx_v_collisionObject->thisptr->setUserPointer(NULL);
 
-    /* "bullet/bullet.pyx":1634
+    /* "bullet/bullet.pyx":1643
  *             # CollisionWorld.  That means we Py_INCREFed it, so we need to
  *             # Py_DECREF it here to avoid leaking it.
  *             Py_DECREF(collisionObject)             # <<<<<<<<<<<<<<
@@ -19413,7 +19426,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
  */
     Py_DECREF(((PyObject *)__pyx_v_collisionObject));
 
-    /* "bullet/bullet.pyx":1626
+    /* "bullet/bullet.pyx":1635
  *         after = self.thisptr.getNumCollisionObjects()
  * 
  *         if after < before:             # <<<<<<<<<<<<<<
@@ -19422,7 +19435,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
  */
   }
 
-  /* "bullet/bullet.pyx":1617
+  /* "bullet/bullet.pyx":1626
  * 
  * 
  *     def removeCollisionObject(self, CollisionObject collisionObject):             # <<<<<<<<<<<<<<
@@ -19437,7 +19450,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_12removeCollisionObje
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1636
+/* "bullet/bullet.pyx":1645
  *             Py_DECREF(collisionObject)
  * 
  *     def getCollisionObjectArray(self):             # <<<<<<<<<<<<<<
@@ -19474,26 +19487,26 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("getCollisionObjectArray", 0);
 
-  /* "bullet/bullet.pyx":1637
+  /* "bullet/bullet.pyx":1646
  * 
  *     def getCollisionObjectArray(self):
  *         collisionObjectArray = []             # <<<<<<<<<<<<<<
  *         # cdef btAlignedObjectArray[btCollisionObjectP]& btarr = self.thisptr.getCollisionObjectArray()
  *         for i in range(self.getNumCollisionObjects()):
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1637, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1646, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_collisionObjectArray = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":1639
+  /* "bullet/bullet.pyx":1648
  *         collisionObjectArray = []
  *         # cdef btAlignedObjectArray[btCollisionObjectP]& btarr = self.thisptr.getCollisionObjectArray()
  *         for i in range(self.getNumCollisionObjects()):             # <<<<<<<<<<<<<<
  *             obj = <object>self.thisptr.getCollisionObjectArray().at(i).getUserPointer()
  *             collisionObjectArray.append(obj)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getNumCollisionObjects); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1639, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_getNumCollisionObjects); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -19506,28 +19519,28 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1639, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1648, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1639, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1648, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1639, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1639, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1639, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1648, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1639, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1648, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -19535,17 +19548,17 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(1, 1639, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(1, 1648, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1639, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1648, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(1, 1639, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(1, 1648, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1639, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1648, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -19555,7 +19568,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(1, 1639, __pyx_L1_error)
+          else __PYX_ERR(1, 1648, __pyx_L1_error)
         }
         break;
       }
@@ -19564,30 +19577,30 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "bullet/bullet.pyx":1640
+    /* "bullet/bullet.pyx":1649
  *         # cdef btAlignedObjectArray[btCollisionObjectP]& btarr = self.thisptr.getCollisionObjectArray()
  *         for i in range(self.getNumCollisionObjects()):
  *             obj = <object>self.thisptr.getCollisionObjectArray().at(i).getUserPointer()             # <<<<<<<<<<<<<<
  *             collisionObjectArray.append(obj)
  *         return collisionObjectArray
  */
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_i); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 1640, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_i); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 1649, __pyx_L1_error)
     __pyx_t_7 = __pyx_v_self->thisptr->getCollisionObjectArray().at(__pyx_t_6)->getUserPointer();
     __pyx_t_1 = ((PyObject *)__pyx_t_7);
     __Pyx_INCREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_obj, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "bullet/bullet.pyx":1641
+    /* "bullet/bullet.pyx":1650
  *         for i in range(self.getNumCollisionObjects()):
  *             obj = <object>self.thisptr.getCollisionObjectArray().at(i).getUserPointer()
  *             collisionObjectArray.append(obj)             # <<<<<<<<<<<<<<
  *         return collisionObjectArray
  * 
  */
-    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_collisionObjectArray, __pyx_v_obj); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(1, 1641, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_collisionObjectArray, __pyx_v_obj); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(1, 1650, __pyx_L1_error)
 
-    /* "bullet/bullet.pyx":1639
+    /* "bullet/bullet.pyx":1648
  *         collisionObjectArray = []
  *         # cdef btAlignedObjectArray[btCollisionObjectP]& btarr = self.thisptr.getCollisionObjectArray()
  *         for i in range(self.getNumCollisionObjects()):             # <<<<<<<<<<<<<<
@@ -19597,7 +19610,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "bullet/bullet.pyx":1642
+  /* "bullet/bullet.pyx":1651
  *             obj = <object>self.thisptr.getCollisionObjectArray().at(i).getUserPointer()
  *             collisionObjectArray.append(obj)
  *         return collisionObjectArray             # <<<<<<<<<<<<<<
@@ -19609,7 +19622,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
   __pyx_r = __pyx_v_collisionObjectArray;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1636
+  /* "bullet/bullet.pyx":1645
  *             Py_DECREF(collisionObject)
  * 
  *     def getCollisionObjectArray(self):             # <<<<<<<<<<<<<<
@@ -19633,7 +19646,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_14getCollisionObjectA
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1644
+/* "bullet/bullet.pyx":1653
  *         return collisionObjectArray
  * 
  *     def rayTestClosest(self, Vector3 rayFromWorld, Vector3 rayToWorld):             # <<<<<<<<<<<<<<
@@ -19672,11 +19685,11 @@ static PyObject *__pyx_pw_6bullet_6bullet_14CollisionWorld_17rayTestClosest(PyOb
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_rayToWorld)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("rayTestClosest", 1, 2, 2, 1); __PYX_ERR(1, 1644, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("rayTestClosest", 1, 2, 2, 1); __PYX_ERR(1, 1653, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "rayTestClosest") < 0)) __PYX_ERR(1, 1644, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "rayTestClosest") < 0)) __PYX_ERR(1, 1653, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -19689,14 +19702,14 @@ static PyObject *__pyx_pw_6bullet_6bullet_14CollisionWorld_17rayTestClosest(PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("rayTestClosest", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1644, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("rayTestClosest", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1653, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.CollisionWorld.rayTestClosest", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rayFromWorld), __pyx_ptype_6bullet_6bullet_Vector3, 1, "rayFromWorld", 0))) __PYX_ERR(1, 1644, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rayToWorld), __pyx_ptype_6bullet_6bullet_Vector3, 1, "rayToWorld", 0))) __PYX_ERR(1, 1644, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rayFromWorld), __pyx_ptype_6bullet_6bullet_Vector3, 1, "rayFromWorld", 0))) __PYX_ERR(1, 1653, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rayToWorld), __pyx_ptype_6bullet_6bullet_Vector3, 1, "rayToWorld", 0))) __PYX_ERR(1, 1653, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(((struct __pyx_obj_6bullet_6bullet_CollisionWorld *)__pyx_v_self), __pyx_v_rayFromWorld, __pyx_v_rayToWorld);
 
   /* function exit code */
@@ -19733,7 +19746,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
   PyObject *__pyx_t_15 = NULL;
   __Pyx_RefNannySetupContext("rayTestClosest", 0);
 
-  /* "bullet/bullet.pyx":1645
+  /* "bullet/bullet.pyx":1654
  * 
  *     def rayTestClosest(self, Vector3 rayFromWorld, Vector3 rayToWorld):
  *         cdef btVector3 fromVec = btVector3(rayFromWorld.x, rayFromWorld.y, rayFromWorld.z)             # <<<<<<<<<<<<<<
@@ -19742,7 +19755,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  */
   __pyx_v_fromVec = btVector3(__pyx_v_rayFromWorld->x, __pyx_v_rayFromWorld->y, __pyx_v_rayFromWorld->z);
 
-  /* "bullet/bullet.pyx":1646
+  /* "bullet/bullet.pyx":1655
  *     def rayTestClosest(self, Vector3 rayFromWorld, Vector3 rayToWorld):
  *         cdef btVector3 fromVec = btVector3(rayFromWorld.x, rayFromWorld.y, rayFromWorld.z)
  *         cdef btVector3 toVec = btVector3(rayToWorld.x, rayToWorld.y, rayToWorld.z)             # <<<<<<<<<<<<<<
@@ -19751,7 +19764,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  */
   __pyx_v_toVec = btVector3(__pyx_v_rayToWorld->x, __pyx_v_rayToWorld->y, __pyx_v_rayToWorld->z);
 
-  /* "bullet/bullet.pyx":1647
+  /* "bullet/bullet.pyx":1656
  *         cdef btVector3 fromVec = btVector3(rayFromWorld.x, rayFromWorld.y, rayFromWorld.z)
  *         cdef btVector3 toVec = btVector3(rayToWorld.x, rayToWorld.y, rayToWorld.z)
  *         cdef ClosestRayResultCallback btRes = ClosestRayResultCallback()             # <<<<<<<<<<<<<<
@@ -19760,7 +19773,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  */
   __pyx_v_btRes = __pyx_t_6bullet_6bullet_ClosestRayResultCallback();
 
-  /* "bullet/bullet.pyx":1648
+  /* "bullet/bullet.pyx":1657
  *         cdef btVector3 toVec = btVector3(rayToWorld.x, rayToWorld.y, rayToWorld.z)
  *         cdef ClosestRayResultCallback btRes = ClosestRayResultCallback()
  *         btRes.build(fromVec, toVec)             # <<<<<<<<<<<<<<
@@ -19769,7 +19782,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  */
   __pyx_v_btRes.build(__pyx_v_fromVec, __pyx_v_toVec);
 
-  /* "bullet/bullet.pyx":1649
+  /* "bullet/bullet.pyx":1658
  *         cdef ClosestRayResultCallback btRes = ClosestRayResultCallback()
  *         btRes.build(fromVec, toVec)
  *         self.thisptr.rayTest(fromVec, toVec, btRes)             # <<<<<<<<<<<<<<
@@ -19778,7 +19791,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  */
   __pyx_v_self->thisptr->rayTest(__pyx_v_fromVec, __pyx_v_toVec, __pyx_v_btRes);
 
-  /* "bullet/bullet.pyx":1650
+  /* "bullet/bullet.pyx":1659
  *         btRes.build(fromVec, toVec)
  *         self.thisptr.rayTest(fromVec, toVec, btRes)
  *         try:             # <<<<<<<<<<<<<<
@@ -19794,7 +19807,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "bullet/bullet.pyx":1651
+      /* "bullet/bullet.pyx":1660
  *         self.thisptr.rayTest(fromVec, toVec, btRes)
  *         try:
  *             if btRes.hasHit():             # <<<<<<<<<<<<<<
@@ -19804,19 +19817,19 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
       __pyx_t_4 = (__pyx_v_btRes.hasHit() != 0);
       if (__pyx_t_4) {
 
-        /* "bullet/bullet.pyx":1652
+        /* "bullet/bullet.pyx":1661
  *         try:
  *             if btRes.hasHit():
  *                 rayResult = RayResult()             # <<<<<<<<<<<<<<
  *                 rayResult.closestHitFraction = btRes.m_closestHitFraction
  *                 rayResult.collisionObject = <object>btRes.m_collisionObject.getUserPointer()
  */
-        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_RayResult), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1652, __pyx_L3_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_RayResult), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1661, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_v_rayResult = ((struct __pyx_obj_6bullet_6bullet_RayResult *)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "bullet/bullet.pyx":1653
+        /* "bullet/bullet.pyx":1662
  *             if btRes.hasHit():
  *                 rayResult = RayResult()
  *                 rayResult.closestHitFraction = btRes.m_closestHitFraction             # <<<<<<<<<<<<<<
@@ -19826,7 +19839,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         __pyx_t_6 = __pyx_v_btRes.m_closestHitFraction;
         __pyx_v_rayResult->closestHitFraction = __pyx_t_6;
 
-        /* "bullet/bullet.pyx":1654
+        /* "bullet/bullet.pyx":1663
  *                 rayResult = RayResult()
  *                 rayResult.closestHitFraction = btRes.m_closestHitFraction
  *                 rayResult.collisionObject = <object>btRes.m_collisionObject.getUserPointer()             # <<<<<<<<<<<<<<
@@ -19834,7 +19847,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  *                     raise RuntimeError('Collision object not found in world.')
  */
         __pyx_t_7 = __pyx_v_btRes.m_collisionObject->getUserPointer();
-        if (!(likely(((((PyObject *)__pyx_t_7)) == Py_None) || likely(__Pyx_TypeTest(((PyObject *)__pyx_t_7), __pyx_ptype_6bullet_6bullet_CollisionObject))))) __PYX_ERR(1, 1654, __pyx_L3_error)
+        if (!(likely(((((PyObject *)__pyx_t_7)) == Py_None) || likely(__Pyx_TypeTest(((PyObject *)__pyx_t_7), __pyx_ptype_6bullet_6bullet_CollisionObject))))) __PYX_ERR(1, 1663, __pyx_L3_error)
         __pyx_t_5 = ((PyObject *)__pyx_t_7);
         __Pyx_INCREF(__pyx_t_5);
         __Pyx_GIVEREF(__pyx_t_5);
@@ -19843,7 +19856,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         __pyx_v_rayResult->collisionObject = ((struct __pyx_obj_6bullet_6bullet_CollisionObject *)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "bullet/bullet.pyx":1655
+        /* "bullet/bullet.pyx":1664
  *                 rayResult.closestHitFraction = btRes.m_closestHitFraction
  *                 rayResult.collisionObject = <object>btRes.m_collisionObject.getUserPointer()
  *                 if rayResult.collisionObject is None:             # <<<<<<<<<<<<<<
@@ -19854,20 +19867,20 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         __pyx_t_8 = (__pyx_t_4 != 0);
         if (__pyx_t_8) {
 
-          /* "bullet/bullet.pyx":1656
+          /* "bullet/bullet.pyx":1665
  *                 rayResult.collisionObject = <object>btRes.m_collisionObject.getUserPointer()
  *                 if rayResult.collisionObject is None:
  *                     raise RuntimeError('Collision object not found in world.')             # <<<<<<<<<<<<<<
  *                 rayResult.collisionFilterGroup = btRes.m_collisionFilterGroup
  *                 rayResult.collisionFilterMask = btRes.m_collisionFilterMask
  */
-          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__76, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1656, __pyx_L3_error)
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__76, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1665, __pyx_L3_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_Raise(__pyx_t_5, 0, 0, 0);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-          __PYX_ERR(1, 1656, __pyx_L3_error)
+          __PYX_ERR(1, 1665, __pyx_L3_error)
 
-          /* "bullet/bullet.pyx":1655
+          /* "bullet/bullet.pyx":1664
  *                 rayResult.closestHitFraction = btRes.m_closestHitFraction
  *                 rayResult.collisionObject = <object>btRes.m_collisionObject.getUserPointer()
  *                 if rayResult.collisionObject is None:             # <<<<<<<<<<<<<<
@@ -19876,7 +19889,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  */
         }
 
-        /* "bullet/bullet.pyx":1657
+        /* "bullet/bullet.pyx":1666
  *                 if rayResult.collisionObject is None:
  *                     raise RuntimeError('Collision object not found in world.')
  *                 rayResult.collisionFilterGroup = btRes.m_collisionFilterGroup             # <<<<<<<<<<<<<<
@@ -19886,7 +19899,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         __pyx_t_9 = __pyx_v_btRes.m_collisionFilterGroup;
         __pyx_v_rayResult->collisionFilterGroup = __pyx_t_9;
 
-        /* "bullet/bullet.pyx":1658
+        /* "bullet/bullet.pyx":1667
  *                     raise RuntimeError('Collision object not found in world.')
  *                 rayResult.collisionFilterGroup = btRes.m_collisionFilterGroup
  *                 rayResult.collisionFilterMask = btRes.m_collisionFilterMask             # <<<<<<<<<<<<<<
@@ -19896,7 +19909,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         __pyx_t_9 = __pyx_v_btRes.m_collisionFilterMask;
         __pyx_v_rayResult->collisionFilterMask = __pyx_t_9;
 
-        /* "bullet/bullet.pyx":1659
+        /* "bullet/bullet.pyx":1668
  *                 rayResult.collisionFilterGroup = btRes.m_collisionFilterGroup
  *                 rayResult.collisionFilterMask = btRes.m_collisionFilterMask
  *                 rayResult.flags = btRes.m_flags             # <<<<<<<<<<<<<<
@@ -19906,71 +19919,71 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         __pyx_t_10 = __pyx_v_btRes.m_flags;
         __pyx_v_rayResult->flags = __pyx_t_10;
 
-        /* "bullet/bullet.pyx":1661
+        /* "bullet/bullet.pyx":1670
  *                 rayResult.flags = btRes.m_flags
  * 
  *                 rayResult.rayFromWorld = Vector3.frombtVector3(btRes.m_rayFromWorld)             # <<<<<<<<<<<<<<
  *                 rayResult.rayToWorld = Vector3.frombtVector3(btRes.m_rayToWorld)
  *                 rayResult.hitNormalWorld = Vector3.frombtVector3(btRes.m_hitNormalWorld)
  */
-        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_rayFromWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1661, __pyx_L3_error)
+        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_rayFromWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1670, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1661, __pyx_L3_error)
+        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1670, __pyx_L3_error)
         __Pyx_GIVEREF(__pyx_t_5);
         __Pyx_GOTREF(__pyx_v_rayResult->rayFromWorld);
         __Pyx_DECREF(((PyObject *)__pyx_v_rayResult->rayFromWorld));
         __pyx_v_rayResult->rayFromWorld = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "bullet/bullet.pyx":1662
+        /* "bullet/bullet.pyx":1671
  * 
  *                 rayResult.rayFromWorld = Vector3.frombtVector3(btRes.m_rayFromWorld)
  *                 rayResult.rayToWorld = Vector3.frombtVector3(btRes.m_rayToWorld)             # <<<<<<<<<<<<<<
  *                 rayResult.hitNormalWorld = Vector3.frombtVector3(btRes.m_hitNormalWorld)
  *                 rayResult.hitPointWorld  = Vector3.frombtVector3(btRes.m_hitPointWorld)
  */
-        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_rayToWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1662, __pyx_L3_error)
+        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_rayToWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1671, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1662, __pyx_L3_error)
+        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1671, __pyx_L3_error)
         __Pyx_GIVEREF(__pyx_t_5);
         __Pyx_GOTREF(__pyx_v_rayResult->rayToWorld);
         __Pyx_DECREF(((PyObject *)__pyx_v_rayResult->rayToWorld));
         __pyx_v_rayResult->rayToWorld = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "bullet/bullet.pyx":1663
+        /* "bullet/bullet.pyx":1672
  *                 rayResult.rayFromWorld = Vector3.frombtVector3(btRes.m_rayFromWorld)
  *                 rayResult.rayToWorld = Vector3.frombtVector3(btRes.m_rayToWorld)
  *                 rayResult.hitNormalWorld = Vector3.frombtVector3(btRes.m_hitNormalWorld)             # <<<<<<<<<<<<<<
  *                 rayResult.hitPointWorld  = Vector3.frombtVector3(btRes.m_hitPointWorld)
  *                 return rayResult
  */
-        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_hitNormalWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1663, __pyx_L3_error)
+        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_hitNormalWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1672, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1663, __pyx_L3_error)
+        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1672, __pyx_L3_error)
         __Pyx_GIVEREF(__pyx_t_5);
         __Pyx_GOTREF(__pyx_v_rayResult->hitNormalWorld);
         __Pyx_DECREF(((PyObject *)__pyx_v_rayResult->hitNormalWorld));
         __pyx_v_rayResult->hitNormalWorld = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "bullet/bullet.pyx":1664
+        /* "bullet/bullet.pyx":1673
  *                 rayResult.rayToWorld = Vector3.frombtVector3(btRes.m_rayToWorld)
  *                 rayResult.hitNormalWorld = Vector3.frombtVector3(btRes.m_hitNormalWorld)
  *                 rayResult.hitPointWorld  = Vector3.frombtVector3(btRes.m_hitPointWorld)             # <<<<<<<<<<<<<<
  *                 return rayResult
  *             else:
  */
-        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_hitPointWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1664, __pyx_L3_error)
+        __pyx_t_5 = __pyx_f_6bullet_6bullet_7Vector3_frombtVector3(__pyx_v_btRes.m_hitPointWorld); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1673, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1664, __pyx_L3_error)
+        if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_6bullet_6bullet_Vector3))))) __PYX_ERR(1, 1673, __pyx_L3_error)
         __Pyx_GIVEREF(__pyx_t_5);
         __Pyx_GOTREF(__pyx_v_rayResult->hitPointWorld);
         __Pyx_DECREF(((PyObject *)__pyx_v_rayResult->hitPointWorld));
         __pyx_v_rayResult->hitPointWorld = ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "bullet/bullet.pyx":1665
+        /* "bullet/bullet.pyx":1674
  *                 rayResult.hitNormalWorld = Vector3.frombtVector3(btRes.m_hitNormalWorld)
  *                 rayResult.hitPointWorld  = Vector3.frombtVector3(btRes.m_hitPointWorld)
  *                 return rayResult             # <<<<<<<<<<<<<<
@@ -19982,7 +19995,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         __pyx_r = ((PyObject *)__pyx_v_rayResult);
         goto __pyx_L7_try_return;
 
-        /* "bullet/bullet.pyx":1651
+        /* "bullet/bullet.pyx":1660
  *         self.thisptr.rayTest(fromVec, toVec, btRes)
  *         try:
  *             if btRes.hasHit():             # <<<<<<<<<<<<<<
@@ -19991,7 +20004,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
  */
       }
 
-      /* "bullet/bullet.pyx":1667
+      /* "bullet/bullet.pyx":1676
  *                 return rayResult
  *             else:
  *                 return None             # <<<<<<<<<<<<<<
@@ -20005,7 +20018,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
         goto __pyx_L7_try_return;
       }
 
-      /* "bullet/bullet.pyx":1650
+      /* "bullet/bullet.pyx":1659
  *         btRes.build(fromVec, toVec)
  *         self.thisptr.rayTest(fromVec, toVec, btRes)
  *         try:             # <<<<<<<<<<<<<<
@@ -20016,7 +20029,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
     __pyx_L3_error:;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "bullet/bullet.pyx":1668
+    /* "bullet/bullet.pyx":1677
  *             else:
  *                 return None
  *         except Exception as ex:             # <<<<<<<<<<<<<<
@@ -20026,26 +20039,26 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
     __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_11) {
       __Pyx_AddTraceback("bullet.bullet.CollisionWorld.rayTestClosest", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_12, &__pyx_t_13) < 0) __PYX_ERR(1, 1668, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_12, &__pyx_t_13) < 0) __PYX_ERR(1, 1677, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_INCREF(__pyx_t_12);
       __pyx_v_ex = __pyx_t_12;
 
-      /* "bullet/bullet.pyx":1669
+      /* "bullet/bullet.pyx":1678
  *                 return None
  *         except Exception as ex:
  *             print('Error in cyBullet/rayTestClosest: ' + ex.message)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_ex, __pyx_n_s_message); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 1669, __pyx_L5_except_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_ex, __pyx_n_s_message); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 1678, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_15 = PyNumber_Add(__pyx_kp_s_Error_in_cyBullet_rayTestClosest, __pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 1669, __pyx_L5_except_error)
+      __pyx_t_15 = PyNumber_Add(__pyx_kp_s_Error_in_cyBullet_rayTestClosest, __pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 1678, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_15);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_15) < 0) __PYX_ERR(1, 1669, __pyx_L5_except_error)
+      if (__Pyx_PrintOne(0, __pyx_t_15) < 0) __PYX_ERR(1, 1678, __pyx_L5_except_error)
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
@@ -20055,7 +20068,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "bullet/bullet.pyx":1650
+    /* "bullet/bullet.pyx":1659
  *         btRes.build(fromVec, toVec)
  *         self.thisptr.rayTest(fromVec, toVec, btRes)
  *         try:             # <<<<<<<<<<<<<<
@@ -20080,7 +20093,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_16rayTestClosest(stru
     __Pyx_ExceptionReset(__pyx_t_1, __pyx_t_2, __pyx_t_3);
   }
 
-  /* "bullet/bullet.pyx":1644
+  /* "bullet/bullet.pyx":1653
  *         return collisionObjectArray
  * 
  *     def rayTestClosest(self, Vector3 rayFromWorld, Vector3 rayToWorld):             # <<<<<<<<<<<<<<
@@ -20214,7 +20227,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_14CollisionWorld_20__setstate_cython__
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1708
+/* "bullet/bullet.pyx":1717
  *     #     return self.btRayCallback.needsCollision(proxy0.thisptr[0])
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -20249,7 +20262,7 @@ static int __pyx_pf_6bullet_6bullet_9RayResult___cinit__(CYTHON_UNUSED struct __
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1694
+/* "bullet/bullet.pyx":1703
  * 
  * cdef class RayResult:
  *     cdef readonly float closestHitFraction             # <<<<<<<<<<<<<<
@@ -20276,7 +20289,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_18closestHitFraction___get_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->closestHitFraction); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1694, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->closestHitFraction); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1703, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20293,7 +20306,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_18closestHitFraction___get_
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1695
+/* "bullet/bullet.pyx":1704
  * cdef class RayResult:
  *     cdef readonly float closestHitFraction
  *     cdef readonly CollisionObject collisionObject             # <<<<<<<<<<<<<<
@@ -20330,7 +20343,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_15collisionObject___get__(s
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1696
+/* "bullet/bullet.pyx":1705
  *     cdef readonly float closestHitFraction
  *     cdef readonly CollisionObject collisionObject
  *     cdef readonly int collisionFilterGroup             # <<<<<<<<<<<<<<
@@ -20357,7 +20370,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_20collisionFilterGroup___ge
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->collisionFilterGroup); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1696, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->collisionFilterGroup); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1705, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20374,7 +20387,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_20collisionFilterGroup___ge
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1697
+/* "bullet/bullet.pyx":1706
  *     cdef readonly CollisionObject collisionObject
  *     cdef readonly int collisionFilterGroup
  *     cdef readonly int collisionFilterMask             # <<<<<<<<<<<<<<
@@ -20401,7 +20414,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_19collisionFilterMask___get
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->collisionFilterMask); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1697, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->collisionFilterMask); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1706, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20418,7 +20431,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_19collisionFilterMask___get
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1698
+/* "bullet/bullet.pyx":1707
  *     cdef readonly int collisionFilterGroup
  *     cdef readonly int collisionFilterMask
  *     cdef readonly int flags             # <<<<<<<<<<<<<<
@@ -20445,7 +20458,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_5flags___get__(struct __pyx
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->flags); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1698, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->flags); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1707, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20462,7 +20475,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_5flags___get__(struct __pyx
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1700
+/* "bullet/bullet.pyx":1709
  *     cdef readonly int flags
  * 
  *     cdef readonly Vector3 rayFromWorld             # <<<<<<<<<<<<<<
@@ -20499,7 +20512,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_12rayFromWorld___get__(stru
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1701
+/* "bullet/bullet.pyx":1710
  * 
  *     cdef readonly Vector3 rayFromWorld
  *     cdef readonly Vector3 rayToWorld             # <<<<<<<<<<<<<<
@@ -20536,7 +20549,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_10rayToWorld___get__(struct
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1702
+/* "bullet/bullet.pyx":1711
  *     cdef readonly Vector3 rayFromWorld
  *     cdef readonly Vector3 rayToWorld
  *     cdef readonly Vector3 hitNormalWorld             # <<<<<<<<<<<<<<
@@ -20573,7 +20586,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_14hitNormalWorld___get__(st
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1703
+/* "bullet/bullet.pyx":1712
  *     cdef readonly Vector3 rayToWorld
  *     cdef readonly Vector3 hitNormalWorld
  *     cdef readonly Vector3 hitPointWorld             # <<<<<<<<<<<<<<
@@ -20717,7 +20730,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_9RayResult_4__setstate_cython__(CYTHON
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1728
+/* "bullet/bullet.pyx":1737
  *     btVector3 m_hitPointWorld
  * 
  *     ClosestRayResultCallback():             # <<<<<<<<<<<<<<
@@ -20733,7 +20746,7 @@ void __pyx_t_6bullet_6bullet_ClosestRayResultCallback::__pyx_f___init__ClosestRa
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":1731
+/* "bullet/bullet.pyx":1740
  *         pass
  * 
  *     void build(const btVector3 &fromVec, const btVector3 &toVec):             # <<<<<<<<<<<<<<
@@ -20745,7 +20758,7 @@ void __pyx_t_6bullet_6bullet_ClosestRayResultCallback::build(btVector3 const &__
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("build", 0);
 
-  /* "bullet/bullet.pyx":1732
+  /* "bullet/bullet.pyx":1741
  * 
  *     void build(const btVector3 &fromVec, const btVector3 &toVec):
  *         this.m_rayFromWorld = fromVec             # <<<<<<<<<<<<<<
@@ -20754,7 +20767,7 @@ void __pyx_t_6bullet_6bullet_ClosestRayResultCallback::build(btVector3 const &__
  */
   this->m_rayFromWorld = __pyx_v_fromVec;
 
-  /* "bullet/bullet.pyx":1733
+  /* "bullet/bullet.pyx":1742
  *     void build(const btVector3 &fromVec, const btVector3 &toVec):
  *         this.m_rayFromWorld = fromVec
  *         this.m_rayToWorld = toVec             # <<<<<<<<<<<<<<
@@ -20763,7 +20776,7 @@ void __pyx_t_6bullet_6bullet_ClosestRayResultCallback::build(btVector3 const &__
  */
   this->m_rayToWorld = __pyx_v_toVec;
 
-  /* "bullet/bullet.pyx":1731
+  /* "bullet/bullet.pyx":1740
  *         pass
  * 
  *     void build(const btVector3 &fromVec, const btVector3 &toVec):             # <<<<<<<<<<<<<<
@@ -20775,7 +20788,7 @@ void __pyx_t_6bullet_6bullet_ClosestRayResultCallback::build(btVector3 const &__
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":1735
+/* "bullet/bullet.pyx":1744
  *         this.m_rayToWorld = toVec
  * 
  *     btScalar addSingleResult(LocalRayResult& rayResult, bool normalInWorldSpace):             # <<<<<<<<<<<<<<
@@ -20792,7 +20805,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   btVector3 __pyx_t_4;
   __Pyx_RefNannySetupContext("addSingleResult", 0);
 
-  /* "bullet/bullet.pyx":1737
+  /* "bullet/bullet.pyx":1746
  *     btScalar addSingleResult(LocalRayResult& rayResult, bool normalInWorldSpace):
  *         # caller already does the filter on the m_closestHitFraction
  *         assert(rayResult.m_hitFraction <= this.m_closestHitFraction)             # <<<<<<<<<<<<<<
@@ -20803,12 +20816,12 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_rayResult.m_hitFraction <= this->m_closestHitFraction) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(1, 1737, __pyx_L1_error)
+      __PYX_ERR(1, 1746, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "bullet/bullet.pyx":1738
+  /* "bullet/bullet.pyx":1747
  *         # caller already does the filter on the m_closestHitFraction
  *         assert(rayResult.m_hitFraction <= this.m_closestHitFraction)
  *         this.m_closestHitFraction = rayResult.m_hitFraction             # <<<<<<<<<<<<<<
@@ -20818,7 +20831,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   __pyx_t_1 = __pyx_v_rayResult.m_hitFraction;
   this->m_closestHitFraction = __pyx_t_1;
 
-  /* "bullet/bullet.pyx":1739
+  /* "bullet/bullet.pyx":1748
  *         assert(rayResult.m_hitFraction <= this.m_closestHitFraction)
  *         this.m_closestHitFraction = rayResult.m_hitFraction
  *         this.m_collisionObject = rayResult.m_collisionObject             # <<<<<<<<<<<<<<
@@ -20828,7 +20841,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   __pyx_t_2 = __pyx_v_rayResult.m_collisionObject;
   this->m_collisionObject = __pyx_t_2;
 
-  /* "bullet/bullet.pyx":1740
+  /* "bullet/bullet.pyx":1749
  *         this.m_closestHitFraction = rayResult.m_hitFraction
  *         this.m_collisionObject = rayResult.m_collisionObject
  *         if normalInWorldSpace:             # <<<<<<<<<<<<<<
@@ -20838,7 +20851,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   __pyx_t_3 = (__pyx_v_normalInWorldSpace != 0);
   if (__pyx_t_3) {
 
-    /* "bullet/bullet.pyx":1741
+    /* "bullet/bullet.pyx":1750
  *         this.m_collisionObject = rayResult.m_collisionObject
  *         if normalInWorldSpace:
  *             this.m_hitNormalWorld = rayResult.m_hitNormalLocal             # <<<<<<<<<<<<<<
@@ -20848,7 +20861,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
     __pyx_t_4 = __pyx_v_rayResult.m_hitNormalLocal;
     this->m_hitNormalWorld = __pyx_t_4;
 
-    /* "bullet/bullet.pyx":1740
+    /* "bullet/bullet.pyx":1749
  *         this.m_closestHitFraction = rayResult.m_hitFraction
  *         this.m_collisionObject = rayResult.m_collisionObject
  *         if normalInWorldSpace:             # <<<<<<<<<<<<<<
@@ -20858,7 +20871,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
     goto __pyx_L3;
   }
 
-  /* "bullet/bullet.pyx":1743
+  /* "bullet/bullet.pyx":1752
  *             this.m_hitNormalWorld = rayResult.m_hitNormalLocal
  *         else:
  *             this.m_hitNormalWorld = m_collisionObject.getWorldTransform().getBasis() * rayResult.m_hitNormalLocal             # <<<<<<<<<<<<<<
@@ -20870,7 +20883,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   }
   __pyx_L3:;
 
-  /* "bullet/bullet.pyx":1745
+  /* "bullet/bullet.pyx":1754
  *             this.m_hitNormalWorld = m_collisionObject.getWorldTransform().getBasis() * rayResult.m_hitNormalLocal
  * 
  *         this.m_hitPointWorld.setInterpolate3(this.m_rayFromWorld, this.m_rayToWorld, rayResult.m_hitFraction)             # <<<<<<<<<<<<<<
@@ -20879,7 +20892,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
  */
   this->m_hitPointWorld.setInterpolate3(this->m_rayFromWorld, this->m_rayToWorld, __pyx_v_rayResult.m_hitFraction);
 
-  /* "bullet/bullet.pyx":1746
+  /* "bullet/bullet.pyx":1755
  * 
  *         this.m_hitPointWorld.setInterpolate3(this.m_rayFromWorld, this.m_rayToWorld, rayResult.m_hitFraction)
  *         return rayResult.m_hitFraction             # <<<<<<<<<<<<<<
@@ -20889,7 +20902,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   __pyx_r = __pyx_v_rayResult.m_hitFraction;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1735
+  /* "bullet/bullet.pyx":1744
  *         this.m_rayToWorld = toVec
  * 
  *     btScalar addSingleResult(LocalRayResult& rayResult, bool normalInWorldSpace):             # <<<<<<<<<<<<<<
@@ -20906,7 +20919,7 @@ btScalar __pyx_t_6bullet_6bullet_ClosestRayResultCallback::addSingleResult(btCol
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1762
+/* "bullet/bullet.pyx":1771
  *     don't instantiate this class!
  *     """
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -20944,7 +20957,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
   int __pyx_t_11;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "bullet/bullet.pyx":1763
+  /* "bullet/bullet.pyx":1772
  *     """
  *     def __dealloc__(self):
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -20953,7 +20966,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
  */
   __pyx_v_world = ((btDynamicsWorld *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1767
+  /* "bullet/bullet.pyx":1776
  *         cdef uintptr_t worldPointer, actionPointer
  * 
  *         for (worldPointer, actionPointer) in _actions.keys():             # <<<<<<<<<<<<<<
@@ -20962,17 +20975,17 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
  */
   if (unlikely(__pyx_v_6bullet_6bullet__actions == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(1, 1767, __pyx_L1_error)
+    __PYX_ERR(1, 1776, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_6bullet_6bullet__actions); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1767, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_6bullet_6bullet__actions); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1776, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1767, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1776, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1767, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1776, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -20980,17 +20993,17 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(1, 1767, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(1, 1776, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1767, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1776, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(1, 1767, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_1); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(1, 1776, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1767, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1776, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -21000,7 +21013,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(1, 1767, __pyx_L1_error)
+          else __PYX_ERR(1, 1776, __pyx_L1_error)
         }
         break;
       }
@@ -21016,7 +21029,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(1, 1767, __pyx_L1_error)
+        __PYX_ERR(1, 1776, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -21029,15 +21042,15 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
       __Pyx_INCREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_6);
       #else
-      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1767, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1776, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1767, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1776, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1767, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1776, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -21045,7 +21058,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
       __Pyx_GOTREF(__pyx_t_5);
       index = 1; __pyx_t_6 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_6)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_6);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(1, 1767, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(1, 1776, __pyx_L1_error)
       __pyx_t_8 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L6_unpacking_done;
@@ -21053,17 +21066,17 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(1, 1767, __pyx_L1_error)
+      __PYX_ERR(1, 1776, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
-    __pyx_t_9 = __Pyx_PyInt_As_size_t(__pyx_t_5); if (unlikely((__pyx_t_9 == ((uintptr_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1767, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_As_size_t(__pyx_t_5); if (unlikely((__pyx_t_9 == ((uintptr_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1776, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_10 = __Pyx_PyInt_As_size_t(__pyx_t_6); if (unlikely((__pyx_t_10 == ((uintptr_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1767, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_As_size_t(__pyx_t_6); if (unlikely((__pyx_t_10 == ((uintptr_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1776, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_v_worldPointer = __pyx_t_9;
     __pyx_v_actionPointer = __pyx_t_10;
 
-    /* "bullet/bullet.pyx":1769
+    /* "bullet/bullet.pyx":1778
  *         for (worldPointer, actionPointer) in _actions.keys():
  *             # If the action was added to this world...
  *             if worldPointer == <uintptr_t>self.thisptr:             # <<<<<<<<<<<<<<
@@ -21073,7 +21086,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
     __pyx_t_11 = ((__pyx_v_worldPointer == ((uintptr_t)__pyx_v_self->__pyx_base.thisptr)) != 0);
     if (__pyx_t_11) {
 
-      /* "bullet/bullet.pyx":1770
+      /* "bullet/bullet.pyx":1779
  *             # If the action was added to this world...
  *             if worldPointer == <uintptr_t>self.thisptr:
  *                 action = <btActionInterface*>actionPointer             # <<<<<<<<<<<<<<
@@ -21082,7 +21095,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
  */
       __pyx_v_action = ((btActionInterface *)__pyx_v_actionPointer);
 
-      /* "bullet/bullet.pyx":1772
+      /* "bullet/bullet.pyx":1781
  *                 action = <btActionInterface*>actionPointer
  *                 # remove it from this world
  *                 world.removeAction(action)             # <<<<<<<<<<<<<<
@@ -21091,7 +21104,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
  */
       __pyx_v_world->removeAction(__pyx_v_action);
 
-      /* "bullet/bullet.pyx":1774
+      /* "bullet/bullet.pyx":1783
  *                 world.removeAction(action)
  *                 # and remove it from the global actions dictionary.
  *                 del _actions[worldPointer, actionPointer]             # <<<<<<<<<<<<<<
@@ -21100,13 +21113,13 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
  */
       if (unlikely(__pyx_v_6bullet_6bullet__actions == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(1, 1774, __pyx_L1_error)
+        __PYX_ERR(1, 1783, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_worldPointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1774, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_worldPointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1783, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = __Pyx_PyInt_FromSize_t(__pyx_v_actionPointer); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1774, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyInt_FromSize_t(__pyx_v_actionPointer); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 1783, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1774, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1783, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -21114,10 +21127,10 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_6);
       __pyx_t_1 = 0;
       __pyx_t_6 = 0;
-      if (unlikely(PyDict_DelItem(__pyx_v_6bullet_6bullet__actions, __pyx_t_5) < 0)) __PYX_ERR(1, 1774, __pyx_L1_error)
+      if (unlikely(PyDict_DelItem(__pyx_v_6bullet_6bullet__actions, __pyx_t_5) < 0)) __PYX_ERR(1, 1783, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "bullet/bullet.pyx":1769
+      /* "bullet/bullet.pyx":1778
  *         for (worldPointer, actionPointer) in _actions.keys():
  *             # If the action was added to this world...
  *             if worldPointer == <uintptr_t>self.thisptr:             # <<<<<<<<<<<<<<
@@ -21126,7 +21139,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
  */
     }
 
-    /* "bullet/bullet.pyx":1767
+    /* "bullet/bullet.pyx":1776
  *         cdef uintptr_t worldPointer, actionPointer
  * 
  *         for (worldPointer, actionPointer) in _actions.keys():             # <<<<<<<<<<<<<<
@@ -21136,7 +21149,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "bullet/bullet.pyx":1762
+  /* "bullet/bullet.pyx":1771
  *     don't instantiate this class!
  *     """
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -21157,7 +21170,7 @@ static void __pyx_pf_6bullet_6bullet_13DynamicsWorld___dealloc__(struct __pyx_ob
   __Pyx_RefNannyFinishContext();
 }
 
-/* "bullet/bullet.pyx":1777
+/* "bullet/bullet.pyx":1786
  * 
  * 
  *     def removeRigidBody(self, RigidBody body not None):             # <<<<<<<<<<<<<<
@@ -21172,7 +21185,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_13DynamicsWorld_3removeRigidBody(PyObj
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("removeRigidBody (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_body), __pyx_ptype_6bullet_6bullet_RigidBody, 0, "body", 0))) __PYX_ERR(1, 1777, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_body), __pyx_ptype_6bullet_6bullet_RigidBody, 0, "body", 0))) __PYX_ERR(1, 1786, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_13DynamicsWorld_2removeRigidBody(((struct __pyx_obj_6bullet_6bullet_DynamicsWorld *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_RigidBody *)__pyx_v_body));
 
   /* function exit code */
@@ -21190,7 +21203,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_2removeRigidBody(struc
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("removeRigidBody", 0);
 
-  /* "bullet/bullet.pyx":1781
+  /* "bullet/bullet.pyx":1790
  *         Remove a RigidBody from this DynamicsWorld.
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -21199,7 +21212,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_2removeRigidBody(struc
  */
   __pyx_v_world = ((btDynamicsWorld *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1782
+  /* "bullet/bullet.pyx":1791
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         world.removeRigidBody(<btRigidBody*>body.thisptr)             # <<<<<<<<<<<<<<
@@ -21208,7 +21221,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_2removeRigidBody(struc
  */
   __pyx_v_world->removeRigidBody(((btRigidBody *)__pyx_v_body->__pyx_base.thisptr));
 
-  /* "bullet/bullet.pyx":1784
+  /* "bullet/bullet.pyx":1793
  *         world.removeRigidBody(<btRigidBody*>body.thisptr)
  * 
  *         body.thisptr.setUserPointer(NULL)             # <<<<<<<<<<<<<<
@@ -21217,7 +21230,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_2removeRigidBody(struc
  */
   __pyx_v_body->__pyx_base.thisptr->setUserPointer(NULL);
 
-  /* "bullet/bullet.pyx":1785
+  /* "bullet/bullet.pyx":1794
  * 
  *         body.thisptr.setUserPointer(NULL)
  *         Py_DECREF(body)             # <<<<<<<<<<<<<<
@@ -21226,7 +21239,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_2removeRigidBody(struc
  */
   Py_DECREF(((PyObject *)__pyx_v_body));
 
-  /* "bullet/bullet.pyx":1777
+  /* "bullet/bullet.pyx":1786
  * 
  * 
  *     def removeRigidBody(self, RigidBody body not None):             # <<<<<<<<<<<<<<
@@ -21241,7 +21254,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_2removeRigidBody(struc
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1788
+/* "bullet/bullet.pyx":1797
  * 
  * 
  *     def addAction(self, ActionInterface action not None):             # <<<<<<<<<<<<<<
@@ -21256,7 +21269,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_13DynamicsWorld_5addAction(PyObject *_
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("addAction (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_action), __pyx_ptype_6bullet_6bullet_ActionInterface, 0, "action", 0))) __PYX_ERR(1, 1788, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_action), __pyx_ptype_6bullet_6bullet_ActionInterface, 0, "action", 0))) __PYX_ERR(1, 1797, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_13DynamicsWorld_4addAction(((struct __pyx_obj_6bullet_6bullet_DynamicsWorld *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_ActionInterface *)__pyx_v_action));
 
   /* function exit code */
@@ -21278,7 +21291,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_4addAction(struct __py
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("addAction", 0);
 
-  /* "bullet/bullet.pyx":1792
+  /* "bullet/bullet.pyx":1801
  *         Add a new ActionInterface to this DynamicsWorld.
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -21287,7 +21300,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_4addAction(struct __py
  */
   __pyx_v_world = ((btDynamicsWorld *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1793
+  /* "bullet/bullet.pyx":1802
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         world.addAction(<btActionInterface*>action.thisptr)             # <<<<<<<<<<<<<<
@@ -21296,18 +21309,18 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_4addAction(struct __py
  */
   __pyx_v_world->addAction(((btActionInterface *)__pyx_v_action->thisptr));
 
-  /* "bullet/bullet.pyx":1794
+  /* "bullet/bullet.pyx":1803
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         world.addAction(<btActionInterface*>action.thisptr)
  *         key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)             # <<<<<<<<<<<<<<
  *         _actions[key] = action
  * 
  */
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_self->__pyx_base.thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1794, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_self->__pyx_base.thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1803, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_action->thisptr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1794, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_action->thisptr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1803, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1794, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1803, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
@@ -21318,7 +21331,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_4addAction(struct __py
   __pyx_v_key = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "bullet/bullet.pyx":1795
+  /* "bullet/bullet.pyx":1804
  *         world.addAction(<btActionInterface*>action.thisptr)
  *         key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)
  *         _actions[key] = action             # <<<<<<<<<<<<<<
@@ -21327,11 +21340,11 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_4addAction(struct __py
  */
   if (unlikely(__pyx_v_6bullet_6bullet__actions == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 1795, __pyx_L1_error)
+    __PYX_ERR(1, 1804, __pyx_L1_error)
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_6bullet_6bullet__actions, __pyx_v_key, ((PyObject *)__pyx_v_action)) < 0)) __PYX_ERR(1, 1795, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_6bullet_6bullet__actions, __pyx_v_key, ((PyObject *)__pyx_v_action)) < 0)) __PYX_ERR(1, 1804, __pyx_L1_error)
 
-  /* "bullet/bullet.pyx":1788
+  /* "bullet/bullet.pyx":1797
  * 
  * 
  *     def addAction(self, ActionInterface action not None):             # <<<<<<<<<<<<<<
@@ -21355,7 +21368,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_4addAction(struct __py
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1798
+/* "bullet/bullet.pyx":1807
  * 
  * 
  *     def removeAction(self, ActionInterface action not None):             # <<<<<<<<<<<<<<
@@ -21370,7 +21383,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_13DynamicsWorld_7removeAction(PyObject
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("removeAction (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_action), __pyx_ptype_6bullet_6bullet_ActionInterface, 0, "action", 0))) __PYX_ERR(1, 1798, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_action), __pyx_ptype_6bullet_6bullet_ActionInterface, 0, "action", 0))) __PYX_ERR(1, 1807, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_13DynamicsWorld_6removeAction(((struct __pyx_obj_6bullet_6bullet_DynamicsWorld *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_ActionInterface *)__pyx_v_action));
 
   /* function exit code */
@@ -21392,7 +21405,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_6removeAction(struct _
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("removeAction", 0);
 
-  /* "bullet/bullet.pyx":1803
+  /* "bullet/bullet.pyx":1812
  *         DynamicsWorld.
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -21401,7 +21414,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_6removeAction(struct _
  */
   __pyx_v_world = ((btDynamicsWorld *)__pyx_v_self->__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1804
+  /* "bullet/bullet.pyx":1813
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         world.removeAction(<btActionInterface*>action.thisptr)             # <<<<<<<<<<<<<<
@@ -21410,18 +21423,18 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_6removeAction(struct _
  */
   __pyx_v_world->removeAction(((btActionInterface *)__pyx_v_action->thisptr));
 
-  /* "bullet/bullet.pyx":1805
+  /* "bullet/bullet.pyx":1814
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         world.removeAction(<btActionInterface*>action.thisptr)
  *         key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)             # <<<<<<<<<<<<<<
  *         del _actions[key]
  * 
  */
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_self->__pyx_base.thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1805, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_self->__pyx_base.thisptr)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1814, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_action->thisptr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1805, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FromSize_t(((uintptr_t)__pyx_v_action->thisptr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1814, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1805, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1814, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
@@ -21432,7 +21445,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_6removeAction(struct _
   __pyx_v_key = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "bullet/bullet.pyx":1806
+  /* "bullet/bullet.pyx":1815
  *         world.removeAction(<btActionInterface*>action.thisptr)
  *         key = (<uintptr_t>self.thisptr, <uintptr_t>action.thisptr)
  *         del _actions[key]             # <<<<<<<<<<<<<<
@@ -21441,11 +21454,11 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_6removeAction(struct _
  */
   if (unlikely(__pyx_v_6bullet_6bullet__actions == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(1, 1806, __pyx_L1_error)
+    __PYX_ERR(1, 1815, __pyx_L1_error)
   }
-  if (unlikely(PyDict_DelItem(__pyx_v_6bullet_6bullet__actions, __pyx_v_key) < 0)) __PYX_ERR(1, 1806, __pyx_L1_error)
+  if (unlikely(PyDict_DelItem(__pyx_v_6bullet_6bullet__actions, __pyx_v_key) < 0)) __PYX_ERR(1, 1815, __pyx_L1_error)
 
-  /* "bullet/bullet.pyx":1798
+  /* "bullet/bullet.pyx":1807
  * 
  * 
  *     def removeAction(self, ActionInterface action not None):             # <<<<<<<<<<<<<<
@@ -21576,7 +21589,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_13DynamicsWorld_10__setstate_cython__(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1819
+/* "bullet/bullet.pyx":1828
  *     cdef ConstraintSolver solver
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -21597,7 +21610,7 @@ static int __pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_1__init__(PyObject *
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_dispatcher,&__pyx_n_s_broadphase,&__pyx_n_s_solver,0};
     PyObject* values[3] = {0,0,0};
 
-    /* "bullet/bullet.pyx":1820
+    /* "bullet/bullet.pyx":1829
  * 
  *     def __init__(self,
  *                  CollisionDispatcher dispatcher = None,             # <<<<<<<<<<<<<<
@@ -21606,7 +21619,7 @@ static int __pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_1__init__(PyObject *
  */
     values[0] = (PyObject *)((struct __pyx_obj_6bullet_6bullet_CollisionDispatcher *)Py_None);
 
-    /* "bullet/bullet.pyx":1821
+    /* "bullet/bullet.pyx":1830
  *     def __init__(self,
  *                  CollisionDispatcher dispatcher = None,
  *                  BroadphaseInterface broadphase = None,             # <<<<<<<<<<<<<<
@@ -21615,7 +21628,7 @@ static int __pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_1__init__(PyObject *
  */
     values[1] = (PyObject *)((struct __pyx_obj_6bullet_6bullet_BroadphaseInterface *)Py_None);
 
-    /* "bullet/bullet.pyx":1822
+    /* "bullet/bullet.pyx":1831
  *                  CollisionDispatcher dispatcher = None,
  *                  BroadphaseInterface broadphase = None,
  *                  ConstraintSolver solver = None):             # <<<<<<<<<<<<<<
@@ -21657,7 +21670,7 @@ static int __pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_1__init__(PyObject *
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 1819, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(1, 1828, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -21677,18 +21690,18 @@ static int __pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_1__init__(PyObject *
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1819, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1828, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.DiscreteDynamicsWorld.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dispatcher), __pyx_ptype_6bullet_6bullet_CollisionDispatcher, 1, "dispatcher", 0))) __PYX_ERR(1, 1820, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_broadphase), __pyx_ptype_6bullet_6bullet_BroadphaseInterface, 1, "broadphase", 0))) __PYX_ERR(1, 1821, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_solver), __pyx_ptype_6bullet_6bullet_ConstraintSolver, 1, "solver", 0))) __PYX_ERR(1, 1822, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dispatcher), __pyx_ptype_6bullet_6bullet_CollisionDispatcher, 1, "dispatcher", 0))) __PYX_ERR(1, 1829, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_broadphase), __pyx_ptype_6bullet_6bullet_BroadphaseInterface, 1, "broadphase", 0))) __PYX_ERR(1, 1830, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_solver), __pyx_ptype_6bullet_6bullet_ConstraintSolver, 1, "solver", 0))) __PYX_ERR(1, 1831, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(((struct __pyx_obj_6bullet_6bullet_DiscreteDynamicsWorld *)__pyx_v_self), __pyx_v_dispatcher, __pyx_v_broadphase, __pyx_v_solver);
 
-  /* "bullet/bullet.pyx":1819
+  /* "bullet/bullet.pyx":1828
  *     cdef ConstraintSolver solver
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -21720,7 +21733,7 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   __Pyx_INCREF((PyObject *)__pyx_v_broadphase);
   __Pyx_INCREF((PyObject *)__pyx_v_solver);
 
-  /* "bullet/bullet.pyx":1824
+  /* "bullet/bullet.pyx":1833
  *                  ConstraintSolver solver = None):
  * 
  *         if dispatcher is None:             # <<<<<<<<<<<<<<
@@ -21731,19 +21744,19 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "bullet/bullet.pyx":1825
+    /* "bullet/bullet.pyx":1834
  * 
  *         if dispatcher is None:
  *             dispatcher = CollisionDispatcher()             # <<<<<<<<<<<<<<
  *         if solver is None:
  *             solver = SequentialImpulseConstraintSolver()
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_CollisionDispatcher), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1825, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_CollisionDispatcher), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1834, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_dispatcher, ((struct __pyx_obj_6bullet_6bullet_CollisionDispatcher *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "bullet/bullet.pyx":1824
+    /* "bullet/bullet.pyx":1833
  *                  ConstraintSolver solver = None):
  * 
  *         if dispatcher is None:             # <<<<<<<<<<<<<<
@@ -21752,7 +21765,7 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
  */
   }
 
-  /* "bullet/bullet.pyx":1826
+  /* "bullet/bullet.pyx":1835
  *         if dispatcher is None:
  *             dispatcher = CollisionDispatcher()
  *         if solver is None:             # <<<<<<<<<<<<<<
@@ -21763,19 +21776,19 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":1827
+    /* "bullet/bullet.pyx":1836
  *             dispatcher = CollisionDispatcher()
  *         if solver is None:
  *             solver = SequentialImpulseConstraintSolver()             # <<<<<<<<<<<<<<
  *         if broadphase is None:
  *             broadphase = AxisSweep3(Vector3(-100, -100, -100), Vector3(100, 100, 100))
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_SequentialImpulseConstraintSolver), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1827, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_SequentialImpulseConstraintSolver), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1836, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_solver, ((struct __pyx_obj_6bullet_6bullet_ConstraintSolver *)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "bullet/bullet.pyx":1826
+    /* "bullet/bullet.pyx":1835
  *         if dispatcher is None:
  *             dispatcher = CollisionDispatcher()
  *         if solver is None:             # <<<<<<<<<<<<<<
@@ -21784,7 +21797,7 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
  */
   }
 
-  /* "bullet/bullet.pyx":1828
+  /* "bullet/bullet.pyx":1837
  *         if solver is None:
  *             solver = SequentialImpulseConstraintSolver()
  *         if broadphase is None:             # <<<<<<<<<<<<<<
@@ -21795,18 +21808,18 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "bullet/bullet.pyx":1829
+    /* "bullet/bullet.pyx":1838
  *             solver = SequentialImpulseConstraintSolver()
  *         if broadphase is None:
  *             broadphase = AxisSweep3(Vector3(-100, -100, -100), Vector3(100, 100, 100))             # <<<<<<<<<<<<<<
  * 
  *         self.solver = solver
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__83, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1829, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__83, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1838, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__84, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1829, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_tuple__84, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1838, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1829, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1838, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
@@ -21814,13 +21827,13 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
     PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
     __pyx_t_3 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_AxisSweep3), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1829, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_AxisSweep3), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1838, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF_SET(__pyx_v_broadphase, ((struct __pyx_obj_6bullet_6bullet_BroadphaseInterface *)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "bullet/bullet.pyx":1828
+    /* "bullet/bullet.pyx":1837
  *         if solver is None:
  *             solver = SequentialImpulseConstraintSolver()
  *         if broadphase is None:             # <<<<<<<<<<<<<<
@@ -21829,7 +21842,7 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
  */
   }
 
-  /* "bullet/bullet.pyx":1831
+  /* "bullet/bullet.pyx":1840
  *             broadphase = AxisSweep3(Vector3(-100, -100, -100), Vector3(100, 100, 100))
  * 
  *         self.solver = solver             # <<<<<<<<<<<<<<
@@ -21842,7 +21855,7 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   __Pyx_DECREF(((PyObject *)__pyx_v_self->solver));
   __pyx_v_self->solver = __pyx_v_solver;
 
-  /* "bullet/bullet.pyx":1832
+  /* "bullet/bullet.pyx":1841
  * 
  *         self.solver = solver
  *         self.thisptr = <btCollisionWorld*>new btDiscreteDynamicsWorld(             # <<<<<<<<<<<<<<
@@ -21851,14 +21864,14 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
  */
   __pyx_v_self->__pyx_base.__pyx_base.thisptr = ((btCollisionWorld *)new btDiscreteDynamicsWorld(__pyx_v_dispatcher->thisptr, __pyx_v_broadphase->thisptr, __pyx_v_solver->thisptr, __pyx_v_dispatcher->config));
 
-  /* "bullet/bullet.pyx":1836
+  /* "bullet/bullet.pyx":1845
  *             solver.thisptr, dispatcher.config)
  * 
  *         DynamicsWorld.__init__(self, dispatcher, broadphase)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_DynamicsWorld), __pyx_n_s_init); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1836, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_DynamicsWorld), __pyx_n_s_init); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 1845, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = NULL;
   __pyx_t_6 = 0;
@@ -21875,7 +21888,7 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, ((PyObject *)__pyx_v_self), ((PyObject *)__pyx_v_dispatcher), ((PyObject *)__pyx_v_broadphase)};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1836, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1845, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
@@ -21883,13 +21896,13 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, ((PyObject *)__pyx_v_self), ((PyObject *)__pyx_v_dispatcher), ((PyObject *)__pyx_v_broadphase)};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1836, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1845, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1836, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1845, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -21903,14 +21916,14 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
     __Pyx_INCREF(((PyObject *)__pyx_v_broadphase));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_broadphase));
     PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, ((PyObject *)__pyx_v_broadphase));
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1836, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1845, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "bullet/bullet.pyx":1819
+  /* "bullet/bullet.pyx":1828
  *     cdef ConstraintSolver solver
  * 
  *     def __init__(self,             # <<<<<<<<<<<<<<
@@ -21936,7 +21949,7 @@ static int __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld___init__(struct __py
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1839
+/* "bullet/bullet.pyx":1848
  * 
  * 
  *     def addRigidBody(self, RigidBody body not None, group=None, mask=None):             # <<<<<<<<<<<<<<
@@ -21991,7 +22004,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_3addRigidBody(
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "addRigidBody") < 0)) __PYX_ERR(1, 1839, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "addRigidBody") < 0)) __PYX_ERR(1, 1848, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -22010,13 +22023,13 @@ static PyObject *__pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_3addRigidBody(
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("addRigidBody", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1839, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("addRigidBody", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1848, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.DiscreteDynamicsWorld.addRigidBody", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_body), __pyx_ptype_6bullet_6bullet_RigidBody, 0, "body", 0))) __PYX_ERR(1, 1839, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_body), __pyx_ptype_6bullet_6bullet_RigidBody, 0, "body", 0))) __PYX_ERR(1, 1848, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(((struct __pyx_obj_6bullet_6bullet_DiscreteDynamicsWorld *)__pyx_v_self), __pyx_v_body, __pyx_v_group, __pyx_v_mask);
 
   /* function exit code */
@@ -22041,7 +22054,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
   __Pyx_INCREF(__pyx_v_group);
   __Pyx_INCREF(__pyx_v_mask);
 
-  /* "bullet/bullet.pyx":1848
+  /* "bullet/bullet.pyx":1857
  *         inherited from btCollisionWorld.
  *         """
  *         cdef btDiscreteDynamicsWorld *world = <btDiscreteDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -22050,7 +22063,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
  */
   __pyx_v_world = ((btDiscreteDynamicsWorld *)__pyx_v_self->__pyx_base.__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1850
+  /* "bullet/bullet.pyx":1859
  *         cdef btDiscreteDynamicsWorld *world = <btDiscreteDynamicsWorld*>self.thisptr
  *         # Supply a default for one or the other if either is not given
  *         if group is None:             # <<<<<<<<<<<<<<
@@ -22061,19 +22074,19 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "bullet/bullet.pyx":1851
+    /* "bullet/bullet.pyx":1860
  *         # Supply a default for one or the other if either is not given
  *         if group is None:
  *             group = BroadphaseProxy.DefaultFilter             # <<<<<<<<<<<<<<
  *         if mask is None:
  *             mask = BroadphaseProxy.AllFilter
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_DefaultFilter); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1851, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_DefaultFilter); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1860, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_group, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "bullet/bullet.pyx":1850
+    /* "bullet/bullet.pyx":1859
  *         cdef btDiscreteDynamicsWorld *world = <btDiscreteDynamicsWorld*>self.thisptr
  *         # Supply a default for one or the other if either is not given
  *         if group is None:             # <<<<<<<<<<<<<<
@@ -22082,7 +22095,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
  */
   }
 
-  /* "bullet/bullet.pyx":1852
+  /* "bullet/bullet.pyx":1861
  *         if group is None:
  *             group = BroadphaseProxy.DefaultFilter
  *         if mask is None:             # <<<<<<<<<<<<<<
@@ -22093,19 +22106,19 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "bullet/bullet.pyx":1853
+    /* "bullet/bullet.pyx":1862
  *             group = BroadphaseProxy.DefaultFilter
  *         if mask is None:
  *             mask = BroadphaseProxy.AllFilter             # <<<<<<<<<<<<<<
  * 
  *         # See comments in CollisionWorld.addCollisionBody for an explanation of
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_AllFilter); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1853, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_AllFilter); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_mask, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "bullet/bullet.pyx":1852
+    /* "bullet/bullet.pyx":1861
  *         if group is None:
  *             group = BroadphaseProxy.DefaultFilter
  *         if mask is None:             # <<<<<<<<<<<<<<
@@ -22114,7 +22127,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
  */
   }
 
-  /* "bullet/bullet.pyx":1857
+  /* "bullet/bullet.pyx":1866
  *         # See comments in CollisionWorld.addCollisionBody for an explanation of
  *         # these two lines.
  *         Py_INCREF(body)             # <<<<<<<<<<<<<<
@@ -22123,7 +22136,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
  */
   Py_INCREF(((PyObject *)__pyx_v_body));
 
-  /* "bullet/bullet.pyx":1858
+  /* "bullet/bullet.pyx":1867
  *         # these two lines.
  *         Py_INCREF(body)
  *         body.thisptr.setUserPointer(<void*>body)             # <<<<<<<<<<<<<<
@@ -22132,18 +22145,18 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
  */
   __pyx_v_body->__pyx_base.thisptr->setUserPointer(((void *)__pyx_v_body));
 
-  /* "bullet/bullet.pyx":1860
+  /* "bullet/bullet.pyx":1869
  *         body.thisptr.setUserPointer(<void*>body)
  * 
  *         world.addRigidBody(<btRigidBody*>body.thisptr, group, mask)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_4 = __Pyx_PyInt_As_short(__pyx_v_group); if (unlikely((__pyx_t_4 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1860, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyInt_As_short(__pyx_v_mask); if (unlikely((__pyx_t_5 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1860, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_short(__pyx_v_group); if (unlikely((__pyx_t_4 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1869, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_short(__pyx_v_mask); if (unlikely((__pyx_t_5 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1869, __pyx_L1_error)
   __pyx_v_world->addRigidBody(((btRigidBody *)__pyx_v_body->__pyx_base.thisptr), __pyx_t_4, __pyx_t_5);
 
-  /* "bullet/bullet.pyx":1839
+  /* "bullet/bullet.pyx":1848
  * 
  * 
  *     def addRigidBody(self, RigidBody body not None, group=None, mask=None):             # <<<<<<<<<<<<<<
@@ -22166,7 +22179,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_2addRigidBody(
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1863
+/* "bullet/bullet.pyx":1872
  * 
  * 
  *     def setGravity(self, Vector3 gravity):             # <<<<<<<<<<<<<<
@@ -22181,7 +22194,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_5setGravity(Py
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setGravity (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_gravity), __pyx_ptype_6bullet_6bullet_Vector3, 1, "gravity", 0))) __PYX_ERR(1, 1863, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_gravity), __pyx_ptype_6bullet_6bullet_Vector3, 1, "gravity", 0))) __PYX_ERR(1, 1872, __pyx_L1_error)
   __pyx_r = __pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_4setGravity(((struct __pyx_obj_6bullet_6bullet_DiscreteDynamicsWorld *)__pyx_v_self), ((struct __pyx_obj_6bullet_6bullet_Vector3 *)__pyx_v_gravity));
 
   /* function exit code */
@@ -22199,7 +22212,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_4setGravity(st
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setGravity", 0);
 
-  /* "bullet/bullet.pyx":1868
+  /* "bullet/bullet.pyx":1877
  *         XXX This belongs on DynamicsWorld.
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -22208,7 +22221,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_4setGravity(st
  */
   __pyx_v_world = ((btDynamicsWorld *)__pyx_v_self->__pyx_base.__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1869
+  /* "bullet/bullet.pyx":1878
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         world.setGravity(btVector3(gravity.x, gravity.y, gravity.z))             # <<<<<<<<<<<<<<
@@ -22217,7 +22230,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_4setGravity(st
  */
   __pyx_v_world->setGravity(btVector3(__pyx_v_gravity->x, __pyx_v_gravity->y, __pyx_v_gravity->z));
 
-  /* "bullet/bullet.pyx":1863
+  /* "bullet/bullet.pyx":1872
  * 
  * 
  *     def setGravity(self, Vector3 gravity):             # <<<<<<<<<<<<<<
@@ -22232,7 +22245,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_4setGravity(st
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1872
+/* "bullet/bullet.pyx":1881
  * 
  * 
  *     def getGravity(self):             # <<<<<<<<<<<<<<
@@ -22265,7 +22278,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_6getGravity(st
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("getGravity", 0);
 
-  /* "bullet/bullet.pyx":1877
+  /* "bullet/bullet.pyx":1886
  *         XXX This belongs on DynamicsWorld.
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -22274,7 +22287,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_6getGravity(st
  */
   __pyx_v_world = ((btDynamicsWorld *)__pyx_v_self->__pyx_base.__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1878
+  /* "bullet/bullet.pyx":1887
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         cdef btVector3 gravity = world.getGravity()             # <<<<<<<<<<<<<<
@@ -22283,7 +22296,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_6getGravity(st
  */
   __pyx_v_gravity = __pyx_v_world->getGravity();
 
-  /* "bullet/bullet.pyx":1879
+  /* "bullet/bullet.pyx":1888
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         cdef btVector3 gravity = world.getGravity()
  *         return Vector3(gravity.getX(), gravity.getY(), gravity.getZ())             # <<<<<<<<<<<<<<
@@ -22291,13 +22304,13 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_6getGravity(st
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_gravity.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1879, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_gravity.getX()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_gravity.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1879, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_gravity.getY()); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_gravity.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1879, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_gravity.getZ()); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1879, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 1888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -22308,14 +22321,14 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_6getGravity(st
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1879, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_6bullet_6bullet_Vector3), __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 1888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1872
+  /* "bullet/bullet.pyx":1881
  * 
  * 
  *     def getGravity(self):             # <<<<<<<<<<<<<<
@@ -22337,7 +22350,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_6getGravity(st
   return __pyx_r;
 }
 
-/* "bullet/bullet.pyx":1882
+/* "bullet/bullet.pyx":1891
  * 
  * 
  *     def stepSimulation(self,             # <<<<<<<<<<<<<<
@@ -22390,7 +22403,7 @@ static PyObject *__pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_9stepSimulatio
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stepSimulation") < 0)) __PYX_ERR(1, 1882, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "stepSimulation") < 0)) __PYX_ERR(1, 1891, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -22403,21 +22416,21 @@ static PyObject *__pyx_pw_6bullet_6bullet_21DiscreteDynamicsWorld_9stepSimulatio
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_timeStep = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_timeStep == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1883, __pyx_L3_error)
+    __pyx_v_timeStep = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_timeStep == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1892, __pyx_L3_error)
     if (values[1]) {
-      __pyx_v_maxSubSteps = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_maxSubSteps == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 1884, __pyx_L3_error)
+      __pyx_v_maxSubSteps = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_maxSubSteps == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 1893, __pyx_L3_error)
     } else {
       __pyx_v_maxSubSteps = ((int)1);
     }
     if (values[2]) {
-      __pyx_v_fixedTimeStep = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_fixedTimeStep == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1885, __pyx_L3_error)
+      __pyx_v_fixedTimeStep = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_fixedTimeStep == ((btScalar)-1)) && PyErr_Occurred())) __PYX_ERR(1, 1894, __pyx_L3_error)
     } else {
       __pyx_v_fixedTimeStep = __pyx_k__85;
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("stepSimulation", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1882, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("stepSimulation", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 1891, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("bullet.bullet.DiscreteDynamicsWorld.stepSimulation", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -22437,7 +22450,7 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_8stepSimulatio
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("stepSimulation", 0);
 
-  /* "bullet/bullet.pyx":1904
+  /* "bullet/bullet.pyx":1913
  *         The number of simulation steps taken is returned.
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr             # <<<<<<<<<<<<<<
@@ -22445,19 +22458,19 @@ static PyObject *__pyx_pf_6bullet_6bullet_21DiscreteDynamicsWorld_8stepSimulatio
  */
   __pyx_v_world = ((btDynamicsWorld *)__pyx_v_self->__pyx_base.__pyx_base.thisptr);
 
-  /* "bullet/bullet.pyx":1905
+  /* "bullet/bullet.pyx":1914
  *         """
  *         cdef btDynamicsWorld *world = <btDynamicsWorld*>self.thisptr
  *         return world.stepSimulation(timeStep, maxSubSteps, fixedTimeStep)             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_world->stepSimulation(__pyx_v_timeStep, __pyx_v_maxSubSteps, __pyx_v_fixedTimeStep)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1905, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_world->stepSimulation(__pyx_v_timeStep, __pyx_v_maxSubSteps, __pyx_v_fixedTimeStep)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1914, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "bullet/bullet.pyx":1882
+  /* "bullet/bullet.pyx":1891
  * 
  * 
  *     def stepSimulation(self,             # <<<<<<<<<<<<<<
@@ -29487,6 +29500,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Collision_object_not_found_in_wo, __pyx_k_Collision_object_not_found_in_wo, sizeof(__pyx_k_Collision_object_not_found_in_wo), 0, 0, 1, 0},
   {&__pyx_n_s_DISABLE_DEACTIVATION, __pyx_k_DISABLE_DEACTIVATION, sizeof(__pyx_k_DISABLE_DEACTIVATION), 0, 0, 1, 1},
   {&__pyx_n_s_DISABLE_SIMULATION, __pyx_k_DISABLE_SIMULATION, sizeof(__pyx_k_DISABLE_SIMULATION), 0, 0, 1, 1},
+  {&__pyx_n_s_DRAW_AABB, __pyx_k_DRAW_AABB, sizeof(__pyx_k_DRAW_AABB), 0, 0, 1, 1},
+  {&__pyx_n_s_DRAW_CONSTRAINTS, __pyx_k_DRAW_CONSTRAINTS, sizeof(__pyx_k_DRAW_CONSTRAINTS), 0, 0, 1, 1},
+  {&__pyx_n_s_DRAW_CONSTRAINT_LIMITS, __pyx_k_DRAW_CONSTRAINT_LIMITS, sizeof(__pyx_k_DRAW_CONSTRAINT_LIMITS), 0, 0, 1, 1},
+  {&__pyx_n_s_DRAW_CONTACT_POINTS, __pyx_k_DRAW_CONTACT_POINTS, sizeof(__pyx_k_DRAW_CONTACT_POINTS), 0, 0, 1, 1},
+  {&__pyx_n_s_DRAW_FEATURES_TEXT, __pyx_k_DRAW_FEATURES_TEXT, sizeof(__pyx_k_DRAW_FEATURES_TEXT), 0, 0, 1, 1},
+  {&__pyx_n_s_DRAW_TEXT, __pyx_k_DRAW_TEXT, sizeof(__pyx_k_DRAW_TEXT), 0, 0, 1, 1},
+  {&__pyx_n_s_DRAW_WIREFRAME, __pyx_k_DRAW_WIREFRAME, sizeof(__pyx_k_DRAW_WIREFRAME), 0, 0, 1, 1},
   {&__pyx_n_s_DefaultFilter, __pyx_k_DefaultFilter, sizeof(__pyx_k_DefaultFilter), 0, 0, 1, 1},
   {&__pyx_kp_s_Error_in_cyBullet_rayTestClosest, __pyx_k_Error_in_cyBullet_rayTestClosest, sizeof(__pyx_k_Error_in_cyBullet_rayTestClosest), 0, 0, 1, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
@@ -29494,6 +29514,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ISLAND_SLEEPING, __pyx_k_ISLAND_SLEEPING, sizeof(__pyx_k_ISLAND_SLEEPING), 0, 0, 1, 1},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_kp_s_Incompatible_checksums_s_vs_0x49, __pyx_k_Incompatible_checksums_s_vs_0x49, sizeof(__pyx_k_Incompatible_checksums_s_vs_0x49), 0, 0, 1, 0},
+  {&__pyx_n_s_NO_DEBUG, __pyx_k_NO_DEBUG, sizeof(__pyx_k_NO_DEBUG), 0, 0, 1, 1},
   {&__pyx_kp_u_Non_native_byte_order_not_suppor, __pyx_k_Non_native_byte_order_not_suppor, sizeof(__pyx_k_Non_native_byte_order_not_suppor), 0, 1, 0, 0},
   {&__pyx_n_s_PickleError, __pyx_k_PickleError, sizeof(__pyx_k_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_RuntimeError, __pyx_k_RuntimeError, sizeof(__pyx_k_RuntimeError), 0, 0, 1, 1},
@@ -29625,8 +29646,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 2, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 421, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(1, 1639, __pyx_L1_error)
-  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 1656, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(1, 1648, __pyx_L1_error)
+  __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 1665, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 1013, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -30069,14 +30090,14 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__45);
   __Pyx_GIVEREF(__pyx_tuple__45);
 
-  /* "bullet/bullet.pyx":919
+  /* "bullet/bullet.pyx":928
  *             motion = DefaultMotionState()
  *         if shape is None:
  *             shape = BoxShape(Vector3(0.5, 0.5, 0.5))             # <<<<<<<<<<<<<<
  * 
  *         self.motion = motion
  */
-  __pyx_tuple__46 = PyTuple_Pack(3, __pyx_float_0_5, __pyx_float_0_5, __pyx_float_0_5); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(1, 919, __pyx_L1_error)
+  __pyx_tuple__46 = PyTuple_Pack(3, __pyx_float_0_5, __pyx_float_0_5, __pyx_float_0_5); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(1, 928, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__46);
   __Pyx_GIVEREF(__pyx_tuple__46);
 
@@ -30308,39 +30329,39 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__70);
   __Pyx_GIVEREF(__pyx_tuple__70);
 
-  /* "bullet/bullet.pyx":1512
+  /* "bullet/bullet.pyx":1521
  *             dispatcher = CollisionDispatcher()
  *         if broadphase is None:
  *             broadphase = AxisSweep3(Vector3(0, 0, 0), Vector3(10, 10, 10))             # <<<<<<<<<<<<<<
  * 
  *         Py_INCREF(dispatcher)
  */
-  __pyx_tuple__71 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(1, 1512, __pyx_L1_error)
+  __pyx_tuple__71 = PyTuple_Pack(3, __pyx_int_0, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__71)) __PYX_ERR(1, 1521, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__71);
   __Pyx_GIVEREF(__pyx_tuple__71);
-  __pyx_tuple__72 = PyTuple_Pack(3, __pyx_int_10, __pyx_int_10, __pyx_int_10); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(1, 1512, __pyx_L1_error)
+  __pyx_tuple__72 = PyTuple_Pack(3, __pyx_int_10, __pyx_int_10, __pyx_int_10); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(1, 1521, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__72);
   __Pyx_GIVEREF(__pyx_tuple__72);
 
-  /* "bullet/bullet.pyx":1595
+  /* "bullet/bullet.pyx":1604
  *         """
  *         if collisionObject.thisptr.getCollisionShape() == NULL:
  *             raise ValueError(             # <<<<<<<<<<<<<<
  *                 "Cannot add CollisionObject without a CollisionShape")
  * 
  */
-  __pyx_tuple__75 = PyTuple_Pack(1, __pyx_kp_s_Cannot_add_CollisionObject_witho); if (unlikely(!__pyx_tuple__75)) __PYX_ERR(1, 1595, __pyx_L1_error)
+  __pyx_tuple__75 = PyTuple_Pack(1, __pyx_kp_s_Cannot_add_CollisionObject_witho); if (unlikely(!__pyx_tuple__75)) __PYX_ERR(1, 1604, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__75);
   __Pyx_GIVEREF(__pyx_tuple__75);
 
-  /* "bullet/bullet.pyx":1656
+  /* "bullet/bullet.pyx":1665
  *                 rayResult.collisionObject = <object>btRes.m_collisionObject.getUserPointer()
  *                 if rayResult.collisionObject is None:
  *                     raise RuntimeError('Collision object not found in world.')             # <<<<<<<<<<<<<<
  *                 rayResult.collisionFilterGroup = btRes.m_collisionFilterGroup
  *                 rayResult.collisionFilterMask = btRes.m_collisionFilterMask
  */
-  __pyx_tuple__76 = PyTuple_Pack(1, __pyx_kp_s_Collision_object_not_found_in_wo); if (unlikely(!__pyx_tuple__76)) __PYX_ERR(1, 1656, __pyx_L1_error)
+  __pyx_tuple__76 = PyTuple_Pack(1, __pyx_kp_s_Collision_object_not_found_in_wo); if (unlikely(!__pyx_tuple__76)) __PYX_ERR(1, 1665, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__76);
   __Pyx_GIVEREF(__pyx_tuple__76);
 
@@ -30401,17 +30422,17 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__82);
   __Pyx_GIVEREF(__pyx_tuple__82);
 
-  /* "bullet/bullet.pyx":1829
+  /* "bullet/bullet.pyx":1838
  *             solver = SequentialImpulseConstraintSolver()
  *         if broadphase is None:
  *             broadphase = AxisSweep3(Vector3(-100, -100, -100), Vector3(100, 100, 100))             # <<<<<<<<<<<<<<
  * 
  *         self.solver = solver
  */
-  __pyx_tuple__83 = PyTuple_Pack(3, __pyx_int_neg_100, __pyx_int_neg_100, __pyx_int_neg_100); if (unlikely(!__pyx_tuple__83)) __PYX_ERR(1, 1829, __pyx_L1_error)
+  __pyx_tuple__83 = PyTuple_Pack(3, __pyx_int_neg_100, __pyx_int_neg_100, __pyx_int_neg_100); if (unlikely(!__pyx_tuple__83)) __PYX_ERR(1, 1838, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__83);
   __Pyx_GIVEREF(__pyx_tuple__83);
-  __pyx_tuple__84 = PyTuple_Pack(3, __pyx_int_100, __pyx_int_100, __pyx_int_100); if (unlikely(!__pyx_tuple__84)) __PYX_ERR(1, 1829, __pyx_L1_error)
+  __pyx_tuple__84 = PyTuple_Pack(3, __pyx_int_100, __pyx_int_100, __pyx_int_100); if (unlikely(!__pyx_tuple__84)) __PYX_ERR(1, 1838, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__84);
   __Pyx_GIVEREF(__pyx_tuple__84);
 
@@ -30701,11 +30722,11 @@ static int __pyx_pymod_exec_bullet(PyObject *__pyx_pyinit_module)
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CollisionObject) < 0) __PYX_ERR(1, 641, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CollisionObject) < 0) __PYX_ERR(1, 650, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_CollisionObject.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "CollisionObject", (PyObject *)&__pyx_type_6bullet_6bullet_CollisionObject) < 0) __PYX_ERR(1, 641, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "CollisionObject", (PyObject *)&__pyx_type_6bullet_6bullet_CollisionObject) < 0) __PYX_ERR(1, 650, __pyx_L1_error)
   if (__pyx_type_6bullet_6bullet_CollisionObject.tp_weaklistoffset == 0) __pyx_type_6bullet_6bullet_CollisionObject.tp_weaklistoffset = offsetof(struct __pyx_obj_6bullet_6bullet_CollisionObject, __weakref__);
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CollisionObject) < 0) __PYX_ERR(1, 641, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CollisionObject) < 0) __PYX_ERR(1, 650, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_CollisionObject = &__pyx_type_6bullet_6bullet_CollisionObject;
   __pyx_vtabptr_6bullet_6bullet_Vector3 = &__pyx_vtable_6bullet_6bullet_Vector3;
   __pyx_vtable_6bullet_6bullet_Vector3.frombtVector3 = (PyObject *(*)(btVector3))__pyx_f_6bullet_6bullet_7Vector3_frombtVector3;
@@ -30858,117 +30879,117 @@ static int __pyx_pymod_exec_bullet(PyObject *__pyx_pyinit_module)
   if (PyObject_SetAttrString(__pyx_m, "BroadphaseProxy", (PyObject *)&__pyx_type_6bullet_6bullet_BroadphaseProxy) < 0) __PYX_ERR(1, 604, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_BroadphaseProxy) < 0) __PYX_ERR(1, 604, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_BroadphaseProxy = &__pyx_type_6bullet_6bullet_BroadphaseProxy;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_MotionState) < 0) __PYX_ERR(1, 771, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_MotionState) < 0) __PYX_ERR(1, 780, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_MotionState.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "MotionState", (PyObject *)&__pyx_type_6bullet_6bullet_MotionState) < 0) __PYX_ERR(1, 771, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_MotionState) < 0) __PYX_ERR(1, 771, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "MotionState", (PyObject *)&__pyx_type_6bullet_6bullet_MotionState) < 0) __PYX_ERR(1, 780, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_MotionState) < 0) __PYX_ERR(1, 780, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_MotionState = &__pyx_type_6bullet_6bullet_MotionState;
   __pyx_type_6bullet_6bullet_overridableMotionState.tp_base = __pyx_ptype_6bullet_6bullet_MotionState;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_overridableMotionState) < 0) __PYX_ERR(1, 835, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_overridableMotionState) < 0) __PYX_ERR(1, 844, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_overridableMotionState.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "overridableMotionState", (PyObject *)&__pyx_type_6bullet_6bullet_overridableMotionState) < 0) __PYX_ERR(1, 835, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_overridableMotionState) < 0) __PYX_ERR(1, 835, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "overridableMotionState", (PyObject *)&__pyx_type_6bullet_6bullet_overridableMotionState) < 0) __PYX_ERR(1, 844, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_overridableMotionState) < 0) __PYX_ERR(1, 844, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_overridableMotionState = &__pyx_type_6bullet_6bullet_overridableMotionState;
   __pyx_type_6bullet_6bullet_DefaultMotionState.tp_base = __pyx_ptype_6bullet_6bullet_MotionState;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_DefaultMotionState) < 0) __PYX_ERR(1, 871, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_DefaultMotionState) < 0) __PYX_ERR(1, 880, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_DefaultMotionState.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "DefaultMotionState", (PyObject *)&__pyx_type_6bullet_6bullet_DefaultMotionState) < 0) __PYX_ERR(1, 871, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_DefaultMotionState) < 0) __PYX_ERR(1, 871, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "DefaultMotionState", (PyObject *)&__pyx_type_6bullet_6bullet_DefaultMotionState) < 0) __PYX_ERR(1, 880, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_DefaultMotionState) < 0) __PYX_ERR(1, 880, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_DefaultMotionState = &__pyx_type_6bullet_6bullet_DefaultMotionState;
   __pyx_type_6bullet_6bullet_RigidBody.tp_base = __pyx_ptype_6bullet_6bullet_CollisionObject;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_RigidBody) < 0) __PYX_ERR(1, 897, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_RigidBody) < 0) __PYX_ERR(1, 906, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_RigidBody.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "RigidBody", (PyObject *)&__pyx_type_6bullet_6bullet_RigidBody) < 0) __PYX_ERR(1, 897, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "RigidBody", (PyObject *)&__pyx_type_6bullet_6bullet_RigidBody) < 0) __PYX_ERR(1, 906, __pyx_L1_error)
   if (__pyx_type_6bullet_6bullet_RigidBody.tp_weaklistoffset == 0) __pyx_type_6bullet_6bullet_RigidBody.tp_weaklistoffset = offsetof(struct __pyx_obj_6bullet_6bullet_RigidBody, __pyx_base.__weakref__);
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_RigidBody) < 0) __PYX_ERR(1, 897, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_RigidBody) < 0) __PYX_ERR(1, 906, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_RigidBody = &__pyx_type_6bullet_6bullet_RigidBody;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_ActionInterface) < 0) __PYX_ERR(1, 1224, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_ActionInterface) < 0) __PYX_ERR(1, 1233, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_ActionInterface.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "ActionInterface", (PyObject *)&__pyx_type_6bullet_6bullet_ActionInterface) < 0) __PYX_ERR(1, 1224, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_ActionInterface) < 0) __PYX_ERR(1, 1224, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "ActionInterface", (PyObject *)&__pyx_type_6bullet_6bullet_ActionInterface) < 0) __PYX_ERR(1, 1233, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_ActionInterface) < 0) __PYX_ERR(1, 1233, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_ActionInterface = &__pyx_type_6bullet_6bullet_ActionInterface;
   __pyx_type_6bullet_6bullet_CharacterControllerInterface.tp_base = __pyx_ptype_6bullet_6bullet_ActionInterface;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CharacterControllerInterface) < 0) __PYX_ERR(1, 1240, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CharacterControllerInterface) < 0) __PYX_ERR(1, 1249, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_CharacterControllerInterface.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "CharacterControllerInterface", (PyObject *)&__pyx_type_6bullet_6bullet_CharacterControllerInterface) < 0) __PYX_ERR(1, 1240, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CharacterControllerInterface) < 0) __PYX_ERR(1, 1240, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "CharacterControllerInterface", (PyObject *)&__pyx_type_6bullet_6bullet_CharacterControllerInterface) < 0) __PYX_ERR(1, 1249, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CharacterControllerInterface) < 0) __PYX_ERR(1, 1249, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_CharacterControllerInterface = &__pyx_type_6bullet_6bullet_CharacterControllerInterface;
   __pyx_type_6bullet_6bullet_PairCachingGhostObject.tp_base = __pyx_ptype_6bullet_6bullet_CollisionObject;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_PairCachingGhostObject) < 0) __PYX_ERR(1, 1284, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_PairCachingGhostObject) < 0) __PYX_ERR(1, 1293, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_PairCachingGhostObject.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "PairCachingGhostObject", (PyObject *)&__pyx_type_6bullet_6bullet_PairCachingGhostObject) < 0) __PYX_ERR(1, 1284, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "PairCachingGhostObject", (PyObject *)&__pyx_type_6bullet_6bullet_PairCachingGhostObject) < 0) __PYX_ERR(1, 1293, __pyx_L1_error)
   if (__pyx_type_6bullet_6bullet_PairCachingGhostObject.tp_weaklistoffset == 0) __pyx_type_6bullet_6bullet_PairCachingGhostObject.tp_weaklistoffset = offsetof(struct __pyx_obj_6bullet_6bullet_PairCachingGhostObject, __pyx_base.__weakref__);
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_PairCachingGhostObject) < 0) __PYX_ERR(1, 1284, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_PairCachingGhostObject) < 0) __PYX_ERR(1, 1293, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_PairCachingGhostObject = &__pyx_type_6bullet_6bullet_PairCachingGhostObject;
   __pyx_type_6bullet_6bullet_KinematicCharacterController.tp_base = __pyx_ptype_6bullet_6bullet_CharacterControllerInterface;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_KinematicCharacterController) < 0) __PYX_ERR(1, 1296, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_KinematicCharacterController) < 0) __PYX_ERR(1, 1305, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_KinematicCharacterController.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "KinematicCharacterController", (PyObject *)&__pyx_type_6bullet_6bullet_KinematicCharacterController) < 0) __PYX_ERR(1, 1296, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "KinematicCharacterController", (PyObject *)&__pyx_type_6bullet_6bullet_KinematicCharacterController) < 0) __PYX_ERR(1, 1305, __pyx_L1_error)
   if (__pyx_type_6bullet_6bullet_KinematicCharacterController.tp_weaklistoffset == 0) __pyx_type_6bullet_6bullet_KinematicCharacterController.tp_weaklistoffset = offsetof(struct __pyx_obj_6bullet_6bullet_KinematicCharacterController, __weakref__);
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_KinematicCharacterController) < 0) __PYX_ERR(1, 1296, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_KinematicCharacterController) < 0) __PYX_ERR(1, 1305, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_KinematicCharacterController = &__pyx_type_6bullet_6bullet_KinematicCharacterController;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CollisionDispatcher) < 0) __PYX_ERR(1, 1346, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CollisionDispatcher) < 0) __PYX_ERR(1, 1355, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_CollisionDispatcher.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "CollisionDispatcher", (PyObject *)&__pyx_type_6bullet_6bullet_CollisionDispatcher) < 0) __PYX_ERR(1, 1346, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CollisionDispatcher) < 0) __PYX_ERR(1, 1346, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "CollisionDispatcher", (PyObject *)&__pyx_type_6bullet_6bullet_CollisionDispatcher) < 0) __PYX_ERR(1, 1355, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CollisionDispatcher) < 0) __PYX_ERR(1, 1355, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_CollisionDispatcher = &__pyx_type_6bullet_6bullet_CollisionDispatcher;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_OverlappingPairCache) < 0) __PYX_ERR(1, 1374, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_OverlappingPairCache) < 0) __PYX_ERR(1, 1383, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_OverlappingPairCache.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "OverlappingPairCache", (PyObject *)&__pyx_type_6bullet_6bullet_OverlappingPairCache) < 0) __PYX_ERR(1, 1374, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_OverlappingPairCache) < 0) __PYX_ERR(1, 1374, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "OverlappingPairCache", (PyObject *)&__pyx_type_6bullet_6bullet_OverlappingPairCache) < 0) __PYX_ERR(1, 1383, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_OverlappingPairCache) < 0) __PYX_ERR(1, 1383, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_OverlappingPairCache = &__pyx_type_6bullet_6bullet_OverlappingPairCache;
   __pyx_type_6bullet_6bullet_HashedOverlappingPairCache.tp_base = __pyx_ptype_6bullet_6bullet_OverlappingPairCache;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_HashedOverlappingPairCache) < 0) __PYX_ERR(1, 1401, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_HashedOverlappingPairCache) < 0) __PYX_ERR(1, 1410, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_HashedOverlappingPairCache.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "HashedOverlappingPairCache", (PyObject *)&__pyx_type_6bullet_6bullet_HashedOverlappingPairCache) < 0) __PYX_ERR(1, 1401, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_HashedOverlappingPairCache) < 0) __PYX_ERR(1, 1401, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "HashedOverlappingPairCache", (PyObject *)&__pyx_type_6bullet_6bullet_HashedOverlappingPairCache) < 0) __PYX_ERR(1, 1410, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_HashedOverlappingPairCache) < 0) __PYX_ERR(1, 1410, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_HashedOverlappingPairCache = &__pyx_type_6bullet_6bullet_HashedOverlappingPairCache;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_BroadphaseInterface) < 0) __PYX_ERR(1, 1413, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_BroadphaseInterface) < 0) __PYX_ERR(1, 1422, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_BroadphaseInterface.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "BroadphaseInterface", (PyObject *)&__pyx_type_6bullet_6bullet_BroadphaseInterface) < 0) __PYX_ERR(1, 1413, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_BroadphaseInterface) < 0) __PYX_ERR(1, 1413, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "BroadphaseInterface", (PyObject *)&__pyx_type_6bullet_6bullet_BroadphaseInterface) < 0) __PYX_ERR(1, 1422, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_BroadphaseInterface) < 0) __PYX_ERR(1, 1422, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_BroadphaseInterface = &__pyx_type_6bullet_6bullet_BroadphaseInterface;
   __pyx_type_6bullet_6bullet_AxisSweep3.tp_base = __pyx_ptype_6bullet_6bullet_BroadphaseInterface;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_AxisSweep3) < 0) __PYX_ERR(1, 1440, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_AxisSweep3) < 0) __PYX_ERR(1, 1449, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_AxisSweep3.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "AxisSweep3", (PyObject *)&__pyx_type_6bullet_6bullet_AxisSweep3) < 0) __PYX_ERR(1, 1440, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_AxisSweep3) < 0) __PYX_ERR(1, 1440, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "AxisSweep3", (PyObject *)&__pyx_type_6bullet_6bullet_AxisSweep3) < 0) __PYX_ERR(1, 1449, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_AxisSweep3) < 0) __PYX_ERR(1, 1449, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_AxisSweep3 = &__pyx_type_6bullet_6bullet_AxisSweep3;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_ConstraintSolver) < 0) __PYX_ERR(1, 1460, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_ConstraintSolver) < 0) __PYX_ERR(1, 1469, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_ConstraintSolver.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "ConstraintSolver", (PyObject *)&__pyx_type_6bullet_6bullet_ConstraintSolver) < 0) __PYX_ERR(1, 1460, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_ConstraintSolver) < 0) __PYX_ERR(1, 1460, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "ConstraintSolver", (PyObject *)&__pyx_type_6bullet_6bullet_ConstraintSolver) < 0) __PYX_ERR(1, 1469, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_ConstraintSolver) < 0) __PYX_ERR(1, 1469, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_ConstraintSolver = &__pyx_type_6bullet_6bullet_ConstraintSolver;
   __pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver.tp_base = __pyx_ptype_6bullet_6bullet_ConstraintSolver;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver) < 0) __PYX_ERR(1, 1475, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver) < 0) __PYX_ERR(1, 1484, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "SequentialImpulseConstraintSolver", (PyObject *)&__pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver) < 0) __PYX_ERR(1, 1475, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver) < 0) __PYX_ERR(1, 1475, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "SequentialImpulseConstraintSolver", (PyObject *)&__pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver) < 0) __PYX_ERR(1, 1484, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver) < 0) __PYX_ERR(1, 1484, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_SequentialImpulseConstraintSolver = &__pyx_type_6bullet_6bullet_SequentialImpulseConstraintSolver;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CollisionWorld) < 0) __PYX_ERR(1, 1491, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_CollisionWorld) < 0) __PYX_ERR(1, 1500, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_CollisionWorld.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "CollisionWorld", (PyObject *)&__pyx_type_6bullet_6bullet_CollisionWorld) < 0) __PYX_ERR(1, 1491, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "CollisionWorld", (PyObject *)&__pyx_type_6bullet_6bullet_CollisionWorld) < 0) __PYX_ERR(1, 1500, __pyx_L1_error)
   if (__pyx_type_6bullet_6bullet_CollisionWorld.tp_weaklistoffset == 0) __pyx_type_6bullet_6bullet_CollisionWorld.tp_weaklistoffset = offsetof(struct __pyx_obj_6bullet_6bullet_CollisionWorld, __weakref__);
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CollisionWorld) < 0) __PYX_ERR(1, 1491, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_CollisionWorld) < 0) __PYX_ERR(1, 1500, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_CollisionWorld = &__pyx_type_6bullet_6bullet_CollisionWorld;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_RayResult) < 0) __PYX_ERR(1, 1693, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_RayResult) < 0) __PYX_ERR(1, 1702, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_RayResult.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "RayResult", (PyObject *)&__pyx_type_6bullet_6bullet_RayResult) < 0) __PYX_ERR(1, 1693, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_RayResult) < 0) __PYX_ERR(1, 1693, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "RayResult", (PyObject *)&__pyx_type_6bullet_6bullet_RayResult) < 0) __PYX_ERR(1, 1702, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_RayResult) < 0) __PYX_ERR(1, 1702, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_RayResult = &__pyx_type_6bullet_6bullet_RayResult;
   __pyx_type_6bullet_6bullet_DynamicsWorld.tp_base = __pyx_ptype_6bullet_6bullet_CollisionWorld;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_DynamicsWorld) < 0) __PYX_ERR(1, 1751, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_DynamicsWorld) < 0) __PYX_ERR(1, 1760, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_DynamicsWorld.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "DynamicsWorld", (PyObject *)&__pyx_type_6bullet_6bullet_DynamicsWorld) < 0) __PYX_ERR(1, 1751, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "DynamicsWorld", (PyObject *)&__pyx_type_6bullet_6bullet_DynamicsWorld) < 0) __PYX_ERR(1, 1760, __pyx_L1_error)
   if (__pyx_type_6bullet_6bullet_DynamicsWorld.tp_weaklistoffset == 0) __pyx_type_6bullet_6bullet_DynamicsWorld.tp_weaklistoffset = offsetof(struct __pyx_obj_6bullet_6bullet_DynamicsWorld, __pyx_base.__weakref__);
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_DynamicsWorld) < 0) __PYX_ERR(1, 1751, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_DynamicsWorld) < 0) __PYX_ERR(1, 1760, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_DynamicsWorld = &__pyx_type_6bullet_6bullet_DynamicsWorld;
   __pyx_type_6bullet_6bullet_DiscreteDynamicsWorld.tp_base = __pyx_ptype_6bullet_6bullet_DynamicsWorld;
-  if (PyType_Ready(&__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld) < 0) __PYX_ERR(1, 1810, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld) < 0) __PYX_ERR(1, 1819, __pyx_L1_error)
   __pyx_type_6bullet_6bullet_DiscreteDynamicsWorld.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "DiscreteDynamicsWorld", (PyObject *)&__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld) < 0) __PYX_ERR(1, 1810, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "DiscreteDynamicsWorld", (PyObject *)&__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld) < 0) __PYX_ERR(1, 1819, __pyx_L1_error)
   if (__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld.tp_weaklistoffset == 0) __pyx_type_6bullet_6bullet_DiscreteDynamicsWorld.tp_weaklistoffset = offsetof(struct __pyx_obj_6bullet_6bullet_DiscreteDynamicsWorld, __pyx_base.__pyx_base.__weakref__);
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld) < 0) __PYX_ERR(1, 1810, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld) < 0) __PYX_ERR(1, 1819, __pyx_L1_error)
   __pyx_ptype_6bullet_6bullet_DiscreteDynamicsWorld = &__pyx_type_6bullet_6bullet_DiscreteDynamicsWorld;
   /*--- Type import code ---*/
   __pyx_ptype_7cpython_4type_type = __Pyx_ImportType(__Pyx_BUILTIN_MODULE_NAME, "type", 
@@ -31201,78 +31222,174 @@ static int __pyx_pymod_exec_bullet(PyObject *__pyx_pyinit_module)
  * CF_DISABLE_VISUALIZE_OBJECT = _CF_DISABLE_VISUALIZE_OBJECT
  * CF_DISABLE_SPU_COLLISION_PROCESSING = _CF_DISABLE_SPU_COLLISION_PROCESSING             # <<<<<<<<<<<<<<
  * 
- * 
+ * NO_DEBUG = _NO_DEBUG
  */
   __pyx_t_1 = __Pyx_PyInt_From_int(btCollisionObject::CF_DISABLE_SPU_COLLISION_PROCESSING); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_CF_DISABLE_SPU_COLLISION_PROCESS, __pyx_t_1) < 0) __PYX_ERR(1, 638, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "bullet/bullet.pyx":941
+  /* "bullet/bullet.pyx":640
+ * CF_DISABLE_SPU_COLLISION_PROCESSING = _CF_DISABLE_SPU_COLLISION_PROCESSING
+ * 
+ * NO_DEBUG = _NO_DEBUG             # <<<<<<<<<<<<<<
+ * DRAW_WIREFRAME = _DRAW_WIREFRAME
+ * DRAW_AABB = _DRAW_AABB
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_NoDebug); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 640, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_NO_DEBUG, __pyx_t_1) < 0) __PYX_ERR(1, 640, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":641
+ * 
+ * NO_DEBUG = _NO_DEBUG
+ * DRAW_WIREFRAME = _DRAW_WIREFRAME             # <<<<<<<<<<<<<<
+ * DRAW_AABB = _DRAW_AABB
+ * DRAW_FEATURES_TEXT = _DRAW_FEATURES_TEXT
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_DrawWireframe); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 641, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DRAW_WIREFRAME, __pyx_t_1) < 0) __PYX_ERR(1, 641, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":642
+ * NO_DEBUG = _NO_DEBUG
+ * DRAW_WIREFRAME = _DRAW_WIREFRAME
+ * DRAW_AABB = _DRAW_AABB             # <<<<<<<<<<<<<<
+ * DRAW_FEATURES_TEXT = _DRAW_FEATURES_TEXT
+ * DRAW_CONTACT_POINTS = _DRAW_CONTACT_POINTS
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_DrawAabb); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 642, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DRAW_AABB, __pyx_t_1) < 0) __PYX_ERR(1, 642, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":643
+ * DRAW_WIREFRAME = _DRAW_WIREFRAME
+ * DRAW_AABB = _DRAW_AABB
+ * DRAW_FEATURES_TEXT = _DRAW_FEATURES_TEXT             # <<<<<<<<<<<<<<
+ * DRAW_CONTACT_POINTS = _DRAW_CONTACT_POINTS
+ * DRAW_TEXT = _DRAW_TEXT
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_DrawFeaturesText); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 643, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DRAW_FEATURES_TEXT, __pyx_t_1) < 0) __PYX_ERR(1, 643, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":644
+ * DRAW_AABB = _DRAW_AABB
+ * DRAW_FEATURES_TEXT = _DRAW_FEATURES_TEXT
+ * DRAW_CONTACT_POINTS = _DRAW_CONTACT_POINTS             # <<<<<<<<<<<<<<
+ * DRAW_TEXT = _DRAW_TEXT
+ * DRAW_CONSTRAINTS = _DRAW_CONSTRAINTS
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_DrawContactPoints); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 644, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DRAW_CONTACT_POINTS, __pyx_t_1) < 0) __PYX_ERR(1, 644, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":645
+ * DRAW_FEATURES_TEXT = _DRAW_FEATURES_TEXT
+ * DRAW_CONTACT_POINTS = _DRAW_CONTACT_POINTS
+ * DRAW_TEXT = _DRAW_TEXT             # <<<<<<<<<<<<<<
+ * DRAW_CONSTRAINTS = _DRAW_CONSTRAINTS
+ * DRAW_CONSTRAINT_LIMITS = _DRAW_CONSTRAINT_LIMITS
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_DrawText); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 645, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DRAW_TEXT, __pyx_t_1) < 0) __PYX_ERR(1, 645, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":646
+ * DRAW_CONTACT_POINTS = _DRAW_CONTACT_POINTS
+ * DRAW_TEXT = _DRAW_TEXT
+ * DRAW_CONSTRAINTS = _DRAW_CONSTRAINTS             # <<<<<<<<<<<<<<
+ * DRAW_CONSTRAINT_LIMITS = _DRAW_CONSTRAINT_LIMITS
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_DrawConstraints); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 646, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DRAW_CONSTRAINTS, __pyx_t_1) < 0) __PYX_ERR(1, 646, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":647
+ * DRAW_TEXT = _DRAW_TEXT
+ * DRAW_CONSTRAINTS = _DRAW_CONSTRAINTS
+ * DRAW_CONSTRAINT_LIMITS = _DRAW_CONSTRAINT_LIMITS             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(btIDebugDraw::DBG_DrawConstraintLimits); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 647, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_DRAW_CONSTRAINT_LIMITS, __pyx_t_1) < 0) __PYX_ERR(1, 647, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "bullet/bullet.pyx":950
  * 
  *     @classmethod
  *     def fromConstructionInfo(cls, MotionState motion,             # <<<<<<<<<<<<<<
  *                              CollisionShape shape, btScalar mass,
  *                              Vector3 inertia, Transform worldTransform,
  */
-  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6bullet_6bullet_RigidBody, __pyx_n_s_fromConstructionInfo); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 941, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6bullet_6bullet_RigidBody, __pyx_n_s_fromConstructionInfo); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 950, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "bullet/bullet.pyx":940
+  /* "bullet/bullet.pyx":949
  * 
  * 
  *     @classmethod             # <<<<<<<<<<<<<<
  *     def fromConstructionInfo(cls, MotionState motion,
  *                              CollisionShape shape, btScalar mass,
  */
-  __pyx_t_2 = __Pyx_Method_ClassMethod(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 940, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Method_ClassMethod(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 949, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_6bullet_6bullet_RigidBody->tp_dict, __pyx_n_s_fromConstructionInfo, __pyx_t_2) < 0) __PYX_ERR(1, 941, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6bullet_6bullet_RigidBody->tp_dict, __pyx_n_s_fromConstructionInfo, __pyx_t_2) < 0) __PYX_ERR(1, 950, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_6bullet_6bullet_RigidBody);
 
-  /* "bullet/bullet.pyx":1572
+  /* "bullet/bullet.pyx":1581
  * 
  *     def addCollisionObject(self, CollisionObject collisionObject,
  *                            short int collisionFilterGroup=BroadphaseProxy.DefaultFilter,             # <<<<<<<<<<<<<<
  *                            short int collisionFilterMask=BroadphaseProxy.AllFilter):
  *         """
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_DefaultFilter); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1572, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_DefaultFilter); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1581, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_As_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1572, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1581, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_k__73 = __pyx_t_3;
 
-  /* "bullet/bullet.pyx":1573
+  /* "bullet/bullet.pyx":1582
  *     def addCollisionObject(self, CollisionObject collisionObject,
  *                            short int collisionFilterGroup=BroadphaseProxy.DefaultFilter,
  *                            short int collisionFilterMask=BroadphaseProxy.AllFilter):             # <<<<<<<<<<<<<<
  *         """
  *         Add a new CollisionObject to this CollisionWorld.
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_AllFilter); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1573, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_6bullet_6bullet_BroadphaseProxy), __pyx_n_s_AllFilter); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1582, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_As_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1573, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_short(__pyx_t_2); if (unlikely((__pyx_t_3 == (short)-1) && PyErr_Occurred())) __PYX_ERR(1, 1582, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_k__74 = __pyx_t_3;
 
-  /* "bullet/bullet.pyx":1749
+  /* "bullet/bullet.pyx":1758
  * 
  * 
  * cdef dict _actions = {}             # <<<<<<<<<<<<<<
  * 
  * cdef class DynamicsWorld(CollisionWorld):
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1749, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 1758, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(__pyx_v_6bullet_6bullet__actions);
   __Pyx_DECREF_SET(__pyx_v_6bullet_6bullet__actions, ((PyObject*)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "bullet/bullet.pyx":1885
+  /* "bullet/bullet.pyx":1894
  *                        btScalar timeStep,
  *                        int maxSubSteps = 1,
  *                        btScalar fixedTimeStep = 1. / 60.):             # <<<<<<<<<<<<<<
@@ -33157,37 +33274,6 @@ bad:
         int one = 1; int little = (int)*(unsigned char *)&one;
         unsigned char *bytes = (unsigned char *)&value;
         return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-    }
-}
-
-/* CIntToPy */
-        static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum__btIDebugDraw_3a__3a_DebugDrawModes(enum btIDebugDraw::DebugDrawModes value) {
-    const enum btIDebugDraw::DebugDrawModes neg_one = (enum btIDebugDraw::DebugDrawModes) -1, const_zero = (enum btIDebugDraw::DebugDrawModes) 0;
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(enum btIDebugDraw::DebugDrawModes) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(enum btIDebugDraw::DebugDrawModes) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(enum btIDebugDraw::DebugDrawModes) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(enum btIDebugDraw::DebugDrawModes) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(enum btIDebugDraw::DebugDrawModes) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(enum btIDebugDraw::DebugDrawModes),
                                      little, !is_unsigned);
     }
 }
