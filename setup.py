@@ -29,6 +29,6 @@ setup(
                 ],
         include_dirs=incl,
         extra_compile_args=extrac,
-        language="c++",
-        install_requires=['numpy'])
-    ])
+        language="c++")
+    ],
+    install_requires=['numpy'])
